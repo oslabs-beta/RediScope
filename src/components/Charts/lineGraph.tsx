@@ -44,7 +44,7 @@ const labels: string[] = [
   'June',
   'July',
 ]
-
+// I need to figure out how to put data types to these data: I used to have data: object, and when I did, it gave me errors inside of LineGraph components return statement below
 export const data = {
   labels,
   datasets: [
