@@ -1,5 +1,6 @@
 import { Button } from '../Button'
 import { Container } from './styles'
+import { LineGraph, LineGraph2 } from '../Charts/lineGraph'
 
 export function Greetings() {
   function handleSayHello() {
@@ -10,6 +11,12 @@ export function Greetings() {
   return (
     <Container>
       <h1>Welcome to RediScope</h1>
+      <div>
+        <LineGraph />
+      </div>
+      <div>
+        <LineGraph2 />
+      </div>
       <Button onClick={handleSayHello}>Send message to main process</Button>
     </Container>
   )
