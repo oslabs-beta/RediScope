@@ -1784,6 +1784,13 @@
   "resolved" "https://registry.npmjs.org/@types/estree/-/estree-0.0.51.tgz"
   "version" "0.0.51"
 
+"@types/faker@^6.6.9":
+  "integrity" "sha512-Y9YYm5L//8ooiiknO++4Gr539zzdI0j3aXnOBjo1Vk+kTvffY10GuE2wn78AFPECwZ5MYGTjiDVw1naLLdDimw=="
+  "resolved" "https://registry.npmjs.org/@types/faker/-/faker-6.6.9.tgz"
+  "version" "6.6.9"
+  dependencies:
+    "faker" "*"
+
 "@types/fs-extra@^9.0.1":
   "integrity" "sha512-mZsifGG4QeQ7hlkhO56u7zt/ycBgGxSVsFI/6lGTU34VtwkiqrrSDgw0+ygs8kFGWcXnFQWMrzF2h7TtDFNixA=="
   "resolved" "https://registry.npmjs.org/@types/fs-extra/-/fs-extra-9.0.11.tgz"
@@ -2981,6 +2988,11 @@
   "integrity" "sha512-mT8iDcrh03qDGRRmoA2hmBJnxpllMR+0/0qlzjqZES6NdiWDcZkCNAk4rPFZ9Q85r27unkiNNg8ZOiwZXBHwcA=="
   "resolved" "https://registry.npmjs.org/chardet/-/chardet-0.7.0.tgz"
   "version" "0.7.0"
+
+"chart.js@^4.0.0", "chart.js@^4.0.1":
+  "integrity" "sha512-5/8/9eBivwBZK81mKvmIwTb2Pmw4D/5h1RK9fBWZLLZ8mCJ+kfYNmV9rMrGoa5Hgy2/wVDBMLSUDudul2/9ihA=="
+  "resolved" "https://registry.npmjs.org/chart.js/-/chart.js-4.0.1.tgz"
+  "version" "4.0.1"
 
 "chokidar@^3.5.1":
   "integrity" "sha512-ekGhOnNVPgT77r4K/U3GDhu+FQ2S8TnK/s2KbIGXi0SZWuwkZ2QNyfWdZW+TVfn84DpEP7rLeCt2UI6bJ8GwbQ=="
@@ -4441,6 +4453,11 @@
   "integrity" "sha1-lpGEQOMEGnpBT4xS48V06zw+HgU= sha512-11Ndz7Nv+mvAC1j0ktTa7fAb0vLyGGX+rMHNBYQviQDGU0Hw7lhctJANqbPhu9nV9/izT/IntTgZ7Im/9LJs9g=="
   "resolved" "https://registry.npmjs.org/extsprintf/-/extsprintf-1.3.0.tgz"
   "version" "1.3.0"
+
+"faker@*", "faker@^6.6.6":
+  "integrity" "sha512-9tCqYEDHI5RYFQigXFwF1hnCwcWCOJl/hmll0lr5D2Ljjb0o4wphb69wikeJDz5qCEzXCoPvG6ss5SDP6IfOdg=="
+  "resolved" "https://registry.npmjs.org/faker/-/faker-6.6.6.tgz"
+  "version" "6.6.6"
 
 "fast-deep-equal@^3.1.1", "fast-deep-equal@^3.1.3":
   "integrity" "sha512-f3qQ9oQy9j2AhBe/H9VC91wLmKBCCU/gDOnKNAYG5hswO7BLKj09Hc5HYNz9cGI++xlpDCIgDaitVs03ATR84Q=="
@@ -7818,7 +7835,12 @@
   "resolved" "https://registry.npmjs.org/rcedit/-/rcedit-2.3.0.tgz"
   "version" "2.3.0"
 
-"react-dom@*", "react-dom@^15.0.0 || ^16.0.0 || ^17.0.0 ", "react-dom@>= 16.8.0", "react-dom@>=16.8", "react-dom@17.0.2":
+"react-chartjs-2@^5.0.1":
+  "integrity" "sha512-u38C9OxynlNCBp+79grgXRs7DSJ9w8FuQ5/HO5FbYBbri8HSZW+9SWgjVshLkbXBfXnMGWakbHEtvN0nL2UG7Q=="
+  "resolved" "https://registry.npmjs.org/react-chartjs-2/-/react-chartjs-2-5.0.1.tgz"
+  "version" "5.0.1"
+
+"react-dom@*", "react-dom@^15.0.0 || ^16.0.0 || ^17.0.0 ", "react-dom@>= 16.8.0", "react-dom@17.0.2":
   "integrity" "sha512-s4h96KtLDUQlsENhMn1ar8t2bEa+q/YAtj8pPPdIjPDGBDIVNsrD9aXNWqspUe6AzKCIG0C1HZZLqLV7qpOBGA=="
   "resolved" "https://registry.npmjs.org/react-dom/-/react-dom-17.0.2.tgz"
   "version" "17.0.2"
@@ -7870,7 +7892,6 @@
   "integrity" "sha512-fBASbA6LnOU9dOU2eW7aQ8xmYBSXUIWr+UmF9b1efZBazGNO+rcXT/icdKnYm2pTwcRylVUYwW7H1PHfLekVzA=="
   "resolved" "https://registry.npmjs.org/react-lifecycles-compat/-/react-lifecycles-compat-3.0.4.tgz"
   "version" "3.0.4"
-
 "react-router-dom@^6.4.5":
   "integrity" "sha512-a7HsgikBR0wNfroBHcZUCd9+mLRqZS8R5U1Z1mzLWxFXEkUT3vR1XXmSIVoVpxVX8Bar0nQYYYc9Yipq8dWwAA=="
   "resolved" "https://registry.npmjs.org/react-router-dom/-/react-router-dom-6.4.5.tgz"
