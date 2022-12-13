@@ -8,16 +8,27 @@ export function Greetings() {
     console.log('Message sent! Check main process log in terminal.')
   }
 
+  async function testFetch (){
+    let res = await fetch('http://localhost:4000/api/flasks')
+    let data = await res.json()
+    console.log('function testFetch data', data);
+  }
+
+  // let res = await fetch('http://localhost:4000/api/flasks')
+  // let data = await res.json()
+  // console.log('function testFetch data', data);
+
   return (
-    <Container>
-      <h1>Welcome to RediScope</h1>
+   
+    <Container> 
+      <h1>Welcome to RediScope{}</h1>
       <div>
         <LineGraph />
       </div>
       <div>
         <LineGraph2 />
       </div>
-      <Button onClick={handleSayHello}>Send message to main process</Button>
+      <Button onClick={testFetch}>Send message to main process</Button>
     </Container>
   )
 }
