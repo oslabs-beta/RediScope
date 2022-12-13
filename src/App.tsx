@@ -7,16 +7,18 @@ import { GlobalStyle } from './styles/GlobalStyle'
 import { Greetings } from './components/Greetings'
 
 export function App() {
+      // <HashRouter>
+      //   <div>
+      //     <Route path="/Login" element= { <Login />} />
+      //     <Route path="/Signup" element= { <SignUp />} />
+      //   </div>
+      // </HashRouter>
+
   return (
-    // <>
-    //   <GlobalStyle />
-    //   <Greetings />
-    // </>
-      <HashRouter>
-        <div>
-          <Route path="/Login" element= { <Login />} />
-          <Route path="/Signup" element= { <SignUp />} />
-        </div>
-      </HashRouter>
+    <>
+      <GlobalStyle />
+      <Greetings />
+    </>
+      
   )
 }
