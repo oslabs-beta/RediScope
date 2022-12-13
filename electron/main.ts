@@ -1,4 +1,5 @@
 import { app, BrowserWindow, ipcMain } from 'electron'
+import path from 'path'
 
 let mainWindow: BrowserWindow | null
 
@@ -24,6 +25,9 @@ function createWindow () {
   })
 
   mainWindow.loadURL(MAIN_WINDOW_WEBPACK_ENTRY)
+  mainWindow.loadURL('file://' + path.join(__dirname, '..index.html#/'))
+
+  // if (window.location.pathname.includes('index.html'))
   // mainWindow.loadFile("index.html")
   mainWindow.on('closed', () => {
     mainWindow = null
