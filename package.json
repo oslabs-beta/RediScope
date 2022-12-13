@@ -6,7 +6,7 @@
   "main": "./.webpack/main/index.js",
   "scripts": {
     "start": "electron-forge start",
-    "dev-back": "nodemon src/server/server.js",
+    "dev": "nodemon src/server/server.js",
     "package": "electron-forge package",
     "make": "electron-forge make",
     "release": "electron-forge publish",
