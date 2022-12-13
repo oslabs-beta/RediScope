@@ -26,6 +26,7 @@ type LoginState = {
     username: string,
     password: string
     loading: boolean,
+    valid: boolean
 }
 
 export default class Login extends Component<Props, LoginState> {
@@ -37,20 +38,44 @@ export default class Login extends Component<Props, LoginState> {
             redirect: null,
             username: '',
             password: '',
-            loading: false
+            loading: false,
+            valid: false
         };
     }
 
+    handleLogin(formValue: {username: string; password: string}){
+        const { username, password } = formValue;
+        if (username === "username" && password === "123") {
+            this.setState({
+              loading: true,
+              valid: true
+            });
+        }
+        console.log('submitted');
+        console.log(this.state);
+        if (this.state.valid === true){
+            this.setState({ redirect: '/Dashboard' });
+        };
+    }
+    
     componentDidMount(): void {
         // set current user to the evaluated result of the get request via authentication
         // if this user exists, redirect to the dashboard/mainpage
-        if (user){
-            this.setState({ redirect: '/dashboard' });
-        };
+        
+        // if (this.state.valid === true){
+            //     this.setState({ redirect: '/Dashboard' });
+            // };
+            
+            
+            // if (user){
+                //     this.setState({ redirect: '/dashboard' });
+                // };
+        // console.log('Component mounted!');
     }
 
     componentWillUnmount(): void {
         // check with electron
+        // console.log("reloading from componentWillUnmount in Login file!")
         window.location.reload();
     }
 
@@ -62,13 +87,6 @@ export default class Login extends Component<Props, LoginState> {
         });
     }
 
-    handleLogin(formValue: {username: string; password: string}){
-        const { username, password } = formValue;
-
-        this.setState({
-            loading: true
-        });
-    }
 
     render(){
         if (this.state.redirect){
@@ -85,7 +103,7 @@ export default class Login extends Component<Props, LoginState> {
         return (
             <div className='Login'>
                 <div className='formContainer'>
-                    <Formik values= {initVal} validationSchema={this.validationSchema} onSubmit={this.handleLogin}>
+                    <Formik initialValues= {initVal} validationSchema={this.validationSchema} onSubmit={this.handleLogin}>
                         <Form>
                             <div className='form'>
                                 <label htmlFor='username'>Username</label>
