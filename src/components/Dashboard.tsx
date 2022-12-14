@@ -1,11 +1,15 @@
-import * as React from 'react';
+import * as React from 'react'
+import PieChart from './Charts/pieChart'
 
-function Dashboard () {
-  
- return (
-            <h1>This is our Dashboard page</h1>
-        )
-    
+function Dashboard() {
+  return (
+    <>
+      <div>
+        <h1>This is our Dashboard page</h1>
+        <PieChart />
+      </div>
+    </>
+  )
 }
 
-export default Dashboard;
+export default Dashboard
