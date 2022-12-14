@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Navigate } from "react-router-dom";
 import { Formik, Field, Form, ErrorMessage, yupToFormErrors } from 'formik';
 import * as Yup from 'yup';
 
@@ -61,13 +62,17 @@ export default class SignUp extends Component<Props, SignUpState> {
             success: false
         });
 
+        formValue ? this.setState({ success: true }) : this.setState({ message: 'please fill in required fields' })
         // post request
+        if (this.state.success){
+            this.setState({ redirect: '/Login' });
+        }
     }
 
     componentDidMount(): void {
-        if (this.state.success){
-            this.setState({ redirect: '/login' });
-        }
+        // if (this.state.success){
+        //     this.setState({ redirect: '/login' });
+        // }
     }
 
     componentWillUnmount(): void {
@@ -76,6 +81,11 @@ export default class SignUp extends Component<Props, SignUpState> {
 
     // do we need to render and return even though index.tsx should be handling the rendering?
     render(){
+
+        if (this.state.redirect){
+            return <Navigate to={this.state.redirect} />
+        }
+
         const { success, message } = this.state;
 
         const initVals = {
@@ -83,6 +93,7 @@ export default class SignUp extends Component<Props, SignUpState> {
             password: '',
             email: ''
         };
+
 
         return(
             <div className='SignUp'>
