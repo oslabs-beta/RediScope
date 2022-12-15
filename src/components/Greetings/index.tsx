@@ -1,6 +1,6 @@
 import { Button } from '../Button'
 import { Container } from './styles'
-import { LineGraph, LineGraph2 } from '../Charts/lineGraph'
+import { LineGraph, LineGraph2 } from '../Charts/LineGraph'
 import React, { useState, useContext, useEffect } from 'react'
 
 export function Greetings() {
@@ -9,28 +9,26 @@ export function Greetings() {
     console.log('Message sent! Check main process log in terminal.')
   }
 
-  const [polls, setPolls] = useState([]);
+  const [polls, setPolls] = useState([])
 
-  useEffect(()=>{
+  useEffect(() => {
     try {
       const fetchPolls = async () => {
         let response = await fetch(`http://localhost:4000/api/flasks`)
-    let data = await response.json()
+        let data = await response.json()
 
-    setPolls(data.poll)
-
-    }
-    fetchPolls()
-    }
-    catch(err){
+        setPolls(data.poll)
+      }
+      fetchPolls()
+    } catch (err) {
       console.log(err)
     }
-  },[])  
+  }, [])
 
-  async function testFetch (){
+  async function testFetch() {
     let res = await fetch('http://localhost:4000/api/flasks')
     let data = await res.json()
-    console.log('function testFetch data', data);
+    console.log('function testFetch data', data)
   }
 
   // let res = await fetch('http://localhost:4000/api/flasks')
@@ -38,8 +36,7 @@ export function Greetings() {
   // console.log('function testFetch data', data);
 
   return (
-   
-    <Container> 
+    <Container>
       <h1>Welcome to RediScope{JSON.stringify(polls)}</h1>
       <div>
         <LineGraph />
