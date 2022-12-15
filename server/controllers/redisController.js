@@ -1,7 +1,8 @@
 const redis = require('redis')
 
 exports.redisConnect = async (req, res) => {
-  const { url } = req.body
+  console.log(req.body)
+  // const { url } = req.body
   console.log('hello from redisconnect middleware')
   //log in to user's redis instance
   // const redisDb = redis.createClient({
@@ -14,7 +15,7 @@ exports.redisConnect = async (req, res) => {
   redisDb.on('connect', () => console.log('connect'))
 
   redisDb.on('ready', () => {
-    console.log(redisDb.server_info.used_memory)
+    console.log('used mem', redisDb.server_info.used_memory)
     console.log('total memory', redisDb.server_info.used_memory_rss)
     memory = redisDb.server_info.used_memory
     totalMem = redisDb.server_info.used_memory_rss
