@@ -6,7 +6,7 @@
   "main": "./.webpack/main/index.js",
   "scripts": {
     "start": "electron-forge start",
-    "dev": "nodemon src/server/server.js",
+    "dev": "nodemon server/server.js",
     "package": "electron-forge package",
     "make": "electron-forge make",
     "release": "electron-forge publish",
@@ -22,19 +22,21 @@
     "express": "^4.18.2",
     "faker": "^6.6.6",
     "ffmpeg-static": "^5.1.0",
+    "formik": "^2.2.9",
+    "morgan": "^1.10.0",
     "node-rtsp-stream": "^0.0.9",
     "nodemon": "^2.0.20",
     "path": "^0.12.7",
     "pg": "^8.8.0",
-    "formik": "^2.2.9",
     "react": "17.0.2",
     "react-chartjs-2": "^5.0.1",
     "react-dom": "17.0.2",
     "react-hot-loader": "4.13.0",
     "react-router-dom": "^6.4.5",
+    "redis": "^3.1.2",
     "styled-components": "5.3.0",
-    "yup": "^0.32.11",
-    "yarn": "^1.22.19"
+    "yarn": "^1.22.19",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
     "@babel/core": "7.14.6",
