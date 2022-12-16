@@ -2,7 +2,9 @@ import React, { useState } from 'react'
 import PieChart from './Charts/PieChart'
 import BarChart from './Charts/BarChart'
 import { Formik, Field, Form, ErrorMessage } from 'formik'
+import { ButtonStyle, Wrapper, Title, ChartWrapper, Inner } from '../styles/GlobalStyle';
 import * as Yup from 'yup'
+
 
 type Props = {}
 
@@ -81,46 +83,56 @@ export default function Dashboard(
 
   return (
     <>
-      <div>
+
         <div>
-          <h2> Redis URI: </h2>
+          <h2> Welcome </h2>
           {/* <input>Redis URI: </input> */}
           <button
             type="submit"
             className="submit-btn"
             onClick={handleSubmitMVP}
           >
-            Submit123
+            Connect
           </button>
-          {/* <Formik
-            initialValues={initVal}
-            validationSchema={validationSchema}
-            onSubmit={handleSubmit}
-          > */}
-          {/* <Form>
-              <div className="URL-Form">
-                <label htmlFor="Connect-URL">Redis Cache URL</label>
-                <Field
-                  name="Connect-URL"
-                  type="text"
-                  className="URL-form-control"
-                />
-              </div> */}
-          {/* <div> */}
-
-          {/* <button type="submit" className="btn">
-                  <span>Submit</span>
-                </button>
-              </div>
-            </Form> */}
-          {/* </Formik> */}
         </div>
-        <h1>Dashboard</h1>
-        <BarChart />
-        <PieChart />
-      </div>
+        <h1>Metric Dashboard</h1>
+
+         <Wrapper>
+          <Inner>
+            <BarChart />
+          </Inner>
+        </Wrapper>
+        <Wrapper>
+          <Inner>
+            <PieChart />
+          </Inner>
+        </Wrapper>
+    
     </>
   )
 }
 
 // export default Dashboard
+
+{/* <Formik
+  initialValues={initVal}
+  validationSchema={validationSchema}
+  onSubmit={handleSubmit}
+> */}
+{/* <Form>
+    <div className="URL-Form">
+      <label htmlFor="Connect-URL">Redis Cache URL</label>
+      <Field
+        name="Connect-URL"
+        type="text"
+        className="URL-form-control"
+      />
+    </div> */}
+{/* <div> */}
+
+{/* <button type="submit" className="btn">
+        <span>Submit</span>
+      </button>
+    </div>
+  </Form> */}
+{/* </Formik> */}
