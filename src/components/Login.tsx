@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Navigate } from 'react-router-dom'
 import { Formik, Field, Form, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
+import { GlobalStyle } from '../styles/GlobalStyle';
 
 // import { Link } from "react-router-dom";
 
@@ -43,7 +44,7 @@ export default class Login extends Component<Props, LoginState> {
 
   handleLogin(formValue: { username: string; password: string }) {
     const { username, password } = formValue
-    if (username === 'username' && password === '123') {
+    if (username === 'azzie' && password === 'password') {
       this.setState({
         loading: true,
         valid: true,
@@ -96,6 +97,7 @@ export default class Login extends Component<Props, LoginState> {
 
     return (
       <div className="Login">
+      <GlobalStyle />
         <div className="formContainer">
           <Formik
             initialValues={initVal}
