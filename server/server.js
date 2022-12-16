@@ -38,6 +38,9 @@ app.get('/api/flasks', async (req, res) => {
 
 app.use('/api/redis', redisRouter)
 
+
+
+
 app.use((err, req, res, next) => {
   const defaultErr = {
     log: 'Express error handler caught unknown middleware error',

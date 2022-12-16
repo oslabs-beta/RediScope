@@ -63,7 +63,7 @@ export default class SignUp extends Component<Props, SignUpState> {
         });
 
         formValue ? this.setState({ success: true }) : this.setState({ message: 'please fill in required fields' })
-        // post request
+        // post request to add new user info and POST to SQL db
         if (this.state.success){
             this.setState({ redirect: '/Login' });
         }
