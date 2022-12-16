@@ -4,7 +4,7 @@ import { HashRouter, Route, Link, Routes } from 'react-router-dom'
 import Login from './components/Login'
 import SignUp from './components/Signup'
 import Dashboard from './components/Dashboard'
-import { GlobalStyle } from './styles/GlobalStyle'
+import { GlobalStyle, Mainpage } from './styles/GlobalStyle'
 import { Greetings } from './components/Greetings'
 
 export function App() {
@@ -30,19 +30,26 @@ export function App() {
 
   return (
     <HashRouter>
-      <GlobalStyle />{' '}
+      <GlobalStyle />
       <div>
-        <div>
-          <Link to="/Login">
-            <h2>Login</h2>
-          </Link>
-          <Link to="/Signup">
-            <h2>Signup</h2>
-          </Link>
-          <Link to="/Dashboard">
-            <h2>Dashboard</h2>
-          </Link>
-        </div>
+        <Mainpage>
+          <h1> RediScope </h1>
+          <button>
+            <Link to="/Login">
+              Login
+            </Link>
+          </button>
+          <button>
+            <Link to="/Signup">
+              Create Account
+            </Link>
+          </button>
+          {/* <button>
+            <Link to="/Dashboard">
+              dash
+            </Link>
+          </button> */}
+        </Mainpage>
 
         <Routes>
           <Route path="/Login" element={<Login />} />
@@ -53,3 +60,15 @@ export function App() {
     </HashRouter>
   )
 }
+
+
+
+{/* <Link to="/Login">
+            <h2>Login</h2>
+          </Link>
+          <Link to="/Signup">
+            <h2>Signup</h2>
+          </Link>
+          <Link to="/Dashboard">
+            <h2>Dashboard</h2>
+          </Link> */}
