@@ -16,6 +16,7 @@
   "keywords": [],
   "license": "MIT",
   "dependencies": {
+    "bcrypt": "^5.1.0",
     "chart.js": "^4.0.1",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
