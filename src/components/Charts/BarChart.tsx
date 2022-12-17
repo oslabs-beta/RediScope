@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -9,6 +9,7 @@ import {
   Legend,
 } from 'chart.js'
 import { Bar } from 'react-chartjs-2'
+import { RedisContextProvider, RedisContext } from '../../context/RedisContext'
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend)
 
@@ -66,5 +67,13 @@ export const data = {
 }
 
 export default function BarChart() {
-  return <Bar options={options} data={data} />
+  const { redisData, setRedisData } = useContext(RedisContext)
+  console.log('redisData in BarChart', redisData)
+  console.log('redisData in BarChart', redisData)
+  return (
+    <div>
+      <h5>{JSON.stringify(redisData)}</h5>
+      <Bar options={options} data={data} />
+    </div>
+  )
 }
