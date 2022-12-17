@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Navigate } from 'react-router-dom'
 import { Formik, Field, Form, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
+import { GlobalStyle } from '../styles/GlobalStyle';
 
 import AuthService from '../service/authentication';
 
@@ -121,6 +122,7 @@ export default class Login extends Component<Props, LoginState> {
 
     return (
       <div className="Login">
+      <GlobalStyle />
         <div className="formContainer">
           <Formik
             initialValues={initVal}
