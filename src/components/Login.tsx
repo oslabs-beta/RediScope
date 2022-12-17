@@ -3,6 +3,8 @@ import { Navigate } from 'react-router-dom'
 import { Formik, Field, Form, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
 
+import AuthService from '../service/authentication';
+
 // import { Link } from "react-router-dom";
 
 // ----- deprecated imports, may need if downgrading react-router-dom v5 ----- //
@@ -25,6 +27,7 @@ type LoginState = {
   password: string
   loading: boolean
   valid: boolean
+  message: string
 }
 
 export default class Login extends Component<Props, LoginState> {
@@ -38,25 +41,47 @@ export default class Login extends Component<Props, LoginState> {
       password: '',
       loading: false,
       valid: false,
+      message: ''
     }
   }
 
   handleLogin(formValue: { username: string; password: string }) {
     const { username, password } = formValue
-    if (username === 'username' && password === '123') {
-      this.setState({
-        loading: true,
-        valid: true,
-      })
-    }
-    console.log('submitted')
-    console.log(this.state)
+
+    // ----- hard-code ----- //
+
+    // if (username === 'username' && password === '123') {
+    //   this.setState({
+    //     loading: true,
+    //     valid: true,
+    //   })
+    // }
+
+    // ------ invoke authorization ------ //
+
+    AuthService.login(username, password).then(
+      () => {
+        // confirmed
+        this.setState({
+          redirect: '/Dashboard',
+          loading: true,
+          valid: true,
+        });
+      }, error => {
+        const response = (error.res && error.res.data && error.res.data.message) || error.message || error.toString();
+        this.setState({
+          loading: false,
+          valid: false,
+          message: response
+        })
+      }
+    )
+  }
+  
+  componentDidMount(): void {
     if (this.state.valid === true) {
       this.setState({ redirect: '/Dashboard' })
     }
-  }
-
-  componentDidMount(): void {
     // set current user to the evaluated result of the get request via authentication
     // if this user exists, redirect to the dashboard/mainpage
     // if (this.state.valid === true){
