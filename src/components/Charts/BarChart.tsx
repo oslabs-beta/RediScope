@@ -51,12 +51,16 @@ export const data = {
     {
       label: 'Used Memory MB',
       data: [1.2],
-      backgroundColor: 'rgba(255, 99, 132, 0.5)',
+      backgroundColor: 'rgba(255, 99, 132, 0.4)',
+      borderColor: 'rgba(255, 99, 132, 1)',
+      borderWidth: 1,
     },
     {
       label: 'Total Available Memory MB',
       data: [1.9],
-      backgroundColor: 'rgba(53, 162, 235, 0.5)',
+      backgroundColor: 'rgba(53, 162, 235, 0.4)',
+      borderColor: 'rgba(53, 162, 235, 1)',
+      borderWidth: 1,
     },
   ],
 }
