@@ -2,9 +2,16 @@ import React, { useState } from 'react'
 import PieChart from './Charts/PieChart'
 import BarChart from './Charts/BarChart'
 import { Formik, Field, Form, ErrorMessage } from 'formik'
-import { ButtonStyle, Wrapper, Title, ChartWrapper, Inner } from '../styles/GlobalStyle';
+import {
+  ButtonStyle,
+  Wrapper,
+  Title,
+  ChartWrapper,
+  Inner,
+} from '../styles/GlobalStyle'
 import * as Yup from 'yup'
-
+import axios from 'axios'
+import RedisForm from './RedisForm'
 
 type Props = {}
 
@@ -21,53 +28,30 @@ export default function Dashboard(
   // }
   const [inputField, setInputField] = useState('')
 
-  // const handleSubmit = async (formValue?: string): Promise<any> => {
-  //   // const URL = formValue
-  //   // console.log(URL)
-  //   // const fetchData = async () => {
-  //   try {
-  //     const res = await fetch('http://localhost:4000/api/redis', {
-  //       method: 'POST',
-  //       headers: {
-  //         'Content-Type': 'application/json',
-  //       },
-  //       mode: 'no-cors',
-  //       body: JSON.stringify(
-  //         'redis://default:rediscope123@redis-15161.c53.west-us.azure.cloud.redislabs.com:15161'
-  //       ),
-  //     })
-  //     const data = await res.json()
-  //     console.log(data)
-  //   } catch (error) {
-  //     console.log(error)
-  //   }
-  // }
-  const handleSubmitMVP = async (): Promise<any> => {
+  const handleSubmit = async (formValue?: string): Promise<any> => {
     // const URL = formValue
     // console.log(URL)
-    // const fetchData = async () => {
     try {
-      console.log('handleclick MVP')
-      const res = await fetch('http://localhost:4000/api/redis', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        mode: 'no-cors',
-        body: JSON.stringify({
-          url: 'redis://default:rediscope123@redis-15161.c53.west-us.azure.cloud.redislabs.com:15161',
-        }),
+      const res = await axios.post('http://localhost:4000/api/redis', {
+        url: 'redis://default:rediscope123@redis-15161.c53.west-us.azure.cloud.redislabs.com:15161',
       })
-      console.log(res)
-      if (res.ok !== false) {
-        const data = await res.json()
-        console.log(data)
-      }
+      console.log(res.data)
+      // const res = await fetch('http://localhost:4000/api/redis', {
+      //   method: 'POST',
+      //   headers: {
+      //     'Content-Type': 'application/json',
+      //   },
+      //   mode: 'no-cors',
+      //   body: JSON.stringify(
+      //     'redis://default:rediscope123@redis-15161.c53.west-us.azure.cloud.redislabs.com:15161'
+      //   ),
+      // })
+      // const data = await res.json()
+      // console.log(data)
     } catch (error) {
       console.log(error)
     }
   }
-  // setInputField()
 
   const validationSchema = () => {
     return Yup.object().shape({
@@ -81,45 +65,44 @@ export default function Dashboard(
     URL: '',
   }
 
+  // return <RedisForm />
   return (
     <>
+      <div>
+        <h2> Welcome </h2>
+        <RedisForm />
+        {/* <input>Redis URI: </input> */}
+        {/* <button type="submit" className="submit-btn" onClick={handleSubmit}> */}
+        {/* Connect */}
+        {/* </button> */}
+      </div>
+      <h1>Metric Dashboard</h1>
 
-        <div>
-          <h2> Welcome </h2>
-          {/* <input>Redis URI: </input> */}
-          <button
-            type="submit"
-            className="submit-btn"
-            onClick={handleSubmitMVP}
-          >
-            Connect
-          </button>
-        </div>
-        <h1>Metric Dashboard</h1>
-
-         <Wrapper>
-          <Inner>
-            <BarChart />
-          </Inner>
-        </Wrapper>
-        <Wrapper>
-          <Inner>
-            <PieChart />
-          </Inner>
-        </Wrapper>
-    
+      <Wrapper>
+        <Inner>
+          <BarChart />
+        </Inner>
+      </Wrapper>
+      <Wrapper>
+        <Inner>
+          <PieChart />
+        </Inner>
+      </Wrapper>
     </>
   )
 }
 
 // export default Dashboard
 
-{/* <Formik
+{
+  /* <Formik
   initialValues={initVal}
   validationSchema={validationSchema}
   onSubmit={handleSubmit}
-> */}
-{/* <Form>
+> */
+}
+{
+  /* <Form>
     <div className="URL-Form">
       <label htmlFor="Connect-URL">Redis Cache URL</label>
       <Field
@@ -127,12 +110,19 @@ export default function Dashboard(
         type="text"
         className="URL-form-control"
       />
-    </div> */}
-{/* <div> */}
+    </div> */
+}
+{
+  /* <div> */
+}
 
-{/* <button type="submit" className="btn">
+{
+  /* <button type="submit" className="btn">
         <span>Submit</span>
       </button>
     </div>
-  </Form> */}
-{/* </Formik> */}
+  </Form> */
+}
+{
+  /* </Formik> */
+}
