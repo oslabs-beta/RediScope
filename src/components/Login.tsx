@@ -58,7 +58,7 @@ export default class Login extends Component<Props, LoginState> {
     //   })
     // }
 
-    // ------ invoke authorization ------ //
+    // ------ invoke login  authorization from service folder ------ //
 
     AuthService.login(username, password).then(
       () => {
