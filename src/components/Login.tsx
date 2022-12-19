@@ -97,6 +97,9 @@ export default class Login extends Component<Props, LoginState> {
   componentWillUnmount(): void {
     // check with electron
     // console.log("reloading from componentWillUnmount in Login file!")
+
+    // I think this was creating the bulk of my issues when I was conditionally rendering the mainpage 
+    
     window.location.reload()
   }
 
