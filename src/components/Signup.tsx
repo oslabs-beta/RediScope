@@ -3,6 +3,8 @@ import { Navigate } from "react-router-dom";
 import { Formik, Field, Form, ErrorMessage, yupToFormErrors } from 'formik';
 import * as Yup from 'yup';
 
+import AuthService from "../service/authentication";
+
 // ------ old imports ------ //
 // import Axios from 'axios';
 // import { Link } from 'react-router-dom';
@@ -62,17 +64,39 @@ export default class SignUp extends Component<Props, SignUpState> {
             success: false
         });
 
+        // ------ checking to see if input is inserted into fields ------ //
+
         formValue ? this.setState({ success: true }) : this.setState({ message: 'please fill in required fields' })
-        // post request
+        
+        // ------ sign-up post request from service folder ------ //
+
+        AuthService.signup(
+          username,
+          password,
+          email
+        ).then(
+          res => {
+            this.setState({
+              message: res.data.message,
+              success: true
+            });
+          },
+          error => {
+            const resMessage = (error.res && error.res.data && error.res.data.message) || error.message || error.toString();
+            this.setState({
+              success: false,
+              message: resMessage
+            });
+          }
+        );
+
         if (this.state.success){
             this.setState({ redirect: '/Login' });
         }
     }
 
     componentDidMount(): void {
-        // if (this.state.success){
-        //     this.setState({ redirect: '/login' });
-        // }
+      
     }
 
     componentWillUnmount(): void {
