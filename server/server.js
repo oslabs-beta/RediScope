@@ -2,10 +2,11 @@ const express = require('express')
 const cors = require('cors')
 const morgan = require('morgan')
 
-const ffmpegPath = require('ffmpeg-static')
-Stream = require('node-rtsp-stream')
+// const ffmpegPath = require('ffmpeg-static')
+// Stream = require('node-rtsp-stream')
 
 const redisRouter = require('./routes/redisRoutes')
+const userRouter = require('./routes/userRoutes')
 const db = require('./db/db')
 
 let app = express()
@@ -36,7 +37,9 @@ app.get('/api/flasks', async (req, res) => {
   }
 })
 
+app.use('/api/users', userRouter)
 app.use('/api/redis', redisRouter)
+
 
 app.use((err, req, res, next) => {
   const defaultErr = {
