@@ -1,0 +1,8 @@
+20221216 
+npm uninstall node-rtsp-stream
+// uninstalled faker also
+npm uninstall ffmpeg-static
+npm i axios
+
+refactor server.js
+refactor redisConnect middleware
