@@ -1,55 +1,65 @@
-import React, { useState, useContext, useEffect } from 'react'
+import React, { useContext } from 'react'
 import axios from 'axios'
 import { Formik, Field, Form, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
 import { RedisContextProvider, RedisContext } from '../context/RedisContext'
 
-const RedisForm = props => {
-  const [url, setUrl] = useState('')
-  //setting context
+type Props = {}
+type URLState = {
+  URL: string
+}
+
+function RedisForm(props: Props): JSX.Element {
   const { redisData, setRedisData } = useContext(RedisContext)
 
-  const urlChangeHandler = e => {
-    setUrl(e.target.value)
-  }
-
-  const submitHandler = async e => {
+  const submitHandler = async (formValue: object): Promise<any> => {
     try {
-      e.preventDefault()
-      const res = await axios.post('http://localhost:4000/api/redis', {
-        url,
-      })
-      setRedisData(res.data)
-      console.log('res.data in redis form upon submit', res.data)
-      console.log('redisData in redis form upon submit', redisData)
-
-      // const res = await fetch('http://localhost:4000/api/redis', {
-      //   method: 'POST',
-      //   headers: {
-      //     'Content-Type': 'application/json',
-      //   },
-      //   mode: 'no-cors',
-      //   body: JSON.stringify(
-      //     'redis://default:rediscope123@redis-15161.c53.west-us.azure.cloud.redislabs.com:15161'
-      //   ),
-      // })
-      // const data = await res.json()
-      // console.log(data)
+      const res = await axios.post('http://localhost:4000/api/redis', formValue)
+      // IF FETCH IS SUCCESSFUL, SET DATA TO CONTEXT
+      if (res.status === 200) {
+        setRedisData(res.data)
+        console.log('res data', res)
+        console.log('redisData', redisData)
+      } else {
+      }
     } catch (error) {
       console.log(error)
     }
   }
 
+  const initVal: URLState = {
+    URL: '',
+  }
+
+  const validationSchema = () => {
+    return Yup.object().shape({
+      URL: Yup.string().required(
+        'Please insert URL to connect to your Redis Cache Database'
+      ),
+    })
+  }
+
   return (
-    <form onSubmit={submitHandler}>
-      <input
-        type="text"
-        placeholder="Your Redis URL"
-        onChange={urlChangeHandler}
-      />
-      <button type="submit">Connect</button>
-    </form>
+    <Formik
+      initialValues={initVal}
+      validationSchema={validationSchema}
+      onSubmit={submitHandler}
+    >
+      <Form>
+        <div className="URL-Form">
+          <label htmlFor="URL">Redis Cache URL</label>
+          <Field name="URL" type="text" className="URL-form-control" />
+        </div>
+        <div>
+          <button type="submit" className="btn">
+            Submit
+          </button>
+        </div>
+      </Form>
+    </Formik>
   )
 }
 
 export default RedisForm
+
+// redis://default:rediscope123@redis-15161.c53.west-us.azure.cloud.redislabs.com:15161
