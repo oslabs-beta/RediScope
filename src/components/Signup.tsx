@@ -90,15 +90,13 @@ export default class SignUp extends Component<Props, SignUpState> {
           }
         );
 
-        // if (this.state.success){
-        //     this.setState({ redirect: '/Login' });
-        // }
+        if (this.state.success){
+            this.setState({ redirect: '/Login' });
+        }
     }
 
     componentDidMount(): void {
-        if (this.state.success){
-            this.setState({ redirect: '/login' });
-        }
+      
     }
 
     componentWillUnmount(): void {
