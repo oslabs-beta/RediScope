@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React, { useState, useContext } from 'react'
 import * as ReactDOM from 'react-dom'
 import { HashRouter, Route, Link, Routes } from 'react-router-dom'
 import Login from './components/Login'
@@ -6,6 +6,7 @@ import SignUp from './components/Signup'
 import Dashboard from './components/Dashboard'
 import { GlobalStyle, Mainpage } from './styles/GlobalStyle'
 import { Greetings } from './components/Greetings'
+import { RedisContextProvider, RedisContext } from './context/RedisContext'
 
 export function App() {
   // <>
@@ -29,41 +30,36 @@ export function App() {
   // </HashRouter>
 
   return (
-    <HashRouter>
-      <GlobalStyle />
-      <div>
-        <Mainpage>
-          <h1> RediScope </h1>
-          <button>
-            <Link to="/Login">
-              Login
-            </Link>
-          </button>
-          <button>
-            <Link to="/Signup">
-              Create Account
-            </Link>
-          </button>
-          {/* <button>
-            <Link to="/Dashboard">
-              dash
-            </Link>
-          </button> */}
-        </Mainpage>
+    <RedisContextProvider>
+      <HashRouter>
+        <GlobalStyle />
+        <div>
+          <Mainpage>
+            <h1> RediScope </h1>
+            <button>
+              <Link to="/Login">Login</Link>
+            </button>
+            <button>
+              <Link to="/Signup">Create Account</Link>
+            </button>
+            <button>
+              <Link to="/Dashboard">dash</Link>
+            </button>
+          </Mainpage>
 
-        <Routes>
-          <Route path="/Login" element={<Login />} />
-          <Route path="/Signup" element={<SignUp />} />
-          <Route path="/Dashboard" element={<Dashboard />} />
-        </Routes>
-      </div>
-    </HashRouter>
+          <Routes>
+            <Route path="/Login" element={<Login />} />
+            <Route path="/Signup" element={<SignUp />} />
+            <Route path="/Dashboard" element={<Dashboard />} />
+          </Routes>
+        </div>
+      </HashRouter>
+    </RedisContextProvider>
   )
 }
 
-
-
-{/* <Link to="/Login">
+{
+  /* <Link to="/Login">
             <h2>Login</h2>
           </Link>
           <Link to="/Signup">
@@ -71,4 +67,5 @@ export function App() {
           </Link>
           <Link to="/Dashboard">
             <h2>Dashboard</h2>
-          </Link> */}
+          </Link> */
+}
