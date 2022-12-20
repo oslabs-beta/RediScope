@@ -77,12 +77,14 @@ export default class Login extends Component<Props, LoginState> {
         })
       }
     )
+    if (this.state.valid === true) {
+      this.setState({ redirect: '/Dashboard' })
+      }
   }
   
   componentDidMount(): void {
-    if (this.state.valid === true) {
-      this.setState({ redirect: '/Dashboard' })
-    }
+   
+    
     // set current user to the evaluated result of the get request via authentication
     // if this user exists, redirect to the dashboard/mainpage
     // if (this.state.valid === true){
