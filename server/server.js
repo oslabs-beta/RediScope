@@ -3,7 +3,7 @@ const cors = require('cors')
 const morgan = require('morgan')
 
 const redisRouter = require('./routes/redisRoutes')
-const db = require('./db/db')
+const userRouter = require('./routes/userRoutes')
 
 const app = express()
 app.use(express.json())
@@ -11,7 +11,7 @@ app.use(express.urlencoded({ extended: true }))
 app.use(cors())
 app.use(morgan('dev'))
 
-// ROUTES
+app.use('/api/users', userRouter)
 app.use('/api/redis', redisRouter)
 
 // GLOBAL ERROR HANDLER
