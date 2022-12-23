@@ -22,7 +22,11 @@ function RedisForm(props: Props): JSX.Element {
           formValue
         )
         setUsedMemory((prev: Array<number>) => {
-          return [...prev, parseInt(res.data.used_memory)]
+          console.log('usedMemory state: ', usedMemory);
+          // if prev length is rqual to 10, slice the first element, if not, keep adding new memory
+          return (prev.length === 10) ?
+            [...prev, parseInt(res.data.used_memory)].slice(1) :
+            [...prev, parseInt(res.data.used_memory)];
         })
         const date = new Date()
         const hour = date.getHours()
@@ -30,7 +34,11 @@ function RedisForm(props: Props): JSX.Element {
         const sec = date.getSeconds()
         const timeStamp = `${min}:${sec}`
         setTime((prev: Array<string>) => {
-          return [...prev, timeStamp]
+          console.log('time state: ', time);
+          // if prev length is rqual to 10, slice the first element, if not, keep adding new memory
+          return (prev.length === 10) ?
+            [...prev, timeStamp].slice(1) :
+            [...prev, timeStamp];
         })
       }, 8500)
     } catch (error) {
