@@ -17,10 +17,13 @@ function RedisForm(props: Props): JSX.Element {
   const submitHandler = async (formValue: object): Promise<any> => {
     try {
       const res = await axios.post('http://localhost:4000/api/redis', formValue)
+      console.log('formValue from submit handler: ', formValue)
       let timesRun = 0
+      let getLimit = formValue.getReq
+      let interval = formValue.interval
       console.log(timesRun)
       const getData = async () => {
-        if (timesRun < 3) {
+        if (timesRun < getLimit) {
           const response = await axios.post(
             'http://localhost:4000/api/redis',
             formValue
@@ -31,7 +34,7 @@ function RedisForm(props: Props): JSX.Element {
             `${timeStamp.toLocaleString()}`,
             `${response.data.used_memory}`
           )
-          timesRun += 1
+          // timesRun += 1
         } else {
           clearInterval(getMemory)
           const memoryDataAll = Object.entries(sessionStorage)
@@ -45,7 +48,7 @@ function RedisForm(props: Props): JSX.Element {
           // console.log('time stamp array: ', timeData)
         }
       }
-      const getMemory = setInterval(getData, 7000)
+      const getMemory = setInterval(getData, interval)
 
       // IF FETCH IS SUCCESSFUL, SET DATA TO CONTEXT
       if (res.status === 200) {
@@ -72,7 +75,7 @@ function RedisForm(props: Props): JSX.Element {
   }
 
   const initVal: URLState = {
-    URL: '',
+    URL: 'redis://default:olYVwjlh1PxPEb3Pia3od0QbpE7DAhIu@redis-13288.c83.us-east-1-2.ec2.cloud.redislabs.com:13288',
   }
 
   const validationSchema = () => {
@@ -91,8 +94,16 @@ function RedisForm(props: Props): JSX.Element {
     >
       <Form>
         <div className="URL-Form">
-          <label htmlFor="URL">Redis Cache URL</label>
+          <label htmlFor="URL">Redis Cache URL: </label>
           <Field name="URL" type="text" className="URL-form-control" />
+        </div>
+        <div>
+          <label htmlFor="Interval">Choose Desired Interval: </label>
+          <Field name="interval" type="number" className="get-interval" />
+        </div>
+        <div>
+          <label htmlFor="getReq">Choose Desired Number of Requests: </label>
+          <Field name="getReq" type="number" className="getReq" />
         </div>
         <div>
           <button type="submit" className="btn">
