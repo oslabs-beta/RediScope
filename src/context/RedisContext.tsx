@@ -1,19 +1,26 @@
-import React, { useState, useEffect, createContext, FC } from 'react';
+import React, { useState, createContext, FC } from 'react'
 
-export type GlobalContent = any;
+export type GlobalContent = any
 
+export const RedisContext = createContext<GlobalContent | null>({})
 
+export const RedisContextProvider: FC = props => {
+  const [redisData, setRedisData] = useState<any>([1, 1, 1])
+  const [usedMemory, setUsedMemory] = useState<any>([])
+  const [time, setTime] = useState<any>([])
 
-
-export const RedisContext = createContext<GlobalContent | null>({});
-
-
-export const RedisContextProvider: FC =(props) => {
-    const [redisData, setRedisData] = useState<any>([1,1,1]);
-
-    return (
-        <RedisContext.Provider value={{redisData, setRedisData}}>
-             {props.children}
-        </RedisContext.Provider>
-    )
+  return (
+    <RedisContext.Provider
+      value={{
+        redisData,
+        setRedisData,
+        usedMemory,
+        setUsedMemory,
+        time,
+        setTime,
+      }}
+    >
+      {props.children}
+    </RedisContext.Provider>
+  )
 }
