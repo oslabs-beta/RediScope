@@ -39,14 +39,14 @@ function RedisForm(props: Props): JSX.Element {
           const memoryDataOnly = memoryDataAll.map(data => parseInt(data[1]))
           setLocalMemories(memoryDataOnly)
           setLocalMemoryTime(timeData)
-          console.log('localmemory state: ', localMemories)
-          console.log('localmemoryTime state: ', localMemoriesTime)
+
           // console.log('memory data from Object.entries', memoryDataAll)
           // console.log('memory data array: ', memoryDataOnly)
           // console.log('time stamp array: ', timeData)
         }
       }
       const getMemory = setInterval(getData, 7000)
+
       // IF FETCH IS SUCCESSFUL, SET DATA TO CONTEXT
       if (res.status === 200) {
         setRedisData(res.data)
@@ -72,7 +72,7 @@ function RedisForm(props: Props): JSX.Element {
   }
 
   const initVal: URLState = {
-    URL: 'redis://default:olYVwjlh1PxPEb3Pia3od0QbpE7DAhIu@redis-13288.c83.us-east-1-2.ec2.cloud.redislabs.com:13288',
+    URL: '',
   }
 
   const validationSchema = () => {
@@ -105,9 +105,3 @@ function RedisForm(props: Props): JSX.Element {
 }
 
 export default RedisForm
-
-// Andy Redis Account
-// redis://default:rediscope123@redis-15161.c53.west-us.azure.cloud.redislabs.com:15161
-
-// Chihiro Redis Account
-// redis://default:olYVwjlh1PxPEb3Pia3od0QbpE7DAhIu@redis-13288.c83.us-east-1-2.ec2.cloud.redislabs.com:13288
