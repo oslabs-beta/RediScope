@@ -10,6 +10,7 @@ import {
 } from '../styles/GlobalStyle'
 import RedisForm from './RedisForm'
 import MetricsTable from './Charts/MetricsTable'
+import { LineGraph } from './Charts/LineGraph'
 
 type Props = {}
 
@@ -22,6 +23,11 @@ export default function Dashboard(props: Props): JSX.Element {
       </div>
       <h1>Metric Dashboard</h1>
 
+      <Wrapper>
+        <Inner>
+          <LineGraph />
+        </Inner>
+      </Wrapper>
       <Wrapper>
         <Inner>
           <BarChart />
