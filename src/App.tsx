@@ -6,7 +6,7 @@ import SignUp from './components/Signup'
 import Dashboard from './components/Dashboard'
 import { GlobalStyle, Mainpage } from './styles/GlobalStyle'
 import { Greetings } from './components/Greetings'
-import { RedisContextProvider, RedisContext } from './context/RedisContext'
+import { RedisContextProvider } from './context/RedisContext'
 
 export function App() {
   // <>

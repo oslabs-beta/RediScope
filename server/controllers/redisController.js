@@ -8,6 +8,9 @@ exports.redisConnect = (req, res) => {
   redisDB.on('connect', () => console.log('connected to redis DB'))
 
   redisDB.on('ready', () => {
+    setInterval(() => {
+      console.log(redisDB.server_info.used_memory)
+    }, 10000)
     res.status(200).json(redisDB.server_info)
   })
 
