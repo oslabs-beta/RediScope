@@ -11,6 +11,7 @@ import {
 import RedisForm from './RedisForm'
 import MetricsTable from './Charts/MetricsTable'
 import { LineGraph } from './Charts/LineGraph'
+import { connectedClients } from './Charts/connectedClients'
 
 type Props = {}
 
@@ -30,10 +31,19 @@ export default function Dashboard(props: Props): JSX.Element {
         </Inner>
       </Wrapper>
       <Wrapper>
+        <Inner>
+          <connectedClients/>
+          
+        </Inner>
+      </Wrapper>
+      <Wrapper>
         <Inner>{/* <PieChart /> */}</Inner>
       </Wrapper>
       <Wrapper>
         <Inner>{/* <MetricsTable /> */}</Inner>
+      </Wrapper>
+      <Wrapper>
+        <Inner>{/* connected_clients /> */}</Inner>
       </Wrapper>
     </>
   )

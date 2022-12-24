@@ -13,6 +13,7 @@ function RedisForm(props: Props): JSX.Element {
   const { redisData, setRedisData } = useContext(RedisContext)
   const { usedMemory, setUsedMemory } = useContext(RedisContext)
   const { time, setTime } = useContext(RedisContext)
+  const {conClients, setConClients} = useContext(RedisContext)
 
   const submitHandler = async (formValue: object): Promise<any> => {
     try {
@@ -32,6 +33,9 @@ function RedisForm(props: Props): JSX.Element {
         setTime((prev: Array<string>) => {
           return [...prev, timeStamp]
         })
+        setConClients ((prev: Array<number>) => {
+          return (prev.length === 3) ? [...prev, parseInt(res.data.connected_clients)].slice(1) : [...prev, parseInt(res.data.connected_clients)]
+        });
       }, 8500)
     } catch (error) {
       console.log(error)
