@@ -10,10 +10,12 @@ type URLState = {
 }
 
 function RedisForm(props: Props): JSX.Element {
-  const { redisData, setRedisData } = useContext(RedisContext)
-  const { usedMemory, setUsedMemory } = useContext(RedisContext)
-  const { time, setTime } = useContext(RedisContext)
-
+  const { redisData, setRedisData } = useContext(RedisContext);
+  const { usedMemory, setUsedMemory } = useContext(RedisContext);
+  const { time, setTime } = useContext(RedisContext);
+  const { rss, setRss } = useContext(RedisContext);
+  
+  // Function submitHandler grabs user's Redis URI and makes a get request to capture data with timestamps
   const submitHandler = async (formValue: object): Promise<any> => {
     try {
       setInterval(async () => {
@@ -21,25 +23,42 @@ function RedisForm(props: Props): JSX.Element {
           'http://localhost:4000/api/redis',
           formValue
         )
+        // Creating the Used Memory data array to be used in the lineGraph component
+
         setUsedMemory((prev: Array<number>) => {
           console.log('usedMemory state: ', usedMemory);
-          // if prev length is rqual to 10, slice the first element, if not, keep adding new memory
-          return (prev.length === 10) ?
+          // if prev length is equal to 10, slice the first element, if not, keep adding new memory
+          return (prev.length === 3) ?
             [...prev, parseInt(res.data.used_memory)].slice(1) :
             [...prev, parseInt(res.data.used_memory)];
         })
+
+        // Creating date object to create our own timestamps to be parsed
+
         const date = new Date()
         const hour = date.getHours()
         const min = date.getMinutes()
         const sec = date.getSeconds()
         const timeStamp = `${min}:${sec}`
+
+        // Creating the timestamp array for our linegraph component
+        
         setTime((prev: Array<string>) => {
           console.log('time state: ', time);
           // if prev length is rqual to 10, slice the first element, if not, keep adding new memory
-          return (prev.length === 10) ?
+          return (prev.length === 3) ?
             [...prev, timeStamp].slice(1) :
             [...prev, timeStamp];
-        })
+        });
+        
+        // Creating the RSS (available memory) array for linegraph component
+
+        setRss((prev: Array<number>) => {
+          console.log('rss: ', rss);
+          return (prev.length === 3) ?
+            [...prev, parseInt(res.data.used_memory_rss)].slice(1) :
+            [...prev, parseInt(res.data.used_memory_rss)];
+        });
       }, 8500)
     } catch (error) {
       console.log(error)
