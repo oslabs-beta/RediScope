@@ -14,6 +14,8 @@ app.use(morgan('dev'))
 app.use('/api/users', userRouter)
 app.use('/api/redis', redisRouter)
 
+
+
 // GLOBAL ERROR HANDLER
 app.use((err, req, res, next) => {
   const defaultErr = {
