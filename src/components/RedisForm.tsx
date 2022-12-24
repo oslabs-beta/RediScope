@@ -44,6 +44,7 @@ function RedisForm(props: Props): JSX.Element {
         // Creating the timestamp array for our linegraph component
         
         setTime((prev: Array<string>) => {
+<<<<<<< HEAD
           console.log('time state: ', time);
           // if prev length is rqual to 10, slice the first element, if not, keep adding new memory
           return (prev.length === 3) ?
@@ -60,6 +61,11 @@ function RedisForm(props: Props): JSX.Element {
             [...prev, parseInt(res.data.used_memory_rss)];
         });
       }, 8500)
+=======
+          return [...prev, timeStamp]
+        })
+      }, 2000)
+>>>>>>> dev
     } catch (error) {
       console.log(error)
     }
@@ -67,6 +73,7 @@ function RedisForm(props: Props): JSX.Element {
 
   const initVal: URLState = {
     URL: 'redis://default:rediscope123@redis-15161.c53.west-us.azure.cloud.redislabs.com:15161',
+    // URL: 'redis://default:olYVwjlh1PxPEb3Pia3od0QbpE7DAhIu@redis-13288.c83.us-east-1-2.ec2.cloud.redislabs.com:13288',
   }
 
   const validationSchema = () => {
@@ -101,3 +108,4 @@ function RedisForm(props: Props): JSX.Element {
 export default RedisForm
 
 // redis://default:rediscope123@redis-15161.c53.west-us.azure.cloud.redislabs.com:15161
+// redis://default:olYVwjlh1PxPEb3Pia3od0QbpE7DAhIu@redis-13288.c83.us-east-1-2.ec2.cloud.redislabs.com:13288
