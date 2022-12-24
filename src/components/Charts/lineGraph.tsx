@@ -27,6 +27,7 @@ ChartJS.register(
 export function LineGraph() {
   const { usedMemory, setUsedMemory } = useContext(RedisContext)
   const { time, setTime } = useContext(RedisContext)
+  const { rss, setRss } = useContext(RedisContext);
 
   console.log('from linegraph', time)
 
@@ -38,7 +39,7 @@ export function LineGraph() {
       },
       title: {
         display: true,
-        text: 'Memory Usage',
+        text: 'Memory Usage: Used Memory vs RSS',
       },
     },
   }
@@ -48,11 +49,17 @@ export function LineGraph() {
     labels,
     datasets: [
       {
-        label: 'Dataset 1',
+        label: 'Used Memory',
         data: usedMemory,
         borderColor: 'rgb(255, 99, 132)',
         backgroundColor: 'rgba(255, 99, 132, 0.5)',
       },
+      {
+        label: 'RSS (Available Memory)',
+        data: rss,
+        borderColor: 'rgb(79, 189, 186)',
+        backgroundColor: 'rgba(79, 189, 186, 0.5)',
+      }
     ],
   }
   return <Line options={options} data={data} />
