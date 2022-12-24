@@ -32,7 +32,7 @@ function RedisForm(props: Props): JSX.Element {
         setTime((prev: Array<string>) => {
           return [...prev, timeStamp]
         })
-      }, 8500)
+      }, 2000)
     } catch (error) {
       console.log(error)
     }
@@ -40,6 +40,7 @@ function RedisForm(props: Props): JSX.Element {
 
   const initVal: URLState = {
     URL: 'redis://default:rediscope123@redis-15161.c53.west-us.azure.cloud.redislabs.com:15161',
+    // URL: 'redis://default:olYVwjlh1PxPEb3Pia3od0QbpE7DAhIu@redis-13288.c83.us-east-1-2.ec2.cloud.redislabs.com:13288',
   }
 
   const validationSchema = () => {
@@ -74,3 +75,4 @@ function RedisForm(props: Props): JSX.Element {
 export default RedisForm
 
 // redis://default:rediscope123@redis-15161.c53.west-us.azure.cloud.redislabs.com:15161
+// redis://default:olYVwjlh1PxPEb3Pia3od0QbpE7DAhIu@redis-13288.c83.us-east-1-2.ec2.cloud.redislabs.com:13288
