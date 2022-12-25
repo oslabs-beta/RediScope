@@ -6,3 +6,7 @@ npm i axios
 
 refactor server.js
 refactor redisConnect middleware
+
+INSERT INTO poll (poll_id, poll_prompt) values (1,'What is your favorite type of pet?')
+
+INSERT INTO url (username, url) values ('b','testurl')

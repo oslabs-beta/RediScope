@@ -9,7 +9,10 @@ export const RedisContextProvider: FC = props => {
   const [usedMemory, setUsedMemory] = useState<any>([])
   const [time, setTime] = useState<any>([])
   const [rss, setRss] = useState<any>([])
-
+  const [user, setUser] = useState<any>("")
+  const [url, setUrl] = useState<any>("")
+  const [urls, setUrls] = useState<any>([])
+  
   return (
     <RedisContext.Provider
       value={{
@@ -20,7 +23,10 @@ export const RedisContextProvider: FC = props => {
         time,
         setTime,
         rss,
-        setRss
+        setRss,
+        user, setUser,
+        url, setUrl,
+        urls, setUrls
       }}
     >
       {props.children}
