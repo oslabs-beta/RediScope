@@ -66,8 +66,8 @@ userController.verifyUser = async (req, res, next) => {
        
    } catch (err) {
        return next({
-             log: `userController.varifyUser: error ${err}`,
-       message: { err: 'Error occurred in usercontroller.varify User'}
+         log: `userController.varifyUser: error ${err}`,
+         message: { err: 'Error occurred in usercontroller.varify User'}
        })
    }
 }

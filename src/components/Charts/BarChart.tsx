@@ -30,7 +30,7 @@ export default function BarChart(): JSX.Element {
       legend: {
         position: 'top' as const,
       },
-      title: {
+      title: {  
         display: true,
         text: 'Memory',
       },

@@ -30,6 +30,7 @@ function RedisForm(props: Props): JSX.Element {
           )
           console.log(response.data.used_memory)
           const timeStamp = new Date()
+          // maybe save directly to state here instead of session storage?
           sessionStorage.setItem(
             `${timeStamp.toLocaleString()}`,
             `${response.data.used_memory}`
