@@ -67,6 +67,7 @@ export default class Login extends Component<Props, LoginState> {
           redirect: '/Dashboard',
           loading: true,
           valid: true,
+          username
         });
       }, error => {
         const response = (error.res && error.res.data && error.res.data.message) || error.message || error.toString();
@@ -115,7 +116,7 @@ export default class Login extends Component<Props, LoginState> {
 
   render() {
     if (this.state.redirect) {
-      return <Navigate to={this.state.redirect} />
+      return <Navigate to={this.state.redirect} state={{'user': this.state.username}}/>
     }
 
     const { loading } = this.state
@@ -158,7 +159,7 @@ export default class Login extends Component<Props, LoginState> {
                 />
               </div>
               <div className="form">
-                <button type="submit" className="btn" disabled={loading}>
+                <button type="submit" className="btn btn btn-primary mt-4" disabled={loading}>
                   <span>Login</span>
                 </button>
               </div>
