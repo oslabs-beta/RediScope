@@ -21,8 +21,8 @@ const db = require ('./db/db');
 app.post("/api/createURL", async(req, res)=>{
   try{
     console.log('made it into create a flask server')
-    const results = await db.query("INSERT INTO url (username, url) values ($1, $2) returning *", [req.body.user, req.body.url]);
-    console.log('create flask results', results);
+    const results = await db.query("INSERT INTO url (username, url, name) values ($1, $2, $3) returning *", [req.body.user, req.body.url, req.body.name]);
+    console.log('create url', results);
     res.status(200).json({
       data: results.rows
     })
@@ -71,7 +71,35 @@ app.get("/api/userURL/:user", async(req, res)=>{
   }
 })
  
+////////////////////////////////////////////////////////////
+//not needed for app, used to add columns and tests into url table
+// ALTER TABLE url ADD COLUMN name VARCHAR(250);
+//add name column to url table
+app.get("/api/addColumn", async(req, res)=>{
+  try{
+    const results = await db.query("ALTER TABLE url ADD COLUMN name VARCHAR(250)");
+    console.log(results);
+    res.status(200).json({
+      data: results.rows
+    })
+  } catch(err){ 
+    console.log(err)
+  }
+})
 
+//add name column to url table
+app.get("/api/addName", async(req, res)=>{
+  try{
+    const results = await db.query("INSERT INTO url (username, url, name) values ('a','testurl2', 'myOnlyURL2')");
+    console.log(results);
+    res.status(200).json({
+      data: results.rows
+    })
+  } catch(err){ 
+    console.log(err)
+  }
+})
+//////////////////////////////////////////////////////////////////////
 
 // GLOBAL ERROR HANDLER
 app.use((err, req, res, next) => {

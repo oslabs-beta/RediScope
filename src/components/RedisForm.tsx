@@ -27,29 +27,6 @@ function RedisForm(props: Props): JSX.Element {
   // Function submitHandler grabs user's Redis URI and makes a get request to capture data with timestamps
   console.log('user in redisform')
   console.log('user', user)
-
-//   useEffect(()=>{
-//     console.log('user in useeffect in redisform')
-//      setUser(location.state.user)
-//     const fetchFlasks = async () => {
-//         let response = await fetch(`http://localhost:4000/api/userURL/${user}`)
-//     let data = await response.json()
-//     setUrls(data.data)
-//     // console.log(data)
-    
-//     // console.log('data.data.flasks', data.data.flasks, 'id', id)
-//     // // console.log('data.data.flasks[id]', data.data.flasks[id])
-//     // setFlasks(data.data.flasks)
-//     // setCellBank(data.data.flasks.cell_bank)
-//     // setod600(data.data.flasks.od600)
-    
-//     // console.log('data.data.flasks', data.data.flasks)
-//     }
-//     fetchFlasks()
-//     .catch(console.err)
-// },[])
-
-
     
   useEffect( ()=>{ 
     console.log('user in useeffect in redisform')
@@ -85,42 +62,8 @@ function RedisForm(props: Props): JSX.Element {
     console.log('urls in useeffect', urls)
   },[user])
   
-  // useEffect( ()=>{ 
-  //   // console.log('user in useeffect in redisform')
-  //   //  setUser(location.state.user)
 
-  //    const getallURL = async()=>{
-  //     try{
-  //       const res = await axios.get(
-  //     `http://localhost:4000/api/userURL/${user}`
-  //       // `http://localhost:4000/api/userURL/a`
-  //       )
-  //       console.log('res in useEffect', res)
-  //       // return res
-  //       // console.log('stringify res', JSON.stringify(res))
-  //       // seturlstate(res.data.data)
-  //       // console.log(urlstate)
-  //       // console.log(res.data.data)
-  //       // seturlstate(res.data.data)
-  //       // console.log(urlstate)
-  //     }
-  //     catch(err){
-  //       console.log(err)} 
-  //       // console.log('res.data in useeffect redisform', res.data)
-  //       // console.log('res.data in useeffect redisform', JSON.stringify(res.data))
-  //       // setUrls(res.data)
-  //       // console.log('urls in useeffect in redisform', urls)
-  //     }
-      
-  //    if(user){
-  //     let data = getallURL()
-  //     setUrls(data)
-  //     // .catch(console.error)
-  //     // console.log('res.data in useeffect in redisform', url)
-  //   } 
-  // },[])
-
-let startInterval;
+// let startInterval;
   const startCollection = async (e): Promise<any> => {
     e.preventDefault();
     console.log('e.target.value', e.target.value)
@@ -130,8 +73,8 @@ let startInterval;
     try { 
       console.log('check', check)
     if(!check){    
-      // setCheck(prevCheck => !prevCheck);
-      startInterval = setInterval(async () => {
+      setCheck(prevCheck => !prevCheck);
+      let startInterval = setInterval(async () => {
         const res = await axios.post(
           'http://localhost:4000/api/redis',
           {URL: url}
@@ -178,7 +121,7 @@ let startInterval;
       }, 2000)
     } else if (check) {
       console.log('check in else statement to clear ', check)
-      return () => clearInterval(startInterval);
+       clearInterval(startInterval);
       // collectionStatus = false;
     }
     setCheck(prevCheck => !prevCheck);
@@ -187,14 +130,16 @@ let startInterval;
     }
   }
   
+  //tried to make live data collection stop, but did NOT work.  feel free to erase or modify.  
   function stopCollection(){
     console.log('stop collection');
     clearInterval(startInterval);
       // collectionStatus = false;
   }
 
+  //
   const submitHandler = async (formValue: object): Promise<any> => {
-    let input = {"user": user, "url":formValue.URL};
+    let input = {"user": user, "url":formValue.URL, "name": formValue.name};
     console.log('input', input)
 
     try {    
@@ -237,17 +182,8 @@ let startInterval;
   return (
 
     <>
-    <h5>{user+" url: "+url+" .  urls:"+ JSON.stringify(urls)}</h5>
-    <form>
-    <label for="urls">Choose a url:</label>
-      <select name="urls" id="urls" onChange={handleDropdown} style={{width: '30%'}}>
-        {urls.map(url => {
-          return (<option key={url.id} value={url.url}>{url.url}</option>)
-        })}
-      </select>
-      <h6>Selected: { url || urls[0]?.url }</h6>
-      <input type="submit" value="Submit" onClick={startCollection}/>
-    </form>
+    {/* <h5>{user+" url: "+url+" .  urls:"+ JSON.stringify(urls)}</h5> */}
+    
     <Formik
       initialValues={initVal}
       validationSchema={validationSchema}
@@ -255,8 +191,9 @@ let startInterval;
     >
       <Form>
         <div className="URL-Form">
-          <label htmlFor="URL">Redis Cache URL</label>
-          <Field name="URL" type="text" className="URL-form-control" />
+          <label htmlFor="URL">Redis Cache URL</label>{"\n"}
+           name: <Field name="name" type="text" className="URL-form-control" />{"\n"}
+          URL path: <Field name="URL" type="text" className="URL-form-control" />
         </div>
         <div>
           <button type="submit" className="btn btn-primary mt-4">
@@ -265,6 +202,23 @@ let startInterval;
         </div>
       </Form>
     </Formik>
+
+    <form>
+    <label htmlFor="urls">Choose a URL:</label>
+      <select name="urls" id="urls" onChange={handleDropdown} style={{width: '50%'}}>
+        {urls.map(url => {
+          return (
+            <>
+          {/* <h6>{url?.name || ""}</h6> */}
+          <option key={url.id} value={url?.url}>{"name: "+url.name+"  ---  path: "}{url?.url}</option>
+          </>
+          )
+        })}
+      </select>
+      <h6>Selected: { url || urls[0]?.url }</h6>
+      <input type="submit" value="Submit" onClick={startCollection}/>
+    </form>
+
     <button type="submit" onClick={()=>stopCollection()}className="btn btn btn-primary mt-4">stop</button>
     </>
   )
