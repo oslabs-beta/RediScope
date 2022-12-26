@@ -11,12 +11,6 @@ type URLState = {
 }
 
 function RedisForm(props: Props): JSX.Element {
-<<<<<<< HEAD
-  const { redisData, setRedisData } = useContext(RedisContext)
-  const { usedMemory, setUsedMemory } = useContext(RedisContext)
-  const { time, setTime } = useContext(RedisContext)
-  const {conClients, setConClients} = useContext(RedisContext)
-=======
   const { redisData, setRedisData } = useContext(RedisContext);
   const { usedMemory, setUsedMemory } = useContext(RedisContext);
   const { time, setTime } = useContext(RedisContext);
@@ -28,7 +22,6 @@ function RedisForm(props: Props): JSX.Element {
   const [intervalId, setIntervalId] = useState(0);
   const [intervalMS, setIntervalMS] = useState(1000);
   const [numOfTimepoints, setnumOfTimepoints] = useState(50);
->>>>>>> dev
 
   // const [check, setCheck] = useState(false);
 
@@ -124,14 +117,6 @@ function RedisForm(props: Props): JSX.Element {
         // Creating the timestamp array for our linegraph component
         
         setTime((prev: Array<string>) => {
-<<<<<<< HEAD
-          return [...prev, timeStamp]
-        })
-        setConClients ((prev: Array<number>) => {
-          return (prev.length === 3) ? [...prev, parseInt(res.data.connected_clients)].slice(1) : [...prev, parseInt(res.data.connected_clients)]
-        });
-      }, 8500)
-=======
           console.log('time state: ', time);
           // if prev length is rqual to 10, slice the first element, if not, keep adding new memory
           return (prev.length === numOfTimepoints) ?
@@ -168,7 +153,6 @@ function RedisForm(props: Props): JSX.Element {
           console.log('formValue', formValue)
 
        getallURL()
->>>>>>> dev
     } catch (error) {
       console.log(error)
     }
