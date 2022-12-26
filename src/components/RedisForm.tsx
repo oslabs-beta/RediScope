@@ -1,8 +1,9 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import axios from 'axios'
 import { Formik, Field, Form, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
 import { RedisContext } from '../context/RedisContext'
+import { useLocation } from 'react-router-dom';
 
 type Props = {}
 type URLState = {
@@ -14,25 +15,97 @@ function RedisForm(props: Props): JSX.Element {
   const { usedMemory, setUsedMemory } = useContext(RedisContext);
   const { time, setTime } = useContext(RedisContext);
   const { rss, setRss } = useContext(RedisContext);
-  
+  const { user, setUser} = useContext(RedisContext);
+  const { url, setUrl} = useContext(RedisContext);
+  const { urls, setUrls} = useContext(RedisContext);
+  const location = useLocation();
+  const [intervalId, setIntervalId] = useState(0);
+  const [intervalMS, setIntervalMS] = useState(1000);
+  const [numOfTimepoints, setnumOfTimepoints] = useState(50);
+
+  // const [check, setCheck] = useState(false);
+
+  // const { data } = state; 
   // Function submitHandler grabs user's Redis URI and makes a get request to capture data with timestamps
-  const submitHandler = async (formValue: object): Promise<any> => {
-    try {
-      setInterval(async () => {
+  console.log('user in redisform')
+  console.log('user', user)
+    
+  useEffect( ()=>{ 
+    console.log('user in useeffect in redisform')
+     setUser(location.state.user)
+  },[])
+
+  const getallURL = async()=>{
+  try{
+    if(user){
+    // await setUser(location.state.user)
+    const res = await axios.get(
+  `http://localhost:4000/api/userURL/${user}`
+    // `http://localhost:4000/api/userURL/a`
+    )
+    console.log('res.data in getallURL', res.data.data)
+    setUrls(res.data.data)
+    console.log('urls in getallURL', urls)
+    // let {date} = urlstate
+    // console.log(date)
+    }
+  }
+  catch(err){
+    console.log(err)
+    } 
+  }
+
+  useEffect(()=>{
+    // setUser(location.state.user)
+    getallURL()
+    // console.log('urls in useeffect', urls)
+  },[user])
+
+  async function deleteURL(e) {
+    e.preventDefault();
+    // console.log('e.target.value', e.target.value)
+    // console.log('url in start collection', url)
+    try {    
+      const res = await axios.delete(
+            `http://localhost:4000/api/URL/${url || urls[0]?.url}`
+          )
+       getallURL()
+    } catch (error) {
+      console.log(error)
+    }
+  }
+  
+
+//start life data collection
+  const startCollection = async (e): Promise<any> => {
+    e.preventDefault();
+    console.log('e.target.value', e.target.value)
+    console.log('url in start collection', url)
+    try { 
+      if (intervalId) {
+        clearInterval(intervalId);
+        setIntervalId(0);
+
+        return;
+      }
+        //MUST set all measurements to empty array after before you start up live data collection!
+        setRss([]);
+        setUsedMemory([]);
+        setTime([])
+      let newIntervalId = setInterval(async () => {
         const res = await axios.post(
           'http://localhost:4000/api/redis',
-          formValue
+          {URL: url}
         )
-        // Creating the Used Memory data array to be used in the lineGraph component
-
+ 
         setUsedMemory((prev: Array<number>) => {
           console.log('usedMemory state: ', usedMemory);
           // if prev length is equal to 10, slice the first element, if not, keep adding new memory
-          return (prev.length === 3) ?
+          return (prev.length === numOfTimepoints) ?
             [...prev, parseInt(res.data.used_memory)].slice(1) :
             [...prev, parseInt(res.data.used_memory)];
         })
-
+ 
         // Creating date object to create our own timestamps to be parsed
 
         const date = new Date()
@@ -46,7 +119,7 @@ function RedisForm(props: Props): JSX.Element {
         setTime((prev: Array<string>) => {
           console.log('time state: ', time);
           // if prev length is rqual to 10, slice the first element, if not, keep adding new memory
-          return (prev.length === 3) ?
+          return (prev.length === numOfTimepoints) ?
             [...prev, timeStamp].slice(1) :
             [...prev, timeStamp];
         });
@@ -55,18 +128,38 @@ function RedisForm(props: Props): JSX.Element {
 
         setRss((prev: Array<number>) => {
           console.log('rss: ', rss);
-          return (prev.length === 3) ?
+          return (prev.length === numOfTimepoints) ?
             [...prev, parseInt(res.data.used_memory_rss)].slice(1) :
             [...prev, parseInt(res.data.used_memory_rss)];
         });
-      }, 8500)
+      }, intervalMS)
+      setIntervalId(newIntervalId);
+    
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
+  //
+  const submitHandler = async (formValue: object): Promise<any> => {
+    let input = {"user": user, "url":formValue.URL, "name": formValue.name};
+    console.log('input', input)
+
+    try {    
+      const res = await axios.post(
+            'http://localhost:4000/api/createURL',
+            input
+          )
+          console.log('formValue', formValue)
+
+       getallURL()
     } catch (error) {
       console.log(error)
     }
   }
 
   const initVal: URLState = {
-    URL: 'redis://default:rediscope123@redis-15161.c53.west-us.azure.cloud.redislabs.com:15161',
+    URL: url
   }
 
   const validationSchema = () => {
@@ -76,28 +169,63 @@ function RedisForm(props: Props): JSX.Element {
       ),
     })
   }
+    // console.log('urls', urls)
+
+    const handleDropdown = (e) =>{
+      setUrl(e.target.value)
+      console.log('url after changing dropdown', url)
+    }
+
+   const collectionSetting = (e) => {
+    e.preventDefault();
+    // console.log('e.target.value', e.target.value)
+    // console.log('intervalMS', intervalMS)
+   }
 
   return (
-    <Formik
-      initialValues={initVal}
-      validationSchema={validationSchema}
-      onSubmit={submitHandler}
-    >
-      <Form>
-        <div className="URL-Form">
-          <label htmlFor="URL">Redis Cache URL</label>
-          <Field name="URL" type="text" className="URL-form-control" />
-        </div>
-        <div>
-          <button type="submit" className="btn">
-            Submit
-          </button>
-        </div>
-      </Form>
-    </Formik>
+    <>
+      <Formik
+        initialValues={initVal}
+        validationSchema={validationSchema}
+        onSubmit={submitHandler}
+      >
+        <Form>
+          <div className="URL-Form">
+            <label htmlFor="URL">Redis Cache URL</label>{"\n"}
+            name: <Field name="name" type="text" className="URL-form-control" />{"\n"}
+            URL path: <Field name="URL" type="text" className="URL-form-control" />
+            <button type="submit" className="btn btn-primary">Add URL</button>
+          </div>
+        </Form>
+      </Formik>
+      <form>
+        <label htmlFor="setIntervalMS">Choose an interval ms:</label>
+        <input id="setIntervalMS" name="setIntervalMS" value={intervalMS} type="number" min="1000" onChange={e=> setIntervalMS(+e.target.value)}></input>
+        <label htmlFor="setnumOfTimepoints">Choose max number of timepoints:</label>
+        <input id="setnumOfTimepoints" name="setnumOfTimepoints" value={numOfTimepoints} type="number" max="500" onChange={e=> setnumOfTimepoints(+e.target.value)}></input>
+        <button type="submit" value="Submit" className="btn btn-primary" onClick={collectionSetting}>Set Settings</button>
+      </form>
+
+      <div>
+        <form>
+        <label htmlFor="urls">Choose a URL:</label>
+          <select name="urls" id="urls" onChange={handleDropdown} style={{width: '50%'}}>
+            {urls.map(url => {
+              return (
+                <>
+              <option key={url.id} value={url?.url}>{"NAME- "+url.name+"  __  PATH- "}{url?.url}</option>
+              </>
+              )
+            })}
+          </select>
+          <button type="submit" value="Submit" className="btn btn-danger" onClick={deleteURL}>Delete selected URL</button>
+          <div>Selected: { url || urls[0]?.url }</div>          
+          <button type="submit" className="btn btn-primary" onClick={startCollection}>{intervalId ? "STOP LIVE DATA COLLECTION" : "START LIVE DATA COLLECTION"}</button>
+
+        </form>
+      </div>
+      </>
   )
 }
 
 export default RedisForm
-
-// redis://default:rediscope123@redis-15161.c53.west-us.azure.cloud.redislabs.com:15161
