@@ -159,7 +159,7 @@ export default class Login extends Component<Props, LoginState> {
                 />
               </div>
               <div className="form">
-                <button type="submit" className="btn" disabled={loading}>
+                <button type="submit" className="btn btn btn-primary mt-4" disabled={loading}>
                   <span>Login</span>
                 </button>
               </div>

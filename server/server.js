@@ -71,14 +71,12 @@ app.get("/api/userURL/:user", async(req, res)=>{
   }
 })
  
-////////////////////////////////////////////////////////////
-//not needed for app, used to add columns and tests into url table
-// ALTER TABLE url ADD COLUMN name VARCHAR(250);
-//add name column to url table
-app.get("/api/addColumn", async(req, res)=>{
+//delete a selected URL
+app.delete("/api/URL/:url", async(req, res)=>{
   try{
-    const results = await db.query("ALTER TABLE url ADD COLUMN name VARCHAR(250)");
-    console.log(results);
+    console.log('req.params.user', req.params.url)
+    const results = await db.query("DELETE FROM url WHERE url = $1", [req.params.url]);
+    console.log('results of getting flask', results.rows);
     res.status(200).json({
       data: results.rows
     })
@@ -86,21 +84,7 @@ app.get("/api/addColumn", async(req, res)=>{
     console.log(err)
   }
 })
-
-//add name column to url table
-app.get("/api/addName", async(req, res)=>{
-  try{
-    const results = await db.query("INSERT INTO url (username, url, name) values ('a','testurl2', 'myOnlyURL2')");
-    console.log(results);
-    res.status(200).json({
-      data: results.rows
-    })
-  } catch(err){ 
-    console.log(err)
-  }
-})
-//////////////////////////////////////////////////////////////////////
-
+ 
 // GLOBAL ERROR HANDLER
 app.use((err, req, res, next) => {
   const defaultErr = {
@@ -112,6 +96,7 @@ app.use((err, req, res, next) => {
   console.log(errorObj.log)
   return res.status(errorObj.status).json(errorObj.message)
 })
- 
+    
 // START SERVER
 app.listen(4000, console.log('server listening on port 4000'))
+    
