@@ -21,7 +21,10 @@ function RedisForm(props: Props): JSX.Element {
   const { urls, setUrls} = useContext(RedisContext);
   const [urlstate, seturlstate] = useState([])
   const location = useLocation();
-  const [check, setCheck] = useState(false);
+  const [count, setCount] = useState(0);
+  const [intervalId, setIntervalId] = useState(0);
+
+  // const [check, setCheck] = useState(false);
 
   // const { data } = state; 
   // Function submitHandler grabs user's Redis URI and makes a get request to capture data with timestamps
@@ -71,10 +74,17 @@ function RedisForm(props: Props): JSX.Element {
     // collectionStatus ? collectionStatus = false : collectionStatus = true;
     // console.log('collectionStatus', collectionStatus)
     try { 
-      console.log('check', check)
-    if(!check){    
-      setCheck(prevCheck => !prevCheck);
-      let startInterval = setInterval(async () => {
+      if (intervalId) {
+        clearInterval(intervalId);
+        setIntervalId(0);
+
+        return;
+      }
+        //MUST set all measurements to empty array after before you start up live data collection!
+        setRss([]);
+        setUsedMemory([]);
+        setTime([])
+      let newIntervalId = setInterval(async () => {
         const res = await axios.post(
           'http://localhost:4000/api/redis',
           {URL: url}
@@ -119,12 +129,8 @@ function RedisForm(props: Props): JSX.Element {
             [...prev, parseInt(res.data.used_memory_rss)];
         });
       }, 2000)
-    } else if (check) {
-      console.log('check in else statement to clear ', check)
-       clearInterval(startInterval);
-      // collectionStatus = false;
-    }
-    setCheck(prevCheck => !prevCheck);
+      setIntervalId(newIntervalId);
+    
     } catch (error) {
       console.log(error)
     }
@@ -202,7 +208,7 @@ function RedisForm(props: Props): JSX.Element {
         </div>
       </Form>
     </Formik>
-
+ 
     <form>
     <label htmlFor="urls">Choose a URL:</label>
       <select name="urls" id="urls" onChange={handleDropdown} style={{width: '50%'}}>
@@ -216,7 +222,7 @@ function RedisForm(props: Props): JSX.Element {
         })}
       </select>
       <h6>Selected: { url || urls[0]?.url }</h6>
-      <input type="submit" value="Submit" onClick={startCollection}/>
+      <button type="submit" value="Submit" onClick={startCollection}>{intervalId ? "Stop counting" : "Start counting"}</button>
     </form>
 
     <button type="submit" onClick={()=>stopCollection()}className="btn btn btn-primary mt-4">stop</button>

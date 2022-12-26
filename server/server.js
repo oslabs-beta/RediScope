@@ -13,10 +13,10 @@ app.use(morgan('dev'))
 
 app.use('/api/users', userRouter)
 app.use('/api/redis', redisRouter)
- 
+   
 //BK server
 const db = require ('./db/db');
-
+  
 //make a new url and save it under user
 app.post("/api/createURL", async(req, res)=>{
   try{
@@ -56,7 +56,7 @@ app.get("/api/allURL", async(req, res)=>{
     console.log(err)
   }
 })
-
+ 
 //get all data fron a single user
 app.get("/api/userURL/:user", async(req, res)=>{
   try{
