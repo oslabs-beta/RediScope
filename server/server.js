@@ -31,10 +31,6 @@ app.post("/api/createURL", async(req, res)=>{
   }
 })
 
-<<<<<<< HEAD
-
-
-=======
 //get users table
 app.get("/api/allUsers", async(req, res)=>{
   try{
@@ -89,7 +85,6 @@ app.delete("/api/URL/:url", async(req, res)=>{
   }
 })
  
->>>>>>> dev
 // GLOBAL ERROR HANDLER
 app.use((err, req, res, next) => {
   const defaultErr = {
