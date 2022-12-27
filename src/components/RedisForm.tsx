@@ -18,6 +18,9 @@ function RedisForm(props: Props): JSX.Element {
   const { user, setUser} = useContext(RedisContext);
   const { url, setUrl} = useContext(RedisContext);
   const { urls, setUrls} = useContext(RedisContext);
+  const { conClients, setConClients } = useContext(RedisContext);
+  const { totalComms, setTotalComms } = useContext(RedisContext);
+  const { evictedKeys, setEvictedKeys } = useContext(RedisContext);
   const location = useLocation();
   const [intervalId, setIntervalId] = useState(0);
   const [intervalMS, setIntervalMS] = useState(1000);
@@ -91,19 +94,40 @@ function RedisForm(props: Props): JSX.Element {
         //MUST set all measurements to empty array after before you start up live data collection!
         setRss([]);
         setUsedMemory([]);
-        setTime([])
+        setTime([]);
+        setConClients([]);
+        setTotalComms([]);
+        setEvictedKeys([]);
       let newIntervalId = setInterval(async () => {
         const res = await axios.post(
           'http://localhost:4000/api/redis',
           {URL: url}
         )
- 
+          //setting array values for each graph
         setUsedMemory((prev: Array<number>) => {
           console.log('usedMemory state: ', usedMemory);
           // if prev length is equal to 10, slice the first element, if not, keep adding new memory
           return (prev.length === numOfTimepoints) ?
             [...prev, parseInt(res.data.used_memory)].slice(1) :
             [...prev, parseInt(res.data.used_memory)];
+        })
+
+        setConClients((prev:Array<number>)=> {
+          return (prev.length === numOfTimepoints) ? 
+          [...prev, parseInt(res.data.conClients)].slice(1) :
+          [...prev, parseInt(res.data.conClients)];
+        })
+
+        setTotalComms((prev:Array<number>) => {
+          return (prev.length === numOfTimepoints) ? 
+          [...prev, parseInt(res.data.totalComms)].slice(1) :
+          [...prev, parseInt(res.data.totalComms)];
+        })
+
+        setEvictedKeys((prev:Array<number>) => {
+          return (prev.length === numOfTimepoints) ? 
+          [...prev, parseInt(res.data.evictedKeys)].slice(1) :
+          [...prev, parseInt(res.data.evictedKeys)];
         })
  
         // Creating date object to create our own timestamps to be parsed
