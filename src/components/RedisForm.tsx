@@ -104,6 +104,7 @@ function RedisForm(props: Props): JSX.Element {
           {URL: url}
         )
           //setting array values for each graph
+          // used memory data grab
         setUsedMemory((prev: Array<number>) => {
           console.log('usedMemory state: ', usedMemory);
           // if prev length is equal to 10, slice the first element, if not, keep adding new memory
@@ -111,19 +112,19 @@ function RedisForm(props: Props): JSX.Element {
             [...prev, parseInt(res.data.used_memory)].slice(1) :
             [...prev, parseInt(res.data.used_memory)];
         })
-
+          // connected clients data grab
         setConClients((prev:Array<number>)=> {
           return (prev.length === numOfTimepoints) ? 
           [...prev, parseInt(res.data.conClients)].slice(1) :
           [...prev, parseInt(res.data.conClients)];
         })
-
+        // total commands processed data grab
         setTotalComms((prev:Array<number>) => {
           return (prev.length === numOfTimepoints) ? 
           [...prev, parseInt(res.data.totalComms)].slice(1) :
           [...prev, parseInt(res.data.totalComms)];
         })
-
+        // evicted keys data grab
         setEvictedKeys((prev:Array<number>) => {
           return (prev.length === numOfTimepoints) ? 
           [...prev, parseInt(res.data.evictedKeys)].slice(1) :
@@ -164,7 +165,7 @@ function RedisForm(props: Props): JSX.Element {
     }
   }
 
-  //
+  // handling user url input and sending to backend
   const submitHandler = async (formValue: object): Promise<any> => {
     let input = {"user": user, "url":formValue.URL, "name": formValue.name};
     console.log('input', input)
@@ -185,7 +186,7 @@ function RedisForm(props: Props): JSX.Element {
   const initVal: URLState = {
     URL: url
   }
-
+  // checking user url input shape
   const validationSchema = () => {
     return Yup.object().shape({
       URL: Yup.string().required(

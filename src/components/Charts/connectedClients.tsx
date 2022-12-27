@@ -22,7 +22,7 @@ ChartJS.register(
   Legend
 )
 
-
+// collect and render total connected clients 
 export function ConnectedClients() {
   const { conClients, setConClients } = useContext(RedisContext)
   const { time, setTime } = useContext(RedisContext)
