@@ -22,7 +22,7 @@ ChartJS.register(
   Legend
 )
 
-
+// collect and render total evicted keys 
 export function EvictedKeys() {
   const { evictedKeys, setEvictedKeys } = useContext(RedisContext)
   const { time, setTime } = useContext(RedisContext)

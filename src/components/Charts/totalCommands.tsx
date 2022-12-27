@@ -22,7 +22,7 @@ ChartJS.register(
   Legend
 )
 
-
+// collect and render total commands processed 
 export function TotalCommands() {
   const { totalComms, setTotalComms } = useContext(RedisContext)
   const { time, setTime } = useContext(RedisContext)
