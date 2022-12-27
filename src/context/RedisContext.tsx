@@ -8,8 +8,9 @@ export const RedisContextProvider: FC = props => {
   const [redisData, setRedisData] = useState<any>([1, 1, 1])
   const [usedMemory, setUsedMemory] = useState<any>([])
   const [time, setTime] = useState<any>([])
-  const [conClient, setConClient] = useState<any>([])
-
+  const [conClient, setConClients] = useState<any>([])
+  const [totalComms, setTotalComms] = useState<any>([])
+  const [evictedKeys, setEvictedKeys] = useState<any>([])
   const [rss, setRss] = useState<any>([])
   const [user, setUser] = useState<any>("")
   const [url, setUrl] = useState<any>("")
@@ -25,7 +26,11 @@ export const RedisContextProvider: FC = props => {
         time,
         setTime,
         conClient,
-        setConClient,
+        setConClients,
+        totalComms,
+        setTotalComms,
+        evictedKeys,
+        setEvictedKeys,
         rss,
         setRss,
         user, setUser,
