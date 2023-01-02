@@ -22,11 +22,11 @@ ChartJS.register(
   Legend
 )
 
-// collect and render total connected clients 
-export function ConnectedClients() {
-  const { conClients, setConClients } = useContext(RedisContext)
+// collect and render total commands processed 
+export function TotalCommands() {
+  const { totalComms, setTotalComms } = useContext(RedisContext)
   const { time, setTime } = useContext(RedisContext)
-  console.log('from connectedclients', time)
+  console.log('from totalcommands', time)
  
 
   const options: object = {
@@ -37,7 +37,7 @@ export function ConnectedClients() {
       },
       title: {
         display: true,
-        text: 'Connected Clients',
+        text: 'Total Commands Processed',
       },
     },
   }
@@ -47,8 +47,8 @@ export function ConnectedClients() {
     labels,
     datasets: [
       {
-        label: 'current connected clients',
-        data: conClients,
+        label: 'Current Total Commands Processed',
+        data: totalComms,
         borderColor: 'rgb(255, 99, 132)',
         backgroundColor: 'rgba(255, 99, 132, 0.5)',
       },

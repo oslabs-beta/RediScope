@@ -1,5 +1,5 @@
 import React from 'react'
-import PieChart from './Charts/PieChart'
+//import PieChart from './Charts/PieChart'
 import BarChart from './Charts/BarChart'
 import {
   ButtonStyle,
@@ -9,8 +9,12 @@ import {
   Inner,
 } from '../styles/GlobalStyle'
 import RedisForm from './RedisForm'
-import MetricsTable from './Charts/MetricsTable'
+//import MetricsTable from './Charts/MetricsTable'
 import { LineGraph } from './Charts/LineGraph'
+import { ConnectedClients } from './Charts/connectedClients'
+import { TotalCommands } from './Charts/totalCommands'
+import { EvictedKeys } from './Charts/evictedKeys'
+import { CacheHitRatio } from './Charts/cacheHitRatio'
 
 
 type Props = {}
@@ -31,10 +35,28 @@ export default function Dashboard(props: Props): JSX.Element {
         </Inner>
       </Wrapper>
       <Wrapper>
-        <Inner>{/* <PieChart /> */}</Inner>
+        <Inner>
+        <ConnectedClients />
+        {/* <PieChart /> */}
+        </Inner>
       </Wrapper>
       <Wrapper>
-        <Inner>{/* <MetricsTable /> */}</Inner>
+        <Inner>
+        <TotalCommands />
+          {/* <MetricsTable /> */}
+          </Inner>
+      </Wrapper>
+      <Wrapper>
+        <Inner>
+          <EvictedKeys />
+            {/* <MetricsTable /> */}
+            </Inner>
+      </Wrapper>
+      <Wrapper>
+        <Inner>
+          <CacheHitRatio />
+            {/* <MetricsTable /> */}
+            </Inner>
       </Wrapper>
     </>
   )

@@ -22,11 +22,11 @@ ChartJS.register(
   Legend
 )
 
-// collect and render total connected clients 
-export function ConnectedClients() {
-  const { conClients, setConClients } = useContext(RedisContext)
+// collect and render total evicted keys 
+export function EvictedKeys() {
+  const { evictedKeys, setEvictedKeys } = useContext(RedisContext)
   const { time, setTime } = useContext(RedisContext)
-  console.log('from connectedclients', time)
+  console.log('from evicted keys', time)
  
 
   const options: object = {
@@ -37,7 +37,7 @@ export function ConnectedClients() {
       },
       title: {
         display: true,
-        text: 'Connected Clients',
+        text: 'Evicted Keys',
       },
     },
   }
@@ -47,8 +47,8 @@ export function ConnectedClients() {
     labels,
     datasets: [
       {
-        label: 'current connected clients',
-        data: conClients,
+        label: 'current Evicted Keys',
+        data: evictedKeys,
         borderColor: 'rgb(255, 99, 132)',
         backgroundColor: 'rgba(255, 99, 132, 0.5)',
       },
