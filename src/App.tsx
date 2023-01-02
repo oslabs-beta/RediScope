@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react'
 import * as ReactDOM from 'react-dom'
-import { HashRouter, Route, Link, Routes } from 'react-router-dom'
+import { Route, Link, Routes, BrowserRouter } from 'react-router-dom'
 import Login from './components/Login'
 import SignUp from './components/Signup'
 import Dashboard from './components/Dashboard'
@@ -30,8 +30,8 @@ export function App() {
   // </HashRouter>
 
   return (
-    <RedisContextProvider>
-      <HashRouter>
+    <RedisContextProvider >
+      <BrowserRouter>
         <GlobalStyle />
         <div>
           <Mainpage>
@@ -53,7 +53,7 @@ export function App() {
             <Route path="/Dashboard" element={<Dashboard />} />
           </Routes>
         </div>
-      </HashRouter>
+      </BrowserRouter>
     </RedisContextProvider>
   )
 }
