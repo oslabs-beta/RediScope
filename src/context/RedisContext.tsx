@@ -9,6 +9,11 @@ export const RedisContextProvider = (props: any) => {
   const [usedMemory, setUsedMemory] = useState<any>([])
   const [time, setTime] = useState<any>([])
   const [rss, setRss] = useState<any>([])
+  const [conClient, setConClients] = useState<any>([])
+  const [totalComms, setTotalComms] = useState<any>([])
+  const [evictedKeys, setEvictedKeys] = useState<any>([])
+  const [keyHits, setKeyHits ] = useState<any>([]);
+  const [keyMisses, setKeyMisses ] = useState<any>([]);
   const [user, setUser] = useState<any>("")
   const [url, setUrl] = useState<any>("")
   const [urls, setUrls] = useState<any>([])
@@ -22,6 +27,16 @@ export const RedisContextProvider = (props: any) => {
         setUsedMemory,
         time,
         setTime,
+        conClient,
+        setConClients,
+        totalComms,
+        setTotalComms,
+        evictedKeys,
+        setEvictedKeys,
+        keyHits, 
+        setKeyHits,
+        keyMisses, 
+        setKeyMisses,
         rss,
         setRss,
         user, setUser,

@@ -6,16 +6,19 @@ import { optionsType, dataType } from '../../@types/chartjsTypes'
 
 ChartJS.register(ArcElement, Tooltip, Legend)
 
-export default function PieChart(): JSX.Element {
+export function CacheHitRatio(): JSX.Element {
   const { redisData, setRedisData } = useContext(RedisContext)
+  const { time, setTime } = useContext(RedisContext)
+  const { keyHits, setKeyHits } = useContext(RedisContext)
+  const { keyMisses, setKeyMisses } = useContext(RedisContext)
   console.log('redisData in pieChart', redisData)
 
   // assigning data to table.  default to 0 if there is no data or undefined.
-  let keyspaceHits: number = redisData?.keyspace_hits || 0
-  let keyspaceMisses: number = redisData?.keyspace_misses || 0
-  console.log('keyspaceHits, keyspaceMisses', keyspaceHits, keyspaceMisses)
+  // let keyspaceHits: number = redisData?.keyspace_hits || 0
+  // let keyspaceMisses: number = redisData?.keyspace_misses || 0
+  // console.log('keyspaceHits, keyspaceMisses', keyspaceHits, keyspaceMisses)
 
-  const options: optionsType = {
+  const options: object = {
     responsive: true,
     plugins: {
       legend: {
@@ -27,13 +30,14 @@ export default function PieChart(): JSX.Element {
       },
     },
   }
+  const labels: string[] = time
 
   const data: dataType = {
-    labels: ['keyspace_hits', 'keyspace_misses'],
+    labels,
     datasets: [
       {
-        label: '# of Votes',
-        data: [keyspaceHits, keyspaceMisses],
+        label: 'Key Space Hits & Misses',
+        data:[34, 90], // data: [keyHits, keyMisses],
         backgroundColor: ['rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)'],
         borderColor: ['rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)'],
         borderWidth: 1,
@@ -41,10 +45,11 @@ export default function PieChart(): JSX.Element {
     ],
   }
 
-  return (
-    <>
-      {/* <h6>keyspace_hits: {keyspaceHits} keyspace_misses: {keyspaceMisses}</h6> */}
-      <Pie options={options} data={data} />
-    </>
-  )
+  return <Pie options={options} data={data} />
+
+  
 }
+
+// need to fix:
+// add cache hit ratio actual number to title
+// make it so there are two labels: one for hits and one for misses
