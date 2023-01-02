@@ -4,7 +4,7 @@ export type GlobalContent = any
 
 export const RedisContext = createContext<GlobalContent | null>({})
 
-export const RedisContextProvider: FC = props => {
+export const RedisContextProvider = (props: any) => {
   const [redisData, setRedisData] = useState<any>([1, 1, 1])
   const [usedMemory, setUsedMemory] = useState<any>([])
   const [time, setTime] = useState<any>([])
@@ -29,7 +29,7 @@ export const RedisContextProvider: FC = props => {
         urls, setUrls
       }}
     >
-      {props.children}
+      {props?.children}
     </RedisContext.Provider>
   )
 }
