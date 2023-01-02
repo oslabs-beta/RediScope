@@ -18,6 +18,11 @@ function RedisForm(props: Props): JSX.Element {
   const { user, setUser} = useContext(RedisContext);
   const { url, setUrl} = useContext(RedisContext);
   const { urls, setUrls} = useContext(RedisContext);
+  const { conClients, setConClients } = useContext(RedisContext);
+  const { totalComms, setTotalComms } = useContext(RedisContext);
+  const { evictedKeys, setEvictedKeys } = useContext(RedisContext);
+  const { keyHits, setKeyHits } = useContext(RedisContext);
+  const { keyMisses, setKeyMisses } = useContext(RedisContext);
   const location = useLocation();
   const [intervalId, setIntervalId] = useState(0);
   const [intervalMS, setIntervalMS] = useState(1000);
@@ -91,13 +96,19 @@ function RedisForm(props: Props): JSX.Element {
         //MUST set all measurements to empty array after before you start up live data collection!
         setRss([]);
         setUsedMemory([]);
-        setTime([])
+        setTime([]);
+        setConClients([]);
+        setTotalComms([]);
+        setEvictedKeys([]);
+        setKeyHits([]);
+        setKeyMisses([]);
       let newIntervalId: any = setInterval(async () => {
         const res = await axios.post(
           'http://localhost:4000/api/redis',
           {URL: url}
         )
- 
+          // setting array values for each graph
+          // used memory data grab
         setUsedMemory((prev: Array<number> | any) => {
           console.log('usedMemory state: ', usedMemory);
           // if prev length is equal to 10, slice the first element, if not, keep adding new memory
@@ -105,7 +116,36 @@ function RedisForm(props: Props): JSX.Element {
             [...prev, parseInt(res.data.used_memory)].slice(1) :
             [...prev, parseInt(res.data.used_memory)];
         })
- 
+          // connected clients data grab
+          setConClients((prev:Array<number>)=> {
+            return (prev.length === numOfTimepoints) ? 
+            [...prev, parseInt(res.data.conClients)].slice(1) :
+            [...prev, parseInt(res.data.conClients)];
+          })
+          // total commands processed data grab
+          setTotalComms((prev:Array<number>) => {
+            return (prev.length === numOfTimepoints) ? 
+            [...prev, parseInt(res.data.totalComms)].slice(1) :
+            [...prev, parseInt(res.data.totalComms)];
+          })
+          // evicted keys data grab
+          setEvictedKeys((prev:Array<number>) => {
+            return (prev.length === numOfTimepoints) ? 
+            [...prev, parseInt(res.data.evictedKeys)].slice(1) :
+            [...prev, parseInt(res.data.evictedKeys)];
+          }) 
+          // cache hit ratio data grab
+          setKeyHits((prev:Array<number>) => {
+            return (prev.length === numOfTimepoints) ? 
+            [...prev, parseInt(res.data.keyspace_hits)].slice(1) :
+            [...prev, parseInt(res.data.keyspace_hits)];
+          })
+          setKeyMisses((prev:Array<number>) => {
+            return (prev.length === numOfTimepoints) ? 
+            [...prev, parseInt(res.data.keyspace_misses)].slice(1) :
+            [...prev, parseInt(res.data.keyspace_misses)];
+          })  
+
         // Creating date object to create our own timestamps to be parsed
 
         const date = new Date()
@@ -140,7 +180,7 @@ function RedisForm(props: Props): JSX.Element {
     }
   }
 
-  //
+  // // handling user url input and sending to backend
   const submitHandler = async (formValue: object|any): Promise<any> => {
     let input = {"user": user, "url":formValue?.URL, "name": formValue?.name};
     console.log('input', input)
@@ -162,6 +202,7 @@ function RedisForm(props: Props): JSX.Element {
     URL: url
   }
 
+ // checking user url input shape 
   const validationSchema = () => {
     return Yup.object().shape({
       URL: Yup.string().required(
