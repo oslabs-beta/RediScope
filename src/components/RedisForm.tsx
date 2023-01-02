@@ -92,13 +92,13 @@ function RedisForm(props: Props): JSX.Element {
         setRss([]);
         setUsedMemory([]);
         setTime([])
-      let newIntervalId = setInterval(async () => {
+      let newIntervalId: any = setInterval(async () => {
         const res = await axios.post(
           'http://localhost:4000/api/redis',
           {URL: url}
         )
  
-        setUsedMemory((prev: Array<number>) => {
+        setUsedMemory((prev: Array<number> | any) => {
           console.log('usedMemory state: ', usedMemory);
           // if prev length is equal to 10, slice the first element, if not, keep adding new memory
           return (prev.length === numOfTimepoints) ?
@@ -141,8 +141,8 @@ function RedisForm(props: Props): JSX.Element {
   }
 
   //
-  const submitHandler = async (formValue: object): Promise<any> => {
-    let input = {"user": user, "url":formValue.URL, "name": formValue.name};
+  const submitHandler = async (formValue: object|any): Promise<any> => {
+    let input = {"user": user, "url":formValue?.URL, "name": formValue?.name};
     console.log('input', input)
 
     try {    
