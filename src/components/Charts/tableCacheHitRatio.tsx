@@ -6,17 +6,12 @@ export function TableCacheHitRatio() {
   const { keyMisses, setKeyMisses } = useContext(RedisContext)
   const { totalComms, setTotalComms } = useContext(RedisContext)
   const { conClients, setConClients } = useContext(RedisContext)
-  const { banana, setBanana } = useContext(RedisContext);
+  
   // const cacheHitRatio = keyHits[keyHits.length-1]/keyMisses[keyHits.length-1]
 
   
-  const cacheHitRatio = banana/keyMisses[keyHits.length-1]
-  console.log(cacheHitRatio)
+  const cacheHitRatio = keyHits[keyHits.length-1]/keyMisses[keyHits.length-1]
 
-
-  // let used_memory: number = redisData?.used_memory / 1000000 || 0
-  // let used_memory_rss: number = redisData?.used_memory_rss / 1000000 || 0
-  //   <>redisData?.keyspace_hits {redisData?.keyspace_hits}</>
   return (
     <div>
       <div className="list-group">
