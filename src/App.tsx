@@ -35,8 +35,8 @@ export function App() {
         <GlobalStyle />
         <div>
           <Mainpage>
-            <h1> RediScope </h1>
-            <button>
+            {/* <h1> RediScope </h1> */}
+            {/* <button>
               <Link to="/Login">Login</Link>
             </button>
             <button>
@@ -44,14 +44,14 @@ export function App() {
             </button>
             <button>
               <Link to="/Dashboard">dash</Link>
-            </button>
-          </Mainpage>
-
+            </button> */}
           <Routes>
             <Route path="/Login" element={<Login />} />
             <Route path="/Signup" element={<SignUp />} />
             <Route path="/Dashboard" element={<Dashboard />} />
           </Routes>
+          </Mainpage>
+
         </div>
       </BrowserRouter>
     </RedisContextProvider>
