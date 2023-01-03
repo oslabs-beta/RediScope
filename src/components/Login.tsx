@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import { Navigate } from 'react-router-dom'
+import { Navigate, Link } from 'react-router-dom'
 import { Formik, Field, Form, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
-import { GlobalStyle } from '../styles/GlobalStyle';
+import { ButtonStyle, GlobalStyle, LoginSignUpBox } from '../styles/GlobalStyle';
 
 import AuthService from '../service/authentication';
 
@@ -127,9 +127,9 @@ export default class Login extends Component<Props, LoginState> {
     }
 
     return (
-      <div className="Login">
-      <GlobalStyle />
+      <LoginSignUpBox>
         <div className="formContainer">
+          <h1> RediScope </h1>
           <Formik
             initialValues={initVal}
             validationSchema={this.validationSchema}
@@ -159,14 +159,17 @@ export default class Login extends Component<Props, LoginState> {
                 />
               </div>
               <div className="form">
-                <button type="submit" className="btn btn btn-primary mt-4" disabled={loading}>
+                <ButtonStyle type="submit" className="btn btn btn-primary mt-4" disabled={loading}>
                   <span>Login</span>
-                </button>
+                </ButtonStyle>
+                <div>
+                  <span className="redirectLink"> New to RediScope? <Link id="link" to="/Signup"> Create an account here. </Link></span> 
+                </div>
               </div>
             </Form>
           </Formik>
         </div>
-      </div>
+      </LoginSignUpBox>
     )
   }
 }

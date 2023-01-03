@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { Navigate } from "react-router-dom";
+import { Navigate, Link } from "react-router-dom";
 import { Formik, Field, Form, ErrorMessage, yupToFormErrors } from 'formik';
 import * as Yup from 'yup';
 
 import AuthService from "../service/authentication";
+import { ButtonStyle, LoginSignUpBox } from '../styles/GlobalStyle';
 
 // ------ old imports ------ //
 // import Axios from 'axios';
@@ -120,8 +121,9 @@ export default class SignUp extends Component<Props, SignUpState> {
 
 
         return(
-            <div className='SignUp'>
-                <div className='SignUp-Container'>
+            <LoginSignUpBox>
+                <div className='formContainer'>
+                  <h1> RediScope </h1>
                     <Formik
                       initialValues={initVals}
                       SignUpSchema={this.SignUpSchema}
@@ -173,7 +175,10 @@ export default class SignUp extends Component<Props, SignUpState> {
                                 </div>
 
                                 <div className='form'>
-                                    <button type='submit' className='btn'> Sign Up</button>
+                                    <ButtonStyle type='submit' className='btn'> Sign Up</ButtonStyle>
+                                    <div className="redirectLink">
+                                      <span className="redirectLink"> Already have an account? <Link id="link" to="/Login"> Login Here </Link></span> 
+                                    </div>
                                 </div>
                             </div>
                         )}
@@ -193,7 +198,7 @@ export default class SignUp extends Component<Props, SignUpState> {
                       </Form>
                     </Formik>
                 </div>
-            </div>
+            </LoginSignUpBox>
         );
     }
 }
