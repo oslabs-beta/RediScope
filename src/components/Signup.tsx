@@ -42,12 +42,31 @@ export default class SignUp extends Component<Props, SignUpState> {
     SignUpSchema(){
         return Yup.object().shape({
             username: Yup.string()
-              .min(5, 'Username must have at least 5 characters!')
-              .max(50, 'Username is too long!')
+              .test(
+                'len',
+                'Username must be between 3 and 20 charaters long.',
+                (val: any) => 
+                  val &&
+                  val.toString().length >= 3 &&
+                  val.toString().length <= 20
+                  )
+
+                  // min and max only works for integer values, can't evaluate lenght of string
+
+              // .min(2, 'Username must have at least 5 characters!')
+              // .max(50, 'Username is too long!')
               .required('Required Field!'),
             password: Yup.string()
-              .min(3, 'Password must have at least 3 characters')
-              .max(50, 'Password is too long!')
+            .test(
+              'len',
+              'Password must be between 3 and 20 charaters long.',
+              (val: any) => 
+                val &&
+                val.toString().length >= 3 &&
+                val.toString().length <= 20
+                )
+              // .min(2, 'Password must have at least 3 characters')
+              // .max(50, 'Password is too long!')
               .required('Required Field!'),
             email: Yup.string()
               .email('Please enter valid email')
@@ -67,8 +86,10 @@ export default class SignUp extends Component<Props, SignUpState> {
 
         // ------ checking to see if input is inserted into fields ------ //
 
-        formValue ? this.setState({ success: true }) : this.setState({ message: 'please fill in required fields' })
+        // formValue ? this.setState({ success: true }) : this.setState({ message: 'please fill in required fields' })
         
+        if (!formValue) this.setState({ message: "Please fill in required fields!" });
+
         // ------ sign-up post request from service folder ------ //
 
         AuthService.signup(
