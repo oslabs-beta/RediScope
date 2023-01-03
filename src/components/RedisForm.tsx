@@ -27,7 +27,7 @@ function RedisForm(props: Props): JSX.Element {
   const [intervalId, setIntervalId] = useState(0);
   const [intervalMS, setIntervalMS] = useState(1000);
   const [numOfTimepoints, setnumOfTimepoints] = useState(50);
-
+  const [ banana, setBanana ] = useContext(RedisContext);
   // const [check, setCheck] = useState(false);
 
   // const { data } = state; 
@@ -119,20 +119,20 @@ function RedisForm(props: Props): JSX.Element {
           // connected clients data grab
           setConClients((prev:Array<number>)=> {
             return (prev.length === numOfTimepoints) ? 
-            [...prev, parseInt(res.data.conClients)].slice(1) :
-            [...prev, parseInt(res.data.conClients)];
+            [...prev, parseInt(res.data.connected_clients)].slice(1) :
+            [...prev, parseInt(res.data.connected_clients)];
           })
           // total commands processed data grab
           setTotalComms((prev:Array<number>) => {
             return (prev.length === numOfTimepoints) ? 
-            [...prev, parseInt(res.data.totalComms)].slice(1) :
-            [...prev, parseInt(res.data.totalComms)];
+            [...prev, parseInt(res.data.total_commands_processed)].slice(1) :
+            [...prev, parseInt(res.data.total_commands_processed)];
           })
           // evicted keys data grab
           setEvictedKeys((prev:Array<number>) => {
             return (prev.length === numOfTimepoints) ? 
-            [...prev, parseInt(res.data.evictedKeys)].slice(1) :
-            [...prev, parseInt(res.data.evictedKeys)];
+            [...prev, parseInt(res.data.evicted_keys)].slice(1) :
+            [...prev, parseInt(res.data.evicted_keys)];
           }) 
           // cache hit ratio data grab
           setKeyHits((prev:Array<number>) => {
@@ -144,7 +144,20 @@ function RedisForm(props: Props): JSX.Element {
             return (prev.length === numOfTimepoints) ? 
             [...prev, parseInt(res.data.keyspace_misses)].slice(1) :
             [...prev, parseInt(res.data.keyspace_misses)];
-          })  
+          }) 
+          // needed a lil random number
+
+          
+
+          function getRandomInt(min, max) {
+            min = Math.ceil(min);
+            max = Math.floor(max);
+            return Math.floor(Math.random() * (max - min) + min)
+          }
+           setBanana( () => {
+            getRandomInt(2,10000)
+           })
+
 
         // Creating date object to create our own timestamps to be parsed
 
