@@ -27,7 +27,7 @@ function RedisForm(props: Props): JSX.Element {
   const [intervalId, setIntervalId] = useState(0);
   const [intervalMS, setIntervalMS] = useState(1000);
   const [numOfTimepoints, setnumOfTimepoints] = useState(50);
-  const [ banana, setBanana ] = useContext(RedisContext);
+ 
   // const [check, setCheck] = useState(false);
 
   // const { data } = state; 
@@ -145,20 +145,6 @@ function RedisForm(props: Props): JSX.Element {
             [...prev, parseInt(res.data.keyspace_misses)].slice(1) :
             [...prev, parseInt(res.data.keyspace_misses)];
           }) 
-          // needed a lil random number
-
-          
-
-          function getRandomInt(min, max) {
-            min = Math.ceil(min);
-            max = Math.floor(max);
-            return Math.floor(Math.random() * (max - min) + min)
-          }
-           setBanana( () => {
-            getRandomInt(2,10000)
-           })
-
-
         // Creating date object to create our own timestamps to be parsed
 
         const date = new Date()
@@ -203,7 +189,7 @@ function RedisForm(props: Props): JSX.Element {
             'http://localhost:4000/api/createURL',
             input
           )
-          console.log('formValue', formValue)
+
 
        getallURL()
     } catch (error) {
