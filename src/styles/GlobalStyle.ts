@@ -105,6 +105,7 @@ export const LoginSignUpBox = styled.div`
   background-image: linear-gradient(#072227, #35858B);
   background-size: cover;
   background-repeat: no-repeat;
+  padding: 25px;
 `
 
 export const Title = styled.h1`
