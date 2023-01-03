@@ -11,7 +11,7 @@ export function CacheHitRatio(): JSX.Element {
   const { time, setTime } = useContext(RedisContext)
   const { keyHits, setKeyHits } = useContext(RedisContext)
   const { keyMisses, setKeyMisses } = useContext(RedisContext)
-  console.log('redisData in pieChart', redisData)
+  console.log('redisData in pieChart', keyHits[keyHits.length-1]/keyMisses[keyHits.length-1])
 
   // assigning data to table.  default to 0 if there is no data or undefined.
   // let keyspaceHits: number = redisData?.keyspace_hits || 0
@@ -30,20 +30,28 @@ export function CacheHitRatio(): JSX.Element {
       },
     },
   }
-  const labels: string[] = time
+  const labels: number[] = [99]
+  // let length = keyHits.length
+  // console.log("this is keyhitslength", keyHits[length])
 
-  const data: dataType = {
+  const data = {
     labels,
-    datasets: [
-      {
-        label: 'Key Space Hits & Misses',
-        data:[34, 90], // data: [keyHits, keyMisses],
-        backgroundColor: ['rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)'],
-        borderColor: ['rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)'],
-        borderWidth: 1,
-      },
-    ],
-  }
+      datasets: [
+        {
+          label: 'key misses',
+          data: [keyMisses],
+          borderColor: 'rgb(255, 99, 132)',
+          backgroundColor: 'rgba(255, 99, 132, 0.5)',
+        },
+        {
+          label: 'key hits',
+          data: [keyHits],
+          borderColor: 'rgb(79, 189, 186)',
+          backgroundColor: 'rgba(79, 189, 186, 0.5)',
+        }
+      ],
+    }
+    
 
   return <Pie options={options} data={data} />
 
@@ -53,3 +61,15 @@ export function CacheHitRatio(): JSX.Element {
 // need to fix:
 // add cache hit ratio actual number to title
 // make it so there are two labels: one for hits and one for misses
+
+
+// datasets: [
+//   {
+//     label: 'Key Space Hits & Misses',
+//     data: [keyHits, keyMisses],
+//     backgroundColor: ['rgba(255, 99, 132, 0.2)', 'rgba(54, 162, 235, 0.2)'],
+//     borderColor: ['rgba(255, 99, 132, 1)', 'rgba(54, 162, 235, 1)'],
+//     borderWidth: 1,
+//   },
+// ],
+// }

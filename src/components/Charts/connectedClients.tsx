@@ -26,7 +26,7 @@ ChartJS.register(
 export function ConnectedClients() {
   const { conClients, setConClients } = useContext(RedisContext)
   const { time, setTime } = useContext(RedisContext)
-  console.log('from connectedclients', time)
+  console.log('from connectedclients', conClients)
  
 
   const options: object = {

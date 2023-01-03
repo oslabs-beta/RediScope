@@ -29,7 +29,7 @@ export function LineGraph() {
   const { time, setTime } = useContext(RedisContext)
   const { rss, setRss } = useContext(RedisContext);
 
-  console.log('from linegraph', time)
+  console.log('from linegraph', usedMemory[usedMemory.length])
 
   const options: object = {
     responsive: true,

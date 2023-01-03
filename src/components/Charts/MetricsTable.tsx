@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect, FC } from 'react'
 import { RedisContext } from '../../context/RedisContext'
 
-export default function MetricsTable() {
+export function MetricsTable() {
   const { redisData, setRedisData } = useContext(RedisContext)
   //   console.log('redisData in table')
   //   console.log('redisData?.keyspace_hits in table', redisData?.keyspace_hits)
