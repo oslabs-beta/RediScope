@@ -53,8 +53,17 @@ export default function Dashboard(props: Props): JSX.Element {
       </GraphDiv>
       <GraphDiv>
         <Inner>
+          <EvictedKeys />
+            {/* <MetricsTable /> */}
+            </Inner>
+      </GraphDiv>
+      <GraphDiv>
+        <Inner>
           <GraphCacheHitRatio />
             {/* <MetricsTable /> */}
+            </Inner>
+            <Inner>
+              <TableCacheHitRatio />
             </Inner>
       </GraphDiv>
     </GraphContainer>
