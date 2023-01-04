@@ -9,7 +9,10 @@ import {
   Inner,
   DashboardContainer,
   URLSelector,
-  GraphContainer
+  GraphContainer,
+  Nav,
+  NavBar,
+  Elements,
 } from '../styles/GlobalStyle'
 import RedisForm from './RedisForm'
 import { MetricsTable } from './Charts/MetricsTable'
@@ -25,9 +28,15 @@ type Props = {}
 export default function Dashboard(props: Props): JSX.Element {
   return (
     <>
-    <div>
-      <Title> Welcome </Title>
-    </div>
+    <NavBar>
+      <Title> RediScope </Title>
+      <Nav>
+        <Elements>
+          <li><a href='/'>About</a></li>
+          <li><a href='/Login'>Sign Out</a></li>
+        </Elements>
+      </Nav>
+    </NavBar>
     <DashboardContainer>
       <URLSelector>
         <RedisForm />
