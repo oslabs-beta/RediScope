@@ -122,20 +122,20 @@ function RedisForm(props: Props): JSX.Element {
           // connected clients data grab
           setConClients((prev:Array<number>)=> {
             return (prev.length === numOfTimepoints) ? 
-            [...prev, parseInt(res.data.conClients)].slice(1) :
-            [...prev, parseInt(res.data.conClients)];
+            [...prev, parseInt(res.data.connected_clients)].slice(1) :
+            [...prev, parseInt(res.data.connected_clients)];
           })
           // total commands processed data grab
           setTotalComms((prev:Array<number>) => {
             return (prev.length === numOfTimepoints) ? 
-            [...prev, parseInt(res.data.totalComms)].slice(1) :
-            [...prev, parseInt(res.data.totalComms)];
+            [...prev, parseInt(res.data.total_commands_processed)].slice(1) :
+            [...prev, parseInt(res.data.total_commands_processed)];
           })
           // evicted keys data grab
           setEvictedKeys((prev:Array<number>) => {
             return (prev.length === numOfTimepoints) ? 
-            [...prev, parseInt(res.data.evictedKeys)].slice(1) :
-            [...prev, parseInt(res.data.evictedKeys)];
+            [...prev, parseInt(res.data.evicted_keys)].slice(1) :
+            [...prev, parseInt(res.data.evicted_keys)];
           }) 
           // cache hit ratio data grab
           setKeyHits((prev:Array<number>) => {
@@ -147,8 +147,7 @@ function RedisForm(props: Props): JSX.Element {
             return (prev.length === numOfTimepoints) ? 
             [...prev, parseInt(res.data.keyspace_misses)].slice(1) :
             [...prev, parseInt(res.data.keyspace_misses)];
-          })  
-
+          }) 
         // Creating date object to create our own timestamps to be parsed
 
         const date = new Date()
@@ -193,7 +192,7 @@ function RedisForm(props: Props): JSX.Element {
             'http://localhost:4000/api/createURL',
             input
           )
-          console.log('formValue', formValue)
+
 
        getallURL()
     } catch (error) {
