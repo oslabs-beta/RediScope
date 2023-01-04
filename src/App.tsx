@@ -4,7 +4,7 @@ import { Route, Link, Routes, BrowserRouter } from 'react-router-dom'
 import Login from './components/Login'
 import SignUp from './components/Signup'
 import Dashboard from './components/Dashboard'
-import { GlobalStyle, Mainpage } from './styles/GlobalStyle'
+import { GlobalStyle } from './styles/GlobalStyle'
 import { Greetings } from './components/Greetings'
 import { RedisContextProvider } from './context/RedisContext'
 
@@ -34,7 +34,6 @@ export function App() {
       <BrowserRouter>
         <GlobalStyle />
         <div>
-          <Mainpage>
             {/* <h1> RediScope </h1> */}
             {/* <button>
               <Link to="/Login">Login</Link>
@@ -50,7 +49,6 @@ export function App() {
             <Route path="/Signup" element={<SignUp />} />
             <Route path="/Dashboard" element={<Dashboard />} />
           </Routes>
-          </Mainpage>
 
         </div>
       </BrowserRouter>
