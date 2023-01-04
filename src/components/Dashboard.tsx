@@ -12,13 +12,13 @@ import {
   GraphContainer
 } from '../styles/GlobalStyle'
 import RedisForm from './RedisForm'
-//import MetricsTable from './Charts/MetricsTable'
+import { MetricsTable } from './Charts/MetricsTable'
 import { LineGraph } from './Charts/LineGraph'
 import { ConnectedClients } from './Charts/connectedClients'
 import { TotalCommands } from './Charts/totalCommands'
 import { EvictedKeys } from './Charts/evictedKeys'
-import { CacheHitRatio } from './Charts/cacheHitRatio'
-
+import { GraphCacheHitRatio } from './Charts/graphCacheHitRatio'
+import { TableCacheHitRatio } from './Charts/tableCacheHitRatio'
 
 type Props = {}
 
@@ -50,22 +50,16 @@ export default function Dashboard(props: Props): JSX.Element {
           <TotalCommands />
             {/* <MetricsTable /> */}
             </Inner>
-        </GraphDiv>
-        <GraphDiv>
-          <Inner>
-            <EvictedKeys />
-              {/* <MetricsTable /> */}
-              </Inner>
-        </GraphDiv>
-        <GraphDiv>
-          <Inner>
-            <CacheHitRatio />
-              {/* <MetricsTable /> */}
-              </Inner>
-        </GraphDiv>
-      </GraphContainer>
-    </DashboardContainer>
-    </>
+      </GraphDiv>
+      <GraphDiv>
+        <Inner>
+          <GraphCacheHitRatio />
+            {/* <MetricsTable /> */}
+            </Inner>
+      </GraphDiv>
+    </GraphContainer>
+  </DashboardContainer>
+  </>
   )
 }
 
