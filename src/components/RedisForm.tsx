@@ -4,7 +4,8 @@ import { Formik, Field, Form, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
 import { RedisContext } from '../context/RedisContext'
 import { useLocation } from 'react-router-dom'
-import { ButtonStyle } from '../styles/GlobalStyle'
+import { ButtonStyle, DeleteButton, Option, URLSelection, UserInput } from '../styles/GlobalStyle'
+import { render } from 'react-dom'
 
 type Props = {}
 type URLState = {
@@ -250,14 +251,18 @@ function RedisForm(props: Props): JSX.Element {
     // console.log('intervalMS', intervalMS)
    }
 
-   // 
+   // conditional rendering of adding new urls
+
    const handleClick= () => {
     setnoShow(false);
+   };
+
+   // how to select URL && set state
+   const handleSelect = () => {
+
    }
-   // child components that hold each url that a user may have
-   // each child component should be a button that will select the url to collect data from
 
-
+   // list of fetched URLS
   return (
     <>
       <Formik
@@ -269,7 +274,8 @@ function RedisForm(props: Props): JSX.Element {
           <div className="URL-Form">
             <ButtonStyle onClick={handleClick}> Connect To A New URL </ButtonStyle>
               <label htmlFor="URL">Redis Cache URL</label> {"\n"}
-              name: <Field name="name" type="text" className="URL-form-control" />{"\n"}
+              name: <Field name="name" type="text" className="URL-form-control" />
+              <br></br>
               URL path: <Field name="URL" type="text" className="URL-form-control" />
               <ButtonStyle type="submit" className="btn btn-primary">Add URL</ButtonStyle>
           </div>
@@ -277,25 +283,25 @@ function RedisForm(props: Props): JSX.Element {
       </Formik>
       <form>
         <label htmlFor="setIntervalMS">Choose an interval ms:</label>
-        <input
+        <UserInput
           id="setIntervalMS"
           name="setIntervalMS"
           value={intervalMS}
           type="number"
           min="1000"
           onChange={e => setIntervalMS(+e.target.value)}
-        ></input>
+        ></UserInput>
         <label htmlFor="setnumOfTimepoints">
           Choose max number of timepoints:
         </label>
-        <input
+        <UserInput
           id="setnumOfTimepoints"
           name="setnumOfTimepoints"
           value={numOfTimepoints}
           type="number"
           max="500"
           onChange={e => setnumOfTimepoints(+e.target.value)}
-        ></input>
+        ></UserInput>
         <ButtonStyle
           type="submit"
           value="Submit"
@@ -309,34 +315,25 @@ function RedisForm(props: Props): JSX.Element {
       <div>
         <form>
           <label htmlFor="urls">Choose a URL:</label>
-          <select
+          <URLSelection
             name="urls"
             id="urls"
-            onChange={handleDropdown}
-            style={{ width: '50%' }}
+            multiple
+            style={{ width: '100%' }}
           >
             {urls &&
               urls.map(url => {
                 return (
                   <>
-                    <option key={url.id} value={url?.url}>
+                    <Option key={url.id} value={url?.url}>
                       {'NAME- ' + url.name + '  __  PATH- '}
                       {url?.url}
-                    </option>
+                    </Option>
                   </>
                 )
               })}
-          </select>
-          <button
-            type="submit"
-            value="Submit"
-            className="btn btn-danger"
-            onClick={deleteURL}
-          >
-            Delete selected URL
-          </button>
-          <div>Selected: {url || urls[0]?.url}</div>
-          <button
+          </URLSelection>
+          <ButtonStyle
             type="submit"
             className="btn btn-primary"
             onClick={startCollection}
@@ -344,7 +341,17 @@ function RedisForm(props: Props): JSX.Element {
             {intervalId
               ? 'STOP LIVE DATA COLLECTION'
               : 'START LIVE DATA COLLECTION'}
-          </button>
+          </ButtonStyle>
+          <br></br>
+          <br></br>
+          <DeleteButton
+            type="submit"
+            value="Submit"
+            className="btn btn-danger"
+            onClick={deleteURL}
+          >
+            Delete selected URL
+          </DeleteButton>
         </form>
       </div>
     </>

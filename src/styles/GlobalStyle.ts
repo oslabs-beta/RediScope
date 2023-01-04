@@ -176,3 +176,93 @@ export const Elements = styled.div`
   padding-right: 5em;
   justify-content: flex-start;
 `
+
+export const URLSelection = styled.select`
+  background-color: #05161A;
+  color: rgb(216, 238, 238, 0.5);
+  font-size: 20px;
+  cursor: pointer;
+  border: 0.2px inset #072227;
+`
+
+export const Option = styled.option`
+  padding: 10px;
+  border-bottom: 1px;
+
+  &:hover {
+    filter: brightness(0.9);
+    background-color: #35858B;
+    transition: 1s ease-in-out;
+    stroke-dashoffset: -480;
+    border-color: #FFDD87;
+    color: rgb(216, 238, 238);
+  }
+`
+export const DeleteButton = styled.button`
+  height: 42px;
+  padding: 10px;
+  width: 100%;
+  display: block;
+  margin: 10px 0;
+
+  background: rgb(255, 99, 132, 0.5);
+  border-radius: 8px;
+  border: 2px solid rgb(255, 99, 132);
+  transition: 1s ease-in-out;
+
+  color: #08282E;
+  font-size: 16px;
+  font-weight: bold;
+
+  cursor: pointer;
+
+  &:hover {
+    filter: brightness(0.9);
+    background-color: #BD4F52;
+    transition: 1s ease-in-out;
+    stroke-dashoffset: -480;
+    border-color: #FFDD87;
+  }
+
+  &:active {
+    filter: brightness(0.7);
+  }
+`
+
+export const CollectButton = styled.button`
+  height: 42px;
+  padding: 10px;
+  width: 100%;
+  display: block;
+  margin: 10px 0;
+
+  background: rgb(189, 79, 82, 0.5);
+  border-radius: 8px;
+  border: 1px solid #AEFEFF;
+  transition: 1s ease-in-out;
+
+  color: #35858B;
+  font-size: 16px;
+  font-weight: bold;
+
+  cursor: pointer;
+
+  &:hover {
+    filter: brightness(0.9);
+    background-color: #BD4F52;
+    transition: 1s ease-in-out;
+    stroke-dashoffset: -480;
+    border-color: #FFDD87;
+  }
+
+  &:active {
+    filter: brightness(0.7);
+  }
+`
+
+export const UserInput = styled.input`
+  border: none;
+  border-bottom: 1px solid #35858B;
+  background-color: transparent;
+  color: rgb(216, 238, 238, 0.5);
+`
