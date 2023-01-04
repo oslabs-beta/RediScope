@@ -29,6 +29,8 @@ function RedisForm(props: Props): JSX.Element {
   const [intervalMS, setIntervalMS] = useState(1000);
   const [numOfTimepoints, setnumOfTimepoints] = useState(50);
 
+  const [noShow, setnoShow] = useState(true);
+
   // const [check, setCheck] = useState(false);
 
   // const { data } = state; 
@@ -224,6 +226,14 @@ function RedisForm(props: Props): JSX.Element {
     // console.log('intervalMS', intervalMS)
    }
 
+   // 
+   const handleClick= () => {
+    setnoShow(false);
+   }
+   // child components that hold each url that a user may have
+   // each child component should be a button that will select the url to collect data from
+
+
   return (
     <>
       <Formik
@@ -233,10 +243,11 @@ function RedisForm(props: Props): JSX.Element {
       >
         <Form>
           <div className="URL-Form">
-            <label htmlFor="URL">Redis Cache URL</label>{"\n"}
-            name: <Field name="name" type="text" className="URL-form-control" />{"\n"}
-            URL path: <Field name="URL" type="text" className="URL-form-control" />
-            <ButtonStyle type="submit" className="btn btn-primary">Add URL</ButtonStyle>
+            <ButtonStyle onClick={handleClick}> Connect To A New URL </ButtonStyle>
+              <label htmlFor="URL">Redis Cache URL</label> {"\n"}
+              name: <Field name="name" type="text" className="URL-form-control" />{"\n"}
+              URL path: <Field name="URL" type="text" className="URL-form-control" />
+              <ButtonStyle type="submit" className="btn btn-primary">Add URL</ButtonStyle>
           </div>
         </Form>
       </Formik>
