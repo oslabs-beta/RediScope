@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --open --hot --config webpack.dev.js",
-    "build": "webpack --config webpack.prod.js",
+    "start": "webpack-dev-server --mode=development --open --hot --config webpack.config.js",
+    "build": "webpack --mode=production --config webpack.config.js",
     "dev": "nodemon server/server.js"
   },
   "keywords": [],
