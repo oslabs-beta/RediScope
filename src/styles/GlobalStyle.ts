@@ -126,3 +126,24 @@ export const Mainpage = styled.div`
 
   
 `
+
+
+
+
+
+
+
+export const Center = styled.div`
+  display: flex;
+  justify-content: center;
+`
+
+export const Border = styled.div`
+  padding: 5em;
+  margin-bottom: 10px;
+  border: 0.1em solid;
+  border-color: #4FBDBA;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+`;

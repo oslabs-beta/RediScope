@@ -7,6 +7,7 @@ import Dashboard from './components/Dashboard'
 import { GlobalStyle, Mainpage } from './styles/GlobalStyle'
 import { Greetings } from './components/Greetings'
 import { RedisContextProvider } from './context/RedisContext'
+import Main from './components/Main'
 
 export function App() {
   // <>
@@ -45,12 +46,16 @@ export function App() {
             <button>
               <Link to="/Dashboard">dash</Link>
             </button>
+            <button>
+              <Link to="/Main"> Main</Link>
+            </button>
           </Mainpage>
 
           <Routes>
             <Route path="/Login" element={<Login />} />
             <Route path="/Signup" element={<SignUp />} />
             <Route path="/Dashboard" element={<Dashboard />} />
+            <Route path="/Main" element ={<Main />} />
           </Routes>
         </div>
       </BrowserRouter>
