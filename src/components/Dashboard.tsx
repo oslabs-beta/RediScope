@@ -3,10 +3,13 @@ import React from 'react'
 import BarChart from './Charts/BarChart'
 import {
   ButtonStyle,
-  Wrapper,
+  GraphDiv,
   Title,
   ChartWrapper,
-  Inner
+  Inner,
+  DashboardContainer,
+  URLSelector,
+  GraphContainer
 } from '../styles/GlobalStyle'
 import RedisForm from './RedisForm'
 //import MetricsTable from './Charts/MetricsTable'
@@ -22,42 +25,46 @@ type Props = {}
 export default function Dashboard(props: Props): JSX.Element {
   return (
     <>
-      <div>
-        <Title> Welcome </Title>
+    <div>
+      <Title> Welcome </Title>
+    </div>
+    <DashboardContainer>
+      <URLSelector>
         <RedisForm />
-      </div>
-      <h1>Metric Dashboard</h1>
-
-      <Wrapper>
-        <Inner>
-          <LineGraph />
-          {/* <BarChart /> */}
-        </Inner>
-      </Wrapper>
-      <Wrapper>
-        <Inner>
-        <ConnectedClients />
-        {/* <PieChart /> */}
-        </Inner>
-      </Wrapper>
-      <Wrapper>
-        <Inner>
-        <TotalCommands />
-          {/* <MetricsTable /> */}
+      </URLSelector>
+      <GraphContainer>
+        <GraphDiv>
+          <Inner>
+            <LineGraph />
+            {/* <BarChart /> */}
           </Inner>
-      </Wrapper>
-      <Wrapper>
-        <Inner>
-          <EvictedKeys />
+        </GraphDiv>
+        <GraphDiv>
+          <Inner>
+          <ConnectedClients />
+          {/* <PieChart /> */}
+          </Inner>
+        </GraphDiv>
+        <GraphDiv>
+          <Inner>
+          <TotalCommands />
             {/* <MetricsTable /> */}
             </Inner>
-      </Wrapper>
-      <Wrapper>
-        <Inner>
-          <CacheHitRatio />
-            {/* <MetricsTable /> */}
-            </Inner>
-      </Wrapper>
+        </GraphDiv>
+        <GraphDiv>
+          <Inner>
+            <EvictedKeys />
+              {/* <MetricsTable /> */}
+              </Inner>
+        </GraphDiv>
+        <GraphDiv>
+          <Inner>
+            <CacheHitRatio />
+              {/* <MetricsTable /> */}
+              </Inner>
+        </GraphDiv>
+      </GraphContainer>
+    </DashboardContainer>
     </>
   )
 }

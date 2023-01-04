@@ -89,12 +89,20 @@ export const Title = styled.h1`
   font-weight: 800;
 `;
 
-export const Container = styled.div`
-  
+export const DashboardContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+
+`
+export const URLSelector = styled.div`
+  padding: 25px;
+`
+export const GraphContainer = styled.div`
+  width: 100%;
+  display: grid;
 `
 
-
-export const Wrapper = styled.div`
+export const GraphDiv = styled.div`
   padding: 5em;
   margin-bottom: 10px;
   border: 0.1em solid;

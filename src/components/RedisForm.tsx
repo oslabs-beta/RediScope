@@ -4,6 +4,7 @@ import { Formik, Field, Form, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
 import { RedisContext } from '../context/RedisContext'
 import { useLocation } from 'react-router-dom';
+import { ButtonStyle } from '../styles/GlobalStyle'
 
 type Props = {}
 type URLState = {
@@ -235,7 +236,7 @@ function RedisForm(props: Props): JSX.Element {
             <label htmlFor="URL">Redis Cache URL</label>{"\n"}
             name: <Field name="name" type="text" className="URL-form-control" />{"\n"}
             URL path: <Field name="URL" type="text" className="URL-form-control" />
-            <button type="submit" className="btn btn-primary">Add URL</button>
+            <ButtonStyle type="submit" className="btn btn-primary">Add URL</ButtonStyle>
           </div>
         </Form>
       </Formik>
@@ -244,7 +245,7 @@ function RedisForm(props: Props): JSX.Element {
         <input id="setIntervalMS" name="setIntervalMS" value={intervalMS} type="number" min="1000" onChange={e=> setIntervalMS(+e.target.value)}></input>
         <label htmlFor="setnumOfTimepoints">Choose max number of timepoints:</label>
         <input id="setnumOfTimepoints" name="setnumOfTimepoints" value={numOfTimepoints} type="number" max="500" onChange={e=> setnumOfTimepoints(+e.target.value)}></input>
-        <button type="submit" value="Submit" className="btn btn-primary" onClick={collectionSetting}>Set Settings</button>
+        <ButtonStyle type="submit" value="Submit" className="btn btn-primary" onClick={collectionSetting}>Set Settings</ButtonStyle>
       </form>
 
       <div>
@@ -261,7 +262,7 @@ function RedisForm(props: Props): JSX.Element {
           </select>
           <button type="submit" value="Submit" className="btn btn-danger" onClick={deleteURL}>Delete selected URL</button>
           <div>Selected: { url || urls[0]?.url }</div>          
-          <button type="submit" className="btn btn-primary" onClick={startCollection}>{intervalId ? "STOP LIVE DATA COLLECTION" : "START LIVE DATA COLLECTION"}</button>
+          <ButtonStyle type="submit" className="btn btn-primary" onClick={startCollection}>{intervalId ? "STOP LIVE DATA COLLECTION" : "START LIVE DATA COLLECTION"}</ButtonStyle>
 
         </form>
       </div>
