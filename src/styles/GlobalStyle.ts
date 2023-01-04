@@ -1,4 +1,13 @@
-import styled, { createGlobalStyle } from 'styled-components'
+import styled, { createGlobalStyle, StyledFunction } from 'styled-components'
+import ch from '../components/chihiroheadshot.png'
+import ce from '../components/images/coralheadshot.png'
+
+interface Props {
+  src: any;
+  width: string;
+  height: string;
+}
+
 
 export const GlobalStyle = createGlobalStyle`
   * {
@@ -147,3 +156,23 @@ export const Border = styled.div`
   justify-content: center;
   align-items: center;
 `;
+
+export const Circle = styled.div `
+display: inline-block; 
+position: relative; 
+width: 200px; 
+height: 200px; 
+overflow: hidden; 
+border-radius: 50%; 
+`;
+
+export const Image = styled.img`
+  background-image: url(${ch});
+  width: 200px;
+  height: 200px;
+  `;
+
+
+
+//  <img src={ch} alt="Chihiro Developer" />
+

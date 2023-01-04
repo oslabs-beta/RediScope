@@ -46,16 +46,12 @@ export function App() {
             <button>
               <Link to="/Dashboard">dash</Link>
             </button>
-            <button>
-              <Link to="/Main"> Main</Link>
-            </button>
           </Mainpage>
-
           <Routes>
+            <Route path="/" element ={<Main />} />
             <Route path="/Login" element={<Login />} />
             <Route path="/Signup" element={<SignUp />} />
             <Route path="/Dashboard" element={<Dashboard />} />
-            <Route path="/Main" element ={<Main />} />
           </Routes>
         </div>
       </BrowserRouter>
