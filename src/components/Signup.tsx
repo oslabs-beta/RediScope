@@ -4,7 +4,7 @@ import { Formik, Field, Form, ErrorMessage, yupToFormErrors } from 'formik';
 import * as Yup from 'yup';
 
 import AuthService from "../service/authentication";
-import { ButtonStyle, LoginSignUpBox } from '../styles/GlobalStyle';
+import { ButtonStyle, LoginSignUpBox, Title, CenteredContainer } from '../styles/GlobalStyle';
 
 // ------ old imports ------ //
 // import Axios from 'axios';
@@ -142,9 +142,10 @@ export default class SignUp extends Component<Props, SignUpState> {
 
 
         return(
+          <CenteredContainer >
             <LoginSignUpBox>
                 <div className='formContainer'>
-                  <h1> RediScope </h1>
+                  <Title> RediScope </Title>
                     <Formik
                       initialValues={initVals}
                       SignUpSchema={this.SignUpSchema}
@@ -203,7 +204,7 @@ export default class SignUp extends Component<Props, SignUpState> {
                                 </div>
                             </div>
                         )}
-
+                        <br></br>
                         {message && (
                             <div className='form'>
                                 <div
@@ -212,7 +213,10 @@ export default class SignUp extends Component<Props, SignUpState> {
                                   }
                                   role='alert'
                                 >
-                                  { message }
+                                  Please fill required forms properly.
+                                  Usernames and passwords should be between 3 and 20 characters.
+                                  E-mail must be valid.
+                                  {/* { message } */}
                                 </div>
                             </div>
                         )}
@@ -220,6 +224,7 @@ export default class SignUp extends Component<Props, SignUpState> {
                     </Formik>
                 </div>
             </LoginSignUpBox>
+          </CenteredContainer>
         );
     }
 }

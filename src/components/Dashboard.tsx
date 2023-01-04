@@ -6,7 +6,7 @@ import {
   Wrapper,
   Title,
   ChartWrapper,
-  Inner,
+  Inner
 } from '../styles/GlobalStyle'
 import RedisForm from './RedisForm'
 //import MetricsTable from './Charts/MetricsTable'
@@ -23,7 +23,7 @@ export default function Dashboard(props: Props): JSX.Element {
   return (
     <>
       <div>
-        <h2> Welcome </h2>
+        <Title> Welcome </Title>
         <RedisForm />
       </div>
       <h1>Metric Dashboard</h1>
