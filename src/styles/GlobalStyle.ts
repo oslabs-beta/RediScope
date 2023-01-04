@@ -134,3 +134,45 @@ export const CenteredContainer = styled.div`
   justify-content: space-around;
 
 `
+
+
+export const Nav = styled.li`
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  display: inline;
+
+  a {
+    color: #D8EEEE;
+    font: 14px;
+    display: block;
+    padding: 8px;
+  }
+
+  a:hover {
+    cursor: pointer;
+    filter: brightness(0.9);
+    background-color: #35858B;
+    transition: 1s ease-in-out;
+    stroke-dashoffset: -480;
+    border-color: #FFDD87;
+  }
+`
+export const NavBar = styled.header`
+  display: flex;
+  justify-content: space-between;
+  background-color: #05161A;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  padding-left: 3em;
+`
+export const Elements = styled.div`
+  display: flex;
+  flex-direction: row;
+  padding-top: 1.25em;
+  padding-right: 5em;
+  justify-content: flex-start;
+`
