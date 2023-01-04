@@ -10,7 +10,7 @@ import {
 } from '../styles/GlobalStyle'
 import RedisForm from './RedisForm'
 import { MetricsTable } from './Charts/MetricsTable'
-import { LineGraph } from './Charts/LineGraph'
+import { LineGraph } from './Charts/lineGraph'
 import { ConnectedClients } from './Charts/connectedClients'
 import { TotalCommands } from './Charts/totalCommands'
 import { EvictedKeys } from './Charts/evictedKeys'
@@ -36,31 +36,31 @@ export default function Dashboard(props: Props): JSX.Element {
       </Wrapper>
       <Wrapper>
         <Inner>
-        <ConnectedClients />
-        {/* <PieChart /> */}
+          <ConnectedClients />
+          {/* <PieChart /> */}
         </Inner>
       </Wrapper>
       <Wrapper>
         <Inner>
-        <TotalCommands />
+          <TotalCommands />
           {/* <MetricsTable /> */}
-          </Inner>
+        </Inner>
       </Wrapper>
       <Wrapper>
         <Inner>
           <EvictedKeys />
-            {/* <MetricsTable /> */}
-            </Inner>
+          {/* <MetricsTable /> */}
+        </Inner>
       </Wrapper>
       <Wrapper>
         <Inner>
           <GraphCacheHitRatio />
-          
-            {/* <MetricsTable /> */}
-            </Inner>
-            <Inner>
-              <TableCacheHitRatio />
-            </Inner>
+
+          {/* <MetricsTable /> */}
+        </Inner>
+        <Inner>
+          <TableCacheHitRatio />
+        </Inner>
       </Wrapper>
     </>
   )
