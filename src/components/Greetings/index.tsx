@@ -1,6 +1,6 @@
 import { Button } from '../Button'
 import { Container } from './styles'
-import { LineGraph } from '../Charts/LineGraph'
+import { LineGraph } from '../Charts/lineGraph'
 import React, { useState, useContext, useEffect } from 'react'
 
 export function Greetings() {
@@ -41,9 +41,7 @@ export function Greetings() {
       <div>
         <LineGraph />
       </div>
-      <div>
-        {/* <LineGraph2 /> */}
-      </div>
+      <div>{/* <LineGraph2 /> */}</div>
       <Button onClick={testFetch}>Send message to main process</Button>
     </Container>
   )
