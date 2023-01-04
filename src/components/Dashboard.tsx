@@ -37,11 +37,15 @@ export default function Dashboard(props: Props): JSX.Element {
         </Elements>
       </Nav>
     </NavBar>
+
     <DashboardContainer>
+
       <URLSelector>
         <RedisForm />
       </URLSelector>
+
       <GraphContainer>
+        
         <GraphDiv>
           <Inner>
             <LineGraph />
