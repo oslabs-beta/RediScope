@@ -12,7 +12,7 @@ app.use(cors())
 app.use(morgan('dev'))
 
 app.use(express.static(path.join(__dirname, '../build/')))
-app.get('/*', (req, res) => res.sendFile(path.join(__dirname, '../build/')))
+
 
 app.use('/api/users', userRouter)
 app.use('/api/redis', redisRouter)
@@ -103,6 +103,11 @@ app.use((err, req, res, next) => {
   const errorObj = Object.assign({}, defaultErr, err)
   console.log(errorObj.log)
   return res.status(errorObj.status).json(errorObj.message)
+})
+
+app.get('/*', (req, res) => {
+  console.log('/*')
+  res.sendFile(path.join(__dirname, '../build/'))
 })
 
 // START SERVER

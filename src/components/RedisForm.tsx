@@ -29,30 +29,35 @@ function RedisForm(props: Props): JSX.Element {
   const [numOfTimepoints, setnumOfTimepoints] = useState(50)
 
   // const [check, setCheck] = useState(false);
-  const baseURL =
-    process.env.NODE_ENV === 'production'
-      ? 'api/users/'
-      : 'http://localhost:4000/api/users/'
+  
   // const { data } = state;
   // Function submitHandler grabs user's Redis URI and makes a get request to capture data with timestamps
   console.log('user in redisform')
   console.log('user', user)
 
-  // useEffect(() => {
-  //   console.log('user in useeffect in redisform')
-  //   setUser(location.state.user)
-  // }, [])
+  useEffect(() => {
+    console.log('user in useeffect in redisform')
+    setUser(location.state.user)
+  }, [])
 
   const getallURL = async () => {
     try {
+
+      const baseURLusers =
+      process.env.NODE_ENV === 'production'
+      ? `api/userURL/${user}/`
+      : `http://localhost:4000/api/userURL/${user}/`
+
       if (user) {
         // await setUser(location.state.user)
         const res = await axios.get(
           // `http://localhost:4000/api/userURL/${user}/`
-          `api/userURL/${user}/`
+          // `api/userURL/${user}/`
           // `http://localhost:4000/api/userURL/a`
+          baseURLusers
         )
         console.log('res.data in getallURL', res.data.data)
+        console.log('baseURLusers', baseURLusers)
         setUrls(res.data.data)
         console.log('urls in getallURL', urls)
         // let {date} = urlstate
@@ -63,20 +68,25 @@ function RedisForm(props: Props): JSX.Element {
     }
   }
 
-  // useEffect(() => {
-  //   // setUser(location.state.user)
-  //   getallURL()
-  //   // console.log('urls in useeffect', urls)
-  // }, [user])
+  useEffect(() => {
+    // setUser(location.state.user)
+    getallURL()
+    // console.log('urls in useeffect', urls)
+  }, [user])
 
   async function deleteURL(e) {
     e.preventDefault()
     // console.log('e.target.value', e.target.value)
     // console.log('url in start collection', url)
     try {
+      const baseURLdelete =
+      process.env.NODE_ENV === 'production'
+      ? `api/URL/${url || urls[0]?.url}/`
+      : `http://localhost:4000/api/URL/${url || urls[0]?.url}`
       const res = await axios.delete(
         // `http://localhost:4000/api/URL/${url || urls[0]?.url}`
-        `api/URL/${url || urls[0]?.url}/`
+        // `api/URL/${url || urls[0]?.url}/`
+        baseURLdelete
       )
       getallURL()
     } catch (error) {
@@ -109,7 +119,11 @@ function RedisForm(props: Props): JSX.Element {
         // const res = await axios.post('http://localhost:4000/api/redis', {
         //   URL: url,
         // })
-        const res = await axios.post('api/redis/', {
+        const baseURLredisurl =
+        process.env.NODE_ENV === 'production'
+        ? `api/redis/`
+        : 'http://localhost:4000/api/redis'
+        const res = await axios.post(baseURLredisurl, {
           URL: url,
         })
         // setting array values for each graph
@@ -189,9 +203,16 @@ function RedisForm(props: Props): JSX.Element {
     console.log('input', input)
 
     try {
+
+      const baseURLcreate =
+      process.env.NODE_ENV === 'production'
+      ? 'api/createURL/'
+      : 'http://localhost:4000/api/createURL'
+
       const res = await axios.post(
         // 'http://localhost:4000/api/createURL',
-        'api/createURL/',
+        // 'api/createURL/',
+        baseURLcreate,
         input
       )
 
