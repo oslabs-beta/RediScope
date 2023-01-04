@@ -1,13 +1,18 @@
-const path = require('path');
-const HTMLWebpackPlugin = require('html-webpack-plugin');
+const path = require('path')
+const HTMLWebpackPlugin = require('html-webpack-plugin')
 
 module.exports = {
+  entry: './src/index.tsx',
+  output: {
+    path: path.join(__dirname, '/build'),
+    filename: 'bundle.js',
+  },
 
-    plugins: [
-        new HTMLWebpackPlugin({
-                    template:'./public/index.html'
-                })
-    ],
+  plugins: [
+    new HTMLWebpackPlugin({
+      template: './public/index.html',
+    }),
+  ],
 
     module: {
         rules: [
@@ -37,19 +42,19 @@ module.exports = {
 
         ]
     },
-    resolve: {
-        extensions: ['.tsx', '.ts', '.jsx', '.js']
+  resolve: {
+    extensions: ['.tsx', '.ts', '.jsx', '.js'],
+  },
+  devServer: {
+    host: 'localhost',
+    port: 8080,
+    historyApiFallback: true,
+    static: {
+      directory: path.join(__dirname, 'build'),
+      publicPath: '/',
     },
-    devServer: {
-        host: 'localhost',
-        port: 8080,
-        historyApiFallback: true,
-        static: {
-          directory: path.join(__dirname, 'build'),
-          publicPath: '/'
-        },
-        proxy: {
-            '/api': 'http://localhost:4000'
-        }
-      }
+    proxy: {
+      '/api': 'http://localhost:4000',
+    },
+  },
 }
