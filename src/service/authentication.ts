@@ -1,28 +1,36 @@
-import axios from "axios";
+import axios from 'axios'
 
-const API_URL = 'http://localhost:4000/api/users/';
+// Set NODE_ENV to 'developelemt' or 'production' to conditionally change the URL
+// const API_URL = 'http://localhost:4000/api/users/';
+const baseURL =
+  process.env.NODE_ENV === 'production'
+    ? 'api/users/'
+    : 'http://localhost:4000/api/users/'
 
 class AuthService {
-    login(username: string, password: string){
-        return axios
-          .post(API_URL + "signin", {
-            username, password
-          })
-          .then(res => {
-            if (res.data){
-                localStorage.setItem('user', JSON.stringify(res.data));
-            }
-            return res.data;
-          });
-    }
+  login(username: string, password: string) {
+    console.log(baseURL)
+    return axios
+      .post(baseURL + 'signin', {
+        username,
+        password,
+      })
+      .then(res => {
+        if (res.data) {
+          localStorage.setItem('user', JSON.stringify(res.data))
+        }
+        return res.data
+      })
+  }
 
-    signup(username: string, password: string, email: string){
-        return axios.post(API_URL + 'signup', {
-            username,
-            password,
-            email
-        });
-    }
+  signup(username: string, password: string, email: string) {
+    console.log(baseURL)
+    return axios.post(baseURL + 'signup', {
+      username,
+      password,
+      email,
+    })
+  }
 }
 
-export default new AuthService();
+export default new AuthService()
