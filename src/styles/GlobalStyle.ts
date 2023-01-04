@@ -92,10 +92,11 @@ export const Title = styled.h1`
 export const DashboardContainer = styled.div`
   display: flex;
   flex-direction: row;
-
+  border: 0.2px outset #24383B;
 `
 export const URLSelector = styled.div`
   padding: 25px;
+  background-color: #08282E;
 `
 export const GraphContainer = styled.div`
   width: 100%;
