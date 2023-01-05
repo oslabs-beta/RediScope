@@ -32,7 +32,7 @@ export function GraphCacheHitRatio() {
 
   // console.log('from linegraph', usedMemory[usedMemory.length])
 
-  const cacheHitRatio = keyHits[keyHits.length-1]/keyMisses[keyHits.length-1]
+  const cacheHitRatio = keyHits[keyHits.length-1]/keyMisses[keyHits.length-1] + keyHits[keyHits.length-1]
 
   const options: object = {
     responsive: true,
