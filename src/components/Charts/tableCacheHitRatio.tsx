@@ -10,7 +10,7 @@ export function TableCacheHitRatio() {
   // const cacheHitRatio = keyHits[keyHits.length-1]/keyMisses[keyHits.length-1]
 
   
-  const cacheHitRatio = keyHits[keyHits.length-1]/keyMisses[keyHits.length-1]
+  const cacheHitRatio = keyHits[keyHits.length-1]/keyMisses[keyHits.length-1] + keyHits[keyHits.length-1]
 
   return (
     <div>
