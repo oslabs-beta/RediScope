@@ -34,8 +34,9 @@ body {
 
 }
 
-a:link {
+a {
   text-decoration: none;
+  color: #D8EEEE;
 }
 
 `
@@ -72,6 +73,7 @@ export const ButtonStyle = styled.button`
 
   a:link {
     text-decoration: none;
+    color: #D8EEEE;
   }
 `
 
