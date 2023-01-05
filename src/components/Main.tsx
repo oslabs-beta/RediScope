@@ -7,8 +7,13 @@ import {
   Image,
   Gif,
   Team,
-  Names, 
-  URLGif
+  Names,
+  NavBar,
+  Nav,
+  Elements,
+  Title,
+  URLGif,
+  ContributorsDiv
 
 } from '../styles/GlobalStyle'
 import cs from './images/chihiroheadshot.png'
@@ -26,21 +31,29 @@ type Props = {}
 export default function Main(props: Props): JSX.Element {
   return (
     <>
+      <NavBar>
+        <Title> RediScope </Title>
+        <Nav>
+          <Elements>
+            <li><a href='/Signup'>Get Started</a></li>
+            <li><a href='/Login'>Login</a></li>
+          </Elements>
+        </Nav>
+      </NavBar>
       <Border>
         <div id="header">
           <Center>
-            <h1> RediScope </h1>
+            <Title> RediScope </Title>
           </Center>
           <Center>
             <h2> Scope out your Redis cache performance with RediScope</h2> 
           </Center>
           <Center>
-             <h3>a data visualizer for Redis cache performance metrics </h3>
+             <h5>A free, open source visualizer for Redis cache performance metrics </h5>
           </Center>
           <Center>
-            
             <ButtonStyle> 
-              <Link to="/Signup"> Get Started Now!</Link>
+              <Link to="/Signup"> Get Started Now!</Link> 
             </ButtonStyle>
           </Center>
         </div>
@@ -59,7 +72,7 @@ export default function Main(props: Props): JSX.Element {
         </div>
         </Center>
         <Center>
-        <URLGif src={URL} />
+          <URLGif src={URL} />
         </Center>
       </Border>
 
@@ -77,7 +90,7 @@ export default function Main(props: Props): JSX.Element {
         <Center>
           <div id="feature3">
             <h2> Cache/Hit Ratio is calculated for you </h2>
-            <h4>Cache Hit Ratio = <br></br>KeySpace Hits/ KeySpace Misses + KeySpace Hits</h4>
+            <h4>Cache Hit Ratio = <br></br>KeySpace Hits/ (KeySpace Misses + KeySpace Hits)</h4>
           </div>
         </Center>
        
@@ -85,29 +98,28 @@ export default function Main(props: Props): JSX.Element {
       <Center>
         <h1 id="hello"> RediScope Team </h1>
         </Center>
-      <Border>
         <Center>
-          <div id="contributers">
+          <ContributorsDiv>
             
             
               <Team>
-                <div>
+         
                 <Names>
                 <h3> 
                 <a href="https://www.linkedin.com/in/coral-dabarera-edelson/"> Coral Dabarera Edelson</a> </h3>
                 </Names>
                    <Image src={ce} />
-                   </div>
+                
                   
               </Team>
               <Team>
-                <div>
+           
                 <Names>
                 <h3> 
                 <a href="https://www.linkedin.com/in/bokim1/"> Bo Kim </a> </h3> 
                 </Names>
                    <Image src={bk} />
-                   </div>
+               
               </Team>
                <Team>
               <Names>
@@ -133,10 +145,8 @@ export default function Main(props: Props): JSX.Element {
                    </Names>
                    <Image src={ay} />
                    </Team>
-              
-           </div>
+           </ContributorsDiv>
         </Center>
-      </Border>
       
     </>
     
