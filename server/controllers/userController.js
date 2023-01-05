@@ -27,7 +27,6 @@ userController.signUp = async (req, res, next) => {
    RETURNING username`
     const params = [username, hashedP, email]
     const result = await db.query(text, params)
-    // console.log('result in signup:' ,result);
     return res.status(200).json({ data: true })
   } catch (err) {
     return next({
@@ -48,9 +47,7 @@ userController.verifyUser = async (req, res, next) => {
        `
     const params = [username]
     const pw = await db.query(text, params)
-    //  console.log('yo pw', pw.rows[0].password)
     const result = await bcrypt.compare(password, pw.rows[0].password)
-    //  console.log('result: ', result)
     if (result) {
       return res.status(200).json({ data: true })
     } else {
