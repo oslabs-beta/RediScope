@@ -1,6 +1,5 @@
 import React from 'react'
-//import PieChart from './Charts/PieChart'
-import BarChart from './Charts/BarChart'
+
 import {
   ButtonStyle,
   GraphDiv,
@@ -16,13 +15,11 @@ import {
   UpperLogo,
 } from '../styles/GlobalStyle'
 import RedisForm from './RedisForm'
-import { MetricsTable } from './Charts/MetricsTable'
 import { MemoryUsage } from './Charts/MemoryUsage'
 import { ConnectedClients } from './Charts/connectedClients'
 import { TotalCommands } from './Charts/totalCommands'
 import { EvictedKeys } from './Charts/evictedKeys'
 import { GraphCacheHitRatio } from './Charts/graphCacheHitRatio'
-import { TableCacheHitRatio } from './Charts/tableCacheHitRatio'
 
 type Props = {}
 
