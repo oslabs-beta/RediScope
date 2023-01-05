@@ -7,7 +7,11 @@ import {
   Image,
   Gif,
   Team,
-  Names
+  Names,
+  NavBar,
+  Nav,
+  Elements,
+  Title
 
 } from '../styles/GlobalStyle'
 import cs from './images/chihiroheadshot.png'
@@ -23,6 +27,15 @@ type Props = {}
 export default function Main(props: Props): JSX.Element {
   return (
     <>
+      <NavBar>
+        <Title> RediScope </Title>
+        <Nav>
+          <Elements>
+            <li><a href='/Signup'>Get Started</a></li>
+            <li><a href='/Login'>Login</a></li>
+          </Elements>
+        </Nav>
+      </NavBar>
       <Border>
         <div id="header">
           <Center>
@@ -35,9 +48,9 @@ export default function Main(props: Props): JSX.Element {
              <h3>a data visualizer for Redis cache performance metrics </h3>
           </Center>
           <Center>
-            <button> 
+            <ButtonStyle> 
               <Link to="/Signup"> Get Started Now!</Link> 
-            </button>
+            </ButtonStyle>
           </Center>
         </div>
       </Border>
