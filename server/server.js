@@ -11,8 +11,8 @@ app.use(express.urlencoded({ extended: true }))
 app.use(cors())
 app.use(morgan('dev'))
 
+app.use(express.static(path.resolve(__dirname, '../public/assets')))
 app.use(express.static(path.join(__dirname, '../build/')))
-
 
 app.use('/api/users', userRouter)
 app.use('/api/redis', redisRouter)
