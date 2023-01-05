@@ -10,28 +10,31 @@ export function TableCacheHitRatio() {
   // const cacheHitRatio = keyHits[keyHits.length-1]/keyMisses[keyHits.length-1]
 
   
-  const cacheHitRatio = keyHits[keyHits.length-1]/keyMisses[keyHits.length-1]
+  const cacheHitRatio = keyHits[keyHits.length-1]/keyMisses[keyHits.length-1] + keyHits[keyHits.length-1]
 
   return (
     <div>
       <div className="list-group">
-        <table className="table table-hover table-dark">
-          <thead>
-            <tr className="bg-primary table-warning">
-              <th id="hits" className="text-center" scope="col">
-                Cache Hit Ratio
-              </th>
-            </tr>
-          </thead>
-
-          <tbody>
-            <tr key="Cache Hit Ratio">
-              <td id= "hits" className="text-center">{cacheHitRatio}</td>
-              
-            </tr>
-          </tbody>
-        </table>
+        <h3>Cache Hit Ratio: {cacheHitRatio}</h3>
       </div>
     </div>
   )
 }
+
+
+{/* <table className="table table-hover table-dark">
+<thead>
+  <tr className="bg-primary table-warning">
+    <th id="hits" className="text-center" scope="col">
+      Cache Hit Ratio
+    </th>
+  </tr>
+</thead>
+
+<tbody>
+  <tr key="Cache Hit Ratio">
+    <td id= "hits" className="text-center">{cacheHitRatio}</td>
+    
+  </tr>
+</tbody>
+</table> */}

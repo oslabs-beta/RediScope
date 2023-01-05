@@ -34,10 +34,18 @@ export function TotalCommands() {
     plugins: {
       legend: {
         position: 'top' as const,
+        labels: {
+          color: '#dadada'
+        }
       },
       title: {
         display: true,
         text: 'Total Commands Processed',
+        font: {
+          size: 22,
+          family: "'Helvetica', 'serif'"
+        },
+        color: '#dadada'
       },
     },
   }

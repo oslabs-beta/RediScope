@@ -1,0 +1,8 @@
+remove all docker
+
+docker ps -aq | xargs docker stop | xargs docker rm
+
+docker build -t rediscope/mm-prod .
+
+
+docker run -p 3001:4000 rediscope/mm-prod 
