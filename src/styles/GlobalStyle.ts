@@ -179,7 +179,8 @@ export const NavBar = styled.header`
   top: 0;
   left: 0;
   padding-left: 3em;
-  background-image: linear-gradient (#05161A, #35858B);
+  background-color: #aefeff;
+  background-image: linear-gradient(15deg, #aefeff 0%, #4fbdba 26%, #35858b 52%, #05161a 89%);
   background-size: cover;
   background-repeat: no-repeat;
 `
