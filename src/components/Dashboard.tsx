@@ -16,7 +16,7 @@ import {
 } from '../styles/GlobalStyle'
 import RedisForm from './RedisForm'
 import { MetricsTable } from './Charts/MetricsTable'
-import { LineGraph } from './Charts/LineGraph'
+import { MemoryUsage } from './Charts/MemoryUsage'
 import { ConnectedClients } from './Charts/connectedClients'
 import { TotalCommands } from './Charts/totalCommands'
 import { EvictedKeys } from './Charts/evictedKeys'
@@ -45,10 +45,10 @@ export default function Dashboard(props: Props): JSX.Element {
       </URLSelector>
 
       <GraphContainer>
-        
+
         <GraphDiv>
           <Inner>
-            <LineGraph />
+            <MemoryUsage />
             {/* <BarChart /> */}
           </Inner>
         </GraphDiv>
@@ -75,9 +75,6 @@ export default function Dashboard(props: Props): JSX.Element {
           <GraphCacheHitRatio />
             {/* <MetricsTable /> */}
             </Inner>
-            <Inner>
-              <TableCacheHitRatio />
-            </Inner>
       </GraphDiv>
     </GraphContainer>
   </DashboardContainer>
@@ -85,4 +82,4 @@ export default function Dashboard(props: Props): JSX.Element {
   )
 }
 
-// redis://default:rediscope123@redis-15161.c53.west-us.azure.cloud.redislabs.com:15161
+
