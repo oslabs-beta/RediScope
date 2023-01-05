@@ -187,6 +187,7 @@ export const URLSelection = styled.select`
   border: 1px inset #072227;
   border-radius: 4px; 
   padding: 7px;
+  outline: none;
 `
 
 export const Option = styled.option`
@@ -272,6 +273,7 @@ export const UserInput = styled.input`
   background-color: transparent;
   color: rgb(216, 238, 238, 0.5);
   width: 100%;
+  outline: none;
 `
 export const FormikStyle = styled.form`
   input {
@@ -280,6 +282,7 @@ export const FormikStyle = styled.form`
     background-color: transparent;
     color: rgb(216, 238, 238, 0.5);
     width: 100%;
+    outline: none;
   }
 `
 export const RedisForms = styled.div`

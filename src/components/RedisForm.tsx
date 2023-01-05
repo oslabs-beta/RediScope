@@ -251,18 +251,6 @@ function RedisForm(props: Props): JSX.Element {
     // console.log('intervalMS', intervalMS)
    }
 
-   // conditional rendering of adding new urls
-
-   const handleClick= () => {
-    setnoShow(false);
-   };
-
-   // how to select URL && set state
-   const handleSelect = () => {
-
-   }
-
-   // list of fetched URLS
   return (
     <RedisForms>
     <Formik
