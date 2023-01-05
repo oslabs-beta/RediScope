@@ -131,6 +131,7 @@ export const GraphContainer = styled.div`
 
 export const GraphDiv = styled.div`
   padding: 1em;
+  margin-bottom: 0px;
   margin: 10px;
   border: 0.1em solid;
   border-color: #4fbdba;
@@ -138,6 +139,7 @@ export const GraphDiv = styled.div`
 
 export const Inner = styled.div`
   display: flex;
+  padding-top: 50px;
 `
 
 export const ChartWrapper = styled.section`
