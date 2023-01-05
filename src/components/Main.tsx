@@ -7,15 +7,18 @@ import {
   Image,
   Gif,
   Team,
-  Names
+  Names, 
+  URLGif
 
 } from '../styles/GlobalStyle'
 import cs from './images/chihiroheadshot.png'
 import ce from './images/coralheadshot.png'
 import aw from './images/AW.png'
 import bk from './images/BK.png'
+import ay from './images/AY.png'
 import graphGif from './images/giphygraph.gif'
-import  linkIcon from './images/linkedinicon.svg'
+import URL from './images/URL.gif'
+
 
 
 type Props = {}
@@ -35,9 +38,10 @@ export default function Main(props: Props): JSX.Element {
              <h3>a data visualizer for Redis cache performance metrics </h3>
           </Center>
           <Center>
-            <button> 
-              <Link to="/Signup"> Get Started Now!</Link> 
-            </button>
+            
+            <ButtonStyle> 
+              <Link to="/Signup"> Get Started Now!</Link>
+            </ButtonStyle>
           </Center>
         </div>
       </Border>
@@ -53,6 +57,9 @@ export default function Main(props: Props): JSX.Element {
          <div id="feature1">
             <h2 id="feature1"> Store Your Redis Cache URL </h2>
         </div>
+        </Center>
+        <Center>
+        <URLGif src={URL} />
         </Center>
       </Border>
 
@@ -70,7 +77,7 @@ export default function Main(props: Props): JSX.Element {
         <Center>
           <div id="feature3">
             <h2> Cache/Hit Ratio is calculated for you </h2>
-            <h3>Cache Hit Ratio = KeySpace Hits/ KeySpace Misses + KeySpace Hits</h3>
+            <h4>Cache Hit Ratio = <br></br>KeySpace Hits/ KeySpace Misses + KeySpace Hits</h4>
           </div>
         </Center>
        
@@ -82,22 +89,35 @@ export default function Main(props: Props): JSX.Element {
         <Center>
           <div id="contributers">
             
-             <Team>
-              <Names>
-               <h3> Chihiro Snider </h3>
-               </Names>
-                   <Image src={cs} />
-                   
-              </Team>
+            
               <Team>
                 <div>
                 <Names>
-                <h3> Coral D. Edelson </h3>
+                <h3> 
+                <a href="https://www.linkedin.com/in/coral-dabarera-edelson/"> Coral Dabarera Edelson</a> </h3>
                 </Names>
                    <Image src={ce} />
                    </div>
                   
               </Team>
+              <Team>
+                <div>
+                <Names>
+                <h3> 
+                <a href="https://www.linkedin.com/in/bokim1/"> Bo Kim </a> </h3> 
+                </Names>
+                   <Image src={bk} />
+                   </div>
+              </Team>
+               <Team>
+              <Names>
+               <h3> 
+               <a href="https://www.linkedin.com/in/chihiro-snider/"> Chihiro Snider</a></h3>
+               </Names>
+                   <Image src={cs} />
+                   
+              </Team>
+              
               <Team>
                 <Names>
                 <h3>
@@ -105,19 +125,13 @@ export default function Main(props: Props): JSX.Element {
                 </Names>
                    <Image src={aw} />
               </Team>
-              <Team>
-                <div>
-                <Names>
-                <h3> Bo Kim</h3>
-                </Names>
-                   <Image src={bk} />
-                   </div>
-              </Team>
+             
               <Team>
                   <Names>
-                   <h3> Coral Edelson</h3>
+                   <h3> 
+                   <a href="https://www.linkedin.com/in/aazyaz/">  Andrea Azadeh Yazdandoost </a></h3>
                    </Names>
-                   <Image src={ce} />
+                   <Image src={ay} />
                    </Team>
               
            </div>
