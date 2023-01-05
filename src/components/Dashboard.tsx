@@ -3,14 +3,20 @@ import React from 'react'
 import BarChart from './Charts/BarChart'
 import {
   ButtonStyle,
-  Wrapper,
+  GraphDiv,
   Title,
   ChartWrapper,
   Inner,
+  DashboardContainer,
+  URLSelector,
+  GraphContainer,
+  Nav,
+  NavBar,
+  Elements,
 } from '../styles/GlobalStyle'
 import RedisForm from './RedisForm'
 import { MetricsTable } from './Charts/MetricsTable'
-import { LineGraph } from './Charts/lineGraph'
+import { MemoryUsage } from './Charts/MemoryUsage'
 import { ConnectedClients } from './Charts/connectedClients'
 import { TotalCommands } from './Charts/totalCommands'
 import { EvictedKeys } from './Charts/evictedKeys'
@@ -22,48 +28,58 @@ type Props = {}
 export default function Dashboard(props: Props): JSX.Element {
   return (
     <>
-      <div>
-        <h2> Welcome </h2>
-        <RedisForm />
-      </div>
-      <h1>Metric Dashboard</h1>
+    <NavBar>
+      <Title> RediScope </Title>
+      <Nav>
+        <Elements>
+          <li><a href='/'>About</a></li>
+          <li><a href='/Login'>Sign Out</a></li>
+        </Elements>
+      </Nav>
+    </NavBar>
 
-      <Wrapper>
-        <Inner>
-          <LineGraph />
-          {/* <BarChart /> */}
-        </Inner>
-      </Wrapper>
-      <Wrapper>
-        <Inner>
+    <DashboardContainer>
+
+      <URLSelector>
+        <RedisForm />
+      </URLSelector>
+
+      <GraphContainer>
+
+        <GraphDiv>
+          <Inner>
+            <MemoryUsage />
+            {/* <BarChart /> */}
+          </Inner>
+        </GraphDiv>
+        <GraphDiv>
+          <Inner>
           <ConnectedClients />
           {/* <PieChart /> */}
-        </Inner>
-      </Wrapper>
-      <Wrapper>
-        <Inner>
+          </Inner>
+        </GraphDiv>
+        <GraphDiv>
+          <Inner>
           <TotalCommands />
-          {/* <MetricsTable /> */}
-        </Inner>
-      </Wrapper>
-      <Wrapper>
+            {/* <MetricsTable /> */}
+            </Inner>
+      </GraphDiv>
+      <GraphDiv>
         <Inner>
           <EvictedKeys />
-          {/* <MetricsTable /> */}
-        </Inner>
-      </Wrapper>
-      <Wrapper>
+            {/* <MetricsTable /> */}
+            </Inner>
+      </GraphDiv>
+      <GraphDiv>
         <Inner>
           <GraphCacheHitRatio />
-
-          {/* <MetricsTable /> */}
-        </Inner>
-        <Inner>
-          <TableCacheHitRatio />
-        </Inner>
-      </Wrapper>
-    </>
+            {/* <MetricsTable /> */}
+            </Inner>
+      </GraphDiv>
+    </GraphContainer>
+  </DashboardContainer>
+  </>
   )
 }
 
-// redis://default:rediscope123@redis-15161.c53.west-us.azure.cloud.redislabs.com:15161
+

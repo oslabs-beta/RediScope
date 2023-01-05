@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import { Navigate } from 'react-router-dom'
+import { Navigate, Link } from 'react-router-dom'
 import { Formik, Field, Form, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
-import { GlobalStyle } from '../styles/GlobalStyle';
+import { ButtonStyle, GlobalStyle, LoginSignUpBox, Title, CenteredContainer } from '../styles/GlobalStyle';
 
 import AuthService from '../service/authentication';
 
@@ -127,9 +127,10 @@ export default class Login extends Component<Props, LoginState> {
     }
 
     return (
-      <div className="Login">
-      <GlobalStyle />
+      <CenteredContainer>
+      <LoginSignUpBox>
         <div className="formContainer">
+          <Title> RediScope </Title>
           <Formik
             initialValues={initVal}
             validationSchema={this.validationSchema}
@@ -138,7 +139,11 @@ export default class Login extends Component<Props, LoginState> {
             <Form>
               <div className="form">
                 <label htmlFor="username">Username</label>
-                <Field name="username" type="text" className="form-control" />
+                <Field 
+                  name="username" 
+                  type="text" 
+                  className="form-control"
+                 />
                 <ErrorMessage
                   name="username"
                   component="div"
@@ -158,15 +163,21 @@ export default class Login extends Component<Props, LoginState> {
                   className="alert alert-danger"
                 />
               </div>
+
               <div className="form">
-                <button type="submit" className="btn btn btn-primary mt-4" disabled={loading}>
+                <ButtonStyle type="submit" className="btn btn btn-primary mt-4" disabled={loading}>
                   <span>Login</span>
-                </button>
+                </ButtonStyle>
+                <div>
+                  <span className="redirectLink"> New to RediScope? <Link id="link" to="/Signup"> Create an account here. </Link></span> 
+                </div>
+                
               </div>
             </Form>
           </Formik>
         </div>
-      </div>
+      </LoginSignUpBox>
+      </CenteredContainer>
     )
   }
 }
