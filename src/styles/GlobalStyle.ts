@@ -1,6 +1,7 @@
 import styled, { createGlobalStyle, StyledFunction } from 'styled-components'
-import ch from '../components/chihiroheadshot.png'
+import cs from '../components/images/chihiroheadshot.png'
 import ce from '../components/images/coralheadshot.png'
+import graphGif from '../components/images/giphygraph.gif'
 
 interface Props {
   src: any;
@@ -155,6 +156,8 @@ export const Border = styled.div`
   width: 100%;
   justify-content: center;
   align-items: center;
+  overflow: hidden;
+  white-space: nowrap;
 `;
 
 export const Circle = styled.div `
@@ -167,10 +170,30 @@ border-radius: 50%;
 `;
 
 export const Image = styled.img`
-  background-image: url(${ch});
+  background-image: url(${cs});
   width: 200px;
   height: 200px;
+  align-items: center;
   `;
+
+  export const Gif = styled.img`
+  background-image: url(${graphGif});
+  width: 450px;
+  height: 400px;
+  `;
+
+  export const Team = styled.div`
+  display: inline-block;
+  justify-content: center;
+  margin: 10px;
+`;
+
+export const Names = styled.h3`
+justify-content: center;
+display: flex;
+align-items:center;
+
+`
 
 
 

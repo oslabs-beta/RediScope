@@ -3,15 +3,20 @@ import { Route, Link, Routes, BrowserRouter } from 'react-router-dom'
 import {
   ButtonStyle,
   Border,
-  Title,
-  ChartWrapper,
-  Mainpage,
   Center,
   Image,
-  Circle
+  Gif,
+  Team,
+  Names
+
 } from '../styles/GlobalStyle'
-import ch from './chihiroheadshot.png'
+import cs from './images/chihiroheadshot.png'
 import ce from './images/coralheadshot.png'
+import aw from './images/AW.png'
+import bk from './images/BK.png'
+import graphGif from './images/giphygraph.gif'
+import  linkIcon from './images/linkedinicon.svg'
+
 
 type Props = {}
 
@@ -54,39 +59,68 @@ export default function Main(props: Props): JSX.Element {
       <Border>
         <Center>
           <div id="feature2">
-            <h2> Look at Performance Metrics in Real Time </h2>
+            <h2> View Performance Metrics in Real Time </h2>
           </div>
+        </Center>
+        <Center>
+        <Gif src={graphGif} />
         </Center>
       </Border>
       <Border>
         <Center>
           <div id="feature3">
             <h2> Cache/Hit Ratio is calculated for you </h2>
+            <h3>Cache Hit Ratio = KeySpace Hits/ KeySpace Misses + KeySpace Hits</h3>
           </div>
         </Center>
+       
       </Border>
-      
+      <Center>
+        <h1 id="hello"> RediScope Team </h1>
+        </Center>
       <Border>
         <Center>
-      <div id="contributers">
-        <h2 id="hello"> RediScope Team </h2>
-        <div>
-     
-      <h2> Chihiro Snider </h2>
-      <Image src={ch} />
-      
-
-      <Image src={ce} />
-      </div>
-      
-       
-        
-          
-           
-      
-      
-      
-      </div>
+          <div id="contributers">
+            
+             <Team>
+              <Names>
+               <h3> Chihiro Snider </h3>
+               </Names>
+                   <Image src={cs} />
+                   
+              </Team>
+              <Team>
+                <div>
+                <Names>
+                <h3> Coral D. Edelson </h3>
+                </Names>
+                   <Image src={ce} />
+                   </div>
+                  
+              </Team>
+              <Team>
+                <Names>
+                <h3>
+                  <a href="www.linkedin.com/in/andy-wong27"> Andy Wong</a></h3>
+                </Names>
+                   <Image src={aw} />
+              </Team>
+              <Team>
+                <div>
+                <Names>
+                <h3> Bo Kim</h3>
+                </Names>
+                   <Image src={bk} />
+                   </div>
+              </Team>
+              <Team>
+                  <Names>
+                   <h3> Coral Edelson</h3>
+                   </Names>
+                   <Image src={ce} />
+                   </Team>
+              
+           </div>
         </Center>
       </Border>
       
