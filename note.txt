@@ -1,0 +1,14 @@
+zip rediscope
+
+git archive -v -o rediscope.zip --format=zip HEAD
+
+remove all docker
+
+docker ps -aq | xargs docker stop | xargs docker rm
+
+docker build -t rediscope/mm-prod .
+
+
+docker run -p 3001:4000 rediscope/mm-prod 
+
+redis://default:rediscope123@redis-15161.c53.west-us.azure.cloud.redislabs.com:15161

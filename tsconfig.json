@@ -1,17 +1,3 @@
-// {
-//     "compilerOptions": {
-//         "target": "es2017",
-//         "module": "commonjs",
-//         "strictNullChecks": true,
-//         "esModuleInterop": true,
-//         "jsx": "react-jsx"
-    
-//     },
-//     "include": [
-//         "src"
-//     ] 
-// }
-
 {
     "compilerOptions": {
       "target": "es5",
@@ -27,7 +13,6 @@
       "sourceMap": true,
       "outDir": "./dist",
       "esModuleInterop": true, 
-      //bk made strict false
       "strict": false ,
       "noImplicitUseStrict": true
     }

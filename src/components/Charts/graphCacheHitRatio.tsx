@@ -32,15 +32,25 @@ export function GraphCacheHitRatio() {
 
   // console.log('from linegraph', usedMemory[usedMemory.length])
 
+  const cacheHitRatio = keyHits[keyHits.length-1]/(keyMisses[keyHits.length-1] + keyHits[keyHits.length-1]) || 0;
+
   const options: object = {
     responsive: true,
     plugins: {
       legend: {
         position: 'top' as const,
+        labels: {
+          color: '#dadada'
+        }
       },
       title: {
         display: true,
-        text: 'Cache Hit Ratio',
+        text: `Cache Hit Ratio: ${cacheHitRatio}`,
+        font: {
+          size: 22,
+          family: "'Helvetica', 'serif'"
+        },
+        color: '#dadada'
       },
     },
   }
