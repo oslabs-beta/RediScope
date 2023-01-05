@@ -9,10 +9,6 @@ interface Props {
   height: string;
 }
 
-
-
-
-
 export const GlobalStyle = createGlobalStyle`
 
 * {
@@ -181,12 +177,8 @@ export const NavBar = styled.header`
   top: 0;
   left: 0;
   padding-left: 3em;
-<<<<<<< HEAD
   background-color: #aefeff;
   background-image: linear-gradient(15deg, #aefeff 0%, #4fbdba 26%, #35858b 52%, #05161a 89%);
-=======
-  background-image: linear-gradient(#05161A, #35858B);
->>>>>>> Web
   background-size: cover;
   background-repeat: no-repeat;
 `
@@ -314,13 +306,6 @@ export const SelectedURL = styled.p`
   inline-size: 200px;
   
 `
-
-
-
-
-
-
-
 export const Center = styled.div`
   display: flex;
   justify-content: center;
