@@ -27,27 +27,28 @@ ChartJS.register(
 export function MemoryUsage() {
   const { usedMemory, setUsedMemory } = useContext(RedisContext)
   const { time, setTime } = useContext(RedisContext)
-  const { rss, setRss } = useContext(RedisContext);
+  const { rss, setRss } = useContext(RedisContext)
 
   console.log('from linegraph', usedMemory[usedMemory.length])
 
   const options: object = {
     responsive: true,
+    maintainAspectRation: false,
     plugins: {
       legend: {
         position: 'top' as const,
         labels: {
-          color: '#dadada'
-        }
+          color: '#dadada',
+        },
       },
       title: {
         display: true,
         text: 'Memory Usage: Used Memory vs RSS',
         font: {
           size: 22,
-          family: "'Helvetica', 'serif'"
+          family: "'Helvetica', 'serif'",
         },
-        color: '#dadada'
+        color: '#dadada',
       },
     },
   }
@@ -67,8 +68,9 @@ export function MemoryUsage() {
         data: rss,
         borderColor: 'rgb(79, 189, 186)',
         backgroundColor: 'rgba(79, 189, 186, 0.5)',
-      }
+      },
     ],
   }
+  // chart.canvas.parentNode.style.height = '128px'
   return <Line options={options} data={data} />
 }
