@@ -4,6 +4,8 @@ import { Formik, Field, Form, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
 import { RedisContext } from '../context/RedisContext'
 import { useLocation } from 'react-router-dom'
+import { ButtonStyle, DeleteButton, Option, URLSelection, UserInput, CollectButton, FormikStyle, RedisForms, SelectedURL } from '../styles/GlobalStyle'
+import { render } from 'react-dom'
 
 type Props = {}
 type URLState = {
@@ -11,22 +13,24 @@ type URLState = {
 }
 
 function RedisForm(props: Props): JSX.Element {
-  const { redisData, setRedisData } = useContext(RedisContext)
-  const { usedMemory, setUsedMemory } = useContext(RedisContext)
-  const { time, setTime } = useContext(RedisContext)
-  const { rss, setRss } = useContext(RedisContext)
-  const { user, setUser } = useContext(RedisContext)
-  const { url, setUrl } = useContext(RedisContext)
-  const { urls, setUrls } = useContext(RedisContext)
-  const { conClients, setConClients } = useContext(RedisContext)
-  const { totalComms, setTotalComms } = useContext(RedisContext)
-  const { evictedKeys, setEvictedKeys } = useContext(RedisContext)
-  const { keyHits, setKeyHits } = useContext(RedisContext)
-  const { keyMisses, setKeyMisses } = useContext(RedisContext)
-  const location = useLocation()
-  const [intervalId, setIntervalId] = useState(0)
-  const [intervalMS, setIntervalMS] = useState(1000)
-  const [numOfTimepoints, setnumOfTimepoints] = useState(50)
+  const { redisData, setRedisData } = useContext(RedisContext);
+  const { usedMemory, setUsedMemory } = useContext(RedisContext);
+  const { time, setTime } = useContext(RedisContext);
+  const { rss, setRss } = useContext(RedisContext);
+  const { user, setUser} = useContext(RedisContext);
+  const { url, setUrl} = useContext(RedisContext);
+  const { urls, setUrls} = useContext(RedisContext);
+  const { conClients, setConClients } = useContext(RedisContext);
+  const { totalComms, setTotalComms } = useContext(RedisContext);
+  const { evictedKeys, setEvictedKeys } = useContext(RedisContext);
+  const { keyHits, setKeyHits } = useContext(RedisContext);
+  const { keyMisses, setKeyMisses } = useContext(RedisContext);
+  const location = useLocation();
+  const [intervalId, setIntervalId] = useState(0);
+  const [intervalMS, setIntervalMS] = useState(2000);
+  const [numOfTimepoints, setnumOfTimepoints] = useState(50);
+
+  const [noShow, setnoShow] = useState(true);
 
   // const [check, setCheck] = useState(false);
   
@@ -245,103 +249,104 @@ function RedisForm(props: Props): JSX.Element {
     e.preventDefault()
     // console.log('e.target.value', e.target.value)
     // console.log('intervalMS', intervalMS)
-  }
+   }
 
   return (
-    <>
-      <Formik
-        initialValues={initVal}
-        validationSchema={validationSchema}
-        onSubmit={submitHandler}
-      >
-        <Form>
+    <RedisForms>
+    <Formik
+      initialValues={initVal}
+      validationSchema={validationSchema}
+      onSubmit={submitHandler}
+    >
+      <Form>
+        <FormikStyle>
           <div className="URL-Form">
-            <label htmlFor="URL">Redis Cache URL</label>
-            {'\n'}
-            name: <Field name="name" type="text" className="URL-form-control" />
-            {'\n'}
-            URL path:{' '}
-            <Field name="URL" type="text" className="URL-form-control" />
-            <button type="submit" className="btn btn-primary">
-              Add URL
-            </button>
+            <label htmlFor="URL">Redis Cache URL</label> {"\n"}
+              name: <Field name="name" type="text" className="URL-form-control"/>
+              <br></br>
+              URL path: <Field name="URL" type="text" className="URL-form-control" />
+              <ButtonStyle type="submit" className="btn btn-primary">Add URL</ButtonStyle>
           </div>
-        </Form>
-      </Formik>
+        </FormikStyle>
+      </Form>
+      
+    </Formik>
+    <form>
+      <label htmlFor="setIntervalMS">Choose an interval ms:</label>
+      <UserInput
+        id="setIntervalMS"
+        name="setIntervalMS"
+        value={intervalMS}
+        type="number"
+        min="1000"
+        onChange={e => setIntervalMS(+e.target.value)}
+      ></UserInput>
+      <label htmlFor="setnumOfTimepoints">
+        Choose max number of timepoints:
+      </label>
+      <UserInput
+        id="setnumOfTimepoints"
+        name="setnumOfTimepoints"
+        value={numOfTimepoints}
+        type="number"
+        max="500"
+        onChange={e => setnumOfTimepoints(+e.target.value)}
+      ></UserInput>
+      <ButtonStyle
+        type="submit"
+        value="Submit"
+        className="btn btn-primary"
+        onClick={collectionSetting}
+      >
+        Set Settings
+      </ButtonStyle>
+    </form>
+
+    <div>
       <form>
-        <label htmlFor="setIntervalMS">Choose an interval ms:</label>
-        <input
-          id="setIntervalMS"
-          name="setIntervalMS"
-          value={intervalMS}
-          type="number"
-          min="1000"
-          onChange={e => setIntervalMS(+e.target.value)}
-        ></input>
-        <label htmlFor="setnumOfTimepoints">
-          Choose max number of timepoints:
-        </label>
-        <input
-          id="setnumOfTimepoints"
-          name="setnumOfTimepoints"
-          value={numOfTimepoints}
-          type="number"
-          max="500"
-          onChange={e => setnumOfTimepoints(+e.target.value)}
-        ></input>
-        <button
+        <label htmlFor="urls">Choose a URL:</label>
+        <URLSelection
+          name="urls"
+          id="urls"
+          onChange={handleDropdown}
+          style={{ width: '100%' }}
+          multiple
+        >
+          {urls &&
+            urls.map(url => {
+              return (
+                <>
+                  <Option key={url.id} value={url?.url}>
+                    {'NAME- ' + url.name + '  __  PATH- '}
+                    {url?.url}
+                  </Option>
+                </>
+              )
+            })}
+        </URLSelection>
+        <DeleteButton
           type="submit"
           value="Submit"
-          className="btn btn-primary"
-          onClick={collectionSetting}
+          className="btn btn-danger"
+          onClick={deleteURL}
         >
-          Set Settings
-        </button>
+          Delete selected URL
+        </DeleteButton>
+        <CollectButton
+          type="submit"
+          className="btn btn-primary"
+          onClick={startCollection}
+        >
+          {intervalId
+            ? 'STOP LIVE DATA COLLECTION'
+            : 'START LIVE DATA COLLECTION'}
+        </CollectButton>
+        <SelectedURL>Selected: {url || urls[0]?.url}</SelectedURL>
       </form>
-
-      <div>
-        <form>
-          <label htmlFor="urls">Choose a URL:</label>
-          <select
-            name="urls"
-            id="urls"
-            onChange={handleDropdown}
-            style={{ width: '50%' }}
-          >
-            {urls &&
-              urls.map(url => {
-                return (
-                  <>
-                    <option key={url.id} value={url?.url}>
-                      {'NAME- ' + url.name + '  __  PATH- '}
-                      {url?.url}
-                    </option>
-                  </>
-                )
-              })}
-          </select>
-          <button
-            type="submit"
-            value="Submit"
-            className="btn btn-danger"
-            onClick={deleteURL}
-          >
-            Delete selected URL
-          </button>
-          <div>Selected: {url || urls[0]?.url}</div>
-          <button
-            type="submit"
-            className="btn btn-primary"
-            onClick={startCollection}
-          >
-            {intervalId
-              ? 'STOP LIVE DATA COLLECTION'
-              : 'START LIVE DATA COLLECTION'}
-          </button>
-        </form>
-      </div>
-    </>
+    </div>
+  </RedisForms>
   )
 }
 
 export default RedisForm
+
