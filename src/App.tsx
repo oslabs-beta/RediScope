@@ -30,41 +30,18 @@ export function App() {
   // </HashRouter>
 
   return (
-    <RedisContextProvider >
+    <RedisContextProvider>
       <BrowserRouter>
         <GlobalStyle />
         <div>
-            {/* <h1> RediScope </h1> */}
-            {/* <button>
-              <Link to="/Login">Login</Link>
-            </button>
-            <button>
-              <Link to="/Signup">Create Account</Link>
-            </button>
-            <button>
-              <Link to="/Dashboard">dash</Link>
-            </button> */}
           <Routes>
-            <Route path="/" element ={<Main />} />
+            <Route path="/" element={<Main />} />
             <Route path="/Login" element={<Login />} />
             <Route path="/Signup" element={<SignUp />} />
             <Route path="/Dashboard" element={<Dashboard />} />
           </Routes>
-
         </div>
       </BrowserRouter>
     </RedisContextProvider>
   )
-}
-
-{
-  /* <Link to="/Login">
-            <h2>Login</h2>
-          </Link>
-          <Link to="/Signup">
-            <h2>Signup</h2>
-          </Link>
-          <Link to="/Dashboard">
-            <h2>Dashboard</h2>
-          </Link> */
 }
