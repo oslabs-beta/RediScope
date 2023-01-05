@@ -1,17 +1,13 @@
 import styled, { createGlobalStyle, StyledFunction } from 'styled-components'
-import cs from '../components/images/chihiroheadshot.png'
-import ce from '../components/images/coralheadshot.png'
-import graphGif from '../components/images/giphygraph.gif'
+// import cs from '../components/images/chihiroheadshot.png'
+// import ce from '../components/images/coralheadshot.png'
+// import graphGif from '../components/images/giphygraph.gif'
 
 interface Props {
-  src: any;
-  width: string;
-  height: string;
+  src: any
+  width: string
+  height: string
 }
-
-
-
-
 
 export const GlobalStyle = createGlobalStyle`
 
@@ -50,10 +46,10 @@ export const ButtonStyle = styled.button`
 
   background: transparent;
   border-radius: 8px;
-  border: 1px solid #AEFEFF;
+  border: 1px solid #aefeff;
   transition: 1s ease-in-out;
 
-  color: #FFF;
+  color: #fff;
   font-size: 16px;
   font-weight: bold;
 
@@ -61,10 +57,10 @@ export const ButtonStyle = styled.button`
 
   &:hover {
     filter: brightness(0.9);
-    background-color: #35858B;
+    background-color: #35858b;
     transition: 1s ease-in-out;
     stroke-dashoffset: -480;
-    border-color: #FFDD87;
+    border-color: #ffdd87;
   }
 
   &:active {
@@ -73,7 +69,7 @@ export const ButtonStyle = styled.button`
 
   a:link {
     text-decoration: none;
-    color: #D8EEEE;
+    color: #d8eeee;
   }
 `
 
@@ -86,8 +82,8 @@ export const clickLink = styled.link`
 export const LoginSignUpBox = styled.div`
   border-radius: 10px;
   border: 1px solid #286468;
-  box-shadow: 1px 4px 10px #AEFEFF;
-  background-image: linear-gradient(#072227, #35858B);
+  box-shadow: 1px 4px 10px #aefeff;
+  background-image: linear-gradient(#072227, #35858b);
   background-size: cover;
   background-repeat: no-repeat;
   padding: 25px;
@@ -99,17 +95,17 @@ export const Title = styled.h1`
   color: white;
   font-family: 'Playfair Display', serif;
   font-weight: 800;
-`;
+`
 
 export const DashboardContainer = styled.div`
   display: flex;
   width: 80vw;
   flex-direction: row;
-  border: 0.2px outset #24383B;
+  border: 0.2px outset #24383b;
 `
 export const URLSelector = styled.div`
   padding: 25px;
-  background-color: #08282E;
+  background-color: #08282e;
   width: 30%;
 `
 export const GraphContainer = styled.div`
@@ -125,9 +121,8 @@ export const GraphDiv = styled.div`
   padding: 1em;
   margin: 10px;
   border: 0.1em solid;
-  border-color: #4FBDBA;
-
-`;
+  border-color: #4fbdba;
+`
 
 export const Inner = styled.div`
   display: flex;
@@ -136,7 +131,7 @@ export const Inner = styled.div`
 export const ChartWrapper = styled.section`
   text-align: center;
   color: white;
-`;
+`
 
 export const CenteredContainer = styled.div`
   margin: auto;
@@ -157,7 +152,7 @@ export const Nav = styled.li`
   display: inline;
 
   a {
-    color: #D8EEEE;
+    color: #d8eeee;
     font: 14px;
     display: block;
     padding: 8px;
@@ -166,10 +161,10 @@ export const Nav = styled.li`
   a:hover {
     cursor: pointer;
     filter: brightness(0.9);
-    background-color: #35858B;
+    background-color: #35858b;
     transition: 1s ease-in-out;
     stroke-dashoffset: -480;
-    border-color: #FFDD87;
+    border-color: #ffdd87;
     border-radius: 5em;
   }
 `
@@ -182,7 +177,12 @@ export const NavBar = styled.header`
   left: 0;
   padding-left: 3em;
   background-color: #aefeff;
-  background-image: linear-gradient(15deg, #4fbdba 26%, #35858b 42%, #05161a 80%);
+  background-image: linear-gradient(
+    15deg,
+    #4fbdba 26%,
+    #35858b 42%,
+    #05161a 80%
+  );
   background-size: cover;
   background-repeat: no-repeat;
 `
@@ -195,12 +195,12 @@ export const Elements = styled.div`
 `
 
 export const URLSelection = styled.select`
-  background-color: #05161A;
-  color: #DADADA;
+  background-color: #05161a;
+  color: #dadada;
   font-size: 20px;
   cursor: pointer;
   border: 1px inset #072227;
-  border-radius: 4px; 
+  border-radius: 4px;
   padding: 7px;
   outline: none;
 `
@@ -211,10 +211,10 @@ export const Option = styled.option`
 
   &:hover {
     filter: brightness(0.9);
-    background-color: #35858B;
+    background-color: #35858b;
     transition: 1s ease-in-out;
     stroke-dashoffset: -480;
-    border-color: #FFDD87;
+    border-color: #ffdd87;
     color: rgb(216, 238, 238);
   }
 `
@@ -239,10 +239,10 @@ export const DeleteButton = styled.button`
 
   &:hover {
     filter: brightness(0.9);
-    background-color: #BD4F52;
+    background-color: #bd4f52;
     transition: 1s ease-in-out;
     stroke-dashoffset: -480;
-    border-color: #FFDD87;
+    border-color: #ffdd87;
   }
 
   &:active {
@@ -274,7 +274,7 @@ export const CollectButton = styled.button`
     background-color: rgb(79, 189, 186);
     transition: 1s ease-in-out;
     stroke-dashoffset: -480;
-    border-color: #FFDD87;
+    border-color: #ffdd87;
   }
 
   &:active {
@@ -284,7 +284,7 @@ export const CollectButton = styled.button`
 
 export const UserInput = styled.input`
   border: none;
-  border-bottom: 1px solid #35858B;
+  border-bottom: 1px solid #35858b;
   background-color: transparent;
   color: rgb(216, 238, 238, 0.5);
   width: 100%;
@@ -293,7 +293,7 @@ export const UserInput = styled.input`
 export const FormikStyle = styled.form`
   input {
     border: none;
-    border-bottom: 1px solid #35858B;
+    border-bottom: 1px solid #35858b;
     background-color: transparent;
     color: rgb(216, 238, 238, 0.5);
     width: 100%;
@@ -308,7 +308,6 @@ export const RedisForms = styled.div`
 export const SelectedURL = styled.p`
   overflow-wrap: break-word;
   inline-size: 200px;
-  
 `
 export const Center = styled.div`
   display: flex;
@@ -319,59 +318,55 @@ export const Border = styled.div`
   padding: 5em;
   margin-bottom: 10px;
   border: 0.1em solid;
-  border-color: #4FBDBA;
+  border-color: #4fbdba;
   width: 100%;
   justify-content: center;
   align-items: center;
   overflow: hidden;
   white-space: nowrap;
-`;
+`
 
-export const Circle = styled.div `
-display: inline-block; 
-position: relative; 
-width: 200px; 
-height: 200px; 
-overflow: hidden; 
-border-radius: 50%; 
-`;
+export const Circle = styled.div`
+  display: inline-block;
+  position: relative;
+  width: 200px;
+  height: 200px;
+  overflow: hidden;
+  border-radius: 50%;
+`
 
+// background-image: url(${'https://github.com/oslabs-beta/RediScope/raw/fix-pathing-images/public/assets/Chihiroheadshot.png'});
 export const Image = styled.img`
-  background-image: url(${cs});
   width: 200px;
   height: 200px;
   align-items: center;
-  `;
-
-  export const Gif = styled.img`
-  background-image: url(${graphGif});
+`
+// background-image: url(${'https://github.com/oslabs-beta/RediScope/raw/fix-pathing-images/public/assets/giphygraph.gif'});
+export const Gif = styled.img`
   width: 450px;
   height: 400px;
-  `;
+`
 
-  export const URLGif = styled.img`
-  background-image: url(${graphGif});
+// background-image: url(${'https://github.com/oslabs-beta/RediScope/raw/fix-pathing-images/public/assets/giphygraph.gif'});
+export const URLGif = styled.img`
   width: 300px;
   height: 400px;
-  `;
+`
 
-  export const Team = styled.div`
+export const Team = styled.div`
   display: inline-block;
   margin: 10px;
-`;
+`
 
 export const Names = styled.h3`
   justify-content: center;
   display: flex;
-  align-items:center;
+  align-items: center;
 `
 export const ContributorsDiv = styled.div`
   display: flex;
   justify-content: space-between;
   flex-direction: wrap;
-
 `
 
-
 //  <img src={ch} alt="Chihiro Developer" />
-
