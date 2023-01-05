@@ -1,4 +1,14 @@
-import styled, { createGlobalStyle } from 'styled-components'
+import styled, { createGlobalStyle, StyledFunction } from 'styled-components'
+import cs from '../components/images/chihiroheadshot.png'
+import ce from '../components/images/coralheadshot.png'
+import graphGif from '../components/images/giphygraph.gif'
+
+interface Props {
+  src: any;
+  width: string;
+  height: string;
+}
+
 
 
 
@@ -164,12 +174,14 @@ export const Nav = styled.li`
 export const NavBar = styled.header`
   display: flex;
   justify-content: space-between;
-  background-color: #05161A;
   position: fixed;
   width: 100%;
   top: 0;
   left: 0;
   padding-left: 3em;
+  background-image: linear-gradient (#05161A, #35858B);
+  background-size: cover;
+  background-repeat: no-repeat;
 `
 export const Elements = styled.div`
   display: flex;
@@ -295,3 +307,65 @@ export const SelectedURL = styled.p`
   inline-size: 200px;
   
 `
+
+
+
+
+
+
+
+export const Center = styled.div`
+  display: flex;
+  justify-content: center;
+`
+
+export const Border = styled.div`
+  padding: 5em;
+  margin-bottom: 10px;
+  border: 0.1em solid;
+  border-color: #4FBDBA;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  white-space: nowrap;
+`;
+
+export const Circle = styled.div `
+display: inline-block; 
+position: relative; 
+width: 200px; 
+height: 200px; 
+overflow: hidden; 
+border-radius: 50%; 
+`;
+
+export const Image = styled.img`
+  background-image: url(${cs});
+  width: 200px;
+  height: 200px;
+  align-items: center;
+  `;
+
+  export const Gif = styled.img`
+  background-image: url(${graphGif});
+  width: 450px;
+  height: 400px;
+  `;
+
+  export const Team = styled.div`
+  display: inline-block;
+  justify-content: center;
+  margin: 10px;
+`;
+
+export const Names = styled.h3`
+justify-content: center;
+display: flex;
+align-items:center;
+
+`
+
+
+//  <img src={ch} alt="Chihiro Developer" />
+
