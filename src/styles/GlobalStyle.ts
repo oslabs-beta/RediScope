@@ -9,6 +9,10 @@ interface Props {
   height: string;
 }
 
+
+
+
+
 export const GlobalStyle = createGlobalStyle`
 
 * {
@@ -178,7 +182,7 @@ export const NavBar = styled.header`
   left: 0;
   padding-left: 3em;
   background-color: #aefeff;
-  background-image: linear-gradient(15deg, #aefeff 0%, #4fbdba 26%, #35858b 52%, #05161a 89%);
+  background-image: linear-gradient(15deg, #4fbdba 26%, #35858b 42%, #05161a 80%);
   background-size: cover;
   background-repeat: no-repeat;
 `
@@ -353,14 +357,18 @@ export const Image = styled.img`
 
   export const Team = styled.div`
   display: inline-block;
-  justify-content: center;
   margin: 10px;
 `;
 
 export const Names = styled.h3`
-justify-content: center;
-display: flex;
-align-items:center;
+  justify-content: center;
+  display: flex;
+  align-items:center;
+`
+export const ContributorsDiv = styled.div`
+  display: flex;
+  justify-content: space-between;
+  flex-direction: wrap;
 
 `
 
