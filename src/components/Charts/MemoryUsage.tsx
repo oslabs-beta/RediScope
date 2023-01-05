@@ -24,7 +24,7 @@ ChartJS.register(
 
 // I need to figure out how to put data types to these data: I used to have data: object, and when I did, it gave me errors inside of LineGraph components return statement below
 
-export function LineGraph() {
+export function MemoryUsage() {
   const { usedMemory, setUsedMemory } = useContext(RedisContext)
   const { time, setTime } = useContext(RedisContext)
   const { rss, setRss } = useContext(RedisContext);
@@ -36,10 +36,18 @@ export function LineGraph() {
     plugins: {
       legend: {
         position: 'top' as const,
+        labels: {
+          color: '#dadada'
+        }
       },
       title: {
         display: true,
         text: 'Memory Usage: Used Memory vs RSS',
+        font: {
+          size: 22,
+          family: "'Helvetica', 'serif'"
+        },
+        color: '#dadada'
       },
     },
   }

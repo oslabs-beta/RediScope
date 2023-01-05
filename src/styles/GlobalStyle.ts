@@ -5,7 +5,6 @@ import styled, { createGlobalStyle } from 'styled-components'
 
 export const GlobalStyle = createGlobalStyle`
 
-
 * {
   margin-top: 0px;
   top: 50%
@@ -18,8 +17,8 @@ export const GlobalStyle = createGlobalStyle`
 }
 
 body {
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 16px;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 18px;
   background-color: #072227;
   color: #D8EEEE;
 
@@ -35,7 +34,8 @@ export const ButtonStyle = styled.button`
   padding: 10px;
   width: 100%;
   display: block;
-  margin: 10px 0;
+  margin: 20px 0px;
+  padding-bottom: 2.25em;
 
   background: transparent;
   border-radius: 8px;
@@ -91,31 +91,34 @@ export const Title = styled.h1`
 
 export const DashboardContainer = styled.div`
   display: flex;
+  width: 80vw;
   flex-direction: row;
   border: 0.2px outset #24383B;
 `
 export const URLSelector = styled.div`
   padding: 25px;
   background-color: #08282E;
+  width: 30%;
 `
 export const GraphContainer = styled.div`
   width: 100%;
   display: grid;
+  justify-content: space-between;
+  grid-template-columns: repeat(2, 1fr);
+  grid-auto-rows: minmax(20em, auto);
+  box-sizing: border-box;
 `
 
 export const GraphDiv = styled.div`
-  padding: 5em;
-  margin-bottom: 10px;
+  padding: 1em;
+  margin: 10px;
   border: 0.1em solid;
   border-color: #4FBDBA;
-  width: 100%;
-  justify-content: center;
-  align-items: center;
+
 `;
 
 export const Inner = styled.div`
   display: flex;
-  justify-content: center;
 `
 
 export const ChartWrapper = styled.section`
@@ -132,9 +135,7 @@ export const CenteredContainer = styled.div`
   text-align: center;
   display: flex;
   justify-content: space-around;
-
 `
-
 
 export const Nav = styled.li`
   list-style-type: none;
@@ -179,10 +180,12 @@ export const Elements = styled.div`
 
 export const URLSelection = styled.select`
   background-color: #05161A;
-  color: rgb(216, 238, 238, 0.5);
+  color: #DADADA;
   font-size: 20px;
   cursor: pointer;
-  border: 0.2px inset #072227;
+  border: 1px inset #072227;
+  border-radius: 4px; 
+  padding: 7px;
 `
 
 export const Option = styled.option`
@@ -203,14 +206,15 @@ export const DeleteButton = styled.button`
   padding: 10px;
   width: 100%;
   display: block;
-  margin: 10px 0;
+  margin: 20px 0;
+  padding-bottom: 2.25em;
 
   background: rgb(255, 99, 132, 0.5);
   border-radius: 8px;
   border: 2px solid rgb(255, 99, 132);
   transition: 1s ease-in-out;
 
-  color: #08282E;
+  color: #dadada;
   font-size: 16px;
   font-weight: bold;
 
@@ -234,14 +238,15 @@ export const CollectButton = styled.button`
   padding: 10px;
   width: 100%;
   display: block;
-  margin: 10px 0;
+  margin: 20px 0;
+  padding-bottom: 2.25em;
 
-  background: rgb(189, 79, 82, 0.5);
+  background: rgb(79, 189, 186, 0.4);
   border-radius: 8px;
-  border: 1px solid #AEFEFF;
+  border: 2px solid rgb(79, 189, 186);
   transition: 1s ease-in-out;
 
-  color: #35858B;
+  color: white;
   font-size: 16px;
   font-weight: bold;
 
@@ -249,7 +254,7 @@ export const CollectButton = styled.button`
 
   &:hover {
     filter: brightness(0.9);
-    background-color: #BD4F52;
+    background-color: rgb(79, 189, 186);
     transition: 1s ease-in-out;
     stroke-dashoffset: -480;
     border-color: #FFDD87;
@@ -265,4 +270,24 @@ export const UserInput = styled.input`
   border-bottom: 1px solid #35858B;
   background-color: transparent;
   color: rgb(216, 238, 238, 0.5);
+  width: 100%;
+`
+export const FormikStyle = styled.form`
+  input {
+    border: none;
+    border-bottom: 1px solid #35858B;
+    background-color: transparent;
+    color: rgb(216, 238, 238, 0.5);
+    width: 100%;
+  }
+`
+export const RedisForms = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+`
+export const SelectedURL = styled.p`
+  overflow-wrap: break-word;
+  inline-size: 200px;
+  
 `
