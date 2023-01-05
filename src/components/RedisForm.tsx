@@ -11,57 +11,40 @@ type URLState = {
 }
 
 function RedisForm(props: Props): JSX.Element {
-  const { redisData, setRedisData } = useContext(RedisContext)
   const { usedMemory, setUsedMemory } = useContext(RedisContext)
   const { time, setTime } = useContext(RedisContext)
   const { rss, setRss } = useContext(RedisContext)
   const { user, setUser } = useContext(RedisContext)
   const { url, setUrl } = useContext(RedisContext)
   const { urls, setUrls } = useContext(RedisContext)
-  const { conClients, setConClients } = useContext(RedisContext)
-  const { totalComms, setTotalComms } = useContext(RedisContext)
-  const { evictedKeys, setEvictedKeys } = useContext(RedisContext)
-  const { keyHits, setKeyHits } = useContext(RedisContext)
-  const { keyMisses, setKeyMisses } = useContext(RedisContext)
+  const {  setConClients } = useContext(RedisContext)
+  const {  setTotalComms } = useContext(RedisContext)
+  const {  setEvictedKeys } = useContext(RedisContext)
+  const {  setKeyHits } = useContext(RedisContext)
+  const {  setKeyMisses } = useContext(RedisContext)
   const location = useLocation()
   const [intervalId, setIntervalId] = useState(0)
-  const [intervalMS, setIntervalMS] = useState(1000)
+  const [intervalMS, setIntervalMS] = useState(2000)
   const [numOfTimepoints, setnumOfTimepoints] = useState(50)
 
-  // const [check, setCheck] = useState(false);
-  
-  // const { data } = state;
   // Function submitHandler grabs user's Redis URI and makes a get request to capture data with timestamps
-  console.log('user in redisform')
-  console.log('user', user)
 
   useEffect(() => {
-    console.log('user in useeffect in redisform')
     setUser(location.state.user)
   }, [])
 
   const getallURL = async () => {
     try {
-
       const baseURLusers =
       process.env.NODE_ENV === 'production'
-      ? `api/userURL/${user}/`
-      : `http://localhost:4000/api/userURL/${user}/`
+      ? `api/url/getUserURL/${user}/`
+      : `http://localhost:4000/api/url/getUserURL/${user}/`
 
       if (user) {
-        // await setUser(location.state.user)
         const res = await axios.get(
-          // `http://localhost:4000/api/userURL/${user}/`
-          // `api/userURL/${user}/`
-          // `http://localhost:4000/api/userURL/a`
           baseURLusers
         )
-        console.log('res.data in getallURL', res.data.data)
-        console.log('baseURLusers', baseURLusers)
         setUrls(res.data.data)
-        console.log('urls in getallURL', urls)
-        // let {date} = urlstate
-        // console.log(date)
       }
     } catch (err) {
       console.log(err)
@@ -69,23 +52,17 @@ function RedisForm(props: Props): JSX.Element {
   }
 
   useEffect(() => {
-    // setUser(location.state.user)
     getallURL()
-    // console.log('urls in useeffect', urls)
   }, [user])
 
-  async function deleteURL(e) {
+  const deleteURL = async (e) => {
     e.preventDefault()
-    // console.log('e.target.value', e.target.value)
-    // console.log('url in start collection', url)
     try {
       const baseURLdelete =
       process.env.NODE_ENV === 'production'
-      ? `api/URL/${url || urls[0]?.url}/`
-      : `http://localhost:4000/api/URL/${url || urls[0]?.url}`
-      const res = await axios.delete(
-        // `http://localhost:4000/api/URL/${url || urls[0]?.url}`
-        // `api/URL/${url || urls[0]?.url}/`
+      ? `api/URL/${url || urls[0]?.url}/${user}/`
+      : `http://localhost:4000/api/url/${url || urls[0]?.url}/${user}/`
+       await axios.delete(
         baseURLdelete
       )
       getallURL()
@@ -94,19 +71,16 @@ function RedisForm(props: Props): JSX.Element {
     }
   }
 
-  //start life data collection
+  // start life data collection
   const startCollection = async (e): Promise<any> => {
     e.preventDefault()
-    console.log('e.target.value', e.target.value)
-    console.log('url in start collection', url)
     try {
       if (intervalId) {
         clearInterval(intervalId)
         setIntervalId(0)
-
         return
       }
-      //MUST set all measurements to empty array after before you start up live data collection!
+      // MUST set all measurements to empty array after before you start up live data collection!
       setRss([])
       setUsedMemory([])
       setTime([])
@@ -115,10 +89,8 @@ function RedisForm(props: Props): JSX.Element {
       setEvictedKeys([])
       setKeyHits([])
       setKeyMisses([])
-      let newIntervalId: any = setInterval(async () => {
-        // const res = await axios.post('http://localhost:4000/api/redis', {
-        //   URL: url,
-        // })
+      
+      const newIntervalId: any = setInterval(async () => {
         const baseURLredisurl =
         process.env.NODE_ENV === 'production'
         ? `api/redis/`
@@ -129,7 +101,6 @@ function RedisForm(props: Props): JSX.Element {
         // setting array values for each graph
         // used memory data grab
         setUsedMemory((prev: Array<number> | any) => {
-          console.log('usedMemory state: ', usedMemory)
           // if prev length is equal to 10, slice the first element, if not, keep adding new memory
           return prev.length === numOfTimepoints
             ? [...prev, parseInt(res.data.used_memory)].slice(1)
@@ -167,7 +138,7 @@ function RedisForm(props: Props): JSX.Element {
         // Creating date object to create our own timestamps to be parsed
 
         const date = new Date()
-        const hour = date.getHours()
+        // const hour = date.getHours()
         const min = date.getMinutes()
         const sec = date.getSeconds()
         const timeStamp = `${min}:${sec}`
@@ -175,7 +146,6 @@ function RedisForm(props: Props): JSX.Element {
         // Creating the timestamp array for our linegraph component
 
         setTime((prev: Array<string>) => {
-          console.log('time state: ', time)
           // if prev length is rqual to 10, slice the first element, if not, keep adding new memory
           return prev.length === numOfTimepoints
             ? [...prev, timeStamp].slice(1)
@@ -183,9 +153,7 @@ function RedisForm(props: Props): JSX.Element {
         })
 
         // Creating the RSS (available memory) array for linegraph component
-
         setRss((prev: Array<number>) => {
-          console.log('rss: ', rss)
           return prev.length === numOfTimepoints
             ? [...prev, parseInt(res.data.used_memory_rss)].slice(1)
             : [...prev, parseInt(res.data.used_memory_rss)]
@@ -199,23 +167,19 @@ function RedisForm(props: Props): JSX.Element {
 
   // // handling user url input and sending to backend
   const submitHandler = async (formValue: object | any): Promise<any> => {
-    let input = { user: user, url: formValue?.URL, name: formValue?.name }
-    console.log('input', input)
+    const input = { user: user, url: formValue?.URL, name: formValue?.name }
 
     try {
 
       const baseURLcreate =
       process.env.NODE_ENV === 'production'
-      ? 'api/createURL/'
-      : 'http://localhost:4000/api/createURL'
+      ? 'api/url/createURL/'
+      : 'http://localhost:4000/api/url/createURL'
 
       const res = await axios.post(
-        // 'http://localhost:4000/api/createURL',
-        // 'api/createURL/',
         baseURLcreate,
         input
       )
-
       getallURL()
     } catch (error) {
       console.log(error)
@@ -234,7 +198,6 @@ function RedisForm(props: Props): JSX.Element {
       ),
     })
   }
-  // console.log('urls', urls)
 
   const handleDropdown = e => {
     setUrl(e.target.value)
@@ -243,8 +206,6 @@ function RedisForm(props: Props): JSX.Element {
 
   const collectionSetting = e => {
     e.preventDefault()
-    // console.log('e.target.value', e.target.value)
-    // console.log('intervalMS', intervalMS)
   }
 
   return (
@@ -312,7 +273,7 @@ function RedisForm(props: Props): JSX.Element {
               urls.map(url => {
                 return (
                   <>
-                    <option key={url.id} value={url?.url}>
+                    <option key={url?.id} value={url?.url}>
                       {'NAME- ' + url.name + '  __  PATH- '}
                       {url?.url}
                     </option>

@@ -9,7 +9,7 @@
     "dev": "nodemon server/server.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Andrea Azadeh Yazdandoost, Andy Wong, Bo Kim, Chihiro Snider, Coral Dabarera Edelson",
   "license": "ISC",
   "dependencies": {
     "axios": "^1.2.1",
