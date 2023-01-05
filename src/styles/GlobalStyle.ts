@@ -181,8 +181,12 @@ export const NavBar = styled.header`
   top: 0;
   left: 0;
   padding-left: 3em;
+<<<<<<< HEAD
   background-color: #aefeff;
   background-image: linear-gradient(15deg, #aefeff 0%, #4fbdba 26%, #35858b 52%, #05161a 89%);
+=======
+  background-image: linear-gradient(#05161A, #35858B);
+>>>>>>> Web
   background-size: cover;
   background-repeat: no-repeat;
 `
@@ -353,6 +357,12 @@ export const Image = styled.img`
   export const Gif = styled.img`
   background-image: url(${graphGif});
   width: 450px;
+  height: 400px;
+  `;
+
+  export const URLGif = styled.img`
+  background-image: url(${graphGif});
+  width: 300px;
   height: 400px;
   `;
 
