@@ -39,13 +39,13 @@ export default function Main(props: Props): JSX.Element {
       <Border>
         <div id="header">
           <Center>
-            <h1> RediScope </h1>
+            <Title> RediScope </Title>
           </Center>
           <Center>
             <h2> Scope out your Redis cache performance with RediScope</h2> 
           </Center>
           <Center>
-             <h3>a data visualizer for Redis cache performance metrics </h3>
+             <h5>A free, open source visualizer for Redis cache performance metrics </h5>
           </Center>
           <Center>
             <ButtonStyle> 
