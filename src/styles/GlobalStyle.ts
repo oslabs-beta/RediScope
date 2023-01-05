@@ -34,8 +34,9 @@ body {
 
 }
 
-a:link {
+a {
   text-decoration: none;
+  color: #D8EEEE;
 }
 
 `
@@ -72,6 +73,7 @@ export const ButtonStyle = styled.button`
 
   a:link {
     text-decoration: none;
+    color: #D8EEEE;
   }
 `
 
@@ -179,7 +181,8 @@ export const NavBar = styled.header`
   top: 0;
   left: 0;
   padding-left: 3em;
-  background-image: linear-gradient(#05161A, #35858B);
+  background-color: #aefeff;
+  background-image: linear-gradient(15deg, #4fbdba 26%, #35858b 42%, #05161a 80%);
   background-size: cover;
   background-repeat: no-repeat;
 `
@@ -307,13 +310,6 @@ export const SelectedURL = styled.p`
   inline-size: 200px;
   
 `
-
-
-
-
-
-
-
 export const Center = styled.div`
   display: flex;
   justify-content: center;
@@ -361,14 +357,18 @@ export const Image = styled.img`
 
   export const Team = styled.div`
   display: inline-block;
-  justify-content: center;
   margin: 10px;
 `;
 
 export const Names = styled.h3`
-justify-content: center;
-display: flex;
-align-items:center;
+  justify-content: center;
+  display: flex;
+  align-items:center;
+`
+export const ContributorsDiv = styled.div`
+  display: flex;
+  justify-content: space-between;
+  flex-direction: wrap;
 
 `
 
