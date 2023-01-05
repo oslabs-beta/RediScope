@@ -174,12 +174,14 @@ export const Nav = styled.li`
 export const NavBar = styled.header`
   display: flex;
   justify-content: space-between;
-  background-color: #05161A;
   position: fixed;
   width: 100%;
   top: 0;
   left: 0;
   padding-left: 3em;
+  background-image: linear-gradient (#05161A, #35858B);
+  background-size: cover;
+  background-repeat: no-repeat;
 `
 export const Elements = styled.div`
   display: flex;
@@ -363,7 +365,6 @@ display: flex;
 align-items:center;
 
 `
-
 
 
 //  <img src={ch} alt="Chihiro Developer" />
