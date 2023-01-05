@@ -4,6 +4,7 @@ const morgan = require('morgan')
 const path = require('path')
 const redisRouter = require('./routes/redisRoutes')
 const userRouter = require('./routes/userRoutes')
+const urlRouter = require('./routes/urlRoutes')
 
 const app = express()
 app.use(express.json())
@@ -13,85 +14,9 @@ app.use(morgan('dev'))
 
 app.use(express.static(path.join(__dirname, '../build/')))
 
-
 app.use('/api/users', userRouter)
 app.use('/api/redis', redisRouter)
-
-//BK server
-const db = require('./db/db')
-
-//make a new url and save it under user
-app.post('/api/createURL', async (req, res) => {
-  try {
-    const results = await db.query(
-      'INSERT INTO url (username, url, name) values ($1, $2, $3) returning *',
-      [req.body.user, req.body.url, req.body.name]
-    )
-    // console.log('create url', results)
-    res.status(200).json({
-      data: results.rows,
-    })
-  } catch (err) {
-    console.log(err)
-  }
-})
-
-//get users table
-app.get('/api/allUsers', async (req, res) => {
-  try {
-    const results = await db.query('SELECT * FROM users')
-    // console.log(results)
-    res.status(200).json({
-      data: results.rows,
-    })
-  } catch (err) {
-    console.log(err)
-  }
-})
-
-//get url table
-app.get('/api/allURL', async (req, res) => {
-  try {
-    const results = await db.query('SELECT * FROM url')
-    // console.log(results)
-    res.status(200).json({
-      data: results.rows,
-    })
-  } catch (err) {
-    console.log(err)
-  }
-})
-
-//get all data fron a single user
-app.get('/api/userURL/:user', async (req, res) => {
-  try {
-    // console.log('req.params.user', req.params.user)
-    const results = await db.query(
-      'select * from url WHERE username = $1 ORDER BY id DESC',
-      [req.params.user]
-    )
-    res.status(200).json({
-      data: results.rows,
-    })
-  } catch (err) {
-    console.log(err)
-  }
-})
-
-//delete a selected URL
-app.delete('/api/URL/:url', async (req, res) => {
-  try {
-    // console.log('req.params.user', req.params.url)
-    const results = await db.query('DELETE FROM url WHERE url = $1', [
-      req.params.url,
-    ])
-    res.status(200).json({
-      data: results.rows,
-    })
-  } catch (err) {
-    console.log(err)
-  }
-})
+app.use('/api/url', urlRouter)
 
 // GLOBAL ERROR HANDLER
 app.use((err, req, res, next) => {
