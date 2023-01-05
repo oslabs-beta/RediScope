@@ -13,6 +13,7 @@ import {
   Nav,
   NavBar,
   Elements,
+  UpperLogo,
 } from '../styles/GlobalStyle'
 import RedisForm from './RedisForm'
 import { MetricsTable } from './Charts/MetricsTable'
@@ -28,58 +29,62 @@ type Props = {}
 export default function Dashboard(props: Props): JSX.Element {
   return (
     <>
-    <NavBar>
-      <Title> RediScope </Title>
-      <Nav>
-        <Elements>
-          <li><a href='/'>About</a></li>
-          <li><a href='/Login'>Sign Out</a></li>
-        </Elements>
-      </Nav>
-    </NavBar>
+      <NavBar>
+        <UpperLogo
+          src={
+            'https://github.com/oslabs-beta/RediScope/raw/routing-images/src/components/images/RediScope%205.png'
+          }
+        ></UpperLogo>
+        <Nav>
+          <Elements>
+            <li>
+              <a href="/">About</a>
+            </li>
+            <li>
+              <a href="/Login">Sign Out</a>
+            </li>
+          </Elements>
+        </Nav>
+      </NavBar>
 
-    <DashboardContainer>
+      <DashboardContainer>
+        <URLSelector>
+          <RedisForm />
+        </URLSelector>
 
-      <URLSelector>
-        <RedisForm />
-      </URLSelector>
-
-      <GraphContainer>
-
-        <GraphDiv>
-          <Inner>
-            <MemoryUsage />
-            {/* <BarChart /> */}
-          </Inner>
-        </GraphDiv>
-        <GraphDiv>
-          <Inner>
-          <ConnectedClients />
-          {/* <PieChart /> */}
-          </Inner>
-        </GraphDiv>
-        <GraphDiv>
-          <Inner>
-          <TotalCommands />
-            {/* <MetricsTable /> */}
+        <GraphContainer>
+          <GraphDiv>
+            <Inner>
+              <MemoryUsage />
+              {/* <BarChart /> */}
             </Inner>
-      </GraphDiv>
-      <GraphDiv>
-        <Inner>
-          <EvictedKeys />
-            {/* <MetricsTable /> */}
+          </GraphDiv>
+          <GraphDiv>
+            <Inner>
+              <ConnectedClients />
+              {/* <PieChart /> */}
             </Inner>
-      </GraphDiv>
-      <GraphDiv>
-        <Inner>
-          <GraphCacheHitRatio />
-            {/* <MetricsTable /> */}
+          </GraphDiv>
+          <GraphDiv>
+            <Inner>
+              <TotalCommands />
+              {/* <MetricsTable /> */}
             </Inner>
-      </GraphDiv>
-    </GraphContainer>
-  </DashboardContainer>
-  </>
+          </GraphDiv>
+          <GraphDiv>
+            <Inner>
+              <EvictedKeys />
+              {/* <MetricsTable /> */}
+            </Inner>
+          </GraphDiv>
+          <GraphDiv>
+            <Inner>
+              <GraphCacheHitRatio />
+              {/* <MetricsTable /> */}
+            </Inner>
+          </GraphDiv>
+        </GraphContainer>
+      </DashboardContainer>
+    </>
   )
 }
-
-

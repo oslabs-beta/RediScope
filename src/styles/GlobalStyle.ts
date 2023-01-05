@@ -12,7 +12,7 @@ interface Props {
 export const GlobalStyle = createGlobalStyle`
 
 * {
-  margin-top: 0px;
+  margin: 0px;
   top: 50%
   padding: 10px;
 }
@@ -96,6 +96,18 @@ export const Title = styled.h1`
   font-family: 'Playfair Display', serif;
   font-weight: 800;
 `
+export const MainLogo = styled.img`
+  width: 80%;
+  margin-bottom: 10px;
+`
+export const UpperLogo = styled.img`
+  width: 20%;
+  margin-bottom: 10px;
+`
+export const LoginLogo = styled.img`
+  width: 55%;
+  margin-bottom: 10px;
+`
 
 export const DashboardContainer = styled.div`
   display: flex;
@@ -106,7 +118,7 @@ export const DashboardContainer = styled.div`
 export const URLSelector = styled.div`
   padding: 25px;
   background-color: #08282e;
-  width: 30%;
+  width: 40%;
 `
 export const GraphContainer = styled.div`
   width: 100%;
@@ -136,7 +148,8 @@ export const ChartWrapper = styled.section`
 export const CenteredContainer = styled.div`
   margin: auto;
   padding: 5px;
-  top: 50%
+  width: 30%;
+  top: 50%;
   gap: 20%;
   align-items: center;
   text-align: center;
@@ -153,9 +166,10 @@ export const Nav = styled.li`
 
   a {
     color: #d8eeee;
-    font: 14px;
+    font-size: 25px;
     display: block;
     padding: 8px;
+    margin-top: 10px;
   }
 
   a:hover {
@@ -312,6 +326,7 @@ export const SelectedURL = styled.p`
 export const Center = styled.div`
   display: flex;
   justify-content: center;
+  padding: 10px, 10px;
 `
 
 export const Border = styled.div`
@@ -354,19 +369,25 @@ export const URLGif = styled.img`
 `
 
 export const Team = styled.div`
-  display: inline-block;
-  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  margin: 0px;
+  width: 100%;
+  align-items: left;
 `
 
 export const Names = styled.h3`
-  justify-content: center;
   display: flex;
   align-items: center;
+  justify-content: center;
 `
 export const ContributorsDiv = styled.div`
-  display: flex;
-  justify-content: space-between;
-  flex-direction: wrap;
+  display: inline-grid;
+  justify-items: start;
+  grid-template-columns: repeat(5, 1fr);
+  width: 1000px;
 `
-
+export const WriteUp = styled.h5`
+  overflow-wrap: break-word;
+`
 //  <img src={ch} alt="Chihiro Developer" />
