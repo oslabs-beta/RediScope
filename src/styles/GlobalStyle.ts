@@ -17,7 +17,7 @@ export const GlobalStyle = createGlobalStyle`
 }
 
 body {
-  font-family: 'Quicksand', sans-serif;
+  font-family: 'Lato', sans-serif;
   font-size: 18px;
   background-color: #072227;
   color: #D8EEEE;
@@ -158,6 +158,7 @@ export const Nav = styled.li`
     transition: 1s ease-in-out;
     stroke-dashoffset: -480;
     border-color: #FFDD87;
+    border-radius: 5em;
   }
 `
 export const NavBar = styled.header`
