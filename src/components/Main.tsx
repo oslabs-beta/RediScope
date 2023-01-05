@@ -11,7 +11,9 @@ import {
   NavBar,
   Nav,
   Elements,
-  Title
+  Title,
+  URLGif,
+  ContributorsDiv
 
 } from '../styles/GlobalStyle'
 import cs from './images/chihiroheadshot.png'
@@ -70,7 +72,7 @@ export default function Main(props: Props): JSX.Element {
         </div>
         </Center>
         <Center>
-        <URLGif src={URL} />
+          <URLGif src={URL} />
         </Center>
       </Border>
 
@@ -88,7 +90,7 @@ export default function Main(props: Props): JSX.Element {
         <Center>
           <div id="feature3">
             <h2> Cache/Hit Ratio is calculated for you </h2>
-            <h4>Cache Hit Ratio = <br></br>KeySpace Hits/ KeySpace Misses + KeySpace Hits</h4>
+            <h4>Cache Hit Ratio = <br></br>KeySpace Hits/ (KeySpace Misses + KeySpace Hits)</h4>
           </div>
         </Center>
        
@@ -96,29 +98,28 @@ export default function Main(props: Props): JSX.Element {
       <Center>
         <h1 id="hello"> RediScope Team </h1>
         </Center>
-      <Border>
         <Center>
-          <div id="contributers">
+          <ContributorsDiv>
             
             
               <Team>
-                <div>
+         
                 <Names>
                 <h3> 
                 <a href="https://www.linkedin.com/in/coral-dabarera-edelson/"> Coral Dabarera Edelson</a> </h3>
                 </Names>
                    <Image src={ce} />
-                   </div>
+                
                   
               </Team>
               <Team>
-                <div>
+           
                 <Names>
                 <h3> 
                 <a href="https://www.linkedin.com/in/bokim1/"> Bo Kim </a> </h3> 
                 </Names>
                    <Image src={bk} />
-                   </div>
+               
               </Team>
                <Team>
               <Names>
@@ -144,10 +145,8 @@ export default function Main(props: Props): JSX.Element {
                    </Names>
                    <Image src={ay} />
                    </Team>
-              
-           </div>
+           </ContributorsDiv>
         </Center>
-      </Border>
       
     </>
     
