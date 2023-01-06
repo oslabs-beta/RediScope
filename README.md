@@ -39,22 +39,22 @@ We welcome suggestions and pull requests!
 
 ## Team Members
 
-Andrea Azadeh Yazdandoost
-anazyazd@gmail.com
+Andrea Azadeh Yazdandoost // 
+anazyazd@gmail.com // 
 https://www.linkedin.com/in/anazyazd
 
-Andy Wong
-andy.wong.km27@gmail.com
+Andy Wong //
+andy.wong.km27@gmail.com //
 https://www.linkedin.com/in/andy-wong27
 
-Bo Kim
-bokim.ce@gmail.com
+Bo Kim //
+bokim.ce@gmail.com //
 https://www.linkedin.com/in/bokim1/
 
-Chihiro Snider
-chihirosnider@gmail.com
+Chihiro Snider //
+chihirosnider@gmail.com //
 https://www.linkedin.com/in/chihiro-snider/
 
-Coral Dabarera Edelson
-corald@gmail.com
+Coral Dabarera Edelson //
+corald@gmail.com //
 https://www.linkedin.com/in/coral-dabarera-edelson/
