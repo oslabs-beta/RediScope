@@ -11,4 +11,3 @@ docker build -t rediscope/mm-prod .
 
 docker run -p 3001:4000 rediscope/mm-prod 
 
-redis://default:rediscope123@redis-15161.c53.west-us.azure.cloud.redislabs.com:15161
