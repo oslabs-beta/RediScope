@@ -26,7 +26,7 @@ ChartJS.register(
 export function ConnectedClients() {
   const { conClients, setConClients } = useContext(RedisContext)
   const { time, setTime } = useContext(RedisContext)
-  console.log('from connectedclients', time)
+  console.log('from connectedclients', conClients)
  
 
   const options: object = {
@@ -34,11 +34,27 @@ export function ConnectedClients() {
     plugins: {
       legend: {
         position: 'top' as const,
+        labels: {
+          color: '#dadada'
+        }
       },
       title: {
         display: true,
         text: 'Connected Clients',
+        font: {
+          size: 22,
+          family: "'Helvetica', 'serif'"
+        },
+        color: '#dadada'
       },
+      scales: {
+        yAxes: [{
+          ticks: {
+            beginAtZero: false,
+            color: '#dadada'
+          },
+        }],
+      }
     },
   }
   const labels: string[] = time
@@ -53,6 +69,8 @@ export function ConnectedClients() {
         backgroundColor: 'rgba(255, 99, 132, 0.5)',
       },
     ],
+    
+    
   }
   return <Line options={options} data={data} />
 }

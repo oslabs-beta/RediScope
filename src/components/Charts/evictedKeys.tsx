@@ -26,7 +26,7 @@ ChartJS.register(
 export function EvictedKeys() {
   const { evictedKeys, setEvictedKeys } = useContext(RedisContext)
   const { time, setTime } = useContext(RedisContext)
-  console.log('from evicted keys', time)
+  console.log('from evicted keys', evictedKeys)
  
 
   const options: object = {
@@ -34,10 +34,18 @@ export function EvictedKeys() {
     plugins: {
       legend: {
         position: 'top' as const,
+        labels: {
+          color: '#dadada'
+        }
       },
       title: {
         display: true,
         text: 'Evicted Keys',
+        font: {
+          size: 22,
+          family: "'Helvetica', 'serif'"
+        },
+        color: '#dadada'
       },
     },
   }
