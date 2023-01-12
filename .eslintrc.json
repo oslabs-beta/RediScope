@@ -1,3 +1,4 @@
+// es lint settings
 {
   "env": {
     "browser": true,
