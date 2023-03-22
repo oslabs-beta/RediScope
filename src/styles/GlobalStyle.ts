@@ -349,9 +349,6 @@ export const Border = styled.div`
   white-space: nowrap;
   min-width: 580px;
 `
-// ** note: how it was before for Border
-// overflow: hidden;
-// white-space: nowrap;
 
 export const H2Title = styled.h2`
   font-size: 2.8vw;
@@ -419,12 +416,15 @@ export const Socials = styled.ul`
   align-items: center;
   list-style: none;
   padding: 0px;
+=======
+
 `
 
 export const Names = styled.h3`
   display: flex;
   align-items: center;
   justify-content: center;
+ 
 `
 export const ContributorsDiv = styled.div`
   display: inline-grid;
