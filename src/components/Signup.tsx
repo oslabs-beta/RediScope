@@ -108,6 +108,7 @@ export default class SignUp extends Component<Props, SignUpState> {
         })
       },
       error => {
+        console.log('in error block of signup in frontend')
         const resMessage =
           (error.res && error.res.data && error.res.data.message) ||
           error.message ||
@@ -118,9 +119,11 @@ export default class SignUp extends Component<Props, SignUpState> {
         })
       }
     )
-
+    if (!this.state.success) {
+      alert('error')
+    }
     if (this.state.success) {
-      this.setState({ redirect: '/Login' })
+      // this.setState({ redirect: '/Login' })
     }
   }
 
