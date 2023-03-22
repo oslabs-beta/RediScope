@@ -336,14 +336,12 @@ export const Border = styled.div`
   margin-bottom: 10px;
   border: 0.1em solid;
   border-color: #4fbdba;
+  border-radius: 7px;
   justify-content: center;
   align-items: center;
   overflow: hidden;
   white-space: nowrap;
 `
-// ** note: how it was before for Border
-// overflow: hidden;
-// white-space: nowrap;
 
 export const H2Title = styled.h2`
 font-size: 2.8vw
@@ -390,18 +388,24 @@ export const Team = styled.div`
   margin: 0px;
   width: 100%;
   align-items: left;
+
 `
 
 export const Names = styled.h3`
   display: flex;
   align-items: center;
   justify-content: center;
+ 
 `
 export const ContributorsDiv = styled.div`
   display: inline-grid;
   justify-items: start;
   grid-template-columns: repeat(5, 1fr);
   width: 1000px;
+
+  @media screen and (max-width: 1060px) {
+    flex-direction: row;
+  }
 `
 export const WriteUp = styled.h5`
   overflow-wrap: break-word;
