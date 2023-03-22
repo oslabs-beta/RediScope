@@ -336,11 +336,20 @@ export const Border = styled.div`
   margin-bottom: 10px;
   border: 0.1em solid;
   border-color: #4fbdba;
-  width: 100%;
   justify-content: center;
   align-items: center;
   overflow: hidden;
   white-space: nowrap;
+`
+// ** note: how it was before for Border
+// overflow: hidden;
+// white-space: nowrap;
+
+export const H2Title = styled.h2`
+font-size: 2.8vw
+`
+export const H5Title = styled.h5`
+font-size: 2.3vw
 `
 
 export const Circle = styled.div`
@@ -362,6 +371,11 @@ export const Image = styled.img`
 export const Gif = styled.img`
   width: 450px;
   height: 400px;
+
+  @media screen and (max-width: 750px) {
+    width: 225px;
+    height: 200px;
+}
 `
 
 // background-image: url(${'https://github.com/oslabs-beta/RediScope/raw/fix-pathing-images/public/assets/giphygraph.gif'});
@@ -391,5 +405,6 @@ export const ContributorsDiv = styled.div`
 `
 export const WriteUp = styled.h5`
   overflow-wrap: break-word;
+  font-size: 2vw;
 `
 //  <img src={ch} alt="Chihiro Developer" />
