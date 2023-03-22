@@ -27,6 +27,8 @@ function RedisForm(props: Props): JSX.Element {
   const { time, setTime } = useContext(RedisContext)
   const { rss, setRss } = useContext(RedisContext)
   const { user, setUser } = useContext(RedisContext)
+  //20230322 BK made userId - not properly in use yet
+  const { userId, setUserId } = useContext(RedisContext)
   const { url, setUrl } = useContext(RedisContext)
   const { urls, setUrls } = useContext(RedisContext)
   const { setConClients } = useContext(RedisContext)
@@ -54,16 +56,27 @@ function RedisForm(props: Props): JSX.Element {
 
       if (user) {
         const res = await axios.get(baseURLusers)
+        console.log('res in getallURL returned from backend', res)
         setUrls(res.data.data)
+        console.log('urls in getAllURL in useEffect', urls)
+        console.log('url in getAllURL in useEffect', url)
+        console.log('user in getAllURL in useEffect', user)
+        console.log('intervalMS', intervalMS)
       }
     } catch (err) {
       console.log(err)
     }
+   
   }
 
   useEffect(() => {
     getallURL()
   }, [user])
+
+  // useEffect(() => {
+  //   getallURL()
+    
+  // }, [urls])
 
   const deleteURL = async e => {
     e.preventDefault()
@@ -79,7 +92,7 @@ function RedisForm(props: Props): JSX.Element {
     }
   }
 
-  // start life data collection
+  // start live data collection
   const startCollection = async (e): Promise<any> => {
     e.preventDefault()
     try {
@@ -206,6 +219,7 @@ function RedisForm(props: Props): JSX.Element {
   const handleDropdown = e => {
     setUrl(e.target.value)
     console.log('url after changing dropdown', url)
+    setUrl(e.target.value)
   }
 
   const collectionSetting = e => {
