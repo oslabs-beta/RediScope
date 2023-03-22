@@ -101,7 +101,7 @@ export const MainLogo = styled.img`
   margin-bottom: 10px;
 `
 export const UpperLogo = styled.img`
-  width: 20%;
+  width: 10em;
   margin-bottom: 10px;
 `
 export const LoginLogo = styled.img`
@@ -328,28 +328,43 @@ export const SelectedURL = styled.p`
 export const Center = styled.div`
   display: flex;
   justify-content: center;
+
   padding: 10px, 10px;
+`
+export const Spacer = styled.div`
+  height: 100px;
+  width: 100%;
 `
 
 export const Border = styled.div`
   padding: 5em;
   margin-bottom: 10px;
+  margin-top: 10px;
   border: 0.1em solid;
   border-color: #4fbdba;
+  border-radius: 8px;
   justify-content: center;
   align-items: center;
   overflow: hidden;
   white-space: nowrap;
+  min-width: 580px;
 `
 // ** note: how it was before for Border
 // overflow: hidden;
 // white-space: nowrap;
 
 export const H2Title = styled.h2`
-font-size: 2.8vw
+  font-size: 2.8vw;
+
+  @media (max-width: 650px) {
+    font-size: 18px;
+  }
 `
 export const H5Title = styled.h5`
-font-size: 2.3vw
+  font-size: 2.3vw;
+  @media (max-width: 650px) {
+    font-size: 16px;
+  }
 `
 
 export const Circle = styled.div`
@@ -375,7 +390,7 @@ export const Gif = styled.img`
   @media screen and (max-width: 750px) {
     width: 225px;
     height: 200px;
-}
+  }
 `
 
 // background-image: url(${'https://github.com/oslabs-beta/RediScope/raw/fix-pathing-images/public/assets/giphygraph.gif'});
@@ -387,9 +402,23 @@ export const URLGif = styled.img`
 export const Team = styled.div`
   display: flex;
   flex-direction: column;
-  margin: 0px;
+  margin: 5px;
   width: 100%;
   align-items: left;
+
+  @media (max-width: 1030px) {
+    align-items: center;
+    margin-bottom: 15px;
+  }
+`
+export const Socials = styled.ul`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: auto;
+  align-items: center;
+  list-style: none;
+  padding: 0px;
 `
 
 export const Names = styled.h3`
@@ -402,9 +431,28 @@ export const ContributorsDiv = styled.div`
   justify-items: start;
   grid-template-columns: repeat(5, 1fr);
   width: 1000px;
+
+  @media (max-width: 1030px) {
+    grid-template-rows: auto;
+  }
 `
+export const TeamsDiv = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @media (max-width: 1000px) {
+    display: grid;
+  }
+`
+
 export const WriteUp = styled.h5`
   overflow-wrap: break-word;
-  font-size: 2vw;
+  font-size: 1.7vw;
+  padding: 5px;
+
+  @media (max-width: 650px) {
+    font-size: 11px;
+  }
 `
 //  <img src={ch} alt="Chihiro Developer" />

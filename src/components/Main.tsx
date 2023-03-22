@@ -14,11 +14,14 @@ import {
   Title,
   URLGif,
   ContributorsDiv,
+  TeamsDiv,
   MainLogo,
   UpperLogo,
   WriteUp,
   H2Title,
-  H5Title
+  H5Title,
+  Spacer,
+  Socials,
 } from '../styles/GlobalStyle'
 // import cs from './images/chihiroheadshot.png'
 // import ce from './images/coralheadshot.png'
@@ -50,6 +53,7 @@ export default function Main(props: Props): JSX.Element {
           </Elements>
         </Nav>
       </NavBar>
+      <Spacer></Spacer>
       <Border>
         <div id="header">
           <Center>
@@ -60,7 +64,10 @@ export default function Main(props: Props): JSX.Element {
             ></MainLogo>
           </Center>
           <Center>
-            <H2Title> Scope out your Redis cache performance with RediScope</H2Title>
+            <H2Title>
+              {' '}
+              Scope out your Redis cache performance with RediScope
+            </H2Title>
           </Center>
           <Center>
             <H5Title>
@@ -111,25 +118,27 @@ export default function Main(props: Props): JSX.Element {
         </Center>
       </Border>
       <Border>
-        <Center>
-          <div id="feature3">
+        <div id="feature3">
+          <Center>
             <H2Title>
-            Ditch the calculator. Cache Hit Ratio is calculated for you.
+              Ditch the calculator. Cache Hit Ratio is calculated for you.
             </H2Title>
+          </Center>
+          <Center>
             <WriteUp>
               Cache hit ratio helps developers determine which key-value pairs
               should be cached and is often overlooked.
               <br></br>
               Cache Hit Ratio = KeySpace Hits/ (KeySpace Misses + KeySpace Hits)
             </WriteUp>
-          </div>
-        </Center>
+          </Center>
+        </div>
       </Border>
       <Center>
         <h1 id="hello"> RediScope Team </h1>
       </Center>
       <Center>
-        <ContributorsDiv>
+        <TeamsDiv>
           <Team>
             <Image
               src={
@@ -143,14 +152,13 @@ export default function Main(props: Props): JSX.Element {
               </a>{' '}
             </Names>
 
-            <ul>
+            <Socials>
               <a href="https://www.linkedin.com/in/coral-dabarera-edelson/">
                 {' '}
                 linkedin{' '}
               </a>
-              <br></br>
               <a href="https://github.com/coraletoile"> github </a>
-            </ul>
+            </Socials>
           </Team>
           <Team>
             <Image
@@ -162,11 +170,11 @@ export default function Main(props: Props): JSX.Element {
               <a href="https://www.linkedin.com/in/bokim1/"> Bo Kim </a>{' '}
             </Names>
 
-            <ul>
+            <Socials>
               <a href="https://www.linkedin.com/in/bokim1/"> linkedin </a>
-              <br></br>
+
               <a href="https://github.com/bokim2">github </a>
-            </ul>
+            </Socials>
           </Team>
           <Team>
             <Image
@@ -181,14 +189,13 @@ export default function Main(props: Props): JSX.Element {
               </a>
             </Names>
 
-            <ul>
+            <Socials>
               <a href="https://www.linkedin.com/in/chihiro-snider/">
                 {' '}
                 linkedin{' '}
               </a>
-              <br></br>
               <a href="https://github.com/cheesehero112">github </a>
-            </ul>
+            </Socials>
           </Team>
 
           <Team>
@@ -201,11 +208,10 @@ export default function Main(props: Props): JSX.Element {
               <a href="www.linkedin.com/in/andy-wong27"> Andy Wong</a>
             </Names>
 
-            <ul>
+            <Socials>
               <a href="https://www.linkedin.com/in/andy-wong27/"> linkedin </a>
-              <br></br>
               <a href="https://github.com/andyw27">github </a>
-            </ul>
+            </Socials>
           </Team>
 
           <Team>
@@ -221,13 +227,12 @@ export default function Main(props: Props): JSX.Element {
               </a>
             </Names>
 
-            <ul>
+            <Socials>
               <a href="https://www.linkedin.com/in/anazyazd/"> linkedin </a>
-              <br></br>
               <a href="https://github.com/anazyazd">github </a>
-            </ul>
+            </Socials>
           </Team>
-        </ContributorsDiv>
+        </TeamsDiv>
       </Center>
     </>
   )
