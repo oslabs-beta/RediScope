@@ -17,6 +17,8 @@ import {
   MainLogo,
   UpperLogo,
   WriteUp,
+  H2Title,
+  H5Title
 } from '../styles/GlobalStyle'
 // import cs from './images/chihiroheadshot.png'
 // import ce from './images/coralheadshot.png'
@@ -58,12 +60,12 @@ export default function Main(props: Props): JSX.Element {
             ></MainLogo>
           </Center>
           <Center>
-            <h2> Scope out your Redis cache performance with RediScope</h2>
+            <H2Title> Scope out your Redis cache performance with RediScope</H2Title>
           </Center>
           <Center>
-            <h5>
+            <H5Title>
               A free open source visualizer for Redis cache performance metrics{' '}
-            </h5>
+            </H5Title>
           </Center>
           <Center>
             <ButtonStyle>
@@ -82,7 +84,7 @@ export default function Main(props: Props): JSX.Element {
       <Border>
         <Center>
           <div id="feature1">
-            <h2 id="feature1"> Store Your Redis Cache URL </h2>
+            <H2Title id="feature1"> Store Your Redis Cache URL </H2Title>
           </div>
         </Center>
         <Center>
@@ -97,7 +99,7 @@ export default function Main(props: Props): JSX.Element {
       <Border>
         <Center>
           <div id="feature2">
-            <h2> View Performance Metrics in Real Time </h2>
+            <H2Title> View Performance Metrics in Real Time </H2Title>
           </div>
         </Center>
         <Center>
@@ -111,10 +113,9 @@ export default function Main(props: Props): JSX.Element {
       <Border>
         <Center>
           <div id="feature3">
-            <h2>
-              {' '}
-              Ditch the calculator. Cache Hit Ratio is calculated for you.{' '}
-            </h2>
+            <H2Title>
+            Ditch the calculator. Cache Hit Ratio is calculated for you.
+            </H2Title>
             <WriteUp>
               Cache hit ratio helps developers determine which key-value pairs
               should be cached and is often overlooked.
