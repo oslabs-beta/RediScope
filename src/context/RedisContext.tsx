@@ -15,6 +15,7 @@ export const RedisContextProvider = (props: any) => {
   const [keyHits, setKeyHits ] = useState<any>([]);
   const [keyMisses, setKeyMisses ] = useState<any>([]);
   const [user, setUser] = useState<any>("")
+  const [userId, setUserId] = useState<any>("")
   const [url, setUrl] = useState<any>("")
   const [urls, setUrls] = useState<any>([])
   
@@ -41,6 +42,7 @@ export const RedisContextProvider = (props: any) => {
         rss,
         setRss,
         user, setUser,
+        userId, setUserId,
         url, setUrl,
         urls, setUrls,
         banana, setBanana

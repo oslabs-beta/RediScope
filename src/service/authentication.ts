@@ -9,7 +9,6 @@ const baseURL =
 
 class AuthService {
   login(username: string, password: string) {
-    console.log(baseURL)
     return axios
       .post(baseURL + 'signin', {
         username,
@@ -24,7 +23,6 @@ class AuthService {
   }
 
   signup(username: string, password: string, email: string) {
-    console.log(baseURL)
     return axios.post(baseURL + 'signup', {
       username,
       password,

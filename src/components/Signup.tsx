@@ -26,6 +26,9 @@ type SignUpState = {
   success: boolean
   message: string
   redirect: string | null
+  formikcheck: boolean
+  backendcheck: boolean
+  duplicateUser: boolean
 }
 
 export default class SignUp extends Component<Props, SignUpState> {
@@ -37,9 +40,12 @@ export default class SignUp extends Component<Props, SignUpState> {
       username: '',
       password: '',
       email: '',
-      success: false,
+      success: true,
       message: '',
       redirect: null,
+      formikcheck: false,
+      backendcheck: false,
+      duplicateUser: false
     }
   }
 
@@ -49,7 +55,7 @@ export default class SignUp extends Component<Props, SignUpState> {
       username: Yup.string()
         .test(
           'len',
-          'Username must be between 3 and 20 charaters long.',
+          'Username must be between 3 and 20 characters long.',
           (val: any) =>
             val && val.toString().length >= 3 && val.toString().length <= 20
         )
@@ -77,35 +83,44 @@ export default class SignUp extends Component<Props, SignUpState> {
 
   // ----- form handling for submitting/registering new user ------ //
 
-  handleSignUp(formValue: {
+  async handleSignUp(formValue: {
     username: string
     password: string
     email: string
   }) {
     const { username, password, email } = formValue
 
-    this.setState({
-      message: '',
-      success: false,
-    })
+    // this.setState({
+    //   message: '',
+    //   success: false,
+    // })
 
     // ------ checking to see if input is inserted into fields ------ //
 
+    //////////////////////////////////
+    //20230322 BK took out code below.
+    console.log('formValue in signup', formValue)
     formValue
-      ? this.setState({ success: true })
+      ? this.setState({ success: true, formikcheck: true })
       : this.setState({ message: 'please fill in required fields' })
 
+    ////////////////////////////
     // if (!formValue)
     //   this.setState({ message: 'Please fill in required fields!' })
 
     // ------ sign-up post request from service folder ------ //
 
-    AuthService.signup(username, password, email).then(
+    await AuthService.signup(username, password, email).then(
       res => {
-        this.setState({
-          message: res.data.message,
-          success: true,
-        })
+        console.log('authservice.signup.  boolean of formikcheck', this.state.formikcheck)
+         
+            console.log('in authservice.signup')
+          this.setState({
+            message: res.data.message,
+            backendcheck: true,
+            // success: true,
+          })
+        
       },
       error => {
         console.log('in error block of signup in frontend')
@@ -114,16 +129,19 @@ export default class SignUp extends Component<Props, SignUpState> {
           error.message ||
           error.toString()
         this.setState({
-          success: false,
+          backendcheck: false,
           message: resMessage,
         })
       }
     )
-    if (!this.state.success) {
-      alert('error')
+    // added by BK
+    if (!this.state.backendcheck) {
+      // alert('Please try a different username.')
+      this.setState({duplicateUser: true})
     }
-    if (this.state.success) {
-      // this.setState({ redirect: '/Login' })
+    //
+    else if (this.state.formikcheck) {
+      this.setState({ redirect: '/Login' })
     }
   }
 
@@ -158,11 +176,14 @@ export default class SignUp extends Component<Props, SignUpState> {
             ></LoginLogo>
             <Formik
               initialValues={initVals}
-              SignUpSchema={this.SignUpSchema}
+           
+              
+              validationSchema={this.SignUpSchema}
+              
               onSubmit={this.handleSignUp}
             >
               <Form>
-                {!success && (
+                
                   <div>
                     <div className="form">
                       <label htmlFor="username"> Username </label>
@@ -176,6 +197,9 @@ export default class SignUp extends Component<Props, SignUpState> {
                         component="div"
                         className="alert alert-danger"
                       />
+                      {this.state.duplicateUser && (
+                      <div className="alert alert-danger">Please try a different username.</div>
+                      )}
                     </div>
 
                     <div className="form">
@@ -223,7 +247,7 @@ export default class SignUp extends Component<Props, SignUpState> {
                       </div>
                     </div>
                   </div>
-                )}
+                
                 <br></br>
                 {message && (
                   <div className="form">
