@@ -27,8 +27,7 @@ function RedisForm(props: Props): JSX.Element {
   const { time, setTime } = useContext(RedisContext)
   const { rss, setRss } = useContext(RedisContext)
   const { user, setUser } = useContext(RedisContext)
-  //20230322 BK made userId - not properly in use yet
-  const { userId, setUserId } = useContext(RedisContext)
+  const { urlId, setUrlId } = useContext(RedisContext)
   const { url, setUrl } = useContext(RedisContext)
   const { urls, setUrls } = useContext(RedisContext)
   const { setConClients } = useContext(RedisContext)
@@ -56,12 +55,14 @@ function RedisForm(props: Props): JSX.Element {
 
       if (user) {
         const res = await axios.get(baseURLusers)
-        console.log('res in getallURL returned from backend', res)
+        // console.log('res in getallURL returned from backend', res)
+        // console.log('res.data.data in getallURL returned from backend', res.data.data)
         setUrls(res.data.data)
-        console.log('urls in getAllURL in useEffect', urls)
-        console.log('url in getAllURL in useEffect', url)
-        console.log('user in getAllURL in useEffect', user)
-        console.log('intervalMS', intervalMS)
+        // let urlObj = urls.filter(url =>
+        //   url.id == e.target.value)
+        // console.log('urlOBJ', urlObj)
+        setUrl(res.data.data[0].url)
+        setUrlId(res.data.data[0].id)
       }
     } catch (err) {
       console.log(err)
@@ -70,8 +71,16 @@ function RedisForm(props: Props): JSX.Element {
   }
 
   useEffect(() => {
+    // console.log('useEffect calling getallURL', urls)
     getallURL()
+    
+    // console.log('urls in getAllURL in useEffect', urls)
+    // console.log('url in getAllURL in useEffect', url)
+    // console.log('user in getAllURL in useEffect', user)
+    // console.log('intervalMS', intervalMS)
   }, [user])
+
+  console.log('AFTER useEffect called', urls)
 
   // useEffect(() => {
   //   getallURL()
@@ -83,8 +92,10 @@ function RedisForm(props: Props): JSX.Element {
     try {
       const baseURLdelete =
         process.env.NODE_ENV === 'production'
-          ? `api/URL/${url || urls[0]?.url}/${user}/`
-          : `http://localhost:4000/api/url/${url || urls[0]?.url}/${user}/`
+          ? `api/URL/${urlId}/`
+          : `http://localhost:4000/api/url/${urlId}/`
+          // ? `api/URL/${url || urls[0]?.url}/${userId}/`
+          // : `http://localhost:4000/api/url/${url || urls[0]?.url}/${user}/`
       await axios.delete(baseURLdelete)
       getallURL()
     } catch (error) {
@@ -217,10 +228,20 @@ function RedisForm(props: Props): JSX.Element {
   }
 
   const handleDropdown = e => {
-    setUrl(e.target.value)
+    setUrlId(e.target.value)
+    let urlObj = urls.filter(url =>
+      url.id == e.target.value)
+    console.log('urlOBJ', urlObj)
+    setUrl(urlObj[0].url)
     console.log('url after changing dropdown', url)
-    setUrl(e.target.value)
   }
+
+  useEffect(()=> {
+    console.log('urls', urls)
+    console.log('url', url)
+    console.log('urlId', urlId)
+
+  }, [urls, url, urlId])
 
   const collectionSetting = e => {
     e.preventDefault()
@@ -319,7 +340,7 @@ function RedisForm(props: Props): JSX.Element {
               urls.map(url => {
                 return (
                   <>
-                    <Option key={url.id} value={url?.url}>
+                    <Option key={url.id} value={url?.id}>
                       {'NAME- ' + url.name + '  __  PATH- '}
                       {url?.url}
                     </Option>
