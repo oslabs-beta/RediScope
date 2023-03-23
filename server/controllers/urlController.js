@@ -16,9 +16,9 @@ urlController.createURL = async (req, res) => {
 
 urlController.deleteURL = async (req, res) => {
     try {
-      const results = await db.query('DELETE FROM url WHERE url = $1 AND username = $2', [req.params.url, req.params.user])
+      const results = await db.query('DELETE FROM url WHERE id = $1', [req.params.urlId])
       res.status(200).json({
-        data: results.rows
+        // data: results.rows
       })  
     } catch (err){
        res.status(400).json({status: 'fail', message: err}) 
