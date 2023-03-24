@@ -29,11 +29,23 @@ export function MemoryUsage() {
   const { time, setTime } = useContext(RedisContext)
   const { rss, setRss } = useContext(RedisContext)
 
-  console.log('from linegraph', usedMemory[usedMemory.length])
+  // console.log('from linegraph', usedMemory)
 
   const options: object = {
     responsive: true,
-    maintainAspectRation: false,
+    aspectRatio:
+    1 | 1,
+    // maintainAspectRation: false,
+    scales: {
+      y: {
+          ticks: {
+              // Include a dollar sign in the ticks
+              callback: function (val, index, ticks) {
+                return Number.parseFloat(val).toExponential(3); 
+              }
+          }
+      }
+  },
     plugins: {
       legend: {
         position: 'top' as const,
@@ -51,6 +63,7 @@ export function MemoryUsage() {
         color: '#dadada',
       },
     },
+    
   }
   const labels: string[] = time
 
