@@ -114,6 +114,7 @@ export const DashboardContainer = styled.div`
   width: 100%
   flex-direction: row;
   border: 0.2px outset #24383b;
+  margin-top: 5em;
 `
 export const MainContainer = styled.div`
   margin-top: 7em;
@@ -224,8 +225,8 @@ export const NavBar = styled.header`
 export const Elements = styled.div`
   display: flex;
   flex-direction: row;
-  padding-top: .5em;
-  padding-right: 5em;
+  padding-top: .4em;
+  padding-right: 2.9em;
   justify-content: flex-start;
   align-items: center;
 `
