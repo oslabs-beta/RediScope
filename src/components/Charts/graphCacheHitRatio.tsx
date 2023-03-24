@@ -36,6 +36,8 @@ export function GraphCacheHitRatio() {
 
   const options: object = {
     responsive: true,
+    aspectRatio:
+    1 | 1,
     plugins: {
       legend: {
         position: 'top' as const,
