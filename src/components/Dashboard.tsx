@@ -27,18 +27,20 @@ export default function Dashboard(props: Props): JSX.Element {
   return (
     <>
       <NavBar>
-        <UpperLogo
-          src={
-            'https://github.com/oslabs-beta/RediScope/raw/routing-images/src/components/images/RediScope%205.png'
-          }
-        ></UpperLogo>
+        <a href="/">
+          <UpperLogo
+            src={
+              'https://github.com/oslabs-beta/RediScope/raw/routing-images/src/components/images/RediScope%205.png'
+            }
+          ></UpperLogo>
+        </a>
         <Nav>
           <Elements>
             <li>
               <a href="/">About</a>
             </li>
             <li>
-              <a href="/Login" style={{paddingLeft: "1.25em"}}>Sign Out</a>
+              <a href="/Login" style={{paddingLeft: "1.6em"}}>Sign Out</a>
             </li>
           </Elements>
         </Nav>
