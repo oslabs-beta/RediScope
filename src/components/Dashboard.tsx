@@ -40,7 +40,7 @@ export default function Dashboard(props: Props): JSX.Element {
               <a href="/">About</a>
             </li>
             <li>
-              <a href="/Login" style={{paddingLeft: "1.6em"}}>Sign Out</a>
+              <a href="/Login" style={{marginLeft: "1.6em"}}>Sign Out</a>
             </li>
           </Elements>
         </Nav>
