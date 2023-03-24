@@ -23,6 +23,8 @@ type LoginState = {
   loading: boolean
   valid: boolean
   message: string
+  backendcheck: boolean
+  wrongPassword: boolean
 }
 
 export default class Login extends Component<Props, LoginState> {
@@ -37,6 +39,8 @@ export default class Login extends Component<Props, LoginState> {
       loading: false,
       valid: false,
       message: '',
+      backendcheck: false,
+      wrongPassword: false
     }
   }
 
@@ -62,6 +66,7 @@ export default class Login extends Component<Props, LoginState> {
           loading: true,
           valid: true,
           username,
+          backendcheck: true,
         })
       },
       error => {
@@ -73,9 +78,16 @@ export default class Login extends Component<Props, LoginState> {
           loading: false,
           valid: false,
           message: response,
+          backendcheck: false,
         })
       }
     )
+
+    if (!this.state.backendcheck) {
+      // alert('Please try a different username.')
+      this.setState({wrongPassword: true})
+    }
+
     if (this.state.valid === true) {
       this.setState({ redirect: '/Dashboard' })
     }
@@ -163,6 +175,9 @@ export default class Login extends Component<Props, LoginState> {
                     component="div"
                     className="alert alert-danger"
                   />
+                  {this.state.wrongPassword && (
+                      <div className="alert alert-danger">Incorrect Password.</div>
+                      )}
                 </div>
 
                 <div className="form">
