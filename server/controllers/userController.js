@@ -19,7 +19,7 @@ const userController = {}
 userController.signUp = async (req, res, next) => {
   try {
     const { username, password, email } = req.body
-    console.log('req.body: ', req.body)
+    // console.log('req.body: ', req.body)
     const hashedP = bcrypt.hashSync(password, SALT)
     const text = `
    INSERT INTO USERS (username, password, email)
@@ -38,7 +38,7 @@ userController.signUp = async (req, res, next) => {
 
 userController.verifyUser = async (req, res, next) => {
   try {
-    console.log(req.body)
+    // console.log(req.body)
     const { username, password } = req.body
     //  const hashedP = bcrypt.hashSync(password, SALT);
 

@@ -26,11 +26,13 @@ ChartJS.register(
 export function ConnectedClients() {
   const { conClients, setConClients } = useContext(RedisContext)
   const { time, setTime } = useContext(RedisContext)
-  console.log('from connectedclients', conClients)
+  // console.log('from connectedclients', conClients)
  
 
   const options: object = {
     responsive: true,
+    aspectRatio:
+    1 | 1,
     plugins: {
       legend: {
         position: 'top' as const,
