@@ -99,7 +99,7 @@ export default class SignUp extends Component<Props, SignUpState> {
 
     //////////////////////////////////
     //20230322 BK took out code below.
-    console.log('formValue in signup', formValue)
+    // console.log('formValue in signup', formValue)
     formValue
       ? this.setState({ success: true, formikcheck: true })
       : this.setState({ message: 'please fill in required fields' })
@@ -112,9 +112,9 @@ export default class SignUp extends Component<Props, SignUpState> {
 
     await AuthService.signup(username, password, email).then(
       res => {
-        console.log('authservice.signup.  boolean of formikcheck', this.state.formikcheck)
+        // console.log('authservice.signup.  boolean of formikcheck', this.state.formikcheck)
          
-            console.log('in authservice.signup')
+            // console.log('in authservice.signup')
           this.setState({
             message: res.data.message,
             backendcheck: true,
@@ -123,7 +123,7 @@ export default class SignUp extends Component<Props, SignUpState> {
         
       },
       error => {
-        console.log('in error block of signup in frontend')
+        // console.log('in error block of signup in frontend')
         const resMessage =
           (error.res && error.res.data && error.res.data.message) ||
           error.message ||

@@ -10,6 +10,7 @@ import {
   Option,
   URLSelection,
   UserInput,
+  URLInput,
   CollectButton,
   FormikStyle,
   RedisForms,
@@ -80,7 +81,7 @@ function RedisForm(props: Props): JSX.Element {
     // console.log('intervalMS', intervalMS)
   }, [user])
 
-  console.log('AFTER useEffect called', urls)
+  // console.log('AFTER useEffect called', urls)
 
   // useEffect(() => {
   //   getallURL()
@@ -231,15 +232,15 @@ function RedisForm(props: Props): JSX.Element {
     setUrlId(e.target.value)
     let urlObj = urls.filter(url =>
       url.id == e.target.value)
-    console.log('urlOBJ', urlObj)
+    // console.log('urlOBJ', urlObj)
     setUrl(urlObj[0].url)
-    console.log('url after changing dropdown', url)
+    // console.log('url after changing dropdown', url)
   }
 
   useEffect(()=> {
-    console.log('urls', urls)
-    console.log('url', url)
-    console.log('urlId', urlId)
+    // console.log('urls', urls)
+    // console.log('url', url)
+    // console.log('urlId', urlId)
 
   }, [urls, url, urlId])
 
@@ -257,13 +258,14 @@ function RedisForm(props: Props): JSX.Element {
         <Form>
           {/* <FormikStyle> */}
           <div className="URL-Form">
-            <label htmlFor="URL">Redis Cache URL</label>
+            <label htmlFor="URL">URL Alias: </label>
             {'\n'}
-            name: <Field name="name" type="text" className="URL-form-control" />
+            <Field name="name" type="text" className="URLInput" />
             {'\n'}
             <br></br>
-            URL path: <br></br>
-            <Field name="URL" type="text" className="URL-form-control" />
+            {"URL path:     "}
+            {/* <br></br> */}
+            <Field name="URL" type="text" className="URLInput" />
             {/* <button type="submit" className="btn btn-primary"> </button> */}
             <ButtonStyle type="submit" className="btn btn-primary">
               Add URL

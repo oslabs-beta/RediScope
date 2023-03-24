@@ -2,8 +2,9 @@ import React from 'react'
 import { Route, Link, Routes, BrowserRouter } from 'react-router-dom'
 import {
   ButtonStyle,
-  Border,
-  Center,
+  BorderStyle,
+  MainContainer,
+  CenterStyle,
   Image,
   Gif,
   Team,
@@ -48,192 +49,197 @@ export default function Main(props: Props): JSX.Element {
               <a href="/Signup">Get Started</a>
             </li>
             <li>
-              <a href="/Login">Login</a>
+              <a href="/Login" style={{paddingLeft: "1.5em"}}>Login</a>
             </li>
           </Elements>
         </Nav>
       </NavBar>
-      <Spacer></Spacer>
-      <Border>
-        <div id="header">
-          <Center>
-            <MainLogo
-              src={
-                'https://github.com/oslabs-beta/RediScope/raw/routing-images/src/components/images/RediScope%205.png'
-              }
-            ></MainLogo>
-          </Center>
-          <Center>
-            <H2Title>
-              {' '}
-              Scope out your Redis cache performance with RediScope
-            </H2Title>
-          </Center>
-          <Center>
-            <H5Title>
-              A free open source visualizer for Redis cache performance metrics{' '}
-            </H5Title>
-          </Center>
-          <Center>
-            <ButtonStyle>
-              <Link to="/Signup"> Get Started Now!</Link>
-            </ButtonStyle>
-          </Center>
-        </div>
-      </Border>
 
-      <Center>
-        <div id="features">
-          <h1> Features </h1>
-        </div>
-      </Center>
-
-      <Border>
-        <Center>
-          <div id="feature1">
-            <H2Title id="feature1"> Store Your Redis Cache URL </H2Title>
+      {/* <Spacer></Spacer> */}
+      <MainContainer>
+        <BorderStyle>
+          <div id="header">
+            <CenterStyle>
+              <MainLogo
+                src={
+                  'https://github.com/oslabs-beta/RediScope/raw/routing-images/src/components/images/RediScope%205.png'
+                }
+              ></MainLogo>
+            </CenterStyle>
+            <CenterStyle>
+              <H2Title>
+                {' '}
+                Scope out your Redis cache performance with RediScope
+              </H2Title>
+            </CenterStyle>
+            <CenterStyle>
+              <H5Title>
+                A free open source visualizer for Redis cache performance metrics{' '}
+              </H5Title>
+            </CenterStyle>
+            <CenterStyle>
+              <ButtonStyle>
+                <Link to="/Signup"> Get Started Now!</Link>
+              </ButtonStyle>
+            </CenterStyle>
           </div>
-        </Center>
-        <Center>
-          <URLGif
-            src={
-              'https://github.com/oslabs-beta/RediScope/raw/fix-pathing-images/public/assets/URL.gif'
-            }
-          />
-        </Center>
-      </Border>
+        </BorderStyle>
 
-      <Border>
-        <Center>
-          <div id="feature2">
-            <H2Title> View Performance Metrics in Real Time </H2Title>
+        <CenterStyle>
+          <div id="features">
+            <h1 style={{paddingTop: "1em"}}> Features </h1>
           </div>
-        </Center>
-        <Center>
-          <Gif
-            src={
-              'https://github.com/oslabs-beta/RediScope/raw/fix-pathing-images/public/assets/giphygraph.gif'
-            }
-          />
-        </Center>
-      </Border>
-      <Border>
-        <div id="feature3">
-          <Center>
-            <H2Title>
-              Ditch the calculator. Cache Hit Ratio is calculated for you.
-            </H2Title>
-          </Center>
-          <Center>
-            <WriteUp>
-              Cache hit ratio helps developers determine which key-value pairs
-              should be cached and is often overlooked.
-              <br></br>
-              Cache Hit Ratio = KeySpace Hits/ (KeySpace Misses + KeySpace Hits)
-            </WriteUp>
-          </Center>
-        </div>
-      </Border>
-      <Center>
-        <h1 id="hello"> RediScope Team </h1>
-      </Center>
-      <Center>
-        <TeamsDiv>
-          <Team>
-            <Image
+        </CenterStyle>
+
+        <BorderStyle>
+          <CenterStyle>
+            <div id="feature1">
+              <H2Title id="feature1"> Store Your Redis Cache URL </H2Title>
+            </div>
+          </CenterStyle>
+          <CenterStyle>
+            <URLGif
               src={
-                'https://github.com/oslabs-beta/RediScope/raw/fix-pathing-images/public/assets/CoralHeadshot.png'
+                'https://github.com/oslabs-beta/RediScope/raw/fix-pathing-images/public/assets/URL.gif'
               }
             />
-            <Names>
-              <a href="https://www.linkedin.com/in/coral-dabarera-edelson/">
-                {' '}
-                Coral Dabarera Edelson
-              </a>{' '}
-            </Names>
-
-            <Socials>
-              <a href="https://www.linkedin.com/in/coral-dabarera-edelson/">
-                {' '}
-                linkedin{' '}
-              </a>
-              <a href="https://github.com/coraletoile"> github </a>
-            </Socials>
-          </Team>
-          <Team>
-            <Image
+          </CenterStyle>
+        </BorderStyle>
+        {/* <h1 style={{paddingTop: ".5em"}}>  </h1> */}
+        <BorderStyle >
+          <CenterStyle>
+            <div id="feature2">
+              <H2Title> View Performance Metrics in Real Time </H2Title>
+            </div>
+          </CenterStyle>
+          <CenterStyle>
+            <Gif
               src={
-                'https://github.com/oslabs-beta/RediScope/raw/fix-pathing-images/public/assets/BK.png'
+                'https://github.com/oslabs-beta/RediScope/raw/fix-pathing-images/public/assets/giphygraph.gif'
               }
             />
-            <Names>
-              <a href="https://www.linkedin.com/in/bokim1/"> Bo Kim </a>{' '}
-            </Names>
+          </CenterStyle>
+        </BorderStyle>
+        {/* <h1 style={{paddingTop: ".5em"}}>  </h1> */}
+        <BorderStyle>
+          <div id="feature3">
+            <CenterStyle>
+              <H2Title>
+                Ditch the calculator. Cache Hit Ratio is calculated for you.
+              </H2Title>
+            </CenterStyle>
+            <CenterStyle>
+              <WriteUp>
+                Cache hit ratio helps developers determine which key-value pairs
+                should be cached and is often overlooked.
+                <br></br>
+                Cache Hit Ratio = KeySpace Hits/ (KeySpace Misses + KeySpace Hits)
+              </WriteUp>
+            </CenterStyle>
+          </div>
+        </BorderStyle>
+        <h1 style={{paddingTop: "1em"}}>  </h1>
+        <CenterStyle>
+          <h1 id="hello"> RediScope Team </h1>
+        </CenterStyle>
+        <CenterStyle>
+          <TeamsDiv>
+            <Team>
+              <Image
+                src={
+                  'https://github.com/oslabs-beta/RediScope/raw/fix-pathing-images/public/assets/CoralHeadshot.png'
+                }
+              />
+              <Names>
+                <a href="https://www.linkedin.com/in/coral-dabarera-edelson/">
+                  {' '}
+                  Coral Dabarera Edelson
+                </a>{' '}
+              </Names>
 
-            <Socials>
-              <a href="https://www.linkedin.com/in/bokim1/"> linkedin </a>
+              <Socials>
+                <a href="https://www.linkedin.com/in/coral-dabarera-edelson/">
+                  {' '}
+                  linkedin{' '}
+                </a>
+                <a href="https://github.com/coraletoile"> github </a>
+              </Socials>
+            </Team>
+            <Team>
+              <Image
+                src={
+                  'https://github.com/oslabs-beta/RediScope/raw/fix-pathing-images/public/assets/BK.png'
+                }
+              />
+              <Names>
+                <a href="https://www.linkedin.com/in/bokim1/"> Bo Kim </a>{' '}
+              </Names>
 
-              <a href="https://github.com/bokim2">github </a>
-            </Socials>
-          </Team>
-          <Team>
-            <Image
-              src={
-                'https://github.com/oslabs-beta/RediScope/raw/fix-pathing-images/public/assets/Chihiroheadshot.png'
-              }
-            />
-            <Names>
-              <a href="https://www.linkedin.com/in/chihiro-snider/">
-                {' '}
-                Chihiro Snider
-              </a>
-            </Names>
+              <Socials>
+                <a href="https://www.linkedin.com/in/bokim1/"> linkedin </a>
 
-            <Socials>
-              <a href="https://www.linkedin.com/in/chihiro-snider/">
-                {' '}
-                linkedin{' '}
-              </a>
-              <a href="https://github.com/cheesehero112">github </a>
-            </Socials>
-          </Team>
+                <a href="https://github.com/bokim2">github </a>
+              </Socials>
+            </Team>
+            <Team>
+              <Image
+                src={
+                  'https://github.com/oslabs-beta/RediScope/raw/fix-pathing-images/public/assets/Chihiroheadshot.png'
+                }
+              />
+              <Names>
+                <a href="https://www.linkedin.com/in/chihiro-snider/">
+                  {' '}
+                  Chihiro Snider
+                </a>
+              </Names>
 
-          <Team>
-            <Image
-              src={
-                'https://github.com/oslabs-beta/RediScope/raw/fix-pathing-images/public/assets/AW.png'
-              }
-            />
-            <Names>
-              <a href="www.linkedin.com/in/andy-wong27"> Andy Wong</a>
-            </Names>
+              <Socials>
+                <a href="https://www.linkedin.com/in/chihiro-snider/">
+                  {' '}
+                  linkedin{' '}
+                </a>
+                <a href="https://github.com/cheesehero112">github </a>
+              </Socials>
+            </Team>
 
-            <Socials>
-              <a href="https://www.linkedin.com/in/andy-wong27/"> linkedin </a>
-              <a href="https://github.com/andyw27">github </a>
-            </Socials>
-          </Team>
+            <Team>
+              <Image
+                src={
+                  'https://github.com/oslabs-beta/RediScope/raw/fix-pathing-images/public/assets/AW.png'
+                }
+              />
+              <Names>
+                <a href="www.linkedin.com/in/andy-wong27"> Andy Wong</a>
+              </Names>
 
-          <Team>
-            <Image
-              src={
-                'https://github.com/oslabs-beta/RediScope/raw/fix-pathing-images/public/assets/AY.png'
-              }
-            />
-            <Names>
-              <a href="https://www.linkedin.com/in/anazyazd/">
-                {' '}
-                Andrea Azadeh Yazdandoost{' '}
-              </a>
-            </Names>
+              <Socials>
+                <a href="https://www.linkedin.com/in/andy-wong27/"> linkedin </a>
+                <a href="https://github.com/andyw27">github </a>
+              </Socials>
+            </Team>
 
-            <Socials>
-              <a href="https://www.linkedin.com/in/anazyazd/"> linkedin </a>
-              <a href="https://github.com/anazyazd">github </a>
-            </Socials>
-          </Team>
-        </TeamsDiv>
-      </Center>
+            <Team>
+              <Image
+                src={
+                  'https://github.com/oslabs-beta/RediScope/raw/fix-pathing-images/public/assets/AY.png'
+                }
+              />
+              <Names>
+                <a href="https://www.linkedin.com/in/anazyazd/">
+                  {' '}
+                  Andrea Azadeh Yazdandoost{' '}
+                </a>
+              </Names>
+
+              <Socials>
+                <a href="https://www.linkedin.com/in/anazyazd/"> linkedin </a>
+                <a href="https://github.com/anazyazd">github </a>
+              </Socials>
+            </Team>
+          </TeamsDiv>
+        </CenterStyle>
+      </MainContainer>
     </>
   )
 }
