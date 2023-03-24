@@ -18,7 +18,7 @@ export const GlobalStyle = createGlobalStyle`
 }
 
 #root{
-  margin: 10%;
+  margin: 5% 2%;
   justify-content: space-around;
 }
 
@@ -111,40 +111,60 @@ export const LoginLogo = styled.img`
 
 export const DashboardContainer = styled.div`
   display: flex;
-  width: 80vw;
+  width: 100%
   flex-direction: row;
   border: 0.2px outset #24383b;
+  margin-top: 5em;
+`
+export const MainContainer = styled.div`
+  margin-top: 7em;
+  margin-left: 4em;
+  margin-right: 4em;
+
 `
 export const URLSelector = styled.div`
   padding: 25px;
   background-color: #08282e;
-  width: 40%;
+  width: 20%;
 `
 export const GraphContainer = styled.div`
-  width: 100%;
+  width: 80%;
   display: grid;
-  justify-content: space-between;
-  grid-template-columns: repeat(2, 1fr);
-  grid-auto-rows: minmax(20em, auto);
-  box-sizing: border-box;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%/2, max(300px, 100%/3)), 1fr));
+  grid-auto-rows: min-content;
+
 `
+// repeat(auto-fit, minmax(min(100%/2, max(300px, 100%/3)), 1fr));
+// place-items: stretch;
+//  grid-template-rows: fit-content;
 
 export const GraphDiv = styled.div`
+
+  aspect-ratio: 1; 
+  display: flex; 
+  align-items:
   padding: 1em;
   margin-bottom: 0px;
-  margin: 10px;
+  margin: .4em;
   border: 0.1em solid;
   border-color: #4fbdba;
+  
 `
 
+// align-items: start;
+// justify-content: start;
+
 export const Inner = styled.div`
-  display: flex;
-  padding-top: 50px;
+  width: 100%;
+  height:100%;
+  padding: 10px;
 `
 
 export const ChartWrapper = styled.section`
   text-align: center;
   color: white;
+  width: 100%;
+  height:100%;
 `
 
 export const CenteredContainer = styled.div`
@@ -205,9 +225,10 @@ export const NavBar = styled.header`
 export const Elements = styled.div`
   display: flex;
   flex-direction: row;
-  padding-top: 1.25em;
-  padding-right: 5em;
+  padding-top: .4em;
+  padding-right: 2.9em;
   justify-content: flex-start;
+  align-items: center;
 `
 
 export const URLSelection = styled.select`
@@ -306,6 +327,14 @@ export const UserInput = styled.input`
   width: 100%;
   outline: none;
 `
+export const URLInput = styled.input`
+  border: none;
+  border-bottom: 1px solid #35858b;
+  background-color: transparent;
+  color: rgb(216, 238, 238, 0.5);
+  width: 100%;
+  outline: none;
+`
 export const FormikStyle = styled.form`
   input {
     border: none;
@@ -323,32 +352,36 @@ export const RedisForms = styled.div`
 `
 export const SelectedURL = styled.p`
   overflow-wrap: break-word;
-  inline-size: 200px;
+  inline-size: 300px;
 `
-export const Center = styled.div`
+export const CenterStyle = styled.div`
   display: flex;
   justify-content: center;
 
   padding: 10px, 10px;
 `
+// align-items: start;
+
 export const Spacer = styled.div`
   height: 100px;
   width: 100%;
 `
 
-export const Border = styled.div`
-  padding: 5em;
-  margin-bottom: 10px;
-  margin-top: 10px;
-  border: 0.1em solid;
-  border-color: #4fbdba;
-  border-radius: 8px;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-  white-space: nowrap;
-  min-width: 580px;
+export const BorderStyle = styled.div`
+padding: 5em 2em;
+
+margin-bottom: 10px;
+margin-top: 10px;
+border: 0.1em solid;
+border-color: #4fbdba;
+border-radius: 8px;
+justify-content: center;
+align-items: center;
+overflow: hidden;
+white-space: nowrap;
+min-width: 580px;
 `
+// margin-top: 6em;
 
 export const H2Title = styled.h2`
   font-size: 2.8vw;
@@ -447,6 +480,9 @@ export const TeamsDiv = styled.div`
 `
 
 export const WriteUp = styled.h5`
+  display: inline-block;
+  white-space:normal;
+  word-wrap:break-word;
   overflow-wrap: break-word;
   font-size: 1.7vw;
   padding: 5px;
@@ -455,4 +491,5 @@ export const WriteUp = styled.h5`
     font-size: 11px;
   }
 `
+// box-sizing: border-box;
 //  <img src={ch} alt="Chihiro Developer" />

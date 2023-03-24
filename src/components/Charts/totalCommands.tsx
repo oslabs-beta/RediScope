@@ -26,11 +26,23 @@ ChartJS.register(
 export function TotalCommands() {
   const { totalComms, setTotalComms } = useContext(RedisContext)
   const { time, setTime } = useContext(RedisContext)
-  console.log('from totalcommands', time)
+  // console.log('from totalcommands', time)
  
 
   const options: object = {
     responsive: true,
+    aspectRatio:
+    1 | 1,
+    scales: {
+      y: {
+          ticks: {
+              // Include a dollar sign in the ticks
+              callback: function (val, index, ticks) {
+                return Number.parseFloat(val).toExponential(3); 
+              }
+          }
+      }
+  },
     plugins: {
       legend: {
         position: 'top' as const,
