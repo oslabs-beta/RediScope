@@ -50,17 +50,19 @@ export function MemoryUsage() {
       legend: {
         position: 'top' as const,
         labels: {
-          color: '#dadada',
+          color: '#dadada', padding: 10
         },
       },
       title: {
         display: true,
+        position: 'top' as const,
+        align: 'center' as const,
         text: 'Memory Usage: Used Memory vs RSS',
         font: {
           size: 22,
           family: "'Helvetica', 'serif'",
         },
-        color: '#dadada',
+        color: '#dadada', padding: 0
       },
     },
     
@@ -84,6 +86,18 @@ export function MemoryUsage() {
       },
     ],
   }
+
+  const legendMargin = {
+    id: "legendMargin",
+    beforeInit: function (chart) {
+      const fitValue = chart.legend.fit;
+      chart.legend.fit = function fit() {
+        fitValue.bind(chart.legend)();
+        return (this.height += 14);
+      };
+    }
+  };
+
   // chart.canvas.parentNode.style.height = '128px'
-  return <Line options={options} data={data} />
+  return <Line options={options} data={data} plugins={[legendMargin]}/>
 }

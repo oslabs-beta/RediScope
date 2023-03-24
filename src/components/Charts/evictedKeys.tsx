@@ -47,7 +47,7 @@ export function EvictedKeys() {
           size: 22,
           family: "'Helvetica', 'serif'"
         },
-        color: '#dadada'
+        color: '#dadada', padding: 0
       },
     },
   }
@@ -64,5 +64,17 @@ export function EvictedKeys() {
       },
     ],
   }
-  return <Line options={options} data={data} />
+
+  const legendMargin = {
+    id: "legendMargin",
+    beforeInit: function (chart) {
+      const fitValue = chart.legend.fit;
+      chart.legend.fit = function fit() {
+        fitValue.bind(chart.legend)();
+        return (this.height += 14);
+      };
+    }
+  };
+
+  return <Line options={options} data={data} plugins={[legendMargin]}/>
 }

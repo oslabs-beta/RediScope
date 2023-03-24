@@ -70,6 +70,7 @@ export const ButtonStyle = styled.button`
   a:link {
     text-decoration: none;
     color: #d8eeee;
+    display: block;
   }
 `
 
@@ -118,14 +119,15 @@ export const DashboardContainer = styled.div`
 `
 export const MainContainer = styled.div`
   margin-top: 7em;
-  margin-left: 4em;
-  margin-right: 4em;
+  margin-left: 7em;
+  margin-right: 7em;
 
 `
 export const URLSelector = styled.div`
   padding: 25px;
   background-color: #08282e;
   width: 20%;
+  min-width: 220px;
 `
 export const GraphContainer = styled.div`
   width: 80%;
@@ -142,9 +144,9 @@ export const GraphDiv = styled.div`
 
   aspect-ratio: 1; 
   display: flex; 
-  align-items:
-  padding: 1em;
-  margin-bottom: 0px;
+  
+  padding: 0.5em;
+
   margin: .4em;
   border: 0.1em solid;
   border-color: #4fbdba;
@@ -155,9 +157,11 @@ export const GraphDiv = styled.div`
 // justify-content: start;
 
 export const Inner = styled.div`
+
   width: 100%;
   height:100%;
-  padding: 10px;
+  padding: 12px 5px 12px 12px;
+
 `
 
 export const ChartWrapper = styled.section`
@@ -484,7 +488,7 @@ export const WriteUp = styled.h5`
   white-space:normal;
   word-wrap:break-word;
   overflow-wrap: break-word;
-  font-size: 1.7vw;
+  font-size: 1.6vw;
   padding: 5px;
 
   @media (max-width: 650px) {

@@ -47,7 +47,7 @@ export function ConnectedClients() {
           size: 22,
           family: "'Helvetica', 'serif'"
         },
-        color: '#dadada'
+        color: '#dadada', padding: 0
       },
       scales: {
         yAxes: [{
@@ -71,8 +71,18 @@ export function ConnectedClients() {
         backgroundColor: 'rgba(255, 99, 132, 0.5)',
       },
     ],
+  }   
+  
+  const legendMargin = {
+    id: "legendMargin",
+    beforeInit: function (chart) {
+      const fitValue = chart.legend.fit;
+      chart.legend.fit = function fit() {
+        fitValue.bind(chart.legend)();
+        return (this.height += 14);
+      };
+    }
+  };
     
-    
-  }
-  return <Line options={options} data={data} />
+  return <Line options={options} data={data} plugins={[legendMargin]}/>
 }
