@@ -49,7 +49,7 @@ export default function Main(props: Props): JSX.Element {
               <a href="/Signup">Get Started</a>
             </li>
             <li>
-              <a href="/Login">Login</a>
+              <a href="/Login" style={{paddingLeft: "1.5em"}}>Login</a>
             </li>
           </Elements>
         </Nav>
