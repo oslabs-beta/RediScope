@@ -44,7 +44,7 @@ export default class Login extends Component<Props, LoginState> {
     }
   }
 
-  handleLogin(formValue: { username: string; password: string }) {
+  async handleLogin(formValue: { username: string; password: string }) {
     const { username, password } = formValue
 
     // ----- hard-code ----- //
@@ -58,7 +58,7 @@ export default class Login extends Component<Props, LoginState> {
 
     // ------ invoke login  authorization from service folder ------ //
 
-    AuthService.login(username, password).then(
+    await AuthService.login(username, password).then(
       () => {
         // confirmed
         this.setState({
