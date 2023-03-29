@@ -45,6 +45,7 @@ export const FullscreenContainer = styled.div`
   display: flex;
   align-content: center;
   justify-content: center;
+
 `
 
 export const ButtonStyle = styled.button`
@@ -226,6 +227,10 @@ export const CenteredContainer = styled.div`
   align-self: center;
   text-align: center;
 
+  @media only screen and (max-width:600px){
+    width: 80%;
+  }
+
 `
 
 export const Nav = styled.li`
@@ -294,6 +299,13 @@ export const NavBar = styled.header`
   }
 `
 export const Elements = styled.div`
+  
+  display: flex;
+  flex-direction: row;
+  padding-top: .5em;
+  padding-right: 2.9em;
+  justify-content: flex-start;
+  align-items: center;
 
   @media (max-width:630px){
   
@@ -309,15 +321,6 @@ export const Elements = styled.div`
     align-content: center;
     justify-content: center;
   }  
-  
-  display: flex;
-  flex-direction: row;
-  padding-top: .5em;
-  padding-right: 2.9em;
-  justify-content: flex-start;
-  align-items: center;
-
-
 `
 
 export const URLSelection = styled.select`
