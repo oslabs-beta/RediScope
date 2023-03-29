@@ -68,7 +68,7 @@ export default function Main(props: Props): JSX.Element {
               ></MainLogo>
             </CenterStyle>
             <CenterStyle>
-              <H2Title style={{paddingTop: "0.6em"}}>
+              <H2Title>
                 {' '}
                 Scope out your Redis cache performance with RediScope
               </H2Title>
@@ -77,7 +77,7 @@ export default function Main(props: Props): JSX.Element {
               <H5Title >
                 A free open source visualizer for Redis cache performance metrics{' '}
               </H5Title>
-              <h1 style={{paddingTop: "2em"}}> </h1>
+              {/* <h1 style={{paddingTop: "2em"}}> </h1> */}
             </CenterStyle>
             <CenterStyle>
             
