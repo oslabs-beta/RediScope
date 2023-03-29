@@ -5,3 +5,4 @@ webpack/*.js
 .webpack
 out
 .env
+rediscope.zip
