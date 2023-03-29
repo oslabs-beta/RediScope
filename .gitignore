@@ -1,3 +1,4 @@
+*/.js
 node_modules
 dist
 packages
@@ -6,3 +7,4 @@ out
 .env
 rediscope.zip
 build
+/log
