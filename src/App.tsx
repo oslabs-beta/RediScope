@@ -12,14 +12,14 @@ export function App() {
     <RedisContextProvider>
       <BrowserRouter>
         <GlobalStyle />
-        <div>
+        
           <Routes>
             <Route path="/" element={<Main />} />
             <Route path="/Login" element={<Login />} />
             <Route path="/Signup" element={<SignUp />} />
             <Route path="/Dashboard" element={<Dashboard />} />
           </Routes>
-        </div>
+      
       </BrowserRouter>
     </RedisContextProvider>
   )

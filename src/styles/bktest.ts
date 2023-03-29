@@ -13,23 +13,21 @@ export const GlobalStyle = createGlobalStyle`
 
 * {
   margin: 0px;
-
   top: 50%
   padding: 10px;
 }
 
 #root{
-  
+  margin: 5% 2%;
+  justify-content: space-around;
 }
-
-
 
 body {
   font-family: 'Lato', sans-serif;
   font-size: 18px;
   background-color: #072227;
   color: #D8EEEE;
-  width: 100%
+
 }
 
 a {
@@ -38,32 +36,13 @@ a {
 }
 
 `
-
-export const FullscreenContainer = styled.div`
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  align-content: center;
-  justify-content: center;
-`
-
 export const ButtonStyle = styled.button`
-  @media only screen and (max-width:600px){
-    font-size: 14px;
-  }
-  font-size: 1.25vh;
   height: 42px;
   padding: 10px;
-  width: 85%;
-
+  width: 100%;
+  display: block;
   margin: 20px 0px;
-
-
-  display: inline-block;
-  height: auto;
-  white-space: normal;
-  word-wrap: break-word;
-
+  padding-bottom: 2.25em;
 
   background: transparent;
   border-radius: 8px;
@@ -123,23 +102,9 @@ export const MainLogo = styled.img`
   margin-bottom: 10px;
 `
 export const UpperLogo = styled.img`
-  @media (max-width:600){
-    width: 100%;
-    aspect-ratio: initial;
-    height: 10em;
-  
-  }  
-  
-  align-self: center;
-  justify-self: center;
-  height: 100%;
-  padding-bottom: 10px;
-  margin-left: 0.5em; 
-  aspect-ratio: initial;
-  
-
+  width: 10em;
+  margin-bottom: 10px;
 `
-
 export const LoginLogo = styled.img`
   width: 55%;
   margin-bottom: 10px;
@@ -147,40 +112,34 @@ export const LoginLogo = styled.img`
 
 export const DashboardContainer = styled.div`
   display: flex;
-  
   width: 100%
   flex-direction: row;
-
   justify-content: center;
   border: 0.2px outset #24383b;
   margin-top: 5em;
 `
 export const MainContainer = styled.div`
-  @media (max-width:630px){
-    margin: 0em;
-    margin-top: 7em;
-    text-align: center;
-  }
   margin-top: 7em;
-  margin-left: 7em;
-  margin-right: 7em;
+  margin-left: 12em;
+  margin-right: 12em;
 
 `
 export const URLSelector = styled.div`
-  justify-content: center;
-  padding: 30px;
+  padding: 25px;
   background-color: #08282e;
   width: 20%;
   min-width: 220px;
 `
 export const GraphContainer = styled.div`
-width: 80%;
-justify-content: center;
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(min(100vh/3, max(440px, 95vh/2)), 43vh));
-grid-auto-rows: min-content;
+
+  width: 80%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100vh/3, max(440px, 95vh/2)), 43vh));
+  grid-auto-rows: min-content;
 
 `
+// grid-auto-rows: min-content;
+// grid-template-columns: repeat(auto-fit, minmax(min(100%/2, max(300px, 100%/3)), 1fr));
 
 // repeat(auto-fit, minmax(min(100%/2, max(300px, 100%/3)), 1fr));
 // place-items: stretch;
@@ -190,7 +149,7 @@ export const GraphDiv = styled.div`
 
   aspect-ratio: 1; 
   display: flex; 
-
+  
   padding: 0.5em;
 
   margin: .4em;
@@ -218,14 +177,15 @@ export const ChartWrapper = styled.section`
 `
 
 export const CenteredContainer = styled.div`
+  margin: auto;
   padding: 5px;
   width: 30%;
-
+  top: 50%;
   gap: 20%;
-  justify-self: center;
-  align-self: center;
+  align-items: center;
   text-align: center;
-
+  display: flex;
+  justify-content: space-around;
 `
 
 export const Nav = styled.li`
@@ -234,19 +194,8 @@ export const Nav = styled.li`
   padding: 0;
   overflow: hidden;
   display: inline;
-  margin-right: 3rem;
 
   a {
-    @media (max-width:630px){
-      font-size: 16px !important;
-      padding: 0px;
-
-      margin: 0px;
-      height: 3em;
-      display: flex;
-      align-items: center;
-    }
-
     color: #d8eeee;
     font-size: 25px;
     display: block;
@@ -268,12 +217,10 @@ export const NavBar = styled.header`
   display: flex;
   justify-content: space-between;
   position: fixed;
-  font: 1em;
-  height: 4em;
   width: 100%;
   top: 0;
   left: 0;
-  padding-left: 2em;
+  padding-left: 3em;
   background-color: #aefeff;
   background-image: linear-gradient(
     15deg,
@@ -283,41 +230,14 @@ export const NavBar = styled.header`
   );
   background-size: cover;
   background-repeat: no-repeat;
-
-  @media (max-width:630px){
-    font-size: 16px !important;
-    padding: 0px;
-    padding-left: 0px;
-    margin: 0px;
-    height: 3em;
-    display: flex;
-  }
 `
 export const Elements = styled.div`
-
-  @media (max-width:630px){
-  
-    display: inline-block;
-    font-size: 0.5rem !important;
-    padding: 0px !important;
-    padding-left: 0px !important;
-    margin: 0px;
-    height: 100%;
-    width: 100%;
-    display: flex;
-    flex-direction: row;
-    align-content: center;
-    justify-content: center;
-  }  
-  
   display: flex;
   flex-direction: row;
-  padding-top: .5em;
+  padding-top: .4em;
   padding-right: 2.9em;
   justify-content: flex-start;
   align-items: center;
-
-
 `
 
 export const URLSelection = styled.select`
@@ -381,12 +301,8 @@ export const CollectButton = styled.button`
   padding: 10px;
   width: 100%;
   display: block;
-  margin: 0px 10px 30px 0px;
-
-  display: inline-block;
-  height: auto;
-  white-space: normal;
-  word-wrap: break-word;
+  margin: 20px 0;
+  padding-bottom: 2.25em;
 
   background: rgb(79, 189, 186, 0.4);
   border-radius: 8px;
@@ -444,12 +360,8 @@ export const RedisForms = styled.div`
   justify-content: space-between;
 `
 export const SelectedURL = styled.p`
-
-
-
-  word-wrap:break-word;
   overflow-wrap: break-word;
-
+  inline-size: 300px;
 `
 export const CenterStyle = styled.div`
   display: flex;
@@ -465,7 +377,7 @@ export const Spacer = styled.div`
 `
 
 export const BorderStyle = styled.div`
-padding: 5em 3em;
+padding: 4em 2em;
 
 margin-bottom: 10px;
 margin-top: 10px;
@@ -476,37 +388,23 @@ justify-content: center;
 align-items: center;
 overflow: hidden;
 white-space: nowrap;
-
+min-width: 580px;
 `
 // margin-top: 6em;
 
 export const H2Title = styled.h2`
-  display: inline-block;
-  white-space:normal;
-  word-wrap:break-word;
-  overflow-wrap: break-word;
-  font-size: 2.7vw;
-  padding: 5px;
- 
-
+  font-size: 2.6vw;
+  padding-bottom: 0.3em;
   @media (max-width: 650px) {
-    font-size: 16px;
+    font-size: 18px;
   }
-
-  
 `
 export const H5Title = styled.h5`
-  display: inline-block;
-  white-space:normal;
-  word-wrap:break-word;
-  overflow-wrap: break-word;
   font-size: 2.3vw;
-  align-self: center;
   @media (max-width: 650px) {
     font-size: 16px;
   }
 `
-
 
 export const Circle = styled.div`
   display: inline-block;
@@ -545,11 +443,8 @@ export const Team = styled.div`
   flex-direction: column;
   margin: 5px;
   width: 100%;
-  height: 100%;
-  align-content: space-between;
-  align-items: center;
-  justify-content: space-between;
-  justify-items: center;
+  align-items: left;
+
   @media (max-width: 1030px) {
     align-items: center;
     margin-bottom: 15px;
@@ -558,28 +453,26 @@ export const Team = styled.div`
 export const Socials = styled.ul`
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  margin: auto;
   align-items: center;
-
-  justify-items: end;
   list-style: none;
   padding: 0px;
-
+=======
 
 `
 
 export const Names = styled.h3`
   display: flex;
   align-items: center;
-  justify-self: end;
-  padding-top: 10px;
-  text-align : center;
+  justify-content: center;
  
 `
 export const ContributorsDiv = styled.div`
   display: inline-grid;
   justify-items: start;
   grid-template-columns: repeat(5, 1fr);
-  width: 100vw;
+  width: 1000px;
 
   @media (max-width: 1030px) {
     grid-template-rows: auto;
@@ -587,10 +480,9 @@ export const ContributorsDiv = styled.div`
 `
 export const TeamsDiv = styled.div`
   display: flex;
-  align-content:
   align-items: center;
-  justify-content: space-between;
-  justify-items: space-between;
+  justify-content: center;
+
   @media (max-width: 1000px) {
     display: grid;
   }
@@ -601,11 +493,11 @@ export const WriteUp = styled.h5`
   white-space:normal;
   word-wrap:break-word;
   overflow-wrap: break-word;
-  font-size: 1.6vw;
+  font-size: 1.4vw;
   padding: 5px;
 
   @media (max-width: 650px) {
-    font-size: 14px;
+    font-size: 11px;
   }
 `
 // box-sizing: border-box;
