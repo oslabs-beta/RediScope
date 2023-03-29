@@ -49,10 +49,8 @@ export const FullscreenContainer = styled.div`
 `
 
 export const ButtonStyle = styled.button`
-  @media only screen and (max-width:600px){
-    font-size: 14px;
-  }
-  font-size: 1.25vh;
+
+  font-size: 2vh;
   height: 42px;
   padding: 10px;
   width: 85%;
@@ -72,10 +70,14 @@ export const ButtonStyle = styled.button`
   transition: 1s ease-in-out;
 
   color: #fff;
-  font-size: 16px;
+ 
   font-weight: bold;
 
   cursor: pointer;
+
+  @media only screen and (max-width:600px){
+    font-size: 14px;
+  }
 
   &:hover {
     filter: brightness(0.9);
@@ -157,15 +159,16 @@ export const DashboardContainer = styled.div`
   margin-top: 5em;
 `
 export const MainContainer = styled.div`
+  margin-top: 7em;
+  margin-left: 7em;
+  margin-right: 7em;
+  margin-bottom: 7em;
+
   @media (max-width:630px){
     margin: 0em;
     margin-top: 7em;
     text-align: center;
   }
-  margin-top: 7em;
-  margin-left: 7em;
-  margin-right: 7em;
-
 `
 export const URLSelector = styled.div`
   justify-content: center;
@@ -173,12 +176,17 @@ export const URLSelector = styled.div`
   background-color: #08282e;
   width: 20%;
   min-width: 220px;
+
+  @media (max-width:630px){
+    
+    min-width: 170px;
+  }
 `
 export const GraphContainer = styled.div`
 width: 80%;
 justify-content: center;
 display: grid;
-grid-template-columns: repeat(auto-fit, minmax(min(100vh/3, max(440px, 95vh/2)), 43vh));
+grid-template-columns: repeat(auto-fit, minmax(min(100vh/3.4, max(440px, 95vh/2)), 43vh));
 grid-auto-rows: min-content;
 
 `
@@ -353,7 +361,12 @@ export const DeleteButton = styled.button`
   width: 100%;
   display: block;
   margin: 20px 0;
-  padding-bottom: 2.25em;
+
+
+  display: inline-block;
+  height: auto;
+  white-space: normal;
+  word-wrap: break-word;
 
   background: rgb(255, 99, 132, 0.5);
   border-radius: 8px;
@@ -430,8 +443,24 @@ export const URLInput = styled.input`
   color: rgb(216, 238, 238, 0.5);
   width: 100%;
   outline: none;
+
+  @media (max-width: 400px) {
+    size : 3;
+    
+  }
 `
 export const FormikStyle = styled.form`
+  input {
+    border: none;
+    border-bottom: 1px solid #35858b;
+    background-color: transparent;
+    color: rgb(216, 238, 238, 0.5);
+    width: 100%;
+    outline: none;
+  }
+`
+
+export const URLForm = styled.div`
   input {
     border: none;
     border-bottom: 1px solid #35858b;
@@ -447,9 +476,6 @@ export const RedisForms = styled.div`
   justify-content: space-between;
 `
 export const SelectedURL = styled.p`
-
-
-
   word-wrap:break-word;
   overflow-wrap: break-word;
 
@@ -458,7 +484,7 @@ export const CenterStyle = styled.div`
   display: flex;
   justify-content: center;
 
-  padding: 10px, 10px;
+  padding: 10px 10px;
 `
 // align-items: start;
 
@@ -490,10 +516,10 @@ export const H2Title = styled.h2`
   overflow-wrap: break-word;
   font-size: 2.7vw;
   padding: 5px;
- 
+  padding-top: 0.3em;
 
   @media (max-width: 650px) {
-    font-size: 16px;
+    font-size: 24px;
   }
 
   
@@ -506,7 +532,7 @@ export const H5Title = styled.h5`
   font-size: 2.3vw;
   align-self: center;
   @media (max-width: 650px) {
-    font-size: 16px;
+    font-size: 18px;
   }
 `
 

@@ -15,6 +15,7 @@ import {
   FormikStyle,
   RedisForms,
   SelectedURL,
+  URLForm,
 } from '../styles/GlobalStyle'
 import { render } from 'react-dom'
 
@@ -269,7 +270,7 @@ function RedisForm(props: Props): JSX.Element {
       >
         <Form>
           {/* <FormikStyle> */}
-          <div className="URL-Form">
+          <URLForm>
             <label htmlFor="URL">URL Alias: </label>
             {'\n'}
             <Field name="name" type="text" className="URLInput" />
@@ -282,8 +283,8 @@ function RedisForm(props: Props): JSX.Element {
             <ButtonStyle type="submit" className="btn btn-primary">
               Add URL
             </ButtonStyle>
-            Add URL
-          </div>
+            
+          </URLForm>
           {/* </FormikStyle> */}
         </Form>
       </Formik>
