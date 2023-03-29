@@ -13,7 +13,6 @@ export const GlobalStyle = createGlobalStyle`
 
 * {
   margin: 0px;
-
   top: 50%
   padding: 10px;
 }
@@ -157,6 +156,10 @@ export const DashboardContainer = styled.div`
   justify-content: center;
   border: 0.2px outset #24383b;
   margin-top: 5em;
+
+  @media (max-width:630px){
+   flex-wrap: wrap;
+  }
 `
 export const MainContainer = styled.div`
   margin-top: 7em;
@@ -165,8 +168,8 @@ export const MainContainer = styled.div`
   margin-bottom: 7em;
 
   @media (max-width:630px){
-    margin: 0em;
-    margin-top: 7em;
+    margin: .6em;
+    margin-top: 4em;
     text-align: center;
   }
 `
@@ -178,8 +181,10 @@ export const URLSelector = styled.div`
   min-width: 220px;
 
   @media (max-width:630px){
-    
     min-width: 170px;
+    width: 100%;
+    padding-top: 0;
+    margin-top: 0;
   }
 `
 export const GraphContainer = styled.div`
@@ -340,6 +345,7 @@ export const URLSelection = styled.select`
   border-radius: 4px;
   padding: 7px;
   outline: none;
+  margin: 7px;
 `
 
 export const Option = styled.option`

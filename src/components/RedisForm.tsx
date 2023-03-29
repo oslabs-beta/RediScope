@@ -136,7 +136,7 @@ function RedisForm(props: Props): JSX.Element {
         // setting array values for each graph
         // used memory data grab 
         
-        console.log('res.data after fetch', res.data)
+        // console.log('res.data after fetch', res.data)
         
         setCommandsPerSec((prev: Array<number> | any) => {
           return prev.length === numOfTimepoints
