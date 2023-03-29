@@ -132,9 +132,13 @@ function RedisForm(props: Props): JSX.Element {
           URL: url,
         })
         // setting array values for each graph
-        // used memory data grab
+        // used memory data grab 
+        
+        console.log('res.data after fetch', res.data)
+        
         setUsedMemory((prev: Array<number> | any) => {
           // if prev length is equal to 10, slice the first element, if not, keep adding new memory
+         
           return prev.length === numOfTimepoints
             ? [...prev, parseInt(res.data.used_memory)].slice(1)
             : [...prev, parseInt(res.data.used_memory)]
@@ -367,7 +371,15 @@ function RedisForm(props: Props): JSX.Element {
               ? 'STOP LIVE DATA COLLECTION'
               : 'START LIVE DATA COLLECTION'}
           </CollectButton>
-          <SelectedURL>Selected: {url || urls[0]?.url}</SelectedURL>
+          <SelectedURL>
+            <h5>Selected: </h5>
+           
+            Alias: <span>&nbsp;&nbsp;</span>
+            {urls[0]?.name}          
+            <br/>
+              {url || urls[0]?.url}  
+
+          </SelectedURL>
         </form>
       </div>
     </RedisForms>

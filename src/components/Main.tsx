@@ -38,7 +38,7 @@ export default function Main(props: Props): JSX.Element {
   return (
     <>
       <NavBar>
-        <UpperLogo
+        <UpperLogo 
           src={
             'https://github.com/oslabs-beta/RediScope/raw/routing-images/src/components/images/RediScope%205.png'
           }
@@ -46,10 +46,11 @@ export default function Main(props: Props): JSX.Element {
         <Nav>
           <Elements>
             <li>
+              
               <a href="/Signup">Get Started</a>
             </li>
             <li>
-              <a href="/Login" style={{marginLeft: "1.5em"}}>Login</a>
+              <a href="/Login" style={{marginLeft: "2.2em", marginRight: ".4em"}}>Login</a>
             </li>
           </Elements>
         </Nav>
@@ -57,7 +58,7 @@ export default function Main(props: Props): JSX.Element {
 
       {/* <Spacer></Spacer> */}
       <MainContainer>
-        <BorderStyle>
+        <BorderStyle style={{paddingBottom: "3em", paddingTop: "0em"}}>
           <div id="header">
             <CenterStyle>
               <MainLogo
@@ -67,19 +68,21 @@ export default function Main(props: Props): JSX.Element {
               ></MainLogo>
             </CenterStyle>
             <CenterStyle>
-              <H2Title>
+              <H2Title style={{paddingTop: "0.6em"}}>
                 {' '}
                 Scope out your Redis cache performance with RediScope
               </H2Title>
             </CenterStyle>
-            <CenterStyle>
-              <H5Title>
+            <CenterStyle >
+              <H5Title >
                 A free open source visualizer for Redis cache performance metrics{' '}
               </H5Title>
+              <h1 style={{paddingTop: "2em"}}> </h1>
             </CenterStyle>
             <CenterStyle>
+            
               <ButtonStyle>
-                <Link to="/Signup"> Get Started Now!</Link>
+                <Link to="/Signup" > Get Started Now!</Link>
               </ButtonStyle>
             </CenterStyle>
           </div>
@@ -124,7 +127,7 @@ export default function Main(props: Props): JSX.Element {
         <BorderStyle>
           <div id="feature3">
             <CenterStyle>
-              <H2Title>
+              <H2Title style={{paddingBottom: "0.6em"}}>
                 Ditch the calculator. Cache Hit Ratio is calculated for you.
               </H2Title>
             </CenterStyle>
@@ -133,7 +136,8 @@ export default function Main(props: Props): JSX.Element {
                 Cache hit ratio helps developers determine which key-value pairs
                 should be cached and is often overlooked.
                 <br></br>
-                Cache Hit Ratio = KeySpace Hits/ (KeySpace Misses + KeySpace Hits)
+                <h1 style={{paddingTop: ".2em"}}>  </h1>
+                Cache Hit Ratio = KeySpace Hits / ( KeySpace Misses + KeySpace Hits )
               </WriteUp>
             </CenterStyle>
           </div>
@@ -172,7 +176,8 @@ export default function Main(props: Props): JSX.Element {
                 }
               />
               <Names>
-                <a href="https://www.linkedin.com/in/bokim1/"> Bo Kim </a>{' '}
+                <a href="https://www.linkedin.com/in/bokim1/"> Bo Kim                     
+                </a>{' '} <br/>
               </Names>
 
               <Socials>
@@ -190,9 +195,10 @@ export default function Main(props: Props): JSX.Element {
               <Names>
                 <a href="https://www.linkedin.com/in/chihiro-snider/">
                   {' '}
-                  Chihiro Snider
+                  Chihiro Snider<br/>
                 </a>
               </Names>
+        
 
               <Socials>
                 <a href="https://www.linkedin.com/in/chihiro-snider/">

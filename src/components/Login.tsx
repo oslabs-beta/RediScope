@@ -5,6 +5,7 @@ import * as Yup from 'yup'
 import {
   ButtonStyle,
   GlobalStyle,
+  FullscreenContainer,
   LoginSignUpBox,
   Title,
   CenteredContainer,
@@ -140,70 +141,72 @@ export default class Login extends Component<Props, LoginState> {
     }
 
     return (
-      <CenteredContainer>
-        <LoginSignUpBox>
-          <div className="formContainer">
-            <LoginLogo
-              src={
-                'https://github.com/oslabs-beta/RediScope/raw/routing-images/src/components/images/RediScope%205.png'
-              }
-            ></LoginLogo>
-            <Formik
-              initialValues={initVal}
-              validationSchema={this.validationSchema}
-              onSubmit={this.handleLogin}
-            >
-              <Form>
-                <div className="form">
-                  <label htmlFor="username">Username</label>
-                  <Field name="username" type="text" className="form-control" />
-                  <ErrorMessage
-                    name="username"
-                    component="div"
-                    className="alert alert-danger"
-                  />
-                </div>
-                <div className="form">
-                  <label htmlFor="password">Password</label>
-                  <Field
-                    name="password"
-                    type="password"
-                    className="form-control"
-                  />
-                  <ErrorMessage
-                    name="password"
-                    component="div"
-                    className="alert alert-danger"
-                  />
-                  {this.state.wrongPassword && (
-                      <div className="alert alert-danger">Incorrect Password.</div>
-                      )}
-                </div>
-
-                <div className="form">
-                  <ButtonStyle
-                    type="submit"
-                    className="btn btn btn-primary mt-4"
-                    disabled={loading}
-                  >
-                    <span>Login</span>
-                  </ButtonStyle>
-                  <div>
-                    <span className="redirectLink">
-                      {' '}
-                      New to RediScope?{' '}
-                      <Link id="link" to="/Signup">
-                        {' '}
-                        Create an account here.{' '}
-                      </Link>
-                    </span>
+      <FullscreenContainer>
+        <CenteredContainer>
+          <LoginSignUpBox>
+            <div className="formContainer">
+              <LoginLogo
+                src={
+                  'https://github.com/oslabs-beta/RediScope/raw/routing-images/src/components/images/RediScope%205.png'
+                }
+              ></LoginLogo>
+              <Formik
+                initialValues={initVal}
+                validationSchema={this.validationSchema}
+                onSubmit={this.handleLogin}
+              >
+                <Form>
+                  <div className="form">
+                    <label htmlFor="username">Username</label>
+                    <Field name="username" type="text" className="form-control" />
+                    <ErrorMessage
+                      name="username"
+                      component="div"
+                      className="alert alert-danger"
+                    />
                   </div>
-                </div>
-              </Form>
-            </Formik>
-          </div>
-        </LoginSignUpBox>
-      </CenteredContainer>
+                  <div className="form">
+                    <label htmlFor="password">Password</label>
+                    <Field
+                      name="password"
+                      type="password"
+                      className="form-control"
+                    />
+                    <ErrorMessage
+                      name="password"
+                      component="div"
+                      className="alert alert-danger"
+                    />
+                    {this.state.wrongPassword && (
+                        <div className="alert alert-danger">Incorrect Password.</div>
+                        )}
+                  </div>
+
+                  <div className="form">
+                    <ButtonStyle
+                      type="submit"
+                      className="btn btn btn-primary mt-4"
+                      disabled={loading}
+                    >
+                      <span>Login</span>
+                    </ButtonStyle>
+                    <div>
+                      <span className="redirectLink">
+                        {' '}
+                        New to RediScope?{' '}
+                        <Link id="link" to="/Signup">
+                          {' '}
+                          Create an account here.{' '}
+                        </Link>
+                      </span>
+                    </div>
+                  </div>
+                </Form>
+              </Formik>
+            </div>
+          </LoginSignUpBox>
+        </CenteredContainer>
+      </FullscreenContainer>
     )
   }
 }

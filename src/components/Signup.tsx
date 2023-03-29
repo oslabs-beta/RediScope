@@ -6,6 +6,7 @@ import * as Yup from 'yup'
 import AuthService from '../service/authentication'
 import {
   ButtonStyle,
+  FullscreenContainer,
   LoginSignUpBox,
   Title,
   CenteredContainer,
@@ -166,109 +167,111 @@ export default class SignUp extends Component<Props, SignUpState> {
     }
 
     return (
-      <CenteredContainer>
-        <LoginSignUpBox>
-          <div className="formContainer">
-            <LoginLogo
-              src={
-                'https://github.com/oslabs-beta/RediScope/raw/routing-images/src/components/images/RediScope%205.png'
-              }
-            ></LoginLogo>
-            <Formik
-              initialValues={initVals}
-           
-              
-              validationSchema={this.SignUpSchema}
-              
-              onSubmit={this.handleSignUp}
-            >
-              <Form>
+      <FullscreenContainer>
+        <CenteredContainer>
+          <LoginSignUpBox>
+            <div className="formContainer">
+              <LoginLogo
+                src={
+                  'https://github.com/oslabs-beta/RediScope/raw/routing-images/src/components/images/RediScope%205.png'
+                }
+              ></LoginLogo>
+              <Formik
+                initialValues={initVals}
+            
                 
-                  <div>
-                    <div className="form">
-                      <label htmlFor="username"> Username </label>
-                      <Field
-                        name="username"
-                        type="text"
-                        className="form-control"
-                      />
-                      <ErrorMessage
-                        name="username"
-                        component="div"
-                        className="alert alert-danger"
-                      />
-                      {this.state.duplicateUser && (
-                      <div className="alert alert-danger">Please try a different username.</div>
-                      )}
-                    </div>
+                validationSchema={this.SignUpSchema}
+                
+                onSubmit={this.handleSignUp}
+              >
+                <Form>
+                  
+                    <div>
+                      <div className="form">
+                        <label htmlFor="username"> Username </label>
+                        <Field
+                          name="username"
+                          type="text"
+                          className="form-control"
+                        />
+                        <ErrorMessage
+                          name="username"
+                          component="div"
+                          className="alert alert-danger"
+                        />
+                        {this.state.duplicateUser && (
+                        <div className="alert alert-danger">Please try a different username.</div>
+                        )}
+                      </div>
 
-                    <div className="form">
-                      <label htmlFor="password"> Password </label>
-                      <Field
-                        name="password"
-                        type="password"
-                        className="form-control"
-                      />
-                      <ErrorMessage
-                        name="password"
-                        component="div"
-                        className="alert alert-danger"
-                      />
-                    </div>
+                      <div className="form">
+                        <label htmlFor="password"> Password </label>
+                        <Field
+                          name="password"
+                          type="password"
+                          className="form-control"
+                        />
+                        <ErrorMessage
+                          name="password"
+                          component="div"
+                          className="alert alert-danger"
+                        />
+                      </div>
 
-                    <div className="form">
-                      <label htmlFor="email"> Email </label>
-                      <Field
-                        name="email"
-                        type="email"
-                        className="form-control"
-                      />
-                      <ErrorMessage
-                        name="email"
-                        component="div"
-                        className="alert alert-danger"
-                      />
-                    </div>
+                      <div className="form">
+                        <label htmlFor="email"> Email </label>
+                        <Field
+                          name="email"
+                          type="email"
+                          className="form-control"
+                        />
+                        <ErrorMessage
+                          name="email"
+                          component="div"
+                          className="alert alert-danger"
+                        />
+                      </div>
 
-                    <div className="form">
-                      <ButtonStyle type="submit" className="btn">
-                        {' '}
-                        Sign Up
-                      </ButtonStyle>
-                      <div className="redirectLink">
-                        <span className="redirectLink">
+                      <div className="form">
+                        <ButtonStyle type="submit" className="btn">
                           {' '}
-                          Already have an account?{' '}
-                          <Link id="link" to="/Login">
+                          Sign Up
+                        </ButtonStyle>
+                        <div className="redirectLink">
+                          <span className="redirectLink">
                             {' '}
-                            Login Here{' '}
-                          </Link>
-                        </span>
+                            Already have an account?{' '}
+                            <Link id="link" to="/Login">
+                              {' '}
+                              Login Here{' '}
+                            </Link>
+                          </span>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                
-                <br></br>
-                {message && (
-                  <div className="form">
-                    <div
-                      className={
-                        success ? 'alert alert-success' : 'alert alert-danger'
-                      }
-                      role="alert"
-                    >
-                      Please fill required forms properly. Usernames and
-                      passwords should be between 3 and 20 characters. E-mail
-                      must be valid.
-                      {/* { message } */}
+                  
+                  <br></br>
+                  {message && (
+                    <div className="form">
+                      <div
+                        className={
+                          success ? 'alert alert-success' : 'alert alert-danger'
+                        }
+                        role="alert"
+                      >
+                        Please fill required forms properly. Usernames and
+                        passwords should be between 3 and 20 characters. E-mail
+                        must be valid.
+                        {/* { message } */}
+                      </div>
                     </div>
-                  </div>
-                )}
-              </Form>
-            </Formik>
-          </div>
-        </LoginSignUpBox>
-      </CenteredContainer>
+                  )}
+                </Form>
+              </Formik>
+            </div>
+          </LoginSignUpBox>
+        </CenteredContainer>
+      </FullscreenContainer>
     )
   }
 }
