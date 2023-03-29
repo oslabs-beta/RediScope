@@ -36,6 +36,7 @@ function RedisForm(props: Props): JSX.Element {
   const { setEvictedKeys } = useContext(RedisContext)
   const { setKeyHits } = useContext(RedisContext)
   const { setKeyMisses } = useContext(RedisContext)
+  const { setCommandsPerSec } = useContext(RedisContext)
   const location = useLocation()
   const [intervalId, setIntervalId] = useState(0)
   const [intervalMS, setIntervalMS] = useState(2000)
@@ -136,6 +137,12 @@ function RedisForm(props: Props): JSX.Element {
         
         console.log('res.data after fetch', res.data)
         
+        setCommandsPerSec((prev: Array<number> | any) => {
+          return prev.length === numOfTimepoints
+            ? [...prev, parseInt(res.data.instantaneous_ops_per_sec)].slice(1)
+            : [...prev, parseInt(res.data.instantaneous_ops_per_sec)]
+        })
+
         setUsedMemory((prev: Array<number> | any) => {
           // if prev length is equal to 10, slice the first element, if not, keep adding new memory
          
@@ -143,6 +150,7 @@ function RedisForm(props: Props): JSX.Element {
             ? [...prev, parseInt(res.data.used_memory)].slice(1)
             : [...prev, parseInt(res.data.used_memory)]
         })
+
         // connected clients data grab
         setConClients((prev: Array<number>) => {
           return prev.length === numOfTimepoints

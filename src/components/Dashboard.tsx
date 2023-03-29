@@ -20,6 +20,7 @@ import { ConnectedClients } from './Charts/connectedClients'
 import { TotalCommands } from './Charts/totalCommands'
 import { EvictedKeys } from './Charts/evictedKeys'
 import { GraphCacheHitRatio } from './Charts/graphCacheHitRatio'
+import { CommandsPerSec } from './Charts/commandsPerSec'
 
 type Props = {}
 
@@ -79,6 +80,12 @@ export default function Dashboard(props: Props): JSX.Element {
           <GraphDiv>
             <Inner>
               <GraphCacheHitRatio />
+              {/* <MetricsTable /> */}
+            </Inner>
+          </GraphDiv>
+          <GraphDiv>
+            <Inner>
+              <CommandsPerSec />
               {/* <MetricsTable /> */}
             </Inner>
           </GraphDiv>
