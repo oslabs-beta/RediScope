@@ -22,17 +22,12 @@ ChartJS.register(
   Legend
 )
 
-// I need to figure out how to put data types to these data: I used to have data: object, and when I did, it gave me errors inside of LineGraph components return statement below
-
-export function GraphCacheHitRatio() {
+// collect and render total evicted keys 
+export function CommandsPerSec() {
+  const { commandsPerSec, setCommandsPerSec } = useContext(RedisContext)
   const { time, setTime } = useContext(RedisContext)
-  const { keyHits, setKeyHits } = useContext(RedisContext)
-  const { keyMisses, setKeyMisses } = useContext(RedisContext)
-  const { rss, setRss } = useContext(RedisContext);
-
-  // console.log('from linegraph', usedMemory[usedMemory.length])
-  let cacheHitRatioRaw = (+keyHits[keyHits.length-1]/(keyMisses[keyHits.length-1] + keyHits[keyHits.length-1]))
-  const cacheHitRatio = cacheHitRatioRaw ? cacheHitRatioRaw.toFixed(2) : 0 ;
+  // console.log('from evicted keys', evictedKeys)
+ 
 
   const options: object = {
     responsive: true,
@@ -47,7 +42,7 @@ export function GraphCacheHitRatio() {
       },
       title: {
         display: true,
-        text: `Cache Hit Ratio: ${cacheHitRatio}`,
+        text: 'Commands Per Second',
         font: {
           size: 22,
           family: "'Helvetica', 'serif'"
@@ -62,17 +57,11 @@ export function GraphCacheHitRatio() {
     labels,
     datasets: [
       {
-        label: 'Key Space Hits',
-        data: keyHits,
+        label: 'instantaneous_ops_per_sec',
+        data: commandsPerSec,
         borderColor: 'rgb(255, 99, 132)',
         backgroundColor: 'rgba(255, 99, 132, 0.5)',
       },
-      {
-        label: 'Key Space Misses',
-        data: keyMisses,
-        borderColor: 'rgb(79, 189, 186)',
-        backgroundColor: 'rgba(79, 189, 186, 0.5)',
-      }
     ],
   }
 
