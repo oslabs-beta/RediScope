@@ -539,8 +539,8 @@ export const Gif = styled.img`
 
 // background-image: url(${'https://github.com/oslabs-beta/RediScope/raw/fix-pathing-images/public/assets/giphygraph.gif'});
 export const URLGif = styled.img`
-  width: 300px;
-  height: 400px;
+  aspect-ratio: initial;
+  height: 500px;
 `
 
 export const Team = styled.div`
