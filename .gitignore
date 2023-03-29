@@ -5,6 +5,5 @@ packages
 .webpack
 out
 .env
-rediscope.zip
 build
 /log
