@@ -160,7 +160,7 @@ export const MainContainer = styled.div`
   margin-right: 7em;
   margin-bottom: 7em;
 
-  @media (max-width: 630px) {
+  @media (max-width: 700px) {
     margin: 0.6em;
     margin-top: 4em;
     text-align: center;
@@ -487,7 +487,6 @@ export const SelectedURL = styled.p`
 export const CenterStyle = styled.div`
   display: flex;
   justify-content: center;
-
   padding: 10px 10px;
 `
 // align-items: start;
@@ -518,8 +517,7 @@ export const H2Title = styled.h2`
   word-wrap: break-word;
   overflow-wrap: break-word;
   font-size: 2.7vw;
-  padding: 5px;
-  padding-top: 0.3em;
+  padding: 0px;
 
   @media (max-width: 650px) {
     font-size: 24px;
@@ -627,12 +625,11 @@ export const WriteUp = styled.h5`
   white-space: normal;
   word-wrap: break-word;
   overflow-wrap: break-word;
-  font-size: 1.6vw;
+  font-size: 1.8vw;
   padding: 5px;
-
-  @media (max-width: 650px) {
-    font-size: 14px;
-  }
 `
 // box-sizing: border-box;
 //  <img src={ch} alt="Chihiro Developer" />
+//  @media (max-width: 650px) {
+//     font-size: 18px;
+//   }
