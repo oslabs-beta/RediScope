@@ -44,11 +44,9 @@ export const FullscreenContainer = styled.div`
   display: flex;
   align-content: center;
   justify-content: center;
-
 `
 
 export const ButtonStyle = styled.button`
-
   font-size: 2vh;
   height: 42px;
   padding: 10px;
@@ -56,12 +54,10 @@ export const ButtonStyle = styled.button`
 
   margin: 20px 0px;
 
-
   display: inline-block;
   height: auto;
   white-space: normal;
   word-wrap: break-word;
-
 
   background: transparent;
   border-radius: 8px;
@@ -69,12 +65,12 @@ export const ButtonStyle = styled.button`
   transition: 1s ease-in-out;
 
   color: #fff;
- 
+
   font-weight: bold;
 
   cursor: pointer;
 
-  @media only screen and (max-width:600px){
+  @media only screen and (max-width: 600px) {
     font-size: 14px;
   }
 
@@ -125,28 +121,25 @@ export const MainLogo = styled.img`
   margin-bottom: 10px;
 `
 export const UpperLogo = styled.img`
-  @media (max-width:600){
+  @media (max-width: 600) {
     width: 100%;
     aspect-ratio: initial;
     height: 10em;
-  
-  }  
-  
+  }
+
   align-self: center;
   justify-self: center;
   height: 100%;
   padding-bottom: 10px;
-  margin-left: 0.5em; 
+  margin-left: 0.5em;
   aspect-ratio: initial;
-  
-
 `
 
 export const LoginLogo = styled.img`
   width: 55%;
   margin-bottom: 10px;
 `
-
+// border: 0.2px outset #24383b;
 export const DashboardContainer = styled.div`
   display: flex;
   
@@ -154,7 +147,7 @@ export const DashboardContainer = styled.div`
   flex-direction: row;
 
   justify-content: center;
-  border: 0.2px outset #24383b;
+  border: none;
   margin-top: 5em;
 
   @media (max-width:630px){
@@ -167,20 +160,21 @@ export const MainContainer = styled.div`
   margin-right: 7em;
   margin-bottom: 7em;
 
-  @media (max-width:630px){
-    margin: .6em;
+  @media (max-width: 630px) {
+    margin: 0.6em;
     margin-top: 4em;
     text-align: center;
   }
 `
 export const URLSelector = styled.div`
   justify-content: center;
-  padding: 30px;
+  padding: 25px;
   background-color: #08282e;
   width: 20%;
-  min-width: 220px;
+  min-width: 270px;
+  margin: 25px;
 
-  @media (max-width:630px){
+  @media (max-width: 630px) {
     min-width: 170px;
     width: 100%;
     padding-top: 0;
@@ -188,12 +182,15 @@ export const URLSelector = styled.div`
   }
 `
 export const GraphContainer = styled.div`
-width: 80%;
-justify-content: center;
-display: grid;
-grid-template-columns: repeat(auto-fit, minmax(min(100vh/3.4, max(440px, 95vh/2)), 43vh));
-grid-auto-rows: min-content;
-
+  width: 80%;
+  margin: 18px;
+  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(min(100vh/3.4, max(440px, 95vh/2)), 43vh)
+  );
+  grid-auto-rows: min-content;
 `
 
 // repeat(auto-fit, minmax(min(100%/2, max(300px, 100%/3)), 1fr));
@@ -201,34 +198,31 @@ grid-auto-rows: min-content;
 //  grid-template-rows: fit-content;
 
 export const GraphDiv = styled.div`
-
-  aspect-ratio: 1; 
-  display: flex; 
+  aspect-ratio: 1;
+  display: flex;
 
   padding: 0.5em;
 
-  margin: .4em;
+  margin: 0.4em;
   border: 0.1em solid;
   border-color: #4fbdba;
-  
+  border-radius: 6px;
 `
 
 // align-items: start;
 // justify-content: start;
 
 export const Inner = styled.div`
-
   width: 100%;
-  height:100%;
+  height: 100%;
   padding: 12px 5px 12px 12px;
-
 `
 
 export const ChartWrapper = styled.section`
   text-align: center;
   color: white;
   width: 100%;
-  height:100%;
+  height: 100%;
 `
 
 export const CenteredContainer = styled.div`
@@ -240,10 +234,9 @@ export const CenteredContainer = styled.div`
   align-self: center;
   text-align: center;
 
-  @media only screen and (max-width:600px){
+  @media only screen and (max-width: 600px) {
     width: 80%;
   }
-
 `
 
 export const Nav = styled.li`
@@ -255,7 +248,7 @@ export const Nav = styled.li`
   margin-right: 3rem;
 
   a {
-    @media (max-width:630px){
+    @media (max-width: 630px) {
       font-size: 16px !important;
       padding: 0px;
 
@@ -302,7 +295,7 @@ export const NavBar = styled.header`
   background-size: cover;
   background-repeat: no-repeat;
 
-  @media (max-width:630px){
+  @media (max-width: 630px) {
     font-size: 16px !important;
     padding: 0px;
     padding-left: 0px;
@@ -312,16 +305,14 @@ export const NavBar = styled.header`
   }
 `
 export const Elements = styled.div`
-  
   display: flex;
   flex-direction: row;
-  padding-top: .5em;
+  padding-top: 0.5em;
   padding-right: 2.9em;
   justify-content: flex-start;
   align-items: center;
 
-  @media (max-width:630px){
-  
+  @media (max-width: 630px) {
     display: inline-block;
     font-size: 0.5rem !important;
     padding: 0px !important;
@@ -333,7 +324,7 @@ export const Elements = styled.div`
     flex-direction: row;
     align-content: center;
     justify-content: center;
-  }  
+  }
 `
 
 export const URLSelection = styled.select`
@@ -367,7 +358,6 @@ export const DeleteButton = styled.button`
   width: 100%;
   display: block;
   margin: 20px 0;
-
 
   display: inline-block;
   height: auto;
@@ -451,8 +441,7 @@ export const URLInput = styled.input`
   outline: none;
 
   @media (max-width: 400px) {
-    size : 3;
-    
+    size: 3;
   }
 `
 export const FormikStyle = styled.form`
@@ -471,20 +460,29 @@ export const URLForm = styled.div`
     border: none;
     border-bottom: 1px solid #35858b;
     background-color: transparent;
-    color: rgb(216, 238, 238, 0.5);
+    color: white;
     width: 100%;
     outline: none;
   }
+
+  label {
+    align-self: start;
+  }
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `
 export const RedisForms = styled.div`
   display: flex;
+  padding-top: 5px;
   flex-direction: column;
   justify-content: space-between;
 `
 export const SelectedURL = styled.p`
-  word-wrap:break-word;
+  word-wrap: break-word;
   overflow-wrap: break-word;
-
 `
 export const CenterStyle = styled.div`
   display: flex;
@@ -500,25 +498,24 @@ export const Spacer = styled.div`
 `
 
 export const BorderStyle = styled.div`
-padding: 5em 3em;
+  padding: 5em 3em;
 
-margin-bottom: 10px;
-margin-top: 10px;
-border: 0.1em solid;
-border-color: #4fbdba;
-border-radius: 8px;
-justify-content: center;
-align-items: center;
-overflow: hidden;
-white-space: nowrap;
-
+  margin-bottom: 10px;
+  margin-top: 10px;
+  border: 0.1em solid;
+  border-color: #4fbdba;
+  border-radius: 8px;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  white-space: nowrap;
 `
 // margin-top: 6em;
 
 export const H2Title = styled.h2`
   display: inline-block;
-  white-space:normal;
-  word-wrap:break-word;
+  white-space: normal;
+  word-wrap: break-word;
   overflow-wrap: break-word;
   font-size: 2.7vw;
   padding: 5px;
@@ -527,13 +524,11 @@ export const H2Title = styled.h2`
   @media (max-width: 650px) {
     font-size: 24px;
   }
-
-  
 `
 export const H5Title = styled.h5`
   display: inline-block;
-  white-space:normal;
-  word-wrap:break-word;
+  white-space: normal;
+  word-wrap: break-word;
   overflow-wrap: break-word;
   font-size: 2.3vw;
   align-self: center;
@@ -541,7 +536,6 @@ export const H5Title = styled.h5`
     font-size: 18px;
   }
 `
-
 
 export const Circle = styled.div`
   display: inline-block;
@@ -598,8 +592,6 @@ export const Socials = styled.ul`
   justify-items: end;
   list-style: none;
   padding: 0px;
-
-
 `
 
 export const Names = styled.h3`
@@ -607,8 +599,7 @@ export const Names = styled.h3`
   align-items: center;
   justify-self: end;
   padding-top: 10px;
-  text-align : center;
- 
+  text-align: center;
 `
 export const ContributorsDiv = styled.div`
   display: inline-grid;
@@ -633,8 +624,8 @@ export const TeamsDiv = styled.div`
 
 export const WriteUp = styled.h5`
   display: inline-block;
-  white-space:normal;
-  word-wrap:break-word;
+  white-space: normal;
+  word-wrap: break-word;
   overflow-wrap: break-word;
   font-size: 1.6vw;
   padding: 5px;

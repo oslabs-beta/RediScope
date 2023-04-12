@@ -70,13 +70,12 @@ function RedisForm(props: Props): JSX.Element {
     } catch (err) {
       console.log(err)
     }
-   
   }
 
   useEffect(() => {
     // console.log('useEffect calling getallURL', urls)
     getallURL()
-    
+
     // console.log('urls in getAllURL in useEffect', urls)
     // console.log('url in getAllURL in useEffect', url)
     // console.log('user in getAllURL in useEffect', user)
@@ -87,7 +86,7 @@ function RedisForm(props: Props): JSX.Element {
 
   // useEffect(() => {
   //   getallURL()
-    
+
   // }, [urls])
 
   const deleteURL = async e => {
@@ -97,8 +96,8 @@ function RedisForm(props: Props): JSX.Element {
         process.env.NODE_ENV === 'production'
           ? `api/URL/${urlId}/`
           : `http://localhost:4000/api/url/${urlId}/`
-          // ? `api/URL/${url || urls[0]?.url}/${userId}/`
-          // : `http://localhost:4000/api/url/${url || urls[0]?.url}/${user}/`
+      // ? `api/URL/${url || urls[0]?.url}/${userId}/`
+      // : `http://localhost:4000/api/url/${url || urls[0]?.url}/${user}/`
       await axios.delete(baseURLdelete)
       getallURL()
     } catch (error) {
@@ -134,10 +133,10 @@ function RedisForm(props: Props): JSX.Element {
           URL: url,
         })
         // setting array values for each graph
-        // used memory data grab 
-        
+        // used memory data grab
+
         // console.log('res.data after fetch', res.data)
-        
+
         setCommandsPerSec((prev: Array<number> | any) => {
           return prev.length === numOfTimepoints
             ? [...prev, parseInt(res.data.instantaneous_ops_per_sec)].slice(1)
@@ -146,7 +145,7 @@ function RedisForm(props: Props): JSX.Element {
 
         setUsedMemory((prev: Array<number> | any) => {
           // if prev length is equal to 10, slice the first element, if not, keep adding new memory
-         
+
           return prev.length === numOfTimepoints
             ? [...prev, parseInt(res.data.used_memory)].slice(1)
             : [...prev, parseInt(res.data.used_memory)]
@@ -243,18 +242,16 @@ function RedisForm(props: Props): JSX.Element {
 
   const handleDropdown = e => {
     setUrlId(e.target.value)
-    let urlObj = urls.filter(url =>
-      url.id == e.target.value)
+    let urlObj = urls.filter(url => url.id == e.target.value)
     // console.log('urlOBJ', urlObj)
     setUrl(urlObj[0].url)
     // console.log('url after changing dropdown', url)
   }
 
-  useEffect(()=> {
+  useEffect(() => {
     // console.log('urls', urls)
     // console.log('url', url)
     // console.log('urlId', urlId)
-
   }, [urls, url, urlId])
 
   const collectionSetting = e => {
@@ -276,14 +273,13 @@ function RedisForm(props: Props): JSX.Element {
             <Field name="name" type="text" className="URLInput" />
             {'\n'}
             <br></br>
-            {"URL path:     "}
+            <label htmlFor="URL">URL path: </label>
             {/* <br></br> */}
             <Field name="URL" type="text" className="URLInput" />
             {/* <button type="submit" className="btn btn-primary"> </button> */}
-            <ButtonStyle type="submit" className="btn btn-primary">
+            <ButtonStyle type="submit" className="btn-primary">
               Add URL
             </ButtonStyle>
-            
           </URLForm>
           {/* </FormikStyle> */}
         </Form>
@@ -311,34 +307,36 @@ function RedisForm(props: Props): JSX.Element {
         </Form>
       </Formik> */}
       <form>
-        <label htmlFor="setIntervalMS">Choose an interval ms:</label>
-        <UserInput
-          id="setIntervalMS"
-          name="setIntervalMS"
-          value={intervalMS}
-          type="number"
-          min="1000"
-          onChange={e => setIntervalMS(+e.target.value)}
-        ></UserInput>
-        <label htmlFor="setnumOfTimepoints">
-          Choose max number of timepoints:
-        </label>
-        <UserInput
-          id="setnumOfTimepoints"
-          name="setnumOfTimepoints"
-          value={numOfTimepoints}
-          type="number"
-          max="500"
-          onChange={e => setnumOfTimepoints(+e.target.value)}
-        ></UserInput>
-        <ButtonStyle
-          type="submit"
-          value="Submit"
-          className="btn btn-primary"
-          onClick={collectionSetting}
-        >
-          Set Settings
-        </ButtonStyle>
+        <URLForm>
+          <label htmlFor="setIntervalMS">Choose an interval ms:</label>
+          <UserInput
+            id="setIntervalMS"
+            name="setIntervalMS"
+            value={intervalMS}
+            type="number"
+            min="1000"
+            onChange={e => setIntervalMS(+e.target.value)}
+          ></UserInput>
+          <label htmlFor="setnumOfTimepoints">
+            Choose max number of timepoints:
+          </label>
+          <UserInput
+            id="setnumOfTimepoints"
+            name="setnumOfTimepoints"
+            value={numOfTimepoints}
+            type="number"
+            max="500"
+            onChange={e => setnumOfTimepoints(+e.target.value)}
+          ></UserInput>
+          <ButtonStyle
+            type="submit"
+            value="Submit"
+            className="btn btn-primary"
+            onClick={collectionSetting}
+          >
+            Set Settings
+          </ButtonStyle>
+        </URLForm>
       </form>
 
       <div>
@@ -382,12 +380,10 @@ function RedisForm(props: Props): JSX.Element {
           </CollectButton>
           <SelectedURL>
             <h5>Selected: </h5>
-           
             Alias: <span>&nbsp;&nbsp;</span>
-            {urls[0]?.name}          
-            <br/>
-              {url || urls[0]?.url}  
-
+            {urls[0]?.name}
+            <br />
+            {url || urls[0]?.url}
           </SelectedURL>
         </form>
       </div>
