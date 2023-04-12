@@ -38,7 +38,7 @@ export default function Main(props: Props): JSX.Element {
   return (
     <>
       <NavBar>
-        <UpperLogo 
+        <UpperLogo
           src={
             'https://github.com/oslabs-beta/RediScope/raw/routing-images/src/components/images/RediScope%205.png'
           }
@@ -46,11 +46,15 @@ export default function Main(props: Props): JSX.Element {
         <Nav>
           <Elements>
             <li>
-              
               <a href="/Signup">Get Started</a>
             </li>
             <li>
-              <a href="/Login" style={{marginLeft: "2.2em", marginRight: ".4em"}}>Login</a>
+              <a
+                href="/Login"
+                style={{ marginLeft: '2.2em', marginRight: '.4em' }}
+              >
+                Login
+              </a>
             </li>
           </Elements>
         </Nav>
@@ -58,12 +62,12 @@ export default function Main(props: Props): JSX.Element {
 
       {/* <Spacer></Spacer> */}
       <MainContainer>
-        <BorderStyle style={{paddingBottom: "3em", paddingTop: "0em"}}>
+        <BorderStyle style={{ paddingBottom: '3em', paddingTop: '0em' }}>
           <div id="header">
             <CenterStyle>
               <MainLogo
                 src={
-                  'https://github.com/oslabs-beta/RediScope/raw/routing-images/src/components/images/RediScope%205.png'
+                  'https://github.com/oslabs-beta/RediScope/raw/r2dev/src/components/images/Rediscope-banner_27kb.jpg'
                 }
               ></MainLogo>
             </CenterStyle>
@@ -73,16 +77,16 @@ export default function Main(props: Props): JSX.Element {
                 Scope out your Redis cache performance with RediScope
               </H2Title>
             </CenterStyle>
-            <CenterStyle >
-              <H5Title >
-                A free open source visualizer for Redis cache performance metrics{' '}
+            <CenterStyle>
+              <H5Title>
+                A free open source visualizer for Redis cache performance
+                metrics{' '}
               </H5Title>
               {/* <h1 style={{paddingTop: "2em"}}> </h1> */}
             </CenterStyle>
             <CenterStyle>
-            
               <ButtonStyle>
-                <Link to="/Signup" > Get Started Now!</Link>
+                <Link to="/Signup"> Get Started Now!</Link>
               </ButtonStyle>
             </CenterStyle>
           </div>
@@ -90,7 +94,7 @@ export default function Main(props: Props): JSX.Element {
 
         <CenterStyle>
           <div id="features">
-            <h1 style={{paddingTop: "1em"}}> Features </h1>
+            <h1 style={{ paddingTop: '1em' }}> Features </h1>
           </div>
         </CenterStyle>
 
@@ -109,7 +113,7 @@ export default function Main(props: Props): JSX.Element {
           </CenterStyle>
         </BorderStyle>
         {/* <h1 style={{paddingTop: ".5em"}}>  </h1> */}
-        <BorderStyle >
+        <BorderStyle>
           <CenterStyle>
             <div id="feature2">
               <H2Title> View Performance Metrics in Real Time </H2Title>
@@ -127,7 +131,7 @@ export default function Main(props: Props): JSX.Element {
         <BorderStyle>
           <div id="feature3">
             <CenterStyle>
-              <H2Title style={{paddingBottom: "0.6em"}}>
+              <H2Title style={{ paddingBottom: '0.6em' }}>
                 Ditch the calculator. Cache Hit Ratio is calculated for you.
               </H2Title>
             </CenterStyle>
@@ -136,13 +140,14 @@ export default function Main(props: Props): JSX.Element {
                 Cache hit ratio helps developers determine which key-value pairs
                 should be cached and is often overlooked.
                 <br></br>
-                <h1 style={{paddingTop: ".2em"}}>  </h1>
-                Cache Hit Ratio = KeySpace Hits / ( KeySpace Misses + KeySpace Hits )
+                <h1 style={{ paddingTop: '.2em' }}> </h1>
+                Cache Hit Ratio = KeySpace Hits / ( KeySpace Misses + KeySpace
+                Hits )
               </WriteUp>
             </CenterStyle>
           </div>
         </BorderStyle>
-        <h1 style={{paddingTop: "1em"}}>  </h1>
+        <h1 style={{ paddingTop: '1em' }}> </h1>
         <CenterStyle>
           <h1 id="hello"> RediScope Team </h1>
         </CenterStyle>
@@ -151,7 +156,7 @@ export default function Main(props: Props): JSX.Element {
             <Team>
               <Image
                 src={
-                  'https://github.com/oslabs-beta/RediScope/raw/fix-pathing-images/public/assets/CoralHeadshot.png'
+                  'https://github.com/oslabs-beta/RediScope/raw/r2dev/src/components/images/CDE_png_113kb.png'
                 }
               />
               <Names>
@@ -172,12 +177,11 @@ export default function Main(props: Props): JSX.Element {
             <Team>
               <Image
                 src={
-                  'https://github.com/oslabs-beta/RediScope/raw/fix-pathing-images/public/assets/BK.png'
+                  'https://github.com/oslabs-beta/RediScope/raw/r2dev/src/components/images/BK-png_163kb.png'
                 }
               />
               <Names>
-                <a href="https://www.linkedin.com/in/bokim1/"> Bo Kim                     
-                </a>{' '} <br/>
+                <a href="https://www.linkedin.com/in/bokim1/"> Bo Kim</a> <br />
               </Names>
 
               <Socials>
@@ -189,16 +193,16 @@ export default function Main(props: Props): JSX.Element {
             <Team>
               <Image
                 src={
-                  'https://github.com/oslabs-beta/RediScope/raw/fix-pathing-images/public/assets/Chihiroheadshot.png'
+                  'https://github.com/oslabs-beta/RediScope/raw/r2dev/src/components/images/CS_png_139kb.png'
                 }
               />
               <Names>
                 <a href="https://www.linkedin.com/in/chihiro-snider/">
                   {' '}
-                  Chihiro Snider<br/>
+                  Chihiro Snider
+                  <br />
                 </a>
               </Names>
-        
 
               <Socials>
                 <a href="https://www.linkedin.com/in/chihiro-snider/">
@@ -212,7 +216,7 @@ export default function Main(props: Props): JSX.Element {
             <Team>
               <Image
                 src={
-                  'https://github.com/oslabs-beta/RediScope/raw/fix-pathing-images/public/assets/AW.png'
+                  'https://github.com/oslabs-beta/RediScope/raw/r2dev/src/components/images/AW-png_119kb.png'
                 }
               />
               <Names>
@@ -220,7 +224,10 @@ export default function Main(props: Props): JSX.Element {
               </Names>
 
               <Socials>
-                <a href="https://www.linkedin.com/in/andy-wong27/"> linkedin </a>
+                <a href="https://www.linkedin.com/in/andy-wong27/">
+                  {' '}
+                  linkedin{' '}
+                </a>
                 <a href="https://github.com/andyw27">github </a>
               </Socials>
             </Team>
@@ -228,7 +235,7 @@ export default function Main(props: Props): JSX.Element {
             <Team>
               <Image
                 src={
-                  'https://github.com/oslabs-beta/RediScope/raw/fix-pathing-images/public/assets/AY.png'
+                  'https://github.com/oslabs-beta/RediScope/raw/r2dev/src/components/images/AY-png_119kb.png'
                 }
               />
               <Names>
