@@ -46,14 +46,34 @@ export default function Main(props: Props): JSX.Element {
         <Nav>
           <Elements>
             <li>
-              <a href="/Signup">Get Started</a>
+              <a
+              href="/Signup"
+              style={{ marginLeft: '2.2em', marginRight: '.4em', paddingTop: '0%', paddingBottom: '0' }}
+              >Get Started
+              </a>
             </li>
             <li>
               <a
                 href="/Login"
-                style={{ marginLeft: '2.2em', marginRight: '.4em' }}
+                style={{ marginLeft: '2.2em', marginRight: '.4em', paddingTop: '0%' }}
               >
                 Login
+              </a>
+            </li>
+            <li>
+              <a 
+                href="https://www.linkedin.com/company/rediscope-open-source-tool/"
+                style={{ marginLeft: '2.2em', marginRight: '.4em', paddingTop: '0%' }}
+              >
+                LinkedIn
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://github.com/oslabs-beta/rediscope"
+                style={{ marginLeft: '2.2em', marginRight: '.4em', paddingTop: '0%' }}
+              >
+                GitHub
               </a>
             </li>
           </Elements>

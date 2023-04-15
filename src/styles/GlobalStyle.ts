@@ -256,6 +256,7 @@ export const Nav = styled.li`
       height: 3em;
       display: flex;
       align-items: center;
+
     }
 
     color: #d8eeee;
@@ -263,7 +264,10 @@ export const Nav = styled.li`
     display: block;
     padding: 8px;
     margin-top: 10px;
+    border-radius: 5em;
+    padding-bottom: 0;
   }
+
 
   a:hover {
     cursor: pointer;
