@@ -633,3 +633,13 @@ export const WriteUp = styled.h5`
 //  @media (max-width: 650px) {
 //     font-size: 18px;
 //   }
+
+export const ConnectionDisplay = styled.div`
+  display: flex;
+  justify-items: space-between;
+  justify-content: space-between;
+`
+export const EyeIcon = styled.div`
+  float: right;
+  padding-left: 115px;
+`
