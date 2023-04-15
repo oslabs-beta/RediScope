@@ -43,6 +43,7 @@ function RedisForm(props: Props): JSX.Element {
   const [intervalMS, setIntervalMS] = useState(2000)
   const [numOfTimepoints, setnumOfTimepoints] = useState(50)
 
+
   // Function submitHandler grabs user's Redis URI and makes a get request to capture data with timestamps
 
   useEffect(() => {
@@ -206,7 +207,7 @@ function RedisForm(props: Props): JSX.Element {
       }, intervalMS)
       setIntervalId(newIntervalId)
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
   }
 
@@ -233,10 +234,17 @@ function RedisForm(props: Props): JSX.Element {
 
   // checking user url input shape
   const validationSchema = () => {
+    const validURL = 'redis://';
     return Yup.object().shape({
-      URL: Yup.string().required(
-        'Please insert URL to connect to your Redis Cache Database'
-      ),
+      URL: Yup.string()
+        .required(
+          'Please insert URL to connect to your Redis Cache Database'
+        )
+        .test(
+          'valid',
+          'Please enter a valid connection URL',
+          (value: any) => value.includes(validURL)
+        )
     })
   }
 
@@ -258,6 +266,7 @@ function RedisForm(props: Props): JSX.Element {
     e.preventDefault()
   }
 
+
   return (
     <RedisForms>
       <Formik
@@ -276,6 +285,7 @@ function RedisForm(props: Props): JSX.Element {
             <label htmlFor="URL">URL path: </label>
             {/* <br></br> */}
             <Field name="URL" type="text" className="URLInput" />
+            <ErrorMessage name="URL" component="div" className="alert alert-danger" />
             {/* <button type="submit" className="btn btn-primary"> </button> */}
             <ButtonStyle type="submit" className="btn-primary">
               Add URL
