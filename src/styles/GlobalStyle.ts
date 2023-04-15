@@ -552,8 +552,8 @@ export const Image = styled.img`
 `
 // background-image: url(${'https://github.com/oslabs-beta/RediScope/raw/fix-pathing-images/public/assets/giphygraph.gif'});
 export const Gif = styled.img`
-  width: 450px;
-  height: 400px;
+  width: 800px;
+  height: 600px;
 
   @media screen and (max-width: 750px) {
     width: 225px;

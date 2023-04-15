@@ -122,7 +122,7 @@ export default function Main(props: Props): JSX.Element {
           <CenterStyle>
             <Gif
               src={
-                'https://github.com/oslabs-beta/RediScope/raw/fix-pathing-images/public/assets/giphygraph.gif'
+                'https://github.com/oslabs-beta/RediScope/raw/r2dev/src/components/images/rediscopegraphs6.gif'
               }
             />
           </CenterStyle>
