@@ -106,7 +106,7 @@ export default function Main(props: Props): JSX.Element {
             </CenterStyle>
             <CenterStyle>
               <ButtonStyle>
-                <Link to="/Signup"> Get Started Now!</Link>
+                <Link to="/Signup" style={{ color: 'white' }}> Get Started Now!</Link>
               </ButtonStyle>
             </CenterStyle>
           </div>

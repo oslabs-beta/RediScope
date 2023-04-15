@@ -36,6 +36,9 @@ a {
   color: #D8EEEE;
 }
 
+a:hover{
+
+}
 `
 
 export const FullscreenContainer = styled.div`
@@ -80,6 +83,7 @@ export const ButtonStyle = styled.button`
     transition: 1s ease-in-out;
     stroke-dashoffset: -480;
     border-color: #ffdd87;
+    color: #d8eeee;
   }
 
   &:active {
@@ -96,6 +100,7 @@ export const ButtonStyle = styled.button`
 export const clickLink = styled.link`
   a:link {
     text-decoration: none;
+    color: #d8eeee;
   }
 `
 
