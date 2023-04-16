@@ -121,10 +121,13 @@ export default function Main(props: Props): JSX.Element {
 
         <CenterStyle style={{ paddingBottom: '5em'}}>
             <div id="feature2" style={{ }}>
-              <H2Title> View Performance Metrics in Real Time </H2Title>
-              <WriteUp> Six customizable graphs to make sure your cache is running efficiently.
+              <H2Title style={{paddingBottom: '0.6em'}}> View performance metrics in real time </H2Title>
+           
+              <WriteUp> Utilize six customizable graphs to make sure your cache is running efficiently.
+                <br></br>
                 <br></br>
                 Track your cache database's memory usage, number of connected clients, totaly commands processed, evicted keys, cache hit ratio, and as of RediScope 2.0: <br></br>commands per second.
+                <br></br>
                 <br></br>
                 Cache Invalidation made easy.
               </WriteUp>
@@ -205,8 +208,7 @@ export default function Main(props: Props): JSX.Element {
                 should be cached and is often overlooked.
                 <br></br>
                 <h1 style={{ paddingTop: '.2em' }}> </h1>
-                Cache Hit Ratio = KeySpace Hits / ( KeySpace Misses + KeySpace
-                Hits )
+                We determine our cache hit ratio by looking at keyspace hits compared to misses.
               </WriteUp>
               </div>
            
