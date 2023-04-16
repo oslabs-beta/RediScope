@@ -23,6 +23,7 @@ import {
   H5Title,
   Spacer,
   Socials,
+  Feature
 } from '../styles/GlobalStyle'
 // import cs from './images/chihiroheadshot.png'
 // import ce from './images/coralheadshot.png'
@@ -60,22 +61,22 @@ export default function Main(props: Props): JSX.Element {
                 Login
               </a>
             </li>
-            <li>
+            {/* <li>
               <a 
                 href="https://www.linkedin.com/company/rediscope-open-source-tool/"
                 style={{ marginLeft: '2.2em', marginRight: '.4em', paddingTop: '0%' }}
               >
                 LinkedIn
               </a>
-            </li>
-            <li>
+            </li> */}
+            {/* <li>
               <a
                 href="https://github.com/oslabs-beta/rediscope"
                 style={{ marginLeft: '2.2em', marginRight: '.4em', paddingTop: '0%' }}
               >
                 GitHub
               </a>
-            </li>
+            </li> */}
           </Elements>
         </Nav>
       </NavBar>
@@ -114,48 +115,91 @@ export default function Main(props: Props): JSX.Element {
 
         <CenterStyle>
           <div id="features">
-            <h1 style={{ paddingTop: '1em' }}> Features </h1>
+            <h1 style={{ paddingTop: '1em', paddingBottom: '1em', textShadow: '0em 0em 0.1em #AEFEFF ' }}>Features </h1>
           </div>
         </CenterStyle>
 
-        <BorderStyle>
-          <CenterStyle>
-            <div id="feature1">
-              <H2Title id="feature1"> Store Your Redis Cache URL </H2Title>
-            </div>
-          </CenterStyle>
-          <CenterStyle>
-            <URLGif
-              src={
-                'https://github.com/oslabs-beta/RediScope/raw/fix-pathing-images/public/assets/URL.gif'
-              }
-            />
-          </CenterStyle>
-        </BorderStyle>
-        {/* <h1 style={{paddingTop: ".5em"}}>  </h1> */}
-        <BorderStyle>
-          <CenterStyle>
-            <div id="feature2">
+        <CenterStyle style={{ paddingBottom: '5em'}}>
+            <div id="feature2" style={{ }}>
               <H2Title> View Performance Metrics in Real Time </H2Title>
+              <WriteUp> Six customizable graphs to make sure your cache is running efficiently.
+                <br></br>
+                Track your cache database's memory usage, number of connected clients, totaly commands processed, evicted keys, cache hit ratio, and as of RediScope 2.0: <br></br>commands per second.
+                <br></br>
+                Cache Invalidation made easy.
+              </WriteUp>
             </div>
-          </CenterStyle>
-          <CenterStyle>
-            <Gif
+          {/* </CenterStyle> */}
+          {/* <CenterStyle> */}
+            <Gif style={{height: 'auto', maxWidth: '100%'}}
               src={
                 'https://github.com/oslabs-beta/RediScope/raw/r2dev/src/components/images/rediscopegraphs6.gif'
               }
             />
           </CenterStyle>
-        </BorderStyle>
-        {/* <h1 style={{paddingTop: ".5em"}}>  </h1> */}
-        <BorderStyle>
-          <div id="feature3">
+
+        {/* <BorderStyle> */}
+        {/* <CenterStyle> */}
+          <Feature style={{ paddingBottom: '5em'}}>
+            <div id="feature1" style={{ display: 'inline-block', padding: '2em'}}>
+            <URLGif style={{height: 'auto', maxWidth: '100%', padding: '5em', paddingLeft: '2em'}}
+              src={
+                'https://github.com/oslabs-beta/RediScope/raw/fix-pathing-images/public/assets/URL.gif'
+              }
+            />
+            <div style={{flexDirection: 'column', float: 'right', marginTop: '10em', paddingRight: '4em'}}>
+                <H2Title style={{paddingBottom: '0.6em'}}> No more back and forth </H2Title><br></br>
+                <WriteUp id="feature1"> Securely store and nickname <br></br>your Redis cache connection URL. <br></br>No need to copy and paste every time! </WriteUp>
+              </div>
+          
+              
+            </div>
+            <br></br>
+          {/* <CenterStyle> */}
+            </Feature>
+
             <CenterStyle>
+            <div id="privacy" style={{ paddingBottom: '10em', display: 'flex',alignContent: 'center', alignItems: 'center'}}>
+                <H2Title style={{textAlign: 'center'}}>Enable privacy mode at any time.</H2Title>
+                <br></br>
+                <div id="private-eyes" style={{paddingLeft: '0.6em'}}>
+                <svg xmlns="http://www.w3.org/2000/svg" width="5em" height="5em" fill="currentColor" className="bi bi-eye-slash" viewBox="0 0 16 16">
+                  <path d="M13.359 11.238C15.06 9.72 16 8 16 8s-3-5.5-8-5.5a7.028 7.028 0 0 0-2.79.588l.77.771A5.944 5.944 0 0 1 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.134 13.134 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755-.165.165-.337.328-.517.486l.708.709z"/>
+                  <path d="M11.297 9.176a3.5 3.5 0 0 0-4.474-4.474l.823.823a2.5 2.5 0 0 1 2.829 2.829l.822.822zm-2.943 1.299.822.822a3.5 3.5 0 0 1-4.474-4.474l.823.823a2.5 2.5 0 0 0 2.829 2.829z"/>
+                  <path d="M3.35 5.47c-.18.16-.353.322-.518.487A13.134 13.134 0 0 0 1.172 8l.195.288c.335.48.83 1.12 1.465 1.755C4.121 11.332 5.881 12.5 8 12.5c.716 0 1.39-.133 2.02-.36l.77.772A7.029 7.029 0 0 1 8 13.5C3 13.5 0 8 0 8s.939-1.721 2.641-3.238l.708.709zm10.296 8.884-12-12 .708-.708 12 12-.708.708z"/>
+                </svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="5em" height="5em" fill="currentColor" className="bi bi-eye-fill" viewBox="0 0 16 16">
+                  <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
+                  <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
+              </svg>
+              </div>
+            </div>
+            </CenterStyle>
+
+
+
+
+          {/* </CenterStyle> */}
+        {/* </BorderStyle> */}
+        {/* <h1 style={{paddingTop: ".5em"}}>  </h1> */}
+        {/* <BorderStyle> */}
+   
+        {/* </BorderStyle> */}
+        {/* <h1 style={{paddingTop: ".5em"}}>  </h1> */}
+        {/* <BorderStyle> */}
+          <div id="feature3" style={{display: 'flex', flexDirection: 'row'}}>
+            {/* <CenterStyle> */}
+            {/* <Feature> */}
+            <svg xmlns="http://www.w3.org/2000/svg" width="16em" height="16em" fill="currentColor" className="bi bi-calculator" viewBox="0 0 16 16">
+                <path d="M12 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h8zM4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4z"/>
+                <path d="M4 2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5v-2zm0 4a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm0 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm0 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm3-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm0 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm0 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm3-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm0 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-4z"/>
+              </svg>
+              <div style={{display: 'flex', flexDirection: 'column'}}>
               <H2Title style={{ paddingBottom: '0.6em' }}>
                 Ditch the calculator. Cache Hit Ratio is calculated for you.
               </H2Title>
-            </CenterStyle>
-            <CenterStyle>
+            {/* </CenterStyle> */}
+            {/* <CenterStyle> */}
               <WriteUp>
                 Cache hit ratio helps developers determine which key-value pairs
                 should be cached and is often overlooked.
@@ -164,9 +208,12 @@ export default function Main(props: Props): JSX.Element {
                 Cache Hit Ratio = KeySpace Hits / ( KeySpace Misses + KeySpace
                 Hits )
               </WriteUp>
-            </CenterStyle>
+              </div>
+           
+            {/* </CenterStyle> */}
+            {/* </Feature> */}
           </div>
-        </BorderStyle>
+        {/* </BorderStyle> */}
         <h1 style={{ paddingTop: '1em' }}> </h1>
         <CenterStyle>
           <h1 id="hello"> RediScope Team </h1>

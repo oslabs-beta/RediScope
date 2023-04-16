@@ -36,9 +36,12 @@ a {
   color: #D8EEEE;
 }
 
-a:hover{
-
+h1 {
+  font-family: Quicksand;
+  font-size: 70px;
+  font-weight: 600;
 }
+
 `
 
 export const FullscreenContainer = styled.div`
@@ -498,6 +501,10 @@ export const CenterStyle = styled.div`
   justify-content: center;
   padding: 10px 10px;
 `
+export const Feature = styled.div`
+  direction: rows;
+  justify-content: space-between;
+`
 // align-items: start;
 
 export const Spacer = styled.div`
@@ -563,6 +570,7 @@ export const Image = styled.img`
 export const Gif = styled.img`
   width: 800px;
   height: 600px;
+  aspect-ration: initial;
 
   @media screen and (max-width: 750px) {
     width: 225px;
@@ -574,6 +582,11 @@ export const Gif = styled.img`
 export const URLGif = styled.img`
   aspect-ratio: initial;
   height: 500px;
+
+  @media screen and (max-width: 750px) {
+    width: 225px;
+    height: 200px;
+  }
 `
 
 export const Team = styled.div`
