@@ -38,7 +38,8 @@ a {
 
 h1 {
   font-family: Quicksand;
-  font-size: 70px;
+  font-size: 50px;
+  font-size: 7vw;
   font-weight: 600;
 }
 
