@@ -592,11 +592,11 @@ export const Team = styled.div`
   }
 `
 export const Socials = styled.ul`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  justify-items: end;
+  display: inline-block;
+  flex-direction: row;
+  align-items: row;
+  justify-content: space-around;
+  justify-items: space-between;
   list-style: none;
   padding: 0px;
 `
