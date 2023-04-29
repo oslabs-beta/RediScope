@@ -381,14 +381,6 @@ function RedisForm(props: Props): JSX.Element {
                 )
               })}
           </URLSelection>
-          <DeleteButton
-            type="submit"
-            value="Submit"
-            className="btn btn-danger"
-            onClick={deleteURL}
-          >
-            Delete selected URL
-          </DeleteButton>
           <CollectButton
             type="submit"
             className="btn btn-primary"
@@ -398,6 +390,14 @@ function RedisForm(props: Props): JSX.Element {
               ? 'STOP LIVE DATA COLLECTION'
               : 'START LIVE DATA COLLECTION'}
           </CollectButton>
+          <DeleteButton
+            type="submit"
+            value="Submit"
+            className="btn btn-danger"
+            onClick={deleteURL}
+          >
+            Delete selected URL
+          </DeleteButton>
           <SelectedURL>
           <ConnectionDisplay>
               <h5>Connected to: </h5>
