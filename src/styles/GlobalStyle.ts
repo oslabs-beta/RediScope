@@ -21,14 +21,22 @@ export const GlobalStyle = createGlobalStyle`
   
 }
 
-
-
 body {
   font-family: 'Lato', sans-serif;
   font-size: 18px;
   background-color: #072227;
   color: #D8EEEE;
-  width: 100%
+  max-width: 100%
+  
+
+
+
+  @media screen and (min-width: 600px){
+    width: 80%;
+    margin: 10%;
+    padding: 0;
+   
+  }
 }
 
 a {
@@ -36,11 +44,14 @@ a {
   color: #D8EEEE;
 }
 
-h1 {
-  font-family: Quicksand;
-  font-size: 50px;
-  font-size: 7vw;
-  font-weight: 600;
+h2 {
+  font-family: Merriweather, serif;
+  font-size: 4vw;
+  font-weight: 300;
+
+  @media only screen and (max-width 650px){
+    font-size: 7vw;
+  }
 }
 
 `
@@ -57,7 +68,7 @@ export const ButtonStyle = styled.button`
   font-size: 2vh;
   height: 42px;
   padding: 10px;
-  width: 85%;
+  width: 100%;
 
   margin: 20px 0px;
 
@@ -73,7 +84,7 @@ export const ButtonStyle = styled.button`
 
   color: #fff;
 
-  font-weight: bold;
+
 
   cursor: pointer;
 
@@ -122,7 +133,7 @@ export const Title = styled.h1`
   font-size: 60px;
   text-align: center;
   color: white;
-  font-family: 'Playfair Display', serif;
+  font-family: 'Merriweather, serif;
   font-weight: 800;
 `
 export const MainLogo = styled.img`
@@ -370,7 +381,7 @@ export const DeleteButton = styled.button`
   padding: 10px;
   width: 100%;
   display: block;
-  margin: 20px 0;
+  margin: 0px 10px 30px 0px;
 
   display: inline-block;
   height: auto;
@@ -384,7 +395,7 @@ export const DeleteButton = styled.button`
 
   color: #dadada;
   font-size: 16px;
-  font-weight: bold;
+
 
   cursor: pointer;
 
@@ -406,7 +417,7 @@ export const CollectButton = styled.button`
   padding: 10px;
   width: 100%;
   display: block;
-  margin: 0px 10px 30px 0px;
+  margin: 20px 0;
 
   display: inline-block;
   height: auto;
@@ -420,7 +431,7 @@ export const CollectButton = styled.button`
 
   color: white;
   font-size: 16px;
-  font-weight: bold;
+ 
 
   cursor: pointer;
 
@@ -501,12 +512,33 @@ export const CenterStyle = styled.div`
   display: flex;
   justify-content: center;
   padding: 10px 10px;
+  
+  @media (max-width: 600px) {
+    flex-direction: column;
+    align-items: center;
+  }
 `
+
 export const Feature = styled.div`
   direction: rows;
   justify-content: space-between;
+
+  @media screen and (max-width: 600px){
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: center;
+  }
 `
 // align-items: start;
+export const Feature2 = styled.div`
+  flex-direction: column;
+ 
+  @media screen and (min-width: 1000px) {
+    padding-right: 2em;
+  }
+  
+`
 
 export const Spacer = styled.div`
   height: 100px;
@@ -525,6 +557,11 @@ export const BorderStyle = styled.div`
   align-items: center;
   overflow: hidden;
   white-space: nowrap;
+
+  @media (max-width: 1030px) {
+    flex-direction: column;
+    align-items: center;
+  }
 `
 // margin-top: 6em;
 
@@ -533,13 +570,41 @@ export const H2Title = styled.h2`
   white-space: normal;
   word-wrap: break-word;
   overflow-wrap: break-word;
-  font-size: 2.7vw;
+  font-size: 2.4vw;
   padding: 0px;
 
   @media (max-width: 650px) {
-    font-size: 24px;
+    font-size: 20px;
   }
 `
+
+export const URLStorageTitle = styled.h2`
+  display: inline-block;
+  white-space: normal;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  font-size: 2.7vw;
+  padding: 0px;
+  padding-bottom: 0.6em;
+
+  @media (max-width: 650px) {
+    font-size: 24px;
+    padding-top: 0;
+    margin-top: 0;
+  }
+`
+export const HoldText = styled.div`
+  display: flex;
+  flex-direction: column;
+  float: right;
+  margin-top: 10em;
+  padding-right: 4em;
+
+  @media screen and (max-width: 650px){
+    padding-right: 2em;
+  }
+`
+
 export const H5Title = styled.h5`
   display: inline-block;
   white-space: normal;
@@ -571,22 +636,29 @@ export const Image = styled.img`
 export const Gif = styled.img`
   width: 800px;
   height: 600px;
-  aspect-ration: initial;
+  aspect-ratio: initial;
 
   @media screen and (max-width: 750px) {
-    width: 225px;
-    height: 200px;
+    width: 310px;
+    height: 220px;
+    
   }
 `
-
+// {{height: 'auto', maxWidth: '100%', padding: '2em', paddingLeft: '1em'}}
 // background-image: url(${'https://github.com/oslabs-beta/RediScope/raw/fix-pathing-images/public/assets/giphygraph.gif'});
 export const URLGif = styled.img`
   aspect-ratio: initial;
   height: 500px;
-
-  @media screen and (max-width: 750px) {
+  maxWidth: 100%;
+  padding: 2em;
+  padding-left: 1em;
+  
+  @media screen and (max-width: 650px) {
     width: 225px;
-    height: 200px;
+    height: auto;
+    padding: 0;
+    margin: 0;
+    margin-left: -8%
   }
 `
 
@@ -650,7 +722,26 @@ export const WriteUp = styled.h5`
   overflow-wrap: break-word;
   font-size: 1.8vw;
   padding: 5px;
+
+  @media only screen and (max-width: 650px){
+    font-size: 4vw;
+  }
 `
+export const FeatureOne = styled.div`
+  display: inline-block;
+  padding: 2em;
+  margin-left: 2em;
+
+  @media only screen and (max-width: 650px){
+    display: flex;
+    flex-direction: column-reverse;
+    padding: 0;
+    position: relative;
+    top: -40vw;
+  }
+`
+
+
 // box-sizing: border-box;
 //  <img src={ch} alt="Chihiro Developer" />
 //  @media (max-width: 650px) {
@@ -665,4 +756,19 @@ export const ConnectionDisplay = styled.div`
 export const EyeIcon = styled.div`
   float: right;
   padding-left: 115px;
+`
+
+export const BottomBorder = styled.div`
+  padding-bottom: 5em;
+  border-bottom: 1px solid;
+  border-bottom-color: #4FBDBA;
+  margin-left: -100vw;
+  margin-right: -7.2vw;
+  margin-bottom: 5em;
+
+  @media only screen and (max-width: 650px){
+    margin-left: 0;
+    margin-right: 0;
+    width: 100%;
+  }
 `
