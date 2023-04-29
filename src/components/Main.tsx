@@ -66,6 +66,13 @@ export default function Main(props: Props): JSX.Element {
                 Login
               </a>
             </li>
+              {/* <li className="dropdown">
+                <a href="javascript:void(0)" className="dropbtn">Follow Us</a>
+                <div className="dropdown-content">
+                  <a href="#">1</a>
+                  <a href="#">2</a>
+                </div>
+              </li> */}
             {/* <li>
               <a 
                 href="https://www.linkedin.com/company/rediscope-open-source-tool/"
@@ -150,9 +157,9 @@ export default function Main(props: Props): JSX.Element {
             < BottomBorder/>
             {/* <div className="bottom-border" style={{paddingBottom: '10em', borderBottom: '1px solid', borderBottomColor: '#4FBDBA', marginLeft: '-100vw', marginRight: }}></div> */}
           {/* </BorderStyle> */}
-        <BorderStyle style={{ backgroundColor: 'rgb(101, 197, 195, 0.4)', border: 'none', width: '100%', marginBottom: '3em'}}>
+        <BorderStyle style={{ backgroundColor: 'rgb(101, 197, 195, 0.2)', border: 'none', width: '100%', marginBottom: '3em'}}>
         <CenterStyle>
-          <Feature style={{ }}>
+          {/* <Feature style={{ }}> */}
             <FeatureOne>
             <URLGif
               src={
@@ -168,7 +175,7 @@ export default function Main(props: Props): JSX.Element {
               
             </FeatureOne>
             <br></br>
-            </Feature>
+            {/* </Feature> */}
           </CenterStyle>
             </BorderStyle>
 
@@ -201,7 +208,7 @@ export default function Main(props: Props): JSX.Element {
    
         {/* </BorderStyle> */}
         {/* <h1 style={{paddingTop: ".5em"}}>  </h1> */}
-        <BorderStyle style={{borderColor: '#BD4F52', boxShadow: '0 0 0.5em #BD4F52', backgroundColor:'rgb(189, 79, 82, 0.2)' }}>
+        <BorderStyle style={{border: 'none', backgroundColor:'rgb(101, 197, 195, 0.2)' }}>
           <div id="feature3" style={{display: 'flex', flexDirection: 'row'}}>
             {/* <CenterStyle> */}
             {/* <Feature> */}

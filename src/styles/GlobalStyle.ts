@@ -266,6 +266,7 @@ export const Nav = styled.li`
   overflow: hidden;
   display: inline;
   margin-right: 3rem;
+  z-index:1;
 
   a {
     @media (max-width: 630px) {
@@ -326,6 +327,7 @@ export const NavBar = styled.header`
     margin: 0px;
     height: 3em;
     display: flex;
+    z-index: 1;
   }
 `
 export const Elements = styled.div`
@@ -513,9 +515,10 @@ export const CenterStyle = styled.div`
   justify-content: center;
   padding: 10px 10px;
   
-  @media (max-width: 600px) {
+  @media screen and (max-width: 600px) {
     flex-direction: column;
     align-items: center;
+    padding: 0;
   }
 `
 
@@ -528,6 +531,9 @@ export const Feature = styled.div`
     flex-direction: column-reverse;
     align-items: center;
     justify-content: center;
+    padding: 0;
+    margin: 0;
+
   }
 `
 // align-items: start;
@@ -597,8 +603,9 @@ export const HoldText = styled.div`
   display: flex;
   flex-direction: column;
   float: right;
-  margin-top: 10em;
+  margin-top: 8em;
   padding-right: 4em;
+
 
   @media screen and (max-width: 650px){
     padding-right: 2em;
@@ -658,7 +665,8 @@ export const URLGif = styled.img`
     height: auto;
     padding: 0;
     margin: 0;
-    margin-left: -8%
+    margin-left: -8%;
+    margin-bottom: 0;
   }
 `
 
@@ -725,6 +733,7 @@ export const WriteUp = styled.h5`
 
   @media only screen and (max-width: 650px){
     font-size: 4vw;
+    padding-bottom: 10vw;
   }
 `
 export const FeatureOne = styled.div`
@@ -735,9 +744,12 @@ export const FeatureOne = styled.div`
   @media only screen and (max-width: 650px){
     display: flex;
     flex-direction: column-reverse;
+    justify-content: center;
     padding: 0;
     position: relative;
     top: -40vw;
+    margin-bottom: -200px;
+    margin-top: -30px;
   }
 `
 
