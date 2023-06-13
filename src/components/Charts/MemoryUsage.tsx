@@ -40,7 +40,7 @@ export function MemoryUsage() {
         ticks: {
           // Include a dollar sign in the ticks
           callback: function (val, index, ticks) {
-            return Number.parseFloat(val).toExponential(3)
+            return Number.parseFloat(val).toExponential(2)
           },
         },
       },

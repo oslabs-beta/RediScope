@@ -43,6 +43,7 @@ type Props = {}
 export default function Main(props: Props): JSX.Element {
   return (
     <>
+    {/* Section 0: Navigation */}
       <NavBar>
         <UpperLogo
           src={
@@ -93,9 +94,10 @@ export default function Main(props: Props): JSX.Element {
         </Nav>
       </NavBar>
 
-      {/* <Spacer></Spacer> */}
+   
       <MainContainer>
-        <BorderStyle style={{ paddingBottom: '3em', paddingTop: '0em', boxShadow: '0 0 0.2em #D8EEEE' }}>
+      {/* Container #1:  title with logo 'get started' */}
+        <BorderStyle style={{ paddingBottom: '3em', paddingTop: '0em', boxShadow: '0 0 0.1em #D8EEEE' , marginBottom: '2em'}}>
           <div id="header">
             <CenterStyle>
               <MainLogo
@@ -105,15 +107,15 @@ export default function Main(props: Props): JSX.Element {
               ></MainLogo>
             </CenterStyle>
             <CenterStyle>
-              <H2Title style={{}}>
+              <H2Title style={{ marginTop: '.5em'}}>
                 {' '}
                 Scope out your Redis cache performance with RediScope
               </H2Title>
             </CenterStyle>
             <CenterStyle>
               <H5Title >
-                <em>A free open source visualizer for Redis cache performance
-                metrics</em>{' '}
+               A free open source visualizer for Redis cache performance
+                metrics{' '}
               </H5Title>
               {/* <h1 style={{paddingTop: "2em"}}> </h1> */}
             </CenterStyle>
@@ -125,62 +127,81 @@ export default function Main(props: Props): JSX.Element {
           </div>
         </BorderStyle>
 
-        <CenterStyle>
+      {/* Container #2:  'Features' with gif of all 6 graphs */}  
+        <BorderStyle style={{ backgroundColor: 'rgb(101, 197, 195, 0.2)', border: 'none', width: '100%', marginBottom: '2em'}}>
+        {/* <CenterStyle>
           <div id="features">
-            <h2 style={{ paddingTop: '1em', paddingBottom: '1em', textShadow: '0em 0em 0.04em #AEFEFF', fontSize: '6vw'}}>Features </h2>
+            <h2 style={{ paddingTop: '1em', paddingBottom: '.6em', textShadow: '0em 0em 0.04em #AEFEFF', fontSize: '4vw'}}>Features </h2>
           </div>
-        </CenterStyle>
-        {/* <BorderStyle> */}
-          <CenterStyle style={{}}>
+        </CenterStyle> */}
+        
+        <CenterStyle style={{}}>
           <Feature2>
-      
-                <H2Title style={{paddingBottom: '0.6em'}}> View performance metrics in real time </H2Title>
-            
-                <WriteUp> Utilize six customizable graphs to make sure your cache is running efficiently.
-                  <br></br>
-                  <br></br>
-                  Track your cache database's memory usage, number of connected clients, total commands processed, evicted keys, cache hit ratio, and as of RediScope 2.0: <br></br>commands per second.
-                  <br></br>
-                  <br></br>
-                  Cache Invalidation made easy.
-                </WriteUp>
-            
-            </Feature2>
-            {/* </CenterStyle> */}
-            {/* <CenterStyle> */}
-              <Gif style={{}}
-                src={
-                  'https://github.com/oslabs-beta/RediScope/raw/r2dev/src/components/images/rediscopegraphs6.gif'
-                }
-              />
+            <CenterStyle>    
+              <H2Title style={{paddingBottom: '0.2em'}}> View performance metrics in real time </H2Title>
+                {'\n'}
             </CenterStyle>
-            < BottomBorder/>
-            {/* <div className="bottom-border" style={{paddingBottom: '10em', borderBottom: '1px solid', borderBottomColor: '#4FBDBA', marginLeft: '-100vw', marginRight: }}></div> */}
-          {/* </BorderStyle> */}
-        <BorderStyle style={{ backgroundColor: 'rgb(101, 197, 195, 0.2)', border: 'none', width: '100%', marginBottom: '3em'}}>
-        <CenterStyle>
-          {/* <Feature style={{ }}> */}
-            <FeatureOne>
-            <URLGif
-              src={
-                // 'https://github.com/oslabs-beta/RediScope/raw/fix-pathing-images/public/assets/URL.gif'
-                'https://github.com/oslabs-beta/RediScope/raw/r2dev/src/components/images/adding%20URL.gif'
-              }
-            />
-            <HoldText>
-                <URLStorageTitle > Store your Redis cache URL </URLStorageTitle><br></br>
-                <WriteUp id="feature1"> Securely store and assign an alias to <br></br>your Redis cache connection URL. <br></br>No need to copy and paste every time. </WriteUp>
-            </HoldText>
-          
+            
+            <CenterStyle>
+                <WriteUp> 
+                  Utilize six customizable graphs to make sure your cache is running efficiently.
+                  <br></br>
+                  <br></br>
+                  <CenterStyle>
+                    <Gif style={{}}
+                      src={
+                        'https://github.com/oslabs-beta/RediScope/raw/r2dev/src/components/images/rediscopegraphs6.gif'
+                      }
+                    />
+                  </CenterStyle>
+                  <br></br>
+                  Track your cache database's memory usage, number of connected clients, total commands processed, evicted keys, cache hit ratio, and as of RediScope 2.0:  &nbsp;&nbsp; commands per second.
+                    <br></br>
+                    <br></br>
+                    Cache Invalidation made easy.
+                </WriteUp>
+              </CenterStyle>
               
-            </FeatureOne>
-            <br></br>
-            {/* </Feature> */}
+            </Feature2>
           </CenterStyle>
-            </BorderStyle>
+          {/* < BottomBorder/> */}
+            {/* <div className="bottom-border" style={{paddingBottom: '10em', borderBottom: '1px solid', borderBottomColor: '#4FBDBA', marginLeft: '-100vw', marginRight: }}></div> */}
+        </BorderStyle>
+      
+      {/* Container #3:  'store your redis cache URL' */}  
+        <BorderStyle style={{  boxShadow: '0 0 0.1em #D8EEEE' , marginBottom: '2em'}}>
+          
+            {/* <Feature style={{ }}> */}
+              <FeatureOne>
 
-            <BorderStyle style={{paddingBottom: '3em', marginBottom: '3em'}}>
-            <CenterStyle style={{}}>
+
+                <CenterStyle>
+                  <URLGif
+                      src={
+                        // 'https://github.com/oslabs-beta/RediScope/raw/fix-pathing-images/public/assets/URL.gif'
+                        'https://github.com/oslabs-beta/RediScope/raw/r2dev/src/components/images/adding%20URL.gif'
+                      }
+                    />
+                </CenterStyle>
+                <CenterStyle>
+                  <HoldText >
+                      <H2Title  style={{ alignSelf: 'start'}}> 
+                        Store your Redis cache URL </H2Title><br></br>
+                      <WriteUp id="feature1"> Securely store and assign an alias to your Redis cache connection URL. 
+                      <br></br>
+                      <br></br>
+                      No need to copy and paste every time. </WriteUp>
+                  </HoldText>
+                </CenterStyle>
+                </FeatureOne>
+              <br></br>
+              {/* </Feature> */}
+          
+        </BorderStyle>
+
+      {/* Container #3:  'Enable privacy mode at any time' */}  
+        <BorderStyle style={{backgroundColor: 'rgb(101, 197, 195, 0.2)', border: 'none', width: '100%', marginBottom: '2em', paddingBottom: '3em'}}>
+          <CenterStyle style={{}}>
             <div id="privacy" style={{ paddingBottom: '2em', display: 'flex',alignContent: 'center', alignItems: 'center'}}>
                 <H2Title style={{textAlign: 'center'}}>Enable privacy mode at any time.</H2Title>
                 <br></br>
@@ -196,19 +217,12 @@ export default function Main(props: Props): JSX.Element {
               </svg>
               </div>
             </div>
-            </CenterStyle>
-
-
-
-
-          {/* </CenterStyle> */}
+          </CenterStyle>
         </BorderStyle>
-        {/* <h1 style={{paddingTop: ".5em"}}>  </h1> */}
-        {/* <BorderStyle> */}
-   
-        {/* </BorderStyle> */}
-        {/* <h1 style={{paddingTop: ".5em"}}>  </h1> */}
-        <BorderStyle style={{border: 'none', backgroundColor:'rgb(101, 197, 195, 0.2)' }}>
+
+
+      {/* Container #4:  'Ditch the calculator. Cache Hit Ratio is calculated for you' */}              
+        <BorderStyle style={{ boxShadow: '0 0 0.1em #D8EEEE' , marginBottom: '2em'}}>
           <div id="feature3" style={{display: 'flex', flexDirection: 'row'}}>
             {/* <CenterStyle> */}
             {/* <Feature> */}
@@ -235,10 +249,12 @@ export default function Main(props: Props): JSX.Element {
             {/* </Feature> */}
           </div>
         </BorderStyle>
-        {/* <h1 style={{ paddingTop: '1em' }}> </h1> */}
+
+      {/* Container #5:  Rediscope Team */}  
         <CenterStyle>
           <h1 id="hello" style={{ padding: '1em', fontFamily: 'Merriweather, Serif', fontWeight: '300'}}> RediScope Team </h1>
         </CenterStyle>
+        
         <CenterStyle>
           <TeamsDiv>
             <Team>
