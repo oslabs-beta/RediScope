@@ -19,6 +19,7 @@ import {
   MainLogo,
   UpperLogo,
   WriteUp,
+  H2Features, 
   H2Title,
   H5Title,
   Spacer,
@@ -128,6 +129,11 @@ export default function Main(props: Props): JSX.Element {
         </BorderStyle>
 
       {/* Container #2:  'Features' with gif of all 6 graphs */}  
+        <CenterStyle>
+          <div id="features">
+            <H2Features style={{ textShadow: '0em 0em 0.05em #AEFEFF'}}>Features </H2Features>
+          </div>
+        </CenterStyle>
         <BorderStyle style={{  paddingTop: '2em', backgroundColor: 'rgb(101, 197, 195, 0.2)', border: 'none', width: '100%', marginBottom: '2em'}}>
         
         <CenterStyle style={{}}>
