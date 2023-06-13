@@ -182,9 +182,15 @@ export const MainContainer = styled.div`
   margin-bottom: 5%;
   
 
-  @media (max-width: 700px) {
+  @media (max-width: 1500px) {
+    margin: 2em;
+    margin-top: 12%;
+
+  }
+
+  @media (max-width: 1200px) {
     margin: 0.6em;
-    margin-top: 4em;
+    margin-top: 14%;
 
   }
 `
@@ -584,6 +590,22 @@ export const BorderStyle = styled.div`
 `
 // margin-top: 6em;
 
+export const H2Features = styled.h2`
+display: inline-block;
+margin-top: 0.5em;
+white-space: normal;
+word-wrap: break-word;
+overflow-wrap: break-word;
+font-size:calc(16px + 2.8vw);
+align-self: center;
+@media (max-width: 1000px) {
+  font-size: 45px;
+}
+
+@media screen and (max-width: 650px){
+  align-self: center !important;
+`
+
 export const H2Title = styled.h2`
 display: inline-block;
 margin-top: 0.8em;
@@ -682,7 +704,9 @@ export const URLGif = styled.img`
   
   @media screen and (max-width: 1000px) {
     aspect-ratio: initial;
+    height: 350px;
     margin-top: 1em;
+    margin-top: 2em;
     padding-right: 0em;
     margin-right: 0em;
   }
