@@ -51,7 +51,7 @@ export default function Main(props: Props): JSX.Element {
           }
         ></UpperLogo>
         <Nav>
-          <Elements>
+          <Elements  style={{ marginRight: '0em' }}>
             <li>
               <a
               href="/Signup"
@@ -97,7 +97,7 @@ export default function Main(props: Props): JSX.Element {
    
       <MainContainer>
       {/* Container #1:  title with logo 'get started' */}
-        <BorderStyle style={{ paddingBottom: '3em', paddingTop: '0em', boxShadow: '0 0 0.1em #D8EEEE' , marginBottom: '2em'}}>
+        <BorderStyle style={{ paddingBottom: '2em', paddingTop: '2em', boxShadow: '0 0 0.1em #D8EEEE' , marginBottom: '2em'}}>
           <div id="header">
             <CenterStyle>
               <MainLogo
@@ -113,27 +113,22 @@ export default function Main(props: Props): JSX.Element {
               </H2Title>
             </CenterStyle>
             <CenterStyle>
-              <H5Title >
+              <H5Title style={{ marginTop: '.2em'}} >
                A free open source visualizer for Redis cache performance
                 metrics{' '}
               </H5Title>
               {/* <h1 style={{paddingTop: "2em"}}> </h1> */}
             </CenterStyle>
             <CenterStyle>
-              <ButtonStyle>
-                <Link to="/Signup" style={{ color: 'white' }}> Get Started Now!</Link>
+              <ButtonStyle style={{ width: '80%' }}>
+                <Link to="/Signup" style={{ color: 'white'}}> Get Started Now!</Link>
               </ButtonStyle>
             </CenterStyle>
           </div>
         </BorderStyle>
 
       {/* Container #2:  'Features' with gif of all 6 graphs */}  
-        <BorderStyle style={{ backgroundColor: 'rgb(101, 197, 195, 0.2)', border: 'none', width: '100%', marginBottom: '2em'}}>
-        {/* <CenterStyle>
-          <div id="features">
-            <h2 style={{ paddingTop: '1em', paddingBottom: '.6em', textShadow: '0em 0em 0.04em #AEFEFF', fontSize: '4vw'}}>Features </h2>
-          </div>
-        </CenterStyle> */}
+        <BorderStyle style={{  paddingTop: '2em', backgroundColor: 'rgb(101, 197, 195, 0.2)', border: 'none', width: '100%', marginBottom: '2em'}}>
         
         <CenterStyle style={{}}>
           <Feature2>

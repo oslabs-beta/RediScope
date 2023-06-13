@@ -65,7 +65,7 @@ export const FullscreenContainer = styled.div`
 `
 
 export const ButtonStyle = styled.button`
-  font-size: 2vh;
+  font-size: 20px;
   height: 42px;
   padding: 10px;
   width: 100%;
@@ -89,7 +89,7 @@ export const ButtonStyle = styled.button`
   cursor: pointer;
 
   @media only screen and (max-width: 600px) {
-    font-size: 14px;
+    font-size: 16px;
   }
 
   &:hover {
@@ -137,7 +137,7 @@ export const Title = styled.h1`
   font-weight: 800;
 `
 export const MainLogo = styled.img`
-  width: 80%;
+  width: 70%;
   margin-bottom: 10px;
  
 `
@@ -177,8 +177,8 @@ export const DashboardContainer = styled.div`
 `
 export const MainContainer = styled.div`
   margin-top: 7%;
-  margin-left: 7%;
-  margin-right: 7%;
+  margin-left: 10%;
+  margin-right: 10%;
   margin-bottom: 5%;
   
 
@@ -271,7 +271,7 @@ export const Nav = styled.li`
   z-index:1;
 
   a {
-    @media (max-width: 630px) {
+    @media (max-width: 670px) {
       font-size: 16px !important;
       padding: 0px;
 
@@ -322,7 +322,7 @@ export const NavBar = styled.header`
   background-size: cover;
   background-repeat: no-repeat;
 
-  @media (max-width: 630px) {
+  @media (max-width: 670px) {
     font-size: 16px !important;
     padding: 0px;
     padding-left: 0px;
@@ -336,11 +336,11 @@ export const Elements = styled.div`
   display: flex;
   flex-direction: row;
   padding-top: 0.5em;
-  padding-right: 2.9em;
+  padding-right: 1.5em;
   justify-content: flex-start;
   align-items: center;
 
-  @media (max-width: 630px) {
+  @media (max-width: 670px) {
     display: inline-block;
     font-size: 0.5rem !important;
     padding: 0px !important;
@@ -559,7 +559,7 @@ export const Spacer = styled.div`
 `
 
 export const BorderStyle = styled.div`
-  padding: 5em 3em;
+  padding: 5em 6em;
   margin-bottom: 10px;
   margin-top: 10px;
   border: 0.1em solid;
@@ -570,7 +570,14 @@ export const BorderStyle = styled.div`
   overflow: hidden;
   white-space: nowrap;
 
-  @media (max-width: 1030px) {
+  @media (max-width: 1500px) {
+    padding: 5em 3em;
+  }
+
+
+
+  @media (max-width: 700px) {
+    padding: 5em 1.7em;
     flex-direction: column;
     align-items: center;
   }
@@ -583,7 +590,7 @@ margin-top: 0.8em;
 white-space: normal;
 word-wrap: break-word;
 overflow-wrap: break-word;
-font-size: 2.5vw;
+font-size:calc(10px + 1.7vw);
 align-self: center;
 @media (max-width: 1000px) {
   font-size: 30px;
@@ -610,9 +617,20 @@ export const HoldText = styled.div`
   flex-direction: column;
   float: right;
   align-self: center;
+  justify-self: center;
   text-align: left;
 
 
+  @media only screen and (max-width: 1300px){
+
+
+  }
+
+  @media only screen and (max-width: 1000px){
+    align-self: center !important;
+    padding-left: 0em;
+
+  }
   @media screen and (max-width: 650px){
     text-align: center;
 
@@ -625,10 +643,10 @@ export const H5Title = styled.h5`
   white-space: normal;
   word-wrap: break-word;
   overflow-wrap: break-word;
-  font-size:calc(10px + 1.7vw);
+  font-size:calc(10px + 1.3vw);
   align-self: center;
-  @media (max-width: 600px) {
-    font-size: 20px;
+  @media (max-width: 1000px) {
+    font-size: 25px;
   }
 `
 
@@ -650,7 +668,7 @@ export const Image = styled.img`
 // background-image: url(${'https://github.com/oslabs-beta/RediScope/raw/fix-pathing-images/public/assets/giphygraph.gif'});
 export const Gif = styled.img`
   aspect-ratio: initial;
-  width: 100%;
+  width: 80%;
   @media screen and (max-width: 750px) {
     width: 310px;
     height: 220px;
@@ -661,15 +679,20 @@ export const Gif = styled.img`
 // background-image: url(${'https://github.com/oslabs-beta/RediScope/raw/fix-pathing-images/public/assets/giphygraph.gif'});
 export const URLGif = styled.img`
   aspect-ratio: initial;
-  height: 500px;
+  height: 550px;
   maxWidth: 100%;
+  border: 0.05em solid;
+  border-color: #4fbdba;
+  border-radius: 8px;
 
-  padding-right: 2.5em;
+  margin-right: 2.5em;
+  padding-bottom: 0.5em;
   
   @media screen and (max-width: 1000px) {
     aspect-ratio: initial;
-    padding-top: 1em;
+    margin-top: 1em;
     padding-right: 0em;
+    margin-right: 0em;
   }
 `
 
@@ -728,14 +751,13 @@ export const TeamsDiv = styled.div`
 
 export const WriteUp = styled.h5`
   display: inline-block;
-  margin-top: 0.8em;
+
   white-space: normal;
-  word-wrap: break-word;
-  overflow-wrap: break-word;
-  font-size: 1.7vw;
+  word-wrap: normal;
+  font-size:calc(10px + 1vw);
   align-self: center;
-  @media (max-width: 1030px) {
-    font-size: 20px;
+  @media (max-width: 1000px) {
+    font-size: 25px;
   }
 `
 // display: inline-block;
@@ -756,7 +778,6 @@ export const FeatureOne = styled.div`
   justify-content: center;
 
   @media only screen and (max-width: 1000px){
-    display: flex;
     flex-direction: column-reverse;
 
   }
