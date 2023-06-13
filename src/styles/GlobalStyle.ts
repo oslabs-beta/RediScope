@@ -335,7 +335,7 @@ export const NavBar = styled.header`
 export const Elements = styled.div`
   display: flex;
   flex-direction: row;
-  padding-top: 0.5em;
+  padding-top: 0.7em;
   padding-right: 1.5em;
   justify-content: flex-start;
   align-items: center;
@@ -595,6 +595,9 @@ align-self: center;
 @media (max-width: 1000px) {
   font-size: 30px;
 }
+
+@media screen and (max-width: 650px){
+  align-self: center !important;
 `
 
 export const URLStorageTitle = styled.h2`
@@ -620,17 +623,6 @@ export const HoldText = styled.div`
   justify-self: center;
   text-align: left;
 
-
-  @media only screen and (max-width: 1300px){
-
-
-  }
-
-  @media only screen and (max-width: 1000px){
-    align-self: center !important;
-    padding-left: 0em;
-
-  }
   @media screen and (max-width: 650px){
     text-align: center;
 
