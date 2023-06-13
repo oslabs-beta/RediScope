@@ -23,7 +23,7 @@ export const GlobalStyle = createGlobalStyle`
 
 body {
   font-family: 'Lato', sans-serif;
-  font-size: 18px;
+  font-size: 20px;
   background-color: #072227;
   color: #D8EEEE;
   max-width: 100%
@@ -139,6 +139,7 @@ export const Title = styled.h1`
 export const MainLogo = styled.img`
   width: 80%;
   margin-bottom: 10px;
+ 
 `
 export const UpperLogo = styled.img`
   @media (max-width: 600) {
@@ -151,7 +152,7 @@ export const UpperLogo = styled.img`
   justify-self: center;
   height: 100%;
   padding-bottom: 10px;
-  margin-left: 0.5em;
+  margin-left: 1.5em;
   aspect-ratio: initial;
 `
 
@@ -175,15 +176,16 @@ export const DashboardContainer = styled.div`
   }
 `
 export const MainContainer = styled.div`
-  margin-top: 7em;
-  margin-left: 7em;
-  margin-right: 7em;
-  margin-bottom: 7em;
+  margin-top: 7%;
+  margin-left: 7%;
+  margin-right: 7%;
+  margin-bottom: 5%;
+  
 
   @media (max-width: 700px) {
     margin: 0.6em;
     margin-top: 4em;
-    text-align: center;
+
   }
 `
 export const URLSelector = styled.div`
@@ -514,6 +516,7 @@ export const CenterStyle = styled.div`
   display: flex;
   justify-content: center;
   padding: 10px 10px;
+  text-align: center;
   
   @media screen and (max-width: 600px) {
     flex-direction: column;
@@ -538,10 +541,14 @@ export const Feature = styled.div`
 `
 // align-items: start;
 export const Feature2 = styled.div`
+  display: inline-block;
   flex-direction: column;
+  width: 100%;
  
-  @media screen and (min-width: 1000px) {
-    padding-right: 2em;
+  @media screen and (max-width: 1000px) {
+
+    text-align: left;
+    font-size: 20px;
   }
   
 `
@@ -553,7 +560,6 @@ export const Spacer = styled.div`
 
 export const BorderStyle = styled.div`
   padding: 5em 3em;
-
   margin-bottom: 10px;
   margin-top: 10px;
   border: 0.1em solid;
@@ -572,55 +578,57 @@ export const BorderStyle = styled.div`
 // margin-top: 6em;
 
 export const H2Title = styled.h2`
-  display: inline-block;
-  white-space: normal;
-  word-wrap: break-word;
-  overflow-wrap: break-word;
-  font-size: 2.4vw;
-  padding: 0px;
-
-  @media (max-width: 650px) {
-    font-size: 20px;
-  }
+display: inline-block;
+margin-top: 0.8em;
+white-space: normal;
+word-wrap: break-word;
+overflow-wrap: break-word;
+font-size: 2.5vw;
+align-self: center;
+@media (max-width: 1000px) {
+  font-size: 30px;
+}
 `
 
 export const URLStorageTitle = styled.h2`
+  justify-content: top;
   display: inline-block;
   white-space: normal;
   word-wrap: break-word;
   overflow-wrap: break-word;
   font-size: 2.7vw;
-  padding: 0px;
-  padding-bottom: 0.6em;
+
+  
 
   @media (max-width: 650px) {
     font-size: 24px;
-    padding-top: 0;
-    margin-top: 0;
+
   }
 `
 export const HoldText = styled.div`
   display: flex;
   flex-direction: column;
   float: right;
-  margin-top: 8em;
-  padding-right: 4em;
+  align-self: center;
+  text-align: left;
 
 
   @media screen and (max-width: 650px){
-    padding-right: 2em;
+    text-align: center;
+
   }
 `
 
 export const H5Title = styled.h5`
   display: inline-block;
+  margin-top: 0.8em;
   white-space: normal;
   word-wrap: break-word;
   overflow-wrap: break-word;
-  font-size: 2.3vw;
+  font-size:calc(10px + 1.7vw);
   align-self: center;
-  @media (max-width: 650px) {
-    font-size: 18px;
+  @media (max-width: 600px) {
+    font-size: 20px;
   }
 `
 
@@ -641,10 +649,8 @@ export const Image = styled.img`
 `
 // background-image: url(${'https://github.com/oslabs-beta/RediScope/raw/fix-pathing-images/public/assets/giphygraph.gif'});
 export const Gif = styled.img`
-  width: 800px;
-  height: 600px;
   aspect-ratio: initial;
-
+  width: 100%;
   @media screen and (max-width: 750px) {
     width: 310px;
     height: 220px;
@@ -657,16 +663,13 @@ export const URLGif = styled.img`
   aspect-ratio: initial;
   height: 500px;
   maxWidth: 100%;
-  padding: 2em;
-  padding-left: 1em;
+
+  padding-right: 2.5em;
   
-  @media screen and (max-width: 650px) {
-    width: 225px;
-    height: auto;
-    padding: 0;
-    margin: 0;
-    margin-left: -8%;
-    margin-bottom: 0;
+  @media screen and (max-width: 1000px) {
+    aspect-ratio: initial;
+    padding-top: 1em;
+    padding-right: 0em;
   }
 `
 
@@ -725,31 +728,37 @@ export const TeamsDiv = styled.div`
 
 export const WriteUp = styled.h5`
   display: inline-block;
+  margin-top: 0.8em;
   white-space: normal;
   word-wrap: break-word;
   overflow-wrap: break-word;
-  font-size: 1.8vw;
-  padding: 5px;
-
-  @media only screen and (max-width: 650px){
-    font-size: 4vw;
-    padding-bottom: 10vw;
+  font-size: 1.7vw;
+  align-self: center;
+  @media (max-width: 1030px) {
+    font-size: 20px;
   }
 `
-export const FeatureOne = styled.div`
-  display: inline-block;
-  padding: 2em;
-  margin-left: 2em;
+// display: inline-block;
+// margin-top: 0.8em;
+// align-self: center;
+// white-space: normal;
+// word-wrap: break-word;
+// overflow-wrap: break-word;
+// font-size:calc(10px + 1.7vw);
+// align-self: center;
+// @media (max-width: 600px) {
+//   font-size: 20px;
+// }
 
-  @media only screen and (max-width: 650px){
+
+export const FeatureOne = styled.div`
+  display: flex;
+  justify-content: center;
+
+  @media only screen and (max-width: 1000px){
     display: flex;
     flex-direction: column-reverse;
-    justify-content: center;
-    padding: 0;
-    position: relative;
-    top: -40vw;
-    margin-bottom: -200px;
-    margin-top: -30px;
+
   }
 `
 

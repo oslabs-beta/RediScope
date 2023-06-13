@@ -188,10 +188,10 @@ function RedisForm(props: Props): JSX.Element {
         // Creating date object to create our own timestamps to be parsed
 
         const date = new Date()
-        // const hour = date.getHours()
+        const hour = date.getHours()
         const min = date.getMinutes()
         const sec = date.getSeconds()
-        const timeStamp = `${min}:${sec}`
+        const timeStamp = `${hour}:${min}:${sec}`
 
         // Creating the timestamp array for our linegraph component
 
