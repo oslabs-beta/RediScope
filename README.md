@@ -25,7 +25,7 @@ Redis (**RE**mote **DI**ctionary **S**tore) is an in-memory key-value store, oft
 
 - Store multiple Redis Cache URLs
 
-  ![cache-gif](https://github.com/oslabs-beta/RediScope/raw/fix-pathing-images/public/assets/URL.gif)
+  ![adding-URL](https://github.com/oslabs-beta/RediScope/raw/r2dev/src/components/images/adding%20URL.gif)
 
 - Cache/Hit Ratio calculation
 
