@@ -16,6 +16,8 @@ import {
   RedisForms,
   SelectedURL,
   URLForm,
+  EyeIcon,
+  ConnectionDisplay
 } from '../styles/GlobalStyle'
 import { render } from 'react-dom'
 
@@ -42,6 +44,9 @@ function RedisForm(props: Props): JSX.Element {
   const [intervalId, setIntervalId] = useState(0)
   const [intervalMS, setIntervalMS] = useState(2000)
   const [numOfTimepoints, setnumOfTimepoints] = useState(50)
+  const [privacy, setPrivacy] = useState(true);
+  let [count, setCount] = useState<number>(0);
+  // const { hidden, setHidden } = useState("");
 
   // Function submitHandler grabs user's Redis URI and makes a get request to capture data with timestamps
 
@@ -183,10 +188,10 @@ function RedisForm(props: Props): JSX.Element {
         // Creating date object to create our own timestamps to be parsed
 
         const date = new Date()
-        // const hour = date.getHours()
+        const hour = date.getHours()
         const min = date.getMinutes()
         const sec = date.getSeconds()
-        const timeStamp = `${min}:${sec}`
+        const timeStamp = `${hour}:${min}:${sec}`
 
         // Creating the timestamp array for our linegraph component
 
@@ -206,14 +211,17 @@ function RedisForm(props: Props): JSX.Element {
       }, intervalMS)
       setIntervalId(newIntervalId)
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
   }
 
   // // handling user url input and sending to backend
   const submitHandler = async (formValue: object | any): Promise<any> => {
     const input = { user: user, url: formValue?.URL, name: formValue?.name }
-
+    if (!input.name) {
+      setCount(count+=1);
+      input.name = 'Untitled Connection #' + count;
+    }
     try {
       const baseURLcreate =
         process.env.NODE_ENV === 'production'
@@ -233,10 +241,17 @@ function RedisForm(props: Props): JSX.Element {
 
   // checking user url input shape
   const validationSchema = () => {
+    const validURL = 'redis://';
     return Yup.object().shape({
-      URL: Yup.string().required(
-        'Please insert URL to connect to your Redis Cache Database'
-      ),
+      URL: Yup.string()
+        .required(
+          'Please insert URL to connect to your Redis Cache Database'
+        )
+        .test(
+          'valid',
+          'Please enter a valid connection URL',
+          (value: any) => value.includes(validURL)
+        )
     })
   }
 
@@ -258,6 +273,10 @@ function RedisForm(props: Props): JSX.Element {
     e.preventDefault()
   }
 
+  const handleClickable = () => {
+    (!privacy) ? setPrivacy(true) : setPrivacy(false);
+  }
+
   return (
     <RedisForms>
       <Formik
@@ -276,6 +295,7 @@ function RedisForm(props: Props): JSX.Element {
             <label htmlFor="URL">URL path: </label>
             {/* <br></br> */}
             <Field name="URL" type="text" className="URLInput" />
+            <ErrorMessage name="URL" component="div" className="alert alert-danger" />
             {/* <button type="submit" className="btn btn-primary"> </button> */}
             <ButtonStyle type="submit" className="btn-primary">
               Add URL
@@ -354,21 +374,13 @@ function RedisForm(props: Props): JSX.Element {
                 return (
                   <>
                     <Option key={url.id} value={url?.id}>
-                      {'NAME- ' + url.name + '  __  PATH- '}
-                      {url?.url}
+                      {'> ' + url.name}
+                      {/* {url?.url} */}
                     </Option>
                   </>
                 )
               })}
           </URLSelection>
-          <DeleteButton
-            type="submit"
-            value="Submit"
-            className="btn btn-danger"
-            onClick={deleteURL}
-          >
-            Delete selected URL
-          </DeleteButton>
           <CollectButton
             type="submit"
             className="btn btn-primary"
@@ -378,16 +390,40 @@ function RedisForm(props: Props): JSX.Element {
               ? 'STOP LIVE DATA COLLECTION'
               : 'START LIVE DATA COLLECTION'}
           </CollectButton>
+          <DeleteButton
+            type="submit"
+            value="Submit"
+            className="btn btn-danger"
+            onClick={deleteURL}
+          >
+            Delete selected URL
+          </DeleteButton>
           <SelectedURL>
-            <h5>Selected: </h5>
-            Alias: <span>&nbsp;&nbsp;</span>
+          <ConnectionDisplay>
+              <h5>Connected to: </h5>
+              { privacy ?
+              <EyeIcon className="privacy" onClick={handleClickable}><svg xmlns="http://www.w3.org/2000/svg" width="1.4em" height="1.4em" fill="currentColor" className="bi bi-eye-slash" viewBox="0 0 16 16">
+                <path d="M13.359 11.238C15.06 9.72 16 8 16 8s-3-5.5-8-5.5a7.028 7.028 0 0 0-2.79.588l.77.771A5.944 5.944 0 0 1 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.134 13.134 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755-.165.165-.337.328-.517.486l.708.709z"/>
+                <path d="M11.297 9.176a3.5 3.5 0 0 0-4.474-4.474l.823.823a2.5 2.5 0 0 1 2.829 2.829l.822.822zm-2.943 1.299.822.822a3.5 3.5 0 0 1-4.474-4.474l.823.823a2.5 2.5 0 0 0 2.829 2.829z"/>
+                <path d="M3.35 5.47c-.18.16-.353.322-.518.487A13.134 13.134 0 0 0 1.172 8l.195.288c.335.48.83 1.12 1.465 1.755C4.121 11.332 5.881 12.5 8 12.5c.716 0 1.39-.133 2.02-.36l.77.772A7.029 7.029 0 0 1 8 13.5C3 13.5 0 8 0 8s.939-1.721 2.641-3.238l.708.709zm10.296 8.884-12-12 .708-.708 12 12-.708.708z"/>
+              </svg></EyeIcon>
+              :
+              <EyeIcon className="privacy" onClick={handleClickable}><svg xmlns="http://www.w3.org/2000/svg" width="1.4em" height="1.4em" fill="currentColor" className="bi bi-eye-fill" viewBox="0 0 16 16">
+                <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
+                <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
+              </svg></EyeIcon>
+            }
+              <br />
+            </ConnectionDisplay>
             {urls[0]?.name}
             <br />
-            {url || urls[0]?.url}
+            { !privacy && urls[0]?.url ?
+              url || urls[0]?.url : ""}
           </SelectedURL>
+   
         </form>
       </div>
-    </RedisForms>
+    </RedisForms>   
   )
 }
 

@@ -21,19 +21,37 @@ export const GlobalStyle = createGlobalStyle`
   
 }
 
-
-
 body {
   font-family: 'Lato', sans-serif;
-  font-size: 18px;
+  font-size: 20px;
   background-color: #072227;
   color: #D8EEEE;
-  width: 100%
+  max-width: 100%
+  
+
+
+
+  @media screen and (min-width: 600px){
+    width: 80%;
+    margin: 10%;
+    padding: 0;
+   
+  }
 }
 
 a {
   text-decoration: none;
   color: #D8EEEE;
+}
+
+h2 {
+  font-family: Merriweather, serif;
+  font-size: 4vw;
+  font-weight: 300;
+
+  @media only screen and (max-width 650px){
+    font-size: 7vw;
+  }
 }
 
 `
@@ -47,10 +65,10 @@ export const FullscreenContainer = styled.div`
 `
 
 export const ButtonStyle = styled.button`
-  font-size: 2vh;
+  font-size: 20px;
   height: 42px;
   padding: 10px;
-  width: 85%;
+  width: 100%;
 
   margin: 20px 0px;
 
@@ -66,12 +84,12 @@ export const ButtonStyle = styled.button`
 
   color: #fff;
 
-  font-weight: bold;
+
 
   cursor: pointer;
 
   @media only screen and (max-width: 600px) {
-    font-size: 14px;
+    font-size: 16px;
   }
 
   &:hover {
@@ -80,6 +98,7 @@ export const ButtonStyle = styled.button`
     transition: 1s ease-in-out;
     stroke-dashoffset: -480;
     border-color: #ffdd87;
+    color: #d8eeee;
   }
 
   &:active {
@@ -96,6 +115,7 @@ export const ButtonStyle = styled.button`
 export const clickLink = styled.link`
   a:link {
     text-decoration: none;
+    color: #d8eeee;
   }
 `
 
@@ -113,12 +133,13 @@ export const Title = styled.h1`
   font-size: 60px;
   text-align: center;
   color: white;
-  font-family: 'Playfair Display', serif;
+  font-family: 'Merriweather, serif;
   font-weight: 800;
 `
 export const MainLogo = styled.img`
-  width: 80%;
+  width: 70%;
   margin-bottom: 10px;
+ 
 `
 export const UpperLogo = styled.img`
   @media (max-width: 600) {
@@ -131,7 +152,7 @@ export const UpperLogo = styled.img`
   justify-self: center;
   height: 100%;
   padding-bottom: 10px;
-  margin-left: 0.5em;
+  margin-left: 1.5em;
   aspect-ratio: initial;
 `
 
@@ -155,15 +176,22 @@ export const DashboardContainer = styled.div`
   }
 `
 export const MainContainer = styled.div`
-  margin-top: 7em;
-  margin-left: 7em;
-  margin-right: 7em;
-  margin-bottom: 7em;
+  margin-top: 7%;
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-bottom: 5%;
+  
 
-  @media (max-width: 700px) {
+  @media (max-width: 1500px) {
+    margin: 2em;
+    margin-top: 12%;
+
+  }
+
+  @media (max-width: 1200px) {
     margin: 0.6em;
-    margin-top: 4em;
-    text-align: center;
+    margin-top: 14%;
+
   }
 `
 export const URLSelector = styled.div`
@@ -246,9 +274,10 @@ export const Nav = styled.li`
   overflow: hidden;
   display: inline;
   margin-right: 3rem;
+  z-index:1;
 
   a {
-    @media (max-width: 630px) {
+    @media (max-width: 670px) {
       font-size: 16px !important;
       padding: 0px;
 
@@ -256,6 +285,7 @@ export const Nav = styled.li`
       height: 3em;
       display: flex;
       align-items: center;
+
     }
 
     color: #d8eeee;
@@ -263,7 +293,10 @@ export const Nav = styled.li`
     display: block;
     padding: 8px;
     margin-top: 10px;
+    border-radius: 5em;
+    padding-bottom: 0;
   }
+
 
   a:hover {
     cursor: pointer;
@@ -295,24 +328,25 @@ export const NavBar = styled.header`
   background-size: cover;
   background-repeat: no-repeat;
 
-  @media (max-width: 630px) {
+  @media (max-width: 670px) {
     font-size: 16px !important;
     padding: 0px;
     padding-left: 0px;
     margin: 0px;
     height: 3em;
     display: flex;
+    z-index: 1;
   }
 `
 export const Elements = styled.div`
   display: flex;
   flex-direction: row;
-  padding-top: 0.5em;
-  padding-right: 2.9em;
+  padding-top: 0.7em;
+  padding-right: 1.5em;
   justify-content: flex-start;
   align-items: center;
 
-  @media (max-width: 630px) {
+  @media (max-width: 670px) {
     display: inline-block;
     font-size: 0.5rem !important;
     padding: 0px !important;
@@ -357,7 +391,7 @@ export const DeleteButton = styled.button`
   padding: 10px;
   width: 100%;
   display: block;
-  margin: 20px 0;
+  margin: 0px 10px 30px 0px;
 
   display: inline-block;
   height: auto;
@@ -371,7 +405,7 @@ export const DeleteButton = styled.button`
 
   color: #dadada;
   font-size: 16px;
-  font-weight: bold;
+
 
   cursor: pointer;
 
@@ -393,7 +427,7 @@ export const CollectButton = styled.button`
   padding: 10px;
   width: 100%;
   display: block;
-  margin: 0px 10px 30px 0px;
+  margin: 20px 0;
 
   display: inline-block;
   height: auto;
@@ -407,7 +441,7 @@ export const CollectButton = styled.button`
 
   color: white;
   font-size: 16px;
-  font-weight: bold;
+ 
 
   cursor: pointer;
 
@@ -488,8 +522,42 @@ export const CenterStyle = styled.div`
   display: flex;
   justify-content: center;
   padding: 10px 10px;
+  text-align: center;
+  
+  @media screen and (max-width: 600px) {
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+  }
+`
+
+export const Feature = styled.div`
+  direction: rows;
+  justify-content: space-between;
+
+  @media screen and (max-width: 600px){
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+
+  }
 `
 // align-items: start;
+export const Feature2 = styled.div`
+  display: inline-block;
+  flex-direction: column;
+  width: 100%;
+ 
+  @media screen and (max-width: 1000px) {
+
+    text-align: left;
+    font-size: 20px;
+  }
+  
+`
 
 export const Spacer = styled.div`
   height: 100px;
@@ -497,8 +565,7 @@ export const Spacer = styled.div`
 `
 
 export const BorderStyle = styled.div`
-  padding: 5em 3em;
-
+  padding: 5em 6em;
   margin-bottom: 10px;
   margin-top: 10px;
   border: 0.1em solid;
@@ -508,30 +575,92 @@ export const BorderStyle = styled.div`
   align-items: center;
   overflow: hidden;
   white-space: nowrap;
+
+  @media (max-width: 1500px) {
+    padding: 5em 3em;
+  }
+
+
+
+  @media (max-width: 700px) {
+    padding: 5em 1.7em;
+    flex-direction: column;
+    align-items: center;
+  }
 `
 // margin-top: 6em;
 
+export const H2Features = styled.h2`
+display: inline-block;
+margin-top: 0.5em;
+white-space: normal;
+word-wrap: break-word;
+overflow-wrap: break-word;
+font-size:calc(16px + 2.8vw);
+align-self: center;
+@media (max-width: 1000px) {
+  font-size: 45px;
+}
+
+@media screen and (max-width: 650px){
+  align-self: center !important;
+`
+
 export const H2Title = styled.h2`
+display: inline-block;
+margin-top: 0.8em;
+white-space: normal;
+word-wrap: break-word;
+overflow-wrap: break-word;
+font-size:calc(10px + 1.7vw);
+align-self: center;
+@media (max-width: 1000px) {
+  font-size: 30px;
+}
+
+@media screen and (max-width: 650px){
+  align-self: center !important;
+`
+
+export const URLStorageTitle = styled.h2`
+  justify-content: top;
   display: inline-block;
   white-space: normal;
   word-wrap: break-word;
   overflow-wrap: break-word;
   font-size: 2.7vw;
-  padding: 0px;
+
+  
 
   @media (max-width: 650px) {
     font-size: 24px;
+
   }
 `
+export const HoldText = styled.div`
+  display: flex;
+  flex-direction: column;
+  float: right;
+  align-self: center;
+  justify-self: center;
+  text-align: left;
+
+  @media screen and (max-width: 650px){
+    text-align: center;
+
+  }
+`
+
 export const H5Title = styled.h5`
   display: inline-block;
+  margin-top: 0.8em;
   white-space: normal;
   word-wrap: break-word;
   overflow-wrap: break-word;
-  font-size: 2.3vw;
+  font-size:calc(10px + 1.3vw);
   align-self: center;
-  @media (max-width: 650px) {
-    font-size: 18px;
+  @media (max-width: 1000px) {
+    font-size: 25px;
   }
 `
 
@@ -552,19 +681,35 @@ export const Image = styled.img`
 `
 // background-image: url(${'https://github.com/oslabs-beta/RediScope/raw/fix-pathing-images/public/assets/giphygraph.gif'});
 export const Gif = styled.img`
-  width: 800px;
-  height: 600px;
-
+  aspect-ratio: initial;
+  width: 80%;
   @media screen and (max-width: 750px) {
-    width: 225px;
-    height: 200px;
+    width: 310px;
+    height: 220px;
+    
   }
 `
-
+// {{height: 'auto', maxWidth: '100%', padding: '2em', paddingLeft: '1em'}}
 // background-image: url(${'https://github.com/oslabs-beta/RediScope/raw/fix-pathing-images/public/assets/giphygraph.gif'});
 export const URLGif = styled.img`
   aspect-ratio: initial;
-  height: 500px;
+  height: 550px;
+  maxWidth: 100%;
+  border: 0.05em solid;
+  border-color: #4fbdba;
+  border-radius: 8px;
+
+  margin-right: 2.5em;
+  padding-bottom: 0.5em;
+  
+  @media screen and (max-width: 1000px) {
+    aspect-ratio: initial;
+    height: 350px;
+    margin-top: 1em;
+    margin-top: 2em;
+    padding-right: 0em;
+    margin-right: 0em;
+  }
 `
 
 export const Team = styled.div`
@@ -583,11 +728,11 @@ export const Team = styled.div`
   }
 `
 export const Socials = styled.ul`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  justify-items: end;
+  display: inline-block;
+  flex-direction: row;
+  align-items: row;
+  justify-content: space-around;
+  justify-items: space-between;
   list-style: none;
   padding: 0px;
 `
@@ -622,14 +767,66 @@ export const TeamsDiv = styled.div`
 
 export const WriteUp = styled.h5`
   display: inline-block;
+
   white-space: normal;
-  word-wrap: break-word;
-  overflow-wrap: break-word;
-  font-size: 1.8vw;
-  padding: 5px;
+  word-wrap: normal;
+  font-size:calc(10px + 1vw);
+  align-self: center;
+  @media (max-width: 1000px) {
+    font-size: 25px;
+  }
 `
+// display: inline-block;
+// margin-top: 0.8em;
+// align-self: center;
+// white-space: normal;
+// word-wrap: break-word;
+// overflow-wrap: break-word;
+// font-size:calc(10px + 1.7vw);
+// align-self: center;
+// @media (max-width: 600px) {
+//   font-size: 20px;
+// }
+
+
+export const FeatureOne = styled.div`
+  display: flex;
+  justify-content: center;
+
+  @media only screen and (max-width: 1000px){
+    flex-direction: column-reverse;
+
+  }
+`
+
+
 // box-sizing: border-box;
 //  <img src={ch} alt="Chihiro Developer" />
 //  @media (max-width: 650px) {
 //     font-size: 18px;
 //   }
+
+export const ConnectionDisplay = styled.div`
+  display: flex;
+  justify-items: space-between;
+  justify-content: space-between;
+`
+export const EyeIcon = styled.div`
+  float: right;
+  padding-left: 115px;
+`
+
+export const BottomBorder = styled.div`
+  padding-bottom: 5em;
+  border-bottom: 1px solid;
+  border-bottom-color: #4FBDBA;
+  margin-left: -100vw;
+  margin-right: -7.2vw;
+  margin-bottom: 5em;
+
+  @media only screen and (max-width: 650px){
+    margin-left: 0;
+    margin-right: 0;
+    width: 100%;
+  }
+`

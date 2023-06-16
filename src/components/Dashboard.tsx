@@ -38,10 +38,18 @@ export default function Dashboard(props: Props): JSX.Element {
         <Nav>
           <Elements>
             <li>
-              <a href="/">About</a>
+              <a 
+                href="/"
+                style={{ paddingBottom: "0", paddingTop: "0" }}
+                >
+                  About</a>
             </li>
             <li>
-              <a href="/Login" style={{marginLeft: "1.6em"}}>Sign Out</a>
+              <a 
+                href="/Login"
+                style={{marginLeft: "1.6em", paddingBottom: "0", paddingTop: "0"}}
+                >
+                  Sign Out</a>
             </li>
           </Elements>
         </Nav>
