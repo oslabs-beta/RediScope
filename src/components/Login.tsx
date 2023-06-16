@@ -145,11 +145,13 @@ export default class Login extends Component<Props, LoginState> {
         <CenteredContainer>
           <LoginSignUpBox>
             <div className="formContainer">
-              <LoginLogo
-                src={
-                  'https://github.com/oslabs-beta/RediScope/raw/routing-images/src/components/images/RediScope%205.png'
-                }
-              ></LoginLogo>
+              <a href="/">
+                <LoginLogo
+                  src={
+                    'https://github.com/oslabs-beta/RediScope/raw/routing-images/src/components/images/RediScope%205.png'
+                  }
+                ></LoginLogo>
+              </a>
               <Formik
                 initialValues={initVal}
                 validationSchema={this.validationSchema}
