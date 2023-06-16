@@ -33,24 +33,24 @@ export function MemoryUsage() {
 
   const options: object = {
     responsive: true,
-    aspectRatio:
-    1 | 1,
+    aspectRatio: 1 | 1,
     // maintainAspectRation: false,
     scales: {
       y: {
-          ticks: {
-              // Include a dollar sign in the ticks
-              callback: function (val, index, ticks) {
-                return Number.parseFloat(val).toExponential(3); 
-              }
-          }
-      }
-  },
+        ticks: {
+          // Include a dollar sign in the ticks
+          callback: function (val, index, ticks) {
+            return Number.parseFloat(val).toExponential(2)
+          },
+        },
+      },
+    },
     plugins: {
       legend: {
         position: 'top' as const,
         labels: {
-          color: '#dadada', padding: 10
+          color: '#dadada',
+          padding: 10,
         },
       },
       title: {
@@ -62,10 +62,10 @@ export function MemoryUsage() {
           size: 22,
           family: "'Helvetica', 'serif'",
         },
-        color: '#dadada', padding: 0
+        color: '#dadada',
+        padding: 0,
       },
     },
-    
   }
   const labels: string[] = time
 
@@ -88,16 +88,16 @@ export function MemoryUsage() {
   }
 
   const legendMargin = {
-    id: "legendMargin",
+    id: 'legendMargin',
     beforeInit: function (chart) {
-      const fitValue = chart.legend.fit;
+      const fitValue = chart.legend.fit
       chart.legend.fit = function fit() {
-        fitValue.bind(chart.legend)();
-        return (this.height += 14);
-      };
-    }
-  };
+        fitValue.bind(chart.legend)()
+        return (this.height += 14)
+      }
+    },
+  }
 
   // chart.canvas.parentNode.style.height = '128px'
-  return <Line options={options} data={data} plugins={[legendMargin]}/>
+  return <Line options={options} data={data} plugins={[legendMargin]} />
 }
