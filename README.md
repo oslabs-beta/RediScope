@@ -10,7 +10,7 @@ Redis (**RE**mote **DI**ctionary **S**tore) is an in-memory key-value store, oft
 
 ## How to Use
 
-1. Visit our website, http://www.rediscope.com/
+1. Visit our website, https://www.rediscope.com/
 2. Create an account by clicking get started
 3. Add and name your Redis URL and click "Add URL"
 4. Choose desired interval and max number of time points and click "Set Settings"
