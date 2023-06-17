@@ -8,6 +8,18 @@ Redis (**RE**mote **DI**ctionary **S**tore) is an in-memory key-value store, oft
 
 **Stack:** Redis, React, React Router, TypeScript, Node.js/Express, PostgreSQL, Bcrypt, Chart.js, Yup, Formik, Axios, AWS(EC2, ElasticBeanStalk), Docker, Morgan and more.
 
+**RediScope 2.0 update: June, 2023**
+- New graph added to measure commands per second.
+- Improved responsiveness for both desktop and mobile screens.
+- Privacy mode added to hide URLs from screen.
+- Minor accessibility improvements.
+- Minor design improvements.
+- Auto-naming of stored URLS enabled.
+- Larger graphs to allow easier data monitoring.
+- Display no longer shows last URL selected if all URLS are deleted.
+- Fixed bug related to duplicate usernames.
+- Improved display of data for more accurate readings.
+
 ## How to Use
 
 1. Visit our website, https://www.rediscope.com/
