@@ -3,6 +3,7 @@ dist
 packages
 .webpack
 out
-
+.env
 build
 /log
+rediscope.zip
