@@ -3,7 +3,7 @@ import axios from 'axios'
 import { Formik, Field, Form, ErrorMessage } from 'formik'
 import * as Yup from 'yup'
 import { RedisContext } from '../context/RedisContext'
-import { useLocation } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 import {
   ButtonStyle,
   DeleteButton,
@@ -27,6 +27,9 @@ type URLState = {
 }
 
 function RedisForm(props: Props): JSX.Element {
+  const location = useLocation()
+  const navigate = useNavigate();
+
   const { usedMemory, setUsedMemory } = useContext(RedisContext)
   const { time, setTime } = useContext(RedisContext)
   const { rss, setRss } = useContext(RedisContext)
@@ -40,7 +43,6 @@ function RedisForm(props: Props): JSX.Element {
   const { setKeyHits } = useContext(RedisContext)
   const { setKeyMisses } = useContext(RedisContext)
   const { setCommandsPerSec } = useContext(RedisContext)
-  const location = useLocation()
   const [intervalId, setIntervalId] = useState(0)
   const [intervalMS, setIntervalMS] = useState(2000)
   const [numOfTimepoints, setnumOfTimepoints] = useState(50)
@@ -49,10 +51,29 @@ function RedisForm(props: Props): JSX.Element {
   // const { hidden, setHidden } = useState("");
 
   // Function submitHandler grabs user's Redis URI and makes a get request to capture data with timestamps
-
   useEffect(() => {
-    setUser(location.state.user)
-  }, [])
+    // console.log(user)
+    // console.log(this.state.user)
+    setUser(location.state?.user)  
+    // console.log('in useEffect in redisForm useEffect', user)
+    getallURL()
+  }, [user])
+
+  //if user is not available for 1 second, redirect to main page 
+  function userLogInStatus(seconds){
+    setTimeout(() => {
+      // console.log(user, 'user in setTimeout')
+      try {
+        location.state.hasOwnProperty('user')
+      } catch (err){
+         navigate('/')
+      }
+    }, seconds*1000);
+  }
+
+  userLogInStatus(4)
+
+
 
   const getallURL = async () => {
     try {
@@ -62,6 +83,7 @@ function RedisForm(props: Props): JSX.Element {
           : `http://localhost:4000/api/url/getUserURL/${user}/`
 
       if (user) {
+        console.log(user, 'in getallURL')
         const res = await axios.get(baseURLusers)
         // console.log('res in getallURL returned from backend', res)
         // console.log('res.data.data in getallURL returned from backend', res.data.data)
@@ -71,21 +93,23 @@ function RedisForm(props: Props): JSX.Element {
         // console.log('urlOBJ', urlObj)
         setUrl(res.data.data[0].url)
         setUrlId(res.data.data[0].id)
+      } else {
+        console.log('no user')
       }
     } catch (err) {
       console.log(err)
     }
   }
 
-  useEffect(() => {
-    // console.log('useEffect calling getallURL', urls)
-    getallURL()
+  // useEffect(() => {
+  //   // console.log('useEffect calling getallURL', urls)
+  //   getallURL()
 
-    // console.log('urls in getAllURL in useEffect', urls)
-    // console.log('url in getAllURL in useEffect', url)
-    // console.log('user in getAllURL in useEffect', user)
-    // console.log('intervalMS', intervalMS)
-  }, [user])
+  //   // console.log('urls in getAllURL in useEffect', urls)
+  //   // console.log('url in getAllURL in useEffect', url)
+  //   // console.log('user in getAllURL in useEffect', user)
+  //   // console.log('intervalMS', intervalMS)
+  // }, [user])
 
   // console.log('AFTER useEffect called', urls)
 
