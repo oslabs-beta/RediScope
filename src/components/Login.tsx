@@ -125,6 +125,7 @@ export default class Login extends Component<Props, LoginState> {
 
   render() {
     if (this.state.redirect) {
+      // window.history.pushState(this.state, 'page2.html', 'index.html')
       return (
         <Navigate
           to={this.state.redirect}
