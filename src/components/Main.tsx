@@ -29,22 +29,15 @@ import {
   BottomBorder,
   FeatureOne,
   URLStorageTitle,
-  HoldText
+  HoldText,
+
 } from '../styles/GlobalStyle'
-// import cs from './images/chihiroheadshot.png'
-// import ce from './images/coralheadshot.png'
-// import aw from './images/AW.png'
-// import bk from './images/BK.png'
-// import ay from './images/AY.png'
-// import graphGif from './images/giphygraph.gif'
-// import URL from './images/URL.gif'
 
 type Props = {}
 
 export default function Main(props: Props): JSX.Element {
   return (
     <>
-    {/* Section 0: Navigation */}
       <NavBar>
         <UpperLogo
           src={
@@ -68,29 +61,6 @@ export default function Main(props: Props): JSX.Element {
                 Login
               </a>
             </li>
-              {/* <li className="dropdown">
-                <a href="javascript:void(0)" className="dropbtn">Follow Us</a>
-                <div className="dropdown-content">
-                  <a href="#">1</a>
-                  <a href="#">2</a>
-                </div>
-              </li> */}
-            {/* <li>
-              <a 
-                href="https://www.linkedin.com/company/rediscope-open-source-tool/"
-                style={{ marginLeft: '2.2em', marginRight: '.4em', paddingTop: '0%' }}
-              >
-                LinkedIn
-              </a>
-            </li> */}
-            {/* <li>
-              <a
-                href="https://github.com/oslabs-beta/rediscope"
-                style={{ marginLeft: '2.2em', marginRight: '.4em', paddingTop: '0%' }}
-              >
-                GitHub
-              </a>
-            </li> */}
           </Elements>
         </Nav>
       </NavBar>
@@ -98,7 +68,7 @@ export default function Main(props: Props): JSX.Element {
    
       <MainContainer>
       {/* Container #1:  title with logo 'get started' */}
-        <BorderStyle style={{ paddingBottom: '2em', paddingTop: '2em', boxShadow: '0 0 0.1em #D8EEEE' , marginBottom: '2em'}}>
+        <BorderStyle style={{ padding: '2em', boxShadow: '0 0 0.1em #D8EEEE' , marginBottom: '2em'}}>
           <div id="header">
             <CenterStyle>
               <MainLogo
@@ -118,10 +88,9 @@ export default function Main(props: Props): JSX.Element {
                A free open source visualizer for Redis cache performance
                 metrics{' '}
               </H5Title>
-              {/* <h1 style={{paddingTop: "2em"}}> </h1> */}
             </CenterStyle>
             <CenterStyle>
-              <ButtonStyle style={{ width: '80%' }}>
+              <ButtonStyle style={{ width: '70%' }}>
                 <Link to="/Signup" style={{ color: 'white'}}> Get Started Now!</Link>
               </ButtonStyle>
             </CenterStyle>
@@ -136,10 +105,10 @@ export default function Main(props: Props): JSX.Element {
         </CenterStyle>
         <BorderStyle style={{  paddingTop: '2em', backgroundColor: 'rgb(101, 197, 195, 0.2)', border: 'none', width: '100%', marginBottom: '2em'}}>
         
-        <CenterStyle style={{}}>
+        <CenterStyle>
           <Feature2>
             <CenterStyle>    
-              <H2Title style={{paddingBottom: '0.2em'}}> View performance metrics in real time </H2Title>
+              <H2Title style={{padding: '0.em'}}> View performance metrics in real time </H2Title>
                 {'\n'}
             </CenterStyle>
             
@@ -165,17 +134,11 @@ export default function Main(props: Props): JSX.Element {
               
             </Feature2>
           </CenterStyle>
-          {/* < BottomBorder/> */}
-            {/* <div className="bottom-border" style={{paddingBottom: '10em', borderBottom: '1px solid', borderBottomColor: '#4FBDBA', marginLeft: '-100vw', marginRight: }}></div> */}
         </BorderStyle>
       
       {/* Container #3:  'store your redis cache URL' */}  
         <BorderStyle style={{  boxShadow: '0 0 0.1em #D8EEEE' , marginBottom: '2em'}}>
-          
-            {/* <Feature style={{ }}> */}
               <FeatureOne>
-
-
                 <CenterStyle>
                   <URLGif
                       src={
@@ -185,7 +148,7 @@ export default function Main(props: Props): JSX.Element {
                     />
                 </CenterStyle>
                 <CenterStyle>
-                  <HoldText >
+                  <HoldText>
                       <H2Title  style={{ alignSelf: 'start'}}> 
                         Store your Redis cache URL </H2Title><br></br>
                       <WriteUp id="feature1"> Securely store and assign an alias to your Redis cache connection URL. 
@@ -196,8 +159,6 @@ export default function Main(props: Props): JSX.Element {
                 </CenterStyle>
                 </FeatureOne>
               <br></br>
-              {/* </Feature> */}
-          
         </BorderStyle>
 
       {/* Container #3:  'Enable privacy mode at any time' */}  
@@ -207,12 +168,12 @@ export default function Main(props: Props): JSX.Element {
                 <H2Title style={{textAlign: 'center'}}>Enable privacy mode at any time.</H2Title>
                 <br></br>
                 <div id="private-eyes" style={{paddingLeft: '0.6em'}}>
-                <svg xmlns="http://www.w3.org/2000/svg" width="5em" height="5em" fill="currentColor" className="bi bi-eye-slash" viewBox="0 0 16 16">
+                <svg xmlns="http://www.w3.org/2000/svg" width="4em" height="4em" fill="currentColor" className="bi bi-eye-slash" viewBox="0 0 16 16">
                   <path d="M13.359 11.238C15.06 9.72 16 8 16 8s-3-5.5-8-5.5a7.028 7.028 0 0 0-2.79.588l.77.771A5.944 5.944 0 0 1 8 3.5c2.12 0 3.879 1.168 5.168 2.457A13.134 13.134 0 0 1 14.828 8c-.058.087-.122.183-.195.288-.335.48-.83 1.12-1.465 1.755-.165.165-.337.328-.517.486l.708.709z"/>
                   <path d="M11.297 9.176a3.5 3.5 0 0 0-4.474-4.474l.823.823a2.5 2.5 0 0 1 2.829 2.829l.822.822zm-2.943 1.299.822.822a3.5 3.5 0 0 1-4.474-4.474l.823.823a2.5 2.5 0 0 0 2.829 2.829z"/>
                   <path d="M3.35 5.47c-.18.16-.353.322-.518.487A13.134 13.134 0 0 0 1.172 8l.195.288c.335.48.83 1.12 1.465 1.755C4.121 11.332 5.881 12.5 8 12.5c.716 0 1.39-.133 2.02-.36l.77.772A7.029 7.029 0 0 1 8 13.5C3 13.5 0 8 0 8s.939-1.721 2.641-3.238l.708.709zm10.296 8.884-12-12 .708-.708 12 12-.708.708z"/>
                 </svg>
-                <svg xmlns="http://www.w3.org/2000/svg" width="5em" height="5em" fill="currentColor" className="bi bi-eye-fill" viewBox="0 0 16 16">
+                <svg xmlns="http://www.w3.org/2000/svg" width="4em" height="4em" fill="currentColor" className="bi bi-eye-fill" viewBox="0 0 16 16">
                   <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
                   <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
               </svg>
@@ -225,8 +186,6 @@ export default function Main(props: Props): JSX.Element {
       {/* Container #4:  'Ditch the calculator. Cache Hit Ratio is calculated for you' */}              
         <BorderStyle style={{ boxShadow: '0 0 0.1em #D8EEEE' , marginBottom: '2em'}}>
           <div id="feature3" style={{display: 'flex', flexDirection: 'row'}}>
-            {/* <CenterStyle> */}
-            {/* <Feature> */}
             <svg xmlns="http://www.w3.org/2000/svg" width="16em" height="16em" fill="currentColor" className="bi bi-calculator" viewBox="0 0 16 16">
                 <path d="M12 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h8zM4 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H4z"/>
                 <path d="M4 2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.5.5h-7a.5.5 0 0 1-.5-.5v-2zm0 4a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm0 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm0 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm3-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm0 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm0 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm3-6a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-1zm0 3a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-.5.5h-1a.5.5 0 0 1-.5-.5v-4z"/>
@@ -235,8 +194,6 @@ export default function Main(props: Props): JSX.Element {
               <H2Title style={{ paddingBottom: '0.6em' }}>
                 Ditch the calculator. Cache Hit Ratio is calculated for you.
               </H2Title>
-            {/* </CenterStyle> */}
-            {/* <CenterStyle> */}
               <WriteUp>
                 Cache hit ratio helps developers determine which key-value pairs
                 should be cached and is often overlooked.
@@ -245,9 +202,6 @@ export default function Main(props: Props): JSX.Element {
                 We determine our cache hit ratio by looking at keyspace hits compared to misses.
               </WriteUp>
               </div>
-           
-            {/* </CenterStyle> */}
-            {/* </Feature> */}
           </div>
         </BorderStyle>
 

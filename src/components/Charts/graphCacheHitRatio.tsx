@@ -22,15 +22,12 @@ ChartJS.register(
   Legend
 )
 
-// I need to figure out how to put data types to these data: I used to have data: object, and when I did, it gave me errors inside of LineGraph components return statement below
-
 export function GraphCacheHitRatio() {
   const { time, setTime } = useContext(RedisContext)
   const { keyHits, setKeyHits } = useContext(RedisContext)
   const { keyMisses, setKeyMisses } = useContext(RedisContext)
   const { rss, setRss } = useContext(RedisContext);
 
-  // console.log('from linegraph', usedMemory[usedMemory.length])
   let cacheHitRatioRaw = (+keyHits[keyHits.length-1]/(keyMisses[keyHits.length-1] + keyHits[keyHits.length-1]))
   const cacheHitRatio = cacheHitRatioRaw ? cacheHitRatioRaw.toFixed(2) : 0 ;
 

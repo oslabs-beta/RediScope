@@ -26,8 +26,6 @@ ChartJS.register(
 export function CommandsPerSec() {
   const { commandsPerSec, setCommandsPerSec } = useContext(RedisContext)
   const { time, setTime } = useContext(RedisContext)
-  // console.log('from evicted keys', evictedKeys)
- 
 
   const options: object = {
     responsive: true,

@@ -30,13 +30,9 @@ type Props = {}
 export default function Dashboard(props: Props): JSX.Element {
   const { user, setUser } = useContext(RedisContext);
   const navigate = useNavigate();
-  // console.log(user, 'user in dash')
   const location = useLocation()
-  console.log('location in Dashboard', location.state)
 
   const handleLogout = (path) => {
-    // e.preventDefault();
-    console.log(user, 'in handleLogout')
     navigate(location.state, { replace: true });
     setUser('');
     navigate(path);
