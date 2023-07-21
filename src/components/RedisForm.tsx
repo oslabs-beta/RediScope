@@ -52,17 +52,13 @@ function RedisForm(props: Props): JSX.Element {
 
   // Function submitHandler grabs user's Redis URI and makes a get request to capture data with timestamps
   useEffect(() => {
-    // console.log(user)
-    // console.log(this.state.user)
-    setUser(location.state?.user)  
-    // console.log('in useEffect in redisForm useEffect', user)
+    setUser(location.state?.user ?? '')  
     getallURL()
   }, [user])
 
-  //if user is not available for 1 second, redirect to main page 
+  // if user is not available for 4 second, redirect to main page 
   function userLogInStatus(seconds){
     setTimeout(() => {
-      // console.log(user, 'user in setTimeout')
       try {
         location.state.hasOwnProperty('user')
       } catch (err){
@@ -73,8 +69,6 @@ function RedisForm(props: Props): JSX.Element {
 
   userLogInStatus(4)
 
-
-
   const getallURL = async () => {
     try {
       const baseURLusers =
@@ -83,40 +77,15 @@ function RedisForm(props: Props): JSX.Element {
           : `http://localhost:4000/api/url/getUserURL/${user}/`
 
       if (user) {
-        console.log(user, 'in getallURL')
         const res = await axios.get(baseURLusers)
-        // console.log('res in getallURL returned from backend', res)
-        // console.log('res.data.data in getallURL returned from backend', res.data.data)
         setUrls(res.data.data)
-        // let urlObj = urls.filter(url =>
-        //   url.id == e.target.value)
-        // console.log('urlOBJ', urlObj)
         setUrl(res.data.data[0].url)
         setUrlId(res.data.data[0].id)
-      } else {
-        console.log('no user')
-      }
+      } 
     } catch (err) {
       console.log(err)
     }
   }
-
-  // useEffect(() => {
-  //   // console.log('useEffect calling getallURL', urls)
-  //   getallURL()
-
-  //   // console.log('urls in getAllURL in useEffect', urls)
-  //   // console.log('url in getAllURL in useEffect', url)
-  //   // console.log('user in getAllURL in useEffect', user)
-  //   // console.log('intervalMS', intervalMS)
-  // }, [user])
-
-  // console.log('AFTER useEffect called', urls)
-
-  // useEffect(() => {
-  //   getallURL()
-
-  // }, [urls])
 
   const deleteURL = async e => {
     e.preventDefault()
@@ -125,8 +94,6 @@ function RedisForm(props: Props): JSX.Element {
         process.env.NODE_ENV === 'production'
           ? `api/URL/${urlId}/`
           : `http://localhost:4000/api/url/${urlId}/`
-      // ? `api/URL/${url || urls[0]?.url}/${userId}/`
-      // : `http://localhost:4000/api/url/${url || urls[0]?.url}/${user}/`
       await axios.delete(baseURLdelete)
       getallURL()
     } catch (error) {
@@ -143,7 +110,7 @@ function RedisForm(props: Props): JSX.Element {
         setIntervalId(0)
         return
       }
-      // MUST set all measurements to empty array after before you start up live data collection!
+  // MUST set all measurements to empty array after before you start up live data collection!
       setRss([])
       setUsedMemory([])
       setTime([])
@@ -161,10 +128,9 @@ function RedisForm(props: Props): JSX.Element {
         const res = await axios.post(baseURLredisurl, {
           URL: url,
         })
-        // setting array values for each graph
-        // used memory data grab
 
-        // console.log('res.data after fetch', res.data)
+  // setting array values for each graph
+  // used memory data grab
 
         setCommandsPerSec((prev: Array<number> | any) => {
           return prev.length === numOfTimepoints
@@ -173,32 +139,32 @@ function RedisForm(props: Props): JSX.Element {
         })
 
         setUsedMemory((prev: Array<number> | any) => {
-          // if prev length is equal to 10, slice the first element, if not, keep adding new memory
+  // if prev length is equal to 10, slice the first element, if not, keep adding new memory
 
           return prev.length === numOfTimepoints
             ? [...prev, parseInt(res.data.used_memory)].slice(1)
             : [...prev, parseInt(res.data.used_memory)]
         })
 
-        // connected clients data grab
+  // connected clients data grab
         setConClients((prev: Array<number>) => {
           return prev.length === numOfTimepoints
             ? [...prev, parseInt(res.data.connected_clients)].slice(1)
             : [...prev, parseInt(res.data.connected_clients)]
         })
-        // total commands processed data grab
+  // total commands processed data grab
         setTotalComms((prev: Array<number>) => {
           return prev.length === numOfTimepoints
             ? [...prev, parseInt(res.data.total_commands_processed)].slice(1)
             : [...prev, parseInt(res.data.total_commands_processed)]
         })
-        // evicted keys data grab
+  // evicted keys data grab
         setEvictedKeys((prev: Array<number>) => {
           return prev.length === numOfTimepoints
             ? [...prev, parseInt(res.data.evicted_keys)].slice(1)
             : [...prev, parseInt(res.data.evicted_keys)]
         })
-        // cache hit ratio data grab
+  // cache hit ratio data grab
         setKeyHits((prev: Array<number>) => {
           return prev.length === numOfTimepoints
             ? [...prev, parseInt(res.data.keyspace_hits)].slice(1)
@@ -209,7 +175,7 @@ function RedisForm(props: Props): JSX.Element {
             ? [...prev, parseInt(res.data.keyspace_misses)].slice(1)
             : [...prev, parseInt(res.data.keyspace_misses)]
         })
-        // Creating date object to create our own timestamps to be parsed
+  // Creating date object to create our own timestamps to be parsed
 
         const date = new Date()
         const hour = date.getHours()
@@ -217,16 +183,16 @@ function RedisForm(props: Props): JSX.Element {
         const sec = date.getSeconds()
         const timeStamp = `${hour}:${min}:${sec}`
 
-        // Creating the timestamp array for our linegraph component
+  // Creating the timestamp array for our linegraph component
 
         setTime((prev: Array<string>) => {
-          // if prev length is rqual to 10, slice the first element, if not, keep adding new memory
+  // if prev length is rqual to 10, slice the first element, if not, keep adding new memory
           return prev.length === numOfTimepoints
             ? [...prev, timeStamp].slice(1)
             : [...prev, timeStamp]
         })
 
-        // Creating the RSS (available memory) array for linegraph component
+  // Creating the RSS (available memory) array for linegraph component
         setRss((prev: Array<number>) => {
           return prev.length === numOfTimepoints
             ? [...prev, parseInt(res.data.used_memory_rss)].slice(1)
@@ -239,7 +205,7 @@ function RedisForm(props: Props): JSX.Element {
     }
   }
 
-  // // handling user url input and sending to backend
+  // handling user url input and sending to backend
   const submitHandler = async (formValue: object | any): Promise<any> => {
     const input = { user: user, url: formValue?.URL, name: formValue?.name }
     if (!input.name) {
@@ -282,15 +248,10 @@ function RedisForm(props: Props): JSX.Element {
   const handleDropdown = e => {
     setUrlId(e.target.value)
     let urlObj = urls.filter(url => url.id == e.target.value)
-    // console.log('urlOBJ', urlObj)
     setUrl(urlObj[0].url)
-    // console.log('url after changing dropdown', url)
   }
 
   useEffect(() => {
-    // console.log('urls', urls)
-    // console.log('url', url)
-    // console.log('urlId', urlId)
   }, [urls, url, urlId])
 
   const collectionSetting = e => {
@@ -309,7 +270,6 @@ function RedisForm(props: Props): JSX.Element {
         onSubmit={submitHandler}
       >
         <Form>
-          {/* <FormikStyle> */}
           <URLForm>
             <label htmlFor="URL">URL Alias: </label>
             {'\n'}
@@ -317,39 +277,15 @@ function RedisForm(props: Props): JSX.Element {
             {'\n'}
             <br></br>
             <label htmlFor="URL">URL path: </label>
-            {/* <br></br> */}
             <Field name="URL" type="text" className="URLInput" />
             <ErrorMessage name="URL" component="div" className="alert alert-danger" />
-            {/* <button type="submit" className="btn btn-primary"> </button> */}
             <ButtonStyle type="submit" className="btn-primary">
               Add URL
             </ButtonStyle>
           </URLForm>
-          {/* </FormikStyle> */}
         </Form>
       </Formik>
 
-      {/* <Formik
-        initialValues={initVal}
-        validationSchema={validationSchema}
-        onSubmit={submitHandler}
-      >
-        <Form>
-          <FormikStyle>
-            <div className="URL-Form">
-              <label htmlFor="URL">Redis Cache URL</label> {'\n'}
-              name:{' '}
-              <Field name="name" type="text" className="URL-form-control" />
-              <br></br>
-              URL path:{' '}
-              <Field name="URL" type="text" className="URL-form-control" />
-              <ButtonStyle type="submit" className="btn btn-primary">
-                Add URL
-              </ButtonStyle>
-            </div>
-          </FormikStyle>
-        </Form>
-      </Formik> */}
       <form>
         <URLForm>
           <label htmlFor="setIntervalMS">Choose an interval ms:</label>
@@ -399,7 +335,6 @@ function RedisForm(props: Props): JSX.Element {
                   <>
                     <Option key={url.id} value={url?.id}>
                       {'> ' + url.name}
-                      {/* {url?.url} */}
                     </Option>
                   </>
                 )

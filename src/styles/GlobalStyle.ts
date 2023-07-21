@@ -1,7 +1,4 @@
 import styled, { createGlobalStyle, StyledFunction } from 'styled-components'
-// import cs from '../components/images/chihiroheadshot.png'
-// import ce from '../components/images/coralheadshot.png'
-// import graphGif from '../components/images/giphygraph.gif'
 
 interface Props {
   src: any
@@ -21,21 +18,23 @@ export const GlobalStyle = createGlobalStyle`
   
 }
 
+svg {
+  .eyePic {
+
+  }
+}
+
 body {
   font-family: 'Lato', sans-serif;
   font-size: 20px;
   background-color: #072227;
   color: #D8EEEE;
   max-width: 100%
-  
-
-
 
   @media screen and (min-width: 600px){
     width: 80%;
     margin: 10%;
     padding: 0;
-   
   }
 }
 
@@ -55,7 +54,6 @@ h2 {
 }
 
 `
-
 export const FullscreenContainer = styled.div`
   width: 100vw;
   height: 100vh;
@@ -63,13 +61,11 @@ export const FullscreenContainer = styled.div`
   align-content: center;
   justify-content: center;
 `
-
 export const ButtonStyle = styled.button`
   font-size: 20px;
   height: 42px;
   padding: 10px;
   width: 100%;
-
   margin: 20px 0px;
 
   display: inline-block;
@@ -81,11 +77,7 @@ export const ButtonStyle = styled.button`
   border-radius: 8px;
   border: 1px solid #aefeff;
   transition: 1s ease-in-out;
-
   color: #fff;
-
-
-
   cursor: pointer;
 
   @media only screen and (max-width: 600px) {
@@ -111,14 +103,12 @@ export const ButtonStyle = styled.button`
     display: block;
   }
 `
-
 export const clickLink = styled.link`
   a:link {
     text-decoration: none;
     color: #d8eeee;
   }
 `
-
 export const LoginSignUpBox = styled.div`
   border-radius: 10px;
   border: 1px solid #286468;
@@ -128,7 +118,6 @@ export const LoginSignUpBox = styled.div`
   background-repeat: no-repeat;
   padding: 25px;
 `
-
 export const Title = styled.h1`
   font-size: 60px;
   text-align: center;
@@ -137,9 +126,8 @@ export const Title = styled.h1`
   font-weight: 800;
 `
 export const MainLogo = styled.img`
-  width: 70%;
+  width: 61%;
   margin-bottom: 10px;
- 
 `
 export const UpperLogo = styled.img`
   @media (max-width: 600) {
@@ -155,18 +143,14 @@ export const UpperLogo = styled.img`
   margin-left: 1.5em;
   aspect-ratio: initial;
 `
-
 export const LoginLogo = styled.img`
   width: 55%;
   margin-bottom: 10px;
 `
-// border: 0.2px outset #24383b;
 export const DashboardContainer = styled.div`
   display: flex;
-  
   width: 100%
   flex-direction: row;
-
   justify-content: center;
   border: none;
   margin-top: 5em;
@@ -180,18 +164,15 @@ export const MainContainer = styled.div`
   margin-left: 10%;
   margin-right: 10%;
   margin-bottom: 5%;
-  
 
   @media (max-width: 1500px) {
     margin: 2em;
     margin-top: 12%;
-
   }
 
   @media (max-width: 1200px) {
     margin: 0.6em;
     margin-top: 14%;
-
   }
 `
 export const URLSelector = styled.div`
@@ -220,43 +201,29 @@ export const GraphContainer = styled.div`
   );
   grid-auto-rows: min-content;
 `
-
-// repeat(auto-fit, minmax(min(100%/2, max(300px, 100%/3)), 1fr));
-// place-items: stretch;
-//  grid-template-rows: fit-content;
-
 export const GraphDiv = styled.div`
   aspect-ratio: 1;
   display: flex;
-
   padding: 0.5em;
-
   margin: 0.4em;
   border: 0.1em solid;
   border-color: #4fbdba;
   border-radius: 6px;
 `
-
-// align-items: start;
-// justify-content: start;
-
 export const Inner = styled.div`
   width: 100%;
   height: 100%;
   padding: 12px 5px 12px 12px;
 `
-
 export const ChartWrapper = styled.section`
   text-align: center;
   color: white;
   width: 100%;
   height: 100%;
 `
-
 export const CenteredContainer = styled.div`
   padding: 5px;
   width: 30%;
-
   gap: 20%;
   justify-self: center;
   align-self: center;
@@ -266,7 +233,6 @@ export const CenteredContainer = styled.div`
     width: 80%;
   }
 `
-
 export const Nav = styled.li`
   list-style-type: none;
   margin: 0;
@@ -360,7 +326,6 @@ export const Elements = styled.div`
     justify-content: center;
   }
 `
-
 export const URLSelection = styled.select`
   background-color: #05161a;
   color: #dadada;
@@ -372,7 +337,6 @@ export const URLSelection = styled.select`
   outline: none;
   margin: 7px;
 `
-
 export const Option = styled.option`
   padding: 10px;
   border-bottom: 1px;
@@ -390,7 +354,6 @@ export const DeleteButton = styled.button`
   height: 42px;
   padding: 10px;
   width: 100%;
-  display: block;
   margin: 0px 10px 30px 0px;
 
   display: inline-block;
@@ -402,11 +365,8 @@ export const DeleteButton = styled.button`
   border-radius: 8px;
   border: 2px solid rgb(255, 99, 132);
   transition: 1s ease-in-out;
-
   color: #dadada;
   font-size: 16px;
-
-
   cursor: pointer;
 
   &:hover {
@@ -438,11 +398,8 @@ export const CollectButton = styled.button`
   border-radius: 8px;
   border: 2px solid rgb(79, 189, 186);
   transition: 1s ease-in-out;
-
   color: white;
   font-size: 16px;
- 
-
   cursor: pointer;
 
   &:hover {
@@ -527,10 +484,9 @@ export const CenterStyle = styled.div`
   @media screen and (max-width: 600px) {
     flex-direction: column;
     align-items: center;
-    padding: 0;
+    padding: 0px;
   }
 `
-
 export const Feature = styled.div`
   direction: rows;
   justify-content: space-between;
@@ -545,7 +501,6 @@ export const Feature = styled.div`
 
   }
 `
-// align-items: start;
 export const Feature2 = styled.div`
   display: inline-block;
   flex-direction: column;
@@ -558,14 +513,12 @@ export const Feature2 = styled.div`
   }
   
 `
-
 export const Spacer = styled.div`
   height: 100px;
   width: 100%;
 `
-
 export const BorderStyle = styled.div`
-  padding: 5em 6em;
+  padding: 4em 6em;
   margin-bottom: 10px;
   margin-top: 10px;
   border: 0.1em solid;
@@ -576,36 +529,33 @@ export const BorderStyle = styled.div`
   overflow: hidden;
   white-space: nowrap;
 
-  @media (max-width: 1500px) {
-    padding: 5em 3em;
+  @media (max-width: 1000px) {
+    padding: 2em 3em;
   }
 
 
-
-  @media (max-width: 700px) {
-    padding: 5em 1.7em;
+  @media (max-width: 500px) {
+    padding: 2em 1em;
     flex-direction: column;
     align-items: center;
   }
 `
-// margin-top: 6em;
-
 export const H2Features = styled.h2`
 display: inline-block;
 margin-top: 0.5em;
 white-space: normal;
 word-wrap: break-word;
 overflow-wrap: break-word;
-font-size:calc(16px + 2.8vw);
+font-size:calc(16px + 2.5vw);
 align-self: center;
 @media (max-width: 1000px) {
   font-size: 45px;
 }
 
 @media screen and (max-width: 650px){
+  font-size: 35px;
   align-self: center !important;
 `
-
 export const H2Title = styled.h2`
 display: inline-block;
 margin-top: 0.8em;
@@ -614,14 +564,15 @@ word-wrap: break-word;
 overflow-wrap: break-word;
 font-size:calc(10px + 1.7vw);
 align-self: center;
+
 @media (max-width: 1000px) {
   font-size: 30px;
 }
 
 @media screen and (max-width: 650px){
+  font-size: 22px;
   align-self: center !important;
 `
-
 export const URLStorageTitle = styled.h2`
   justify-content: top;
   display: inline-block;
@@ -630,11 +581,8 @@ export const URLStorageTitle = styled.h2`
   overflow-wrap: break-word;
   font-size: 2.7vw;
 
-  
-
   @media (max-width: 650px) {
     font-size: 24px;
-
   }
 `
 export const HoldText = styled.div`
@@ -647,7 +595,6 @@ export const HoldText = styled.div`
 
   @media screen and (max-width: 650px){
     text-align: center;
-
   }
 `
 
@@ -659,11 +606,17 @@ export const H5Title = styled.h5`
   overflow-wrap: break-word;
   font-size:calc(10px + 1.3vw);
   align-self: center;
+
   @media (max-width: 1000px) {
     font-size: 25px;
   }
+  @media (max-width: 650px) {
+    font-size: 22px;
+  }
+  @media (max-width: 650px) {
+    font-size: 18px;
+  }
 `
-
 export const Circle = styled.div`
   display: inline-block;
   position: relative;
@@ -672,25 +625,19 @@ export const Circle = styled.div`
   overflow: hidden;
   border-radius: 50%;
 `
-
-// background-image: url(${'https://github.com/oslabs-beta/RediScope/raw/fix-pathing-images/public/assets/Chihiroheadshot.png'});
 export const Image = styled.img`
   width: 200px;
   height: 200px;
   align-items: center;
 `
-// background-image: url(${'https://github.com/oslabs-beta/RediScope/raw/fix-pathing-images/public/assets/giphygraph.gif'});
 export const Gif = styled.img`
   aspect-ratio: initial;
-  width: 80%;
+  width: 75%;
   @media screen and (max-width: 750px) {
     width: 310px;
     height: 220px;
-    
   }
 `
-// {{height: 'auto', maxWidth: '100%', padding: '2em', paddingLeft: '1em'}}
-// background-image: url(${'https://github.com/oslabs-beta/RediScope/raw/fix-pathing-images/public/assets/giphygraph.gif'});
 export const URLGif = styled.img`
   aspect-ratio: initial;
   height: 550px;
@@ -698,20 +645,25 @@ export const URLGif = styled.img`
   border: 0.05em solid;
   border-color: #4fbdba;
   border-radius: 8px;
-
   margin-right: 2.5em;
   padding-bottom: 0.5em;
   
   @media screen and (max-width: 1000px) {
     aspect-ratio: initial;
     height: 350px;
-    margin-top: 1em;
     margin-top: 2em;
     padding-right: 0em;
     margin-right: 0em;
   }
-`
 
+  @media screen and (max-width: 500px) {
+    aspect-ratio: initial;
+    height: 350px;
+    margin-top: 1em;
+    padding-right: 0em;
+    margin-right: 0em;
+  }
+`
 export const Team = styled.div`
   display: flex;
   flex-direction: column;
@@ -722,6 +674,7 @@ export const Team = styled.div`
   align-items: center;
   justify-content: space-between;
   justify-items: center;
+
   @media (max-width: 1030px) {
     align-items: center;
     margin-bottom: 15px;
@@ -736,7 +689,6 @@ export const Socials = styled.ul`
   list-style: none;
   padding: 0px;
 `
-
 export const Names = styled.h3`
   display: flex;
   align-items: center;
@@ -760,52 +712,35 @@ export const TeamsDiv = styled.div`
   align-items: center;
   justify-content: space-between;
   justify-items: space-between;
+  
   @media (max-width: 1000px) {
     display: grid;
   }
 `
-
 export const WriteUp = styled.h5`
   display: inline-block;
-
   white-space: normal;
   word-wrap: normal;
-  font-size:calc(10px + 1vw);
+  font-size: 25px;
   align-self: center;
   @media (max-width: 1000px) {
-    font-size: 25px;
+    font-size: 22px;
+  }
+  @media (max-width: 700px) {
+    font-size: 18px;
+  }
+  @media (max-width: 500px) {
+    font-size: 16px;
   }
 `
-// display: inline-block;
-// margin-top: 0.8em;
-// align-self: center;
-// white-space: normal;
-// word-wrap: break-word;
-// overflow-wrap: break-word;
-// font-size:calc(10px + 1.7vw);
-// align-self: center;
-// @media (max-width: 600px) {
-//   font-size: 20px;
-// }
-
-
 export const FeatureOne = styled.div`
   display: flex;
   justify-content: center;
 
   @media only screen and (max-width: 1000px){
     flex-direction: column-reverse;
-
   }
 `
-
-
-// box-sizing: border-box;
-//  <img src={ch} alt="Chihiro Developer" />
-//  @media (max-width: 650px) {
-//     font-size: 18px;
-//   }
-
 export const ConnectionDisplay = styled.div`
   display: flex;
   justify-items: space-between;
@@ -815,7 +750,6 @@ export const EyeIcon = styled.div`
   float: right;
   padding-left: 115px;
 `
-
 export const BottomBorder = styled.div`
   padding-bottom: 5em;
   border-bottom: 1px solid;

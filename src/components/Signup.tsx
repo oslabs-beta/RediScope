@@ -13,10 +13,6 @@ import {
   LoginLogo,
 } from '../styles/GlobalStyle'
 
-// ------ old imports ------ //
-// import Axios from 'axios';
-// import { Link } from 'react-router-dom';
-
 // props to be passed down
 type Props = {}
 // state types for signing up
@@ -61,20 +57,14 @@ export default class SignUp extends Component<Props, SignUpState> {
             val && val.toString().length >= 3 && val.toString().length <= 20
         )
 
-        // min and max only works for integer values, can't evaluate lenght of string
-
-        // .min(2, 'Username must have at least 5 characters!')
-        // .max(50, 'Username is too long!')
         .required('Required Field!'),
       password: Yup.string()
         .test(
           'len',
-          'Password must be between 3 and 20 charaters long.',
+          'Password must be between 3 and 20 characters long.',
           (val: any) =>
             val && val.toString().length >= 3 && val.toString().length <= 20
         )
-        // .min(2, 'Password must have at least 3 characters')
-        // .max(50, 'Password is too long!')
         .required('Required Field!'),
       email: Yup.string()
         .email('Please enter valid email')
@@ -91,40 +81,21 @@ export default class SignUp extends Component<Props, SignUpState> {
   }) {
     const { username, password, email } = formValue
 
-    // this.setState({
-    //   message: '',
-    //   success: false,
-    // })
-
     // ------ checking to see if input is inserted into fields ------ //
 
-    //////////////////////////////////
-    //20230322 BK took out code below.
-    // console.log('formValue in signup', formValue)
     formValue
       ? this.setState({ success: true, formikcheck: true })
       : this.setState({ message: 'please fill in required fields' })
 
-    ////////////////////////////
-    // if (!formValue)
-    //   this.setState({ message: 'Please fill in required fields!' })
-
-    // ------ sign-up post request from service folder ------ //
-
     await AuthService.signup(username, password, email).then(
       res => {
-        // console.log('authservice.signup.  boolean of formikcheck', this.state.formikcheck)
-         
-            // console.log('in authservice.signup')
           this.setState({
             message: res.data.message,
             backendcheck: true,
-            // success: true,
           })
         
       },
       error => {
-        // console.log('in error block of signup in frontend')
         const resMessage =
           (error.res && error.res.data && error.res.data.message) ||
           error.message ||
@@ -135,13 +106,10 @@ export default class SignUp extends Component<Props, SignUpState> {
         })
       }
     )
-    // added by BK
+
     if (!this.state.backendcheck) {
-      // alert('Please try a different username.')
       this.setState({duplicateUser: true})
-    }
-    //
-    else if (this.state.formikcheck) {
+    } else if (this.state.formikcheck) {
       this.setState({ redirect: '/Login' })
     }
   }
@@ -152,7 +120,6 @@ export default class SignUp extends Component<Props, SignUpState> {
     window.location.reload()
   }
 
-  // do we need to render and return even though index.tsx should be handling the rendering?
   render() {
     if (this.state.redirect) {
       return <Navigate to={this.state.redirect} />
@@ -180,14 +147,10 @@ export default class SignUp extends Component<Props, SignUpState> {
               </a>
               <Formik
                 initialValues={initVals}
-            
-                
                 validationSchema={this.SignUpSchema}
-                
                 onSubmit={this.handleSignUp}
               >
                 <Form>
-                  
                     <div>
                       <div className="form">
                         <label htmlFor="username"> Username </label>
@@ -264,7 +227,6 @@ export default class SignUp extends Component<Props, SignUpState> {
                         Please fill required forms properly. Usernames and
                         passwords should be between 3 and 20 characters. E-mail
                         must be valid.
-                        {/* { message } */}
                       </div>
                     </div>
                   )}

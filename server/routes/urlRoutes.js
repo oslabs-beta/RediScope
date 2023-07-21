@@ -7,7 +7,6 @@ router.post('/createURL', urlController.createURL)
 
 router.get('/getUserURL/:user', urlController.getUserURL)
 
-// router.delete('/:url/:user', urlController.deleteURL)
 router.delete('/:urlId', urlController.deleteURL)
 
 module.exports = router
