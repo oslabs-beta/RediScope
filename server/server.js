@@ -26,12 +26,10 @@ app.use((err, req, res, next) => {
     message: { err: 'An error occurred' },
   }
   const errorObj = Object.assign({}, defaultErr, err)
-  console.log(errorObj.log)
   return res.status(errorObj.status).json(errorObj.message)
 })
 
 app.get('/*', (req, res) => {
-  console.log('/*')
   res.sendFile(path.join(__dirname, '../build/'))
 })
 

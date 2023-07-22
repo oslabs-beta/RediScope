@@ -1,4 +1,7 @@
-import React from 'react'
+import React, { useState, useContext, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom'
+import { RedisContext } from '../context/RedisContext'
+import { useLocation } from 'react-router-dom'
 
 import {
   ButtonStyle,
@@ -25,6 +28,16 @@ import { CommandsPerSec } from './Charts/commandsPerSec'
 type Props = {}
 
 export default function Dashboard(props: Props): JSX.Element {
+  const { user, setUser } = useContext(RedisContext);
+  const navigate = useNavigate();
+  const location = useLocation()
+
+  const handleLogout = (path) => {
+    navigate(location.state, { replace: true });
+    setUser('');
+    navigate(path);
+  };
+
   return (
     <>
       <NavBar>
@@ -40,6 +53,7 @@ export default function Dashboard(props: Props): JSX.Element {
             <li>
               <a 
                 href="/"
+                onClick={()=>handleLogout('/')}
                 style={{ paddingBottom: "0", paddingTop: "0" }}
                 >
                   About</a>
@@ -47,6 +61,7 @@ export default function Dashboard(props: Props): JSX.Element {
             <li>
               <a 
                 href="/Login"
+                onClick={()=>handleLogout('/Login')}
                 style={{marginLeft: "1.6em", paddingBottom: "0", paddingTop: "0"}}
                 >
                   Sign Out</a>

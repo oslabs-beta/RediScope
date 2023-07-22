@@ -20,7 +20,6 @@ export const RedisContextProvider = (props: any) => {
   const [url, setUrl] = useState<any>("")
   const [urls, setUrls] = useState<any>([])
   
-  // const [banana, setBanana ] = useState<any>();
   return (
     <RedisContext.Provider
       value={{
@@ -46,7 +45,6 @@ export const RedisContextProvider = (props: any) => {
         urlId, setUrlId,
         url, setUrl,
         urls, setUrls,
-        // banana, setBanana
         commandsPerSec, setCommandsPerSec
       }}
     >
