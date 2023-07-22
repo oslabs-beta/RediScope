@@ -22,23 +22,17 @@ ChartJS.register(
   Legend
 )
 
-// I need to figure out how to put data types to these data: I used to have data: object, and when I did, it gave me errors inside of LineGraph components return statement below
-
 export function MemoryUsage() {
   const { usedMemory, setUsedMemory } = useContext(RedisContext)
   const { time, setTime } = useContext(RedisContext)
   const { rss, setRss } = useContext(RedisContext)
 
-  // console.log('from linegraph', usedMemory)
-
   const options: object = {
     responsive: true,
     aspectRatio: 1 | 1,
-    // maintainAspectRation: false,
     scales: {
       y: {
         ticks: {
-          // Include a dollar sign in the ticks
           callback: function (val, index, ticks) {
             return Number.parseFloat(val).toExponential(2)
           },
@@ -98,6 +92,5 @@ export function MemoryUsage() {
     },
   }
 
-  // chart.canvas.parentNode.style.height = '128px'
   return <Line options={options} data={data} plugins={[legendMargin]} />
 }

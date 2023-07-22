@@ -48,15 +48,6 @@ export default class Login extends Component<Props, LoginState> {
   async handleLogin(formValue: { username: string; password: string }) {
     const { username, password } = formValue
 
-    // ----- hard-code ----- //
-
-    // if (username === 'username' && password === '123') {
-    //   this.setState({
-    //     loading: true,
-    //     valid: true,
-    //   })
-    // }
-
     // ------ invoke login  authorization from service folder ------ //
 
     await AuthService.login(username, password).then(
@@ -85,7 +76,6 @@ export default class Login extends Component<Props, LoginState> {
     )
 
     if (!this.state.backendcheck) {
-      // alert('Please try a different username.')
       this.setState({wrongPassword: true})
     }
 
@@ -95,22 +85,11 @@ export default class Login extends Component<Props, LoginState> {
   }
 
   componentDidMount(): void {
-    // set current user to the evaluated result of the get request via authentication
-    // if this user exists, redirect to the dashboard/mainpage
-    // if (this.state.valid === true){
-    //     this.setState({ redirect: '/Dashboard' });
-    // };
-    // if (user){
-    //     this.setState({ redirect: '/dashboard' });
-    // };
-    // console.log('Component mounted!');
+
   }
 
   componentWillUnmount(): void {
-    // check with electron
-    // console.log("reloading from componentWillUnmount in Login file!")
 
-    // I think this was creating the bulk of my issues when I was conditionally rendering the mainpage
 
     window.location.reload()
   }

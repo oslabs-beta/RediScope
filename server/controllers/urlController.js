@@ -31,7 +31,6 @@ urlController.getUserURL = async (req, res) => {
         res.status(200).json({
             data: results.rows
         })
-        // console.log('result.rows in urlcontroller getallurls',results.rows)
     } catch (err) {
         res.status(400).json({status: 'fail', message: err})
     }
